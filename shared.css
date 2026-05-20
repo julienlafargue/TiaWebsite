@@ -930,7 +930,7 @@ html[data-theme="folle"] .marquee-strip { background:linear-gradient(to right,#f
   border-color: var(--rose);
 }
 
-/* ── Légère (light / sunny) ── */
+/* ── Légère ☀️ (sunny / golden) ── */
 html[data-theme="humeur"][data-mood="legere"] {
   --cream:  #fffdf4;
   --blush:  #fff8dc;
@@ -942,24 +942,64 @@ html[data-theme="humeur"][data-mood="legere"] {
   --filter-border: rgba(249,168,37,.15);
 }
 html[data-theme="humeur"][data-mood="legere"] body { background:#fffdf4; }
+/* h1: gentle sunny sway */
 html[data-theme="humeur"][data-mood="legere"] .hero-left h1,
-html[data-theme="humeur"][data-mood="legere"] .page-hero-left h1 {
-  animation: sunny-sway 4s ease-in-out infinite;
-}
+html[data-theme="humeur"][data-mood="legere"] .page-hero-left h1 { animation:sunny-sway 4s ease-in-out infinite; }
 @keyframes sunny-sway {
-  0%,100% { transform:rotate(0deg); }
-  30%      { transform:rotate(.4deg); }
-  70%      { transform:rotate(-.4deg); }
+  0%,100% { transform:rotate(0deg) translateY(0); }
+  30%      { transform:rotate(.5deg) translateY(-3px); }
+  70%      { transform:rotate(-.5deg) translateY(2px); }
 }
+/* eyebrow/label: warm pulse */
 html[data-theme="humeur"][data-mood="legere"] .eyebrow,
-html[data-theme="humeur"][data-mood="legere"] .sec-label { animation:sunny-pulse 2.5s ease-in-out infinite; }
-@keyframes sunny-pulse {
-  0%,100% { opacity:1; }
-  50%      { opacity:.6; }
-}
+html[data-theme="humeur"][data-mood="legere"] .sec-label { animation:sunny-pulse 2.5s ease-in-out infinite; color:#e65100; }
+@keyframes sunny-pulse { 0%,100%{opacity:1;letter-spacing:.15em;} 50%{opacity:.65;letter-spacing:.18em;} }
+/* sec-title em floats */
+html[data-theme="humeur"][data-mood="legere"] .sec-title em { animation:sunny-float 3s ease-in-out infinite; display:inline-block; }
+@keyframes sunny-float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-4px);} }
+/* cards warm */
+html[data-theme="humeur"][data-mood="legere"] .skill-card:hover,
+html[data-theme="humeur"][data-mood="legere"] .training-card:hover,
+html[data-theme="humeur"][data-mood="legere"] .tl-item:hover { box-shadow:0 8px 28px rgba(249,168,37,.25); }
+/* scroll bar */
 html[data-theme="humeur"][data-mood="legere"] #scroll-progress { background:linear-gradient(to right,#f9a825,#fff176); }
+/* buttons */
+html[data-theme="humeur"][data-mood="legere"] .btn-outline { border-color:#f9a825; color:#e65100; }
+html[data-theme="humeur"][data-mood="legere"] .btn-outline:hover { background:#f9a825; color:#fff; }
+/* contact */
+html[data-theme="humeur"][data-mood="legere"] .contact-section { background:#fff8dc; }
+html[data-theme="humeur"][data-mood="legere"] .contact-section .sec-title em { color:#e65100; }
+html[data-theme="humeur"][data-mood="legere"] .contact-section .contact-item-label { color:#8a7340; }
+html[data-theme="humeur"][data-mood="legere"] .contact-section .btn-ghost { border-color:rgba(249,168,37,.4); color:#e65100; }
+html[data-theme="humeur"][data-mood="legere"] .contact-section .btn-ghost:hover { background:rgba(249,168,37,.12); }
+/* marquee */
+html[data-theme="humeur"][data-mood="legere"] .marquee-strip { background:#f9a825; }
+html[data-theme="humeur"][data-mood="legere"] .marquee-inner span { color:#fff; }
+/* gallery */
+html[data-theme="humeur"][data-mood="legere"] .g-cat-badge { background:rgba(249,168,37,.18); color:#e65100; }
+html[data-theme="humeur"][data-mood="legere"] .g-overlay { background:linear-gradient(to top,rgba(62,44,0,.85) 0%,transparent 55%); }
+html[data-theme="humeur"][data-mood="legere"] .g-overlay h4 { color:#fff8dc; }
+html[data-theme="humeur"][data-mood="legere"] .g-overlay span { color:rgba(249,168,37,.8); }
+/* lightbox */
+html[data-theme="humeur"][data-mood="legere"] .lightbox { background:rgba(62,44,0,.97); }
+html[data-theme="humeur"][data-mood="legere"] .lb-close { color:rgba(249,168,37,.7); }
+html[data-theme="humeur"][data-mood="legere"] .lb-close:hover { color:#f9a825; }
+html[data-theme="humeur"][data-mood="legere"] .lb-nav { border-color:rgba(249,168,37,.25); color:rgba(249,168,37,.7); }
+html[data-theme="humeur"][data-mood="legere"] .lb-nav:hover { border-color:#f9a825; color:#fff8dc; }
+html[data-theme="humeur"][data-mood="legere"] .lb-caption h4 { color:#fff8dc; }
+html[data-theme="humeur"][data-mood="legere"] .lb-caption span { color:rgba(249,168,37,.55); }
+html[data-theme="humeur"][data-mood="legere"] .lb-counter { color:rgba(249,168,37,.5); }
+/* credit cards */
+html[data-theme="humeur"][data-mood="legere"] .credit-card-cat { background:rgba(249,168,37,.18); color:#e65100; }
+html[data-theme="humeur"][data-mood="legere"] .credit-card-hover { background:linear-gradient(to top,rgba(62,44,0,.92) 0%,rgba(62,44,0,.2) 60%,transparent 100%); }
+html[data-theme="humeur"][data-mood="legere"] .credit-card-title { color:#fff8dc; }
+html[data-theme="humeur"][data-mood="legere"] .credit-card-role { color:#f9a825; }
+html[data-theme="humeur"][data-mood="legere"] .credit-card-venue { color:rgba(249,168,37,.6); }
+/* theme panel */
+html[data-theme="humeur"][data-mood="legere"] .theme-panel { background:#fffbe6; border-color:rgba(249,168,37,.2); }
+html[data-theme="humeur"][data-mood="legere"] .theme-opt:hover { background:#fff3cd; color:#e65100; }
 
-/* ── Mélancolique ── */
+/* ── Mélancolique 🌙 ── */
 html[data-theme="humeur"][data-mood="melancolique"] {
   --cream:  #0e1117;
   --blush:  #161b24;
@@ -972,27 +1012,71 @@ html[data-theme="humeur"][data-mood="melancolique"] {
 }
 html[data-theme="humeur"][data-mood="melancolique"] body { background:#0e1117; }
 html[data-theme="humeur"][data-mood="melancolique"] nav { background:rgba(14,17,23,.92); border-color:rgba(121,134,203,.12); }
+html[data-theme="humeur"][data-mood="melancolique"] .mobile-menu { background:#0e1117; }
+/* h1: slow mournful drift */
+html[data-theme="humeur"][data-mood="melancolique"] .hero-left h1,
+html[data-theme="humeur"][data-mood="melancolique"] .page-hero-left h1 { animation:drift-down 7s ease-in-out infinite; color:#c5cae9; }
+@keyframes drift-down { 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
+html[data-theme="humeur"][data-mood="melancolique"] .hero-left h1 em,
+html[data-theme="humeur"][data-mood="melancolique"] .page-hero-left h1 em { color:#7986cb; font-style:italic; }
+/* eyebrow/label: slow fade */
+html[data-theme="humeur"][data-mood="melancolique"] .eyebrow,
+html[data-theme="humeur"][data-mood="melancolique"] .sec-label { color:#5c6bc0; animation:mellow-fade 4s ease-in-out infinite; }
+@keyframes mellow-fade { 0%,100%{opacity:.9;} 50%{opacity:.4;} }
+/* sec-title */
 html[data-theme="humeur"][data-mood="melancolique"] .sec-title { color:#c5cae9; }
 html[data-theme="humeur"][data-mood="melancolique"] .sec-title em { color:#7986cb; }
+/* cards */
 html[data-theme="humeur"][data-mood="melancolique"] .card,
 html[data-theme="humeur"][data-mood="melancolique"] .skill-card,
-html[data-theme="humeur"][data-mood="melancolique"] .training-card { background:#161b24; border-color:rgba(121,134,203,.15); }
+html[data-theme="humeur"][data-mood="melancolique"] .training-card { background:#161b24; border-color:rgba(121,134,203,.15); color:#c5cae9; }
+/* contact */
 html[data-theme="humeur"][data-mood="melancolique"] .contact-section { background:#161b24; }
-html[data-theme="humeur"][data-mood="melancolique"] footer { background:#0a0d14; }
-html[data-theme="humeur"][data-mood="melancolique"] .hero-left h1,
-html[data-theme="humeur"][data-mood="melancolique"] .page-hero-left h1 { animation:drift-down 6s ease-in-out infinite; }
-@keyframes drift-down {
-  0%,100% { transform:translateY(0); }
-  50%      { transform:translateY(6px); }
-}
-html[data-theme="humeur"][data-mood="melancolique"] .eyebrow,
-html[data-theme="humeur"][data-mood="melancolique"] .sec-label { color:#5c6bc0; }
-html[data-theme="humeur"][data-mood="melancolique"] #scroll-progress { background:#3949ab; }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .sec-title { color:#c5cae9; }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .sec-title em { color:#7986cb; }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .contact-sub { color:rgba(197,202,233,.7); }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .contact-item-label { color:rgba(121,134,203,.6); }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .contact-item a { color:#9fa8da; }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .contact-item a:hover { color:#7986cb; }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .btn-ghost { border-color:rgba(121,134,203,.3); color:#9fa8da; }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section .btn-ghost:hover { background:rgba(121,134,203,.1); }
+/* footer */
+html[data-theme="humeur"][data-mood="melancolique"] footer { background:#0a0d14; color:#5c6bc0; }
+/* scroll */
+html[data-theme="humeur"][data-mood="melancolique"] #scroll-progress { background:#3949ab; animation:mel-progress 6s ease-in-out infinite; }
+@keyframes mel-progress { 0%,100%{opacity:.8;} 50%{opacity:.4;} }
+/* marquee */
+html[data-theme="humeur"][data-mood="melancolique"] .marquee-strip { background:#161b24; }
+html[data-theme="humeur"][data-mood="melancolique"] .marquee-inner span { color:#7986cb; }
+/* gallery */
+html[data-theme="humeur"][data-mood="melancolique"] .g-cat-badge { background:rgba(121,134,203,.15); color:#9fa8da; }
+html[data-theme="humeur"][data-mood="melancolique"] .g-overlay { background:linear-gradient(to top,rgba(10,13,20,.9) 0%,transparent 55%); }
+html[data-theme="humeur"][data-mood="melancolique"] .g-overlay h4 { color:#c5cae9; }
+html[data-theme="humeur"][data-mood="melancolique"] .g-overlay span { color:rgba(121,134,203,.7); }
+/* lightbox */
+html[data-theme="humeur"][data-mood="melancolique"] .lightbox { background:rgba(10,13,20,.98); }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-close { color:rgba(121,134,203,.6); }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-close:hover { color:#9fa8da; }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-nav { border-color:rgba(121,134,203,.2); color:rgba(121,134,203,.6); }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-nav:hover { border-color:#7986cb; color:#c5cae9; }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-caption h4 { color:#c5cae9; }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-caption span { color:rgba(121,134,203,.5); }
+html[data-theme="humeur"][data-mood="melancolique"] .lb-counter { color:rgba(121,134,203,.4); }
+/* credit cards */
+html[data-theme="humeur"][data-mood="melancolique"] .credit-card-cat { background:rgba(121,134,203,.14); color:#9fa8da; }
+html[data-theme="humeur"][data-mood="melancolique"] .credit-card-hover { background:linear-gradient(to top,rgba(10,13,20,.95) 0%,rgba(10,13,20,.2) 60%,transparent 100%); }
+html[data-theme="humeur"][data-mood="melancolique"] .credit-card-title { color:#c5cae9; }
+html[data-theme="humeur"][data-mood="melancolique"] .credit-card-role { color:#7986cb; }
+html[data-theme="humeur"][data-mood="melancolique"] .credit-card-venue { color:rgba(121,134,203,.5); }
+/* theme panel */
+html[data-theme="humeur"][data-mood="melancolique"] .theme-panel { background:#0e1117; border-color:rgba(121,134,203,.2); }
+html[data-theme="humeur"][data-mood="melancolique"] .theme-opt:hover { background:#161b24; color:#9fa8da; }
+/* mood bar */
 html[data-theme="humeur"][data-mood="melancolique"] .mood-bar { background:#0e1117; border-color:rgba(121,134,203,.15); }
 html[data-theme="humeur"][data-mood="melancolique"] .mood-label { color:#5c6bc0; }
 html[data-theme="humeur"][data-mood="melancolique"] .mood-opt { color:#c5cae9; border-color:rgba(121,134,203,.2); }
 
-/* ── Intense ── */
+/* ── Intense 🔥 ── */
 html[data-theme="humeur"][data-mood="intense"] {
   --cream:  #0d0000;
   --blush:  #1a0000;
@@ -1005,32 +1089,81 @@ html[data-theme="humeur"][data-mood="intense"] {
 }
 html[data-theme="humeur"][data-mood="intense"] body { background:#0d0000; }
 html[data-theme="humeur"][data-mood="intense"] nav { background:rgba(13,0,0,.92); border-color:rgba(255,61,0,.15); }
-html[data-theme="humeur"][data-mood="intense"] .sec-title { color:#ffccbc; }
-html[data-theme="humeur"][data-mood="intense"] .sec-title em { color:#ff3d00; }
-html[data-theme="humeur"][data-mood="intense"] .card,
-html[data-theme="humeur"][data-mood="intense"] .skill-card,
-html[data-theme="humeur"][data-mood="intense"] .training-card { background:#1a0000; border-color:rgba(255,61,0,.15); }
-html[data-theme="humeur"][data-mood="intense"] .contact-section { background:#1a0000; }
-html[data-theme="humeur"][data-mood="intense"] footer { background:#0a0000; }
+html[data-theme="humeur"][data-mood="intense"] .mobile-menu { background:#0d0000; }
+/* h1: intense breathing pulse */
+html[data-theme="humeur"][data-mood="intense"] .hero-left h1,
+html[data-theme="humeur"][data-mood="intense"] .page-hero-left h1 { animation:intensity-pulse 2s ease-in-out infinite; color:#ffccbc; }
+@keyframes intensity-pulse { 0%,100%{text-shadow:none;} 50%{text-shadow:0 0 40px rgba(255,61,0,.5),0 0 80px rgba(255,61,0,.2);} }
+html[data-theme="humeur"][data-mood="intense"] .hero-left h1 em,
+html[data-theme="humeur"][data-mood="intense"] .page-hero-left h1 em { color:#ff3d00; }
+/* eyebrow/label: ember flicker */
 html[data-theme="humeur"][data-mood="intense"] .eyebrow,
 html[data-theme="humeur"][data-mood="intense"] .sec-label { animation:ember-flicker 1.6s ease-in-out infinite; color:#ff6e40; }
 @keyframes ember-flicker {
-  0%,100% { opacity:1; text-shadow:0 0 8px rgba(255,61,0,.6); }
-  40%      { opacity:.7; text-shadow:0 0 16px rgba(255,61,0,.9); }
-  70%      { opacity:.9; text-shadow:0 0 4px rgba(255,61,0,.3); }
+  0%,100%{ opacity:1; text-shadow:0 0 10px rgba(255,61,0,.7); }
+  35%    { opacity:.6; text-shadow:0 0 20px rgba(255,61,0,1); }
+  65%    { opacity:.9; text-shadow:0 0 5px rgba(255,61,0,.4); }
 }
-html[data-theme="humeur"][data-mood="intense"] .hero-left h1,
-html[data-theme="humeur"][data-mood="intense"] .page-hero-left h1 { animation:intensity-pulse 2s ease-in-out infinite; }
-@keyframes intensity-pulse {
-  0%,100% { text-shadow:none; }
-  50%      { text-shadow:0 0 30px rgba(255,61,0,.4); }
-}
-html[data-theme="humeur"][data-mood="intense"] #scroll-progress { background:linear-gradient(to right,#b71c1c,#ff3d00); }
+/* sec-title */
+html[data-theme="humeur"][data-mood="intense"] .sec-title { color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .sec-title em { color:#ff3d00; }
+/* cards */
+html[data-theme="humeur"][data-mood="intense"] .card,
+html[data-theme="humeur"][data-mood="intense"] .skill-card,
+html[data-theme="humeur"][data-mood="intense"] .training-card { background:#1a0000; border-color:rgba(255,61,0,.15); color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .skill-card:hover,
+html[data-theme="humeur"][data-mood="intense"] .training-card:hover,
+html[data-theme="humeur"][data-mood="intense"] .tl-item:hover { box-shadow:0 0 20px rgba(255,61,0,.3); border-color:rgba(255,61,0,.4); }
+/* buttons */
+html[data-theme="humeur"][data-mood="intense"] .btn-outline { border-color:#ff3d00; color:#ff6e40; }
+html[data-theme="humeur"][data-mood="intense"] .btn-outline:hover { background:#ff3d00; color:#fff; }
+/* contact */
+html[data-theme="humeur"][data-mood="intense"] .contact-section { background:#1a0000; }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .sec-title { color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .sec-title em { color:#ff3d00; }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .contact-sub { color:rgba(255,204,188,.7); }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .contact-item-label { color:rgba(255,110,64,.6); }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .contact-item a { color:#ff8a65; }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .contact-item a:hover { color:#ff3d00; }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .btn-ghost { border-color:rgba(255,61,0,.3); color:#ff6e40; }
+html[data-theme="humeur"][data-mood="intense"] .contact-section .btn-ghost:hover { background:rgba(255,61,0,.12); }
+/* footer */
+html[data-theme="humeur"][data-mood="intense"] footer { background:#0a0000; color:#ff8a65; }
+/* scroll */
+html[data-theme="humeur"][data-mood="intense"] #scroll-progress { background:linear-gradient(to right,#b71c1c,#ff3d00); animation:ember-scan .8s ease-in-out infinite; }
+@keyframes ember-scan { 0%,100%{opacity:1;} 50%{opacity:.6;} }
+/* marquee */
+html[data-theme="humeur"][data-mood="intense"] .marquee-strip { background:#1a0000; }
+html[data-theme="humeur"][data-mood="intense"] .marquee-inner span { color:#ff3d00; }
+/* gallery */
+html[data-theme="humeur"][data-mood="intense"] .g-cat-badge { background:rgba(255,61,0,.15); color:#ff6e40; }
+html[data-theme="humeur"][data-mood="intense"] .g-overlay { background:linear-gradient(to top,rgba(13,0,0,.92) 0%,transparent 55%); }
+html[data-theme="humeur"][data-mood="intense"] .g-overlay h4 { color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .g-overlay span { color:rgba(255,110,64,.75); }
+/* lightbox */
+html[data-theme="humeur"][data-mood="intense"] .lightbox { background:rgba(10,0,0,.98); }
+html[data-theme="humeur"][data-mood="intense"] .lb-close { color:rgba(255,61,0,.6); }
+html[data-theme="humeur"][data-mood="intense"] .lb-close:hover { color:#ff3d00; }
+html[data-theme="humeur"][data-mood="intense"] .lb-nav { border-color:rgba(255,61,0,.2); color:rgba(255,61,0,.6); }
+html[data-theme="humeur"][data-mood="intense"] .lb-nav:hover { border-color:#ff3d00; color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .lb-caption h4 { color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .lb-caption span { color:rgba(255,110,64,.5); }
+html[data-theme="humeur"][data-mood="intense"] .lb-counter { color:rgba(255,61,0,.45); }
+/* credit cards */
+html[data-theme="humeur"][data-mood="intense"] .credit-card-cat { background:rgba(255,61,0,.15); color:#ff6e40; }
+html[data-theme="humeur"][data-mood="intense"] .credit-card-hover { background:linear-gradient(to top,rgba(13,0,0,.95) 0%,rgba(13,0,0,.2) 60%,transparent 100%); }
+html[data-theme="humeur"][data-mood="intense"] .credit-card-title { color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .credit-card-role { color:#ff3d00; }
+html[data-theme="humeur"][data-mood="intense"] .credit-card-venue { color:rgba(255,110,64,.55); }
+/* theme panel */
+html[data-theme="humeur"][data-mood="intense"] .theme-panel { background:#0d0000; border-color:rgba(255,61,0,.2); }
+html[data-theme="humeur"][data-mood="intense"] .theme-opt:hover { background:#1a0000; color:#ff6e40; }
+/* mood bar */
 html[data-theme="humeur"][data-mood="intense"] .mood-bar { background:#0d0000; border-color:rgba(255,61,0,.15); }
 html[data-theme="humeur"][data-mood="intense"] .mood-label { color:#ff6e40; }
 html[data-theme="humeur"][data-mood="intense"] .mood-opt { color:#ffccbc; border-color:rgba(255,61,0,.2); }
 
-/* ── Douce ── */
+/* ── Douce 🌸 ── */
 html[data-theme="humeur"][data-mood="douce"] {
   --cream:  #fdf6f9;
   --blush:  #fce4ec;
@@ -1042,23 +1175,72 @@ html[data-theme="humeur"][data-mood="douce"] {
   --filter-border: rgba(233,30,140,.1);
 }
 html[data-theme="humeur"][data-mood="douce"] body { background:#fdf6f9; }
+/* h1: petal fall */
 html[data-theme="humeur"][data-mood="douce"] .hero-left h1,
 html[data-theme="humeur"][data-mood="douce"] .page-hero-left h1 { animation:petal-fall 5s ease-in-out infinite; }
 @keyframes petal-fall {
-  0%,100% { transform:translateY(0) rotate(0); }
-  33%      { transform:translateY(-4px) rotate(-.3deg); }
-  66%      { transform:translateY(2px) rotate(.3deg); }
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  33%    { transform:translateY(-5px) rotate(-.4deg); }
+  66%    { transform:translateY(3px) rotate(.3deg); }
 }
+html[data-theme="humeur"][data-mood="douce"] .hero-left h1 em,
+html[data-theme="humeur"][data-mood="douce"] .page-hero-left h1 em { color:#e91e8c; }
+/* eyebrow/label: gentle rose glow */
 html[data-theme="humeur"][data-mood="douce"] .eyebrow,
 html[data-theme="humeur"][data-mood="douce"] .sec-label { animation:gentle-glow 3s ease-in-out infinite; }
-@keyframes gentle-glow {
-  0%,100% { color:#e91e8c; opacity:1; }
-  50%      { color:#f06292; opacity:.75; }
-}
+@keyframes gentle-glow { 0%,100%{color:#e91e8c;opacity:1;} 50%{color:#f48fb1;opacity:.65;} }
+/* sec-title em: shimmer */
+html[data-theme="humeur"][data-mood="douce"] .sec-title em { animation:pink-shimmer 4s ease-in-out infinite; display:inline-block; }
+@keyframes pink-shimmer { 0%,100%{color:#e91e8c;} 50%{color:#f06292;} }
+/* cards */
+html[data-theme="humeur"][data-mood="douce"] .skill-card:hover,
+html[data-theme="humeur"][data-mood="douce"] .training-card:hover,
+html[data-theme="humeur"][data-mood="douce"] .tl-item:hover { box-shadow:0 8px 28px rgba(233,30,140,.2); border-color:rgba(233,30,140,.25); }
+/* buttons */
+html[data-theme="humeur"][data-mood="douce"] .btn-outline { border-color:#e91e8c; color:#c2185b; }
+html[data-theme="humeur"][data-mood="douce"] .btn-outline:hover { background:#e91e8c; color:#fff; }
+/* contact */
+html[data-theme="humeur"][data-mood="douce"] .contact-section { background:#fce4ec; }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .sec-title { color:#4a1942; }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .sec-title em { color:#e91e8c; }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .contact-sub { color:rgba(74,25,66,.7); }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .contact-item-label { color:rgba(176,96,144,.7); }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .contact-item a { color:#c2185b; }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .contact-item a:hover { color:#e91e8c; }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .btn-ghost { border-color:rgba(233,30,140,.3); color:#c2185b; }
+html[data-theme="humeur"][data-mood="douce"] .contact-section .btn-ghost:hover { background:rgba(233,30,140,.1); }
+/* footer */
+html[data-theme="humeur"][data-mood="douce"] footer { background:#fce4ec; color:#b06090; }
+/* scroll */
 html[data-theme="humeur"][data-mood="douce"] #scroll-progress { background:linear-gradient(to right,#f8bbd0,#e91e8c); }
-html[data-theme="humeur"][data-mood="douce"] .contact-section { background:#fce4ec; color:#4a1942; }
+/* marquee */
+html[data-theme="humeur"][data-mood="douce"] .marquee-strip { background:#fce4ec; }
+html[data-theme="humeur"][data-mood="douce"] .marquee-inner span { color:#e91e8c; }
+/* gallery */
+html[data-theme="humeur"][data-mood="douce"] .g-cat-badge { background:rgba(233,30,140,.12); color:#c2185b; }
+html[data-theme="humeur"][data-mood="douce"] .g-overlay { background:linear-gradient(to top,rgba(74,25,66,.82) 0%,transparent 55%); }
+html[data-theme="humeur"][data-mood="douce"] .g-overlay h4 { color:#fce4ec; }
+html[data-theme="humeur"][data-mood="douce"] .g-overlay span { color:rgba(233,30,140,.8); }
+/* lightbox */
+html[data-theme="humeur"][data-mood="douce"] .lightbox { background:rgba(74,25,66,.97); }
+html[data-theme="humeur"][data-mood="douce"] .lb-close { color:rgba(233,30,140,.6); }
+html[data-theme="humeur"][data-mood="douce"] .lb-close:hover { color:#e91e8c; }
+html[data-theme="humeur"][data-mood="douce"] .lb-nav { border-color:rgba(233,30,140,.25); color:rgba(233,30,140,.65); }
+html[data-theme="humeur"][data-mood="douce"] .lb-nav:hover { border-color:#e91e8c; color:#fce4ec; }
+html[data-theme="humeur"][data-mood="douce"] .lb-caption h4 { color:#fce4ec; }
+html[data-theme="humeur"][data-mood="douce"] .lb-caption span { color:rgba(233,30,140,.5); }
+html[data-theme="humeur"][data-mood="douce"] .lb-counter { color:rgba(233,30,140,.45); }
+/* credit cards */
+html[data-theme="humeur"][data-mood="douce"] .credit-card-cat { background:rgba(233,30,140,.12); color:#c2185b; }
+html[data-theme="humeur"][data-mood="douce"] .credit-card-hover { background:linear-gradient(to top,rgba(74,25,66,.92) 0%,rgba(74,25,66,.2) 60%,transparent 100%); }
+html[data-theme="humeur"][data-mood="douce"] .credit-card-title { color:#fce4ec; }
+html[data-theme="humeur"][data-mood="douce"] .credit-card-role { color:#e91e8c; }
+html[data-theme="humeur"][data-mood="douce"] .credit-card-venue { color:rgba(233,30,140,.55); }
+/* theme panel */
+html[data-theme="humeur"][data-mood="douce"] .theme-panel { background:#fdf6f9; border-color:rgba(233,30,140,.15); }
+html[data-theme="humeur"][data-mood="douce"] .theme-opt:hover { background:#fce4ec; color:#c2185b; }
 
-/* ── Électrique ── */
+/* ── Électrique ⚡ ── */
 html[data-theme="humeur"][data-mood="electrique"] {
   --cream:  #050510;
   --blush:  #0a0a1f;
@@ -1071,29 +1253,81 @@ html[data-theme="humeur"][data-mood="electrique"] {
 }
 html[data-theme="humeur"][data-mood="electrique"] body { background:#050510; }
 html[data-theme="humeur"][data-mood="electrique"] nav { background:rgba(5,5,16,.92); border-color:rgba(0,229,255,.15); }
-html[data-theme="humeur"][data-mood="electrique"] .sec-title { color:#e0f7fa; }
-html[data-theme="humeur"][data-mood="electrique"] .sec-title em { color:#00e5ff; }
-html[data-theme="humeur"][data-mood="electrique"] .card,
-html[data-theme="humeur"][data-mood="electrique"] .skill-card,
-html[data-theme="humeur"][data-mood="electrique"] .training-card { background:#0a0a1f; border-color:rgba(0,229,255,.15); }
-html[data-theme="humeur"][data-mood="electrique"] .contact-section { background:#0a0a1f; }
-html[data-theme="humeur"][data-mood="electrique"] footer { background:#03030d; }
+html[data-theme="humeur"][data-mood="electrique"] .mobile-menu { background:#050510; }
+/* h1: charge up / neon glow */
+html[data-theme="humeur"][data-mood="electrique"] .hero-left h1,
+html[data-theme="humeur"][data-mood="electrique"] .page-hero-left h1 { animation:charge-up 2.5s ease-in-out infinite; color:#e0f7fa; }
+@keyframes charge-up { 0%,100%{text-shadow:none;} 50%{text-shadow:0 0 40px rgba(0,229,255,.4),0 0 80px rgba(0,229,255,.15);} }
+html[data-theme="humeur"][data-mood="electrique"] .hero-left h1 em,
+html[data-theme="humeur"][data-mood="electrique"] .page-hero-left h1 em { color:#00e5ff; }
+/* eyebrow/label: electric zap */
 html[data-theme="humeur"][data-mood="electrique"] .eyebrow,
 html[data-theme="humeur"][data-mood="electrique"] .sec-label { animation:electric-zap 1.2s steps(1) infinite; color:#00e5ff; }
 @keyframes electric-zap {
-  0%,90%  { opacity:1; text-shadow:0 0 8px #00e5ff, 0 0 20px rgba(0,229,255,.4); }
-  92%     { opacity:.1; text-shadow:none; }
-  94%     { opacity:1; text-shadow:0 0 20px #00e5ff; }
-  96%     { opacity:.3; text-shadow:none; }
+  0%,88%  { opacity:1; text-shadow:0 0 8px #00e5ff,0 0 20px rgba(0,229,255,.4); }
+  90%     { opacity:.05; text-shadow:none; }
+  92%     { opacity:1; text-shadow:0 0 20px #00e5ff; }
+  94%     { opacity:.2; text-shadow:none; }
+  96%     { opacity:1; text-shadow:0 0 8px #00e5ff; }
   100%    { opacity:1; text-shadow:0 0 8px #00e5ff; }
 }
-html[data-theme="humeur"][data-mood="electrique"] .hero-left h1,
-html[data-theme="humeur"][data-mood="electrique"] .page-hero-left h1 { animation:charge-up 3s ease-in-out infinite; }
-@keyframes charge-up {
-  0%,100% { text-shadow:none; }
-  50%      { text-shadow:0 0 40px rgba(0,229,255,.3), 0 0 80px rgba(0,229,255,.1); }
-}
-html[data-theme="humeur"][data-mood="electrique"] #scroll-progress { background:linear-gradient(to right,#0d47a1,#00e5ff); }
+/* sec-title */
+html[data-theme="humeur"][data-mood="electrique"] .sec-title { color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .sec-title em { color:#00e5ff; animation:neon-pulse 2s ease-in-out infinite; display:inline-block; }
+@keyframes neon-pulse { 0%,100%{text-shadow:0 0 6px rgba(0,229,255,.5);} 50%{text-shadow:0 0 18px rgba(0,229,255,.9),0 0 40px rgba(0,229,255,.3);} }
+/* cards */
+html[data-theme="humeur"][data-mood="electrique"] .card,
+html[data-theme="humeur"][data-mood="electrique"] .skill-card,
+html[data-theme="humeur"][data-mood="electrique"] .training-card { background:#0a0a1f; border-color:rgba(0,229,255,.15); color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .skill-card:hover,
+html[data-theme="humeur"][data-mood="electrique"] .training-card:hover,
+html[data-theme="humeur"][data-mood="electrique"] .tl-item:hover { box-shadow:0 0 20px rgba(0,229,255,.25); border-color:rgba(0,229,255,.4); }
+/* buttons */
+html[data-theme="humeur"][data-mood="electrique"] .btn-outline { border-color:#00e5ff; color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .btn-outline:hover { background:#00e5ff; color:#050510; }
+/* contact */
+html[data-theme="humeur"][data-mood="electrique"] .contact-section { background:#0a0a1f; }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .sec-title { color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .sec-title em { color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .contact-sub { color:rgba(224,247,250,.7); }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .contact-item-label { color:rgba(0,229,255,.55); }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .contact-item a { color:#80deea; }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .contact-item a:hover { color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .contact-divider { background:rgba(0,229,255,.12); }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .btn-ghost { border-color:rgba(0,229,255,.3); color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section .btn-ghost:hover { background:rgba(0,229,255,.1); }
+/* footer */
+html[data-theme="humeur"][data-mood="electrique"] footer { background:#03030d; color:#80deea; }
+/* scroll */
+html[data-theme="humeur"][data-mood="electrique"] #scroll-progress { background:linear-gradient(to right,#0d47a1,#00e5ff); animation:electric-scan .8s ease-in-out infinite; }
+@keyframes electric-scan { 0%,100%{opacity:1;} 50%{opacity:.6;} }
+/* marquee */
+html[data-theme="humeur"][data-mood="electrique"] .marquee-strip { background:#0a0a1f; }
+html[data-theme="humeur"][data-mood="electrique"] .marquee-inner span { color:#00e5ff; }
+/* gallery */
+html[data-theme="humeur"][data-mood="electrique"] .g-cat-badge { background:rgba(0,229,255,.12); color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .g-overlay { background:linear-gradient(to top,rgba(5,5,16,.9) 0%,transparent 55%); }
+html[data-theme="humeur"][data-mood="electrique"] .g-overlay h4 { color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .g-overlay span { color:rgba(0,229,255,.75); }
+/* lightbox */
+html[data-theme="humeur"][data-mood="electrique"] .lightbox { background:rgba(3,3,13,.98); }
+html[data-theme="humeur"][data-mood="electrique"] .lb-close { color:rgba(0,229,255,.6); }
+html[data-theme="humeur"][data-mood="electrique"] .lb-close:hover { color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .lb-nav { border-color:rgba(0,229,255,.2); color:rgba(0,229,255,.6); }
+html[data-theme="humeur"][data-mood="electrique"] .lb-nav:hover { border-color:#00e5ff; color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .lb-caption h4 { color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .lb-caption span { color:rgba(0,229,255,.5); }
+html[data-theme="humeur"][data-mood="electrique"] .lb-counter { color:rgba(0,229,255,.4); }
+/* credit cards */
+html[data-theme="humeur"][data-mood="electrique"] .credit-card-cat { background:rgba(0,229,255,.12); color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .credit-card-hover { background:linear-gradient(to top,rgba(5,5,16,.96) 0%,rgba(5,5,16,.2) 60%,transparent 100%); }
+html[data-theme="humeur"][data-mood="electrique"] .credit-card-title { color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .credit-card-role { color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .credit-card-venue { color:rgba(0,229,255,.5); }
+/* theme panel */
+html[data-theme="humeur"][data-mood="electrique"] .theme-panel { background:#050510; border-color:rgba(0,229,255,.2); }
+html[data-theme="humeur"][data-mood="electrique"] .theme-opt:hover { background:#0a0a1f; color:#00e5ff; }
+/* mood bar */
 html[data-theme="humeur"][data-mood="electrique"] .mood-bar { background:#050510; border-color:rgba(0,229,255,.15); }
 html[data-theme="humeur"][data-mood="electrique"] .mood-label { color:#80deea; }
 html[data-theme="humeur"][data-mood="electrique"] .mood-opt { color:#e0f7fa; border-color:rgba(0,229,255,.2); }
