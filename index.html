@@ -461,6 +461,13 @@
       <span class="lang-sep">|</span>
       <button class="lang-btn" data-lang="fr">FR</button>
     </div>
+    <div class="mobile-theme">
+      <button class="theme-opt" data-theme="classique">✦ Classique</button>
+      <button class="theme-opt" data-theme="chaotique">⚡ Chaotique</button>
+      <button class="theme-opt" data-theme="amour">♥ Amour</button>
+      <button class="theme-opt" data-theme="casse">⚠ Cassé</button>
+      <button class="theme-opt" data-theme="folle">🎉 Folle</button>
+    </div>
   </div>
 
   <nav>
@@ -483,6 +490,23 @@
         <span class="lang-sep">|</span>
         <button class="lang-btn" data-lang="fr">FR</button>
       </div>
+      <div class="theme-wrap">
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Changer le thème">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a10 10 0 000 20"/>
+            <path d="M12 2v20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </button>
+        <div class="theme-panel" id="themePanel">
+          <button class="theme-opt active" data-theme="classique">✦ Classique</button>
+          <button class="theme-opt" data-theme="chaotique">⚡ Chaotique</button>
+          <button class="theme-opt" data-theme="amour">♥ Amour</button>
+          <button class="theme-opt" data-theme="casse">⚠ Cassé</button>
+          <button class="theme-opt" data-theme="folle">🎉 Folle</button>
+        </div>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -496,9 +520,9 @@
 
     <section class="hero">
       <div class="hero-left">
-        <p class="eyebrow hero-line" data-en="Creative · Photographer · Actress" data-fr="Créative · Photographe · Actrice">Creative · Photographer · Actress</p>
+        <p class="eyebrow hero-line" data-text-key="hero.eyebrow" data-en="Creative · Photographer · Actress" data-fr="Créative · Photographe · Actrice">Creative · Photographer · Actress</p>
         <h1 class="hero-line">Tia‑<br><em>Lana</em><br>Chinapyel</h1>
-        <p class="hero-line" data-en="Visual storytelling rooted in emotion, light and intimacy. Based between London and Paris." data-fr="Narration visuelle ancrée dans l'émotion, la lumière et l'intimité. Entre Londres et Paris.">Visual storytelling rooted in emotion, light and intimacy. Based between London and Paris.</p>
+        <p class="hero-line" data-text-key="hero.p" data-en="Visual storytelling rooted in emotion, light and intimacy. Based between London and Paris." data-fr="Narration visuelle ancrée dans l'émotion, la lumière et l'intimité. Entre Londres et Paris.">Visual storytelling rooted in emotion, light and intimacy. Based between London and Paris.</p>
         <a href="index.html#about" class="btn-outline hero-line"><span data-en="Discover" data-fr="Découvrir">Discover</span> <span>→</span></a>
       </div>
       <div class="hero-right">
@@ -523,8 +547,8 @@
         <div class="about-text slide-right">
           <p class="sec-label draw-line" data-en="About Me" data-fr="À propos">About Me</p>
           <h2 class="sec-title" data-i18n-html="about.title">A creative with a <em>story to tell</em></h2>
-          <p data-en="My name is Tia-Lana and I'm a UK-born creative based in Paris. I have a deep love for visual storytelling — exploring emotion, narrative and aesthetics through photography and acting." data-fr="Je m'appelle Tia-Lana, je suis une créative née au Royaume-Uni et basée à Paris. J'ai une profonde passion pour la narration visuelle — l'exploration de l'émotion, du récit et de l'esthétique à travers la photographie et le jeu d'actrice.">My name is Tia-Lana and I'm a UK-born creative based in Paris. I have a deep love for visual storytelling — exploring emotion, narrative and aesthetics through photography and acting.</p>
-          <p data-en="Whether behind the lens or in front of it, I bring the same care for light, atmosphere and human connection to every project." data-fr="Que ce soit derrière l'objectif ou devant, j'apporte le même soin pour la lumière, l'atmosphère et la connexion humaine à chaque projet.">Whether behind the lens or in front of it, I bring the same care for light, atmosphere and human connection to every project.</p>
+          <p data-text-key="about.p1" data-en="My name is Tia-Lana and I'm a UK-born creative based in Paris. I have a deep love for visual storytelling — exploring emotion, narrative and aesthetics through photography and acting." data-fr="Je m'appelle Tia-Lana, je suis une créative née au Royaume-Uni et basée à Paris. J'ai une profonde passion pour la narration visuelle — l'exploration de l'émotion, du récit et de l'esthétique à travers la photographie et le jeu d'actrice.">My name is Tia-Lana and I'm a UK-born creative based in Paris. I have a deep love for visual storytelling — exploring emotion, narrative and aesthetics through photography and acting.</p>
+          <p data-text-key="about.p2" data-en="Whether behind the lens or in front of it, I bring the same care for light, atmosphere and human connection to every project." data-fr="Que ce soit derrière l'objectif ou devant, j'apporte le même soin pour la lumière, l'atmosphère et la connexion humaine à chaque projet.">Whether behind the lens or in front of it, I bring the same care for light, atmosphere and human connection to every project.</p>
           <div class="stats stagger">
             <div class="stat fade-up"><h4>3+</h4><p data-en="Years of Creative Work" data-fr="Années de travail créatif">Years of<br>Creative Work</p></div>
             <div class="stat fade-up"><h4>2</h4><p data-en="Cities, London & Paris" data-fr="Villes, Londres & Paris">Cities,<br>London & Paris</p></div>
@@ -632,7 +656,7 @@
     <section id="contact" class="contact-section">
       <p class="sec-label" data-en="Get In Touch" data-fr="Me contacter">Get In Touch</p>
       <h2 class="sec-title fade-up" data-i18n-html="contact.title">Let's create<br>something <em>beautiful</em></h2>
-      <p class="contact-sub fade-up" data-en="Available for photography, acting, creative collaborations and branding projects." data-fr="Disponible pour la photographie, le jeu d'actrice, les collaborations créatives et les projets de branding.">Available for photography, acting, creative collaborations and branding projects.</p>
+      <p class="contact-sub fade-up" data-text-key="contact.sub" data-en="Available for photography, acting, creative collaborations and branding projects." data-fr="Disponible pour la photographie, le jeu d'actrice, les collaborations créatives et les projets de branding.">Available for photography, acting, creative collaborations and branding projects.</p>
       <div class="contact-row fade-up">
         <div class="contact-item">
           <span class="contact-item-label" data-en="Email" data-fr="E-mail">Email</span>
@@ -656,9 +680,9 @@
 
     <section class="page-hero">
       <div class="page-hero-left">
-        <span class="eyebrow hero-line" data-en="Actress · Stage &amp; Screen" data-fr="Actrice · Scène &amp; Écran">Actress · Stage &amp; Screen</span>
+        <span class="eyebrow hero-line" data-text-key="acting.eyebrow" data-en="Actress · Stage &amp; Screen" data-fr="Actrice · Scène &amp; Écran">Actress · Stage &amp; Screen</span>
         <h1 class="hero-line">Tia‑<br><em>Lana</em><br>Chinapyel</h1>
-        <p class="hero-line" data-en="British actress based in Paris. Theatre, television, film and voiceover — storytelling in every form." data-fr="Actrice britannique basée à Paris. Théâtre, télévision, cinéma et voix off — narration sous toutes ses formes.">British actress based in Paris. Theatre, television, film and voiceover — storytelling in every form.</p>
+        <p class="hero-line" data-text-key="acting.p" data-en="British actress based in Paris. Theatre, television, film and voiceover — storytelling in every form." data-fr="Actrice britannique basée à Paris. Théâtre, télévision, cinéma et voix off — narration sous toutes ses formes.">British actress based in Paris. Theatre, television, film and voiceover — storytelling in every form.</p>
         <div class="hero-stats stagger hero-line">
           <div class="hero-stat fade-up"><h4>BBC · ITV</h4><p data-en="Television" data-fr="Télévision">Television</p></div>
           <div class="hero-stat fade-up"><h4>NT</h4><p data-en="National Theatre" data-fr="National Theatre">National<br>Theatre</p></div>
@@ -1055,9 +1079,9 @@
 
     <section class="page-hero">
       <div class="page-hero-left">
-        <span class="eyebrow hero-line" data-en="Visual Art · Photography" data-fr="Art Visuel · Photographie">Visual Art · Photography</span>
+        <span class="eyebrow hero-line" data-text-key="photo.eyebrow" data-en="Visual Art · Photography" data-fr="Art Visuel · Photographie">Visual Art · Photography</span>
         <h1 class="hero-line" data-i18n-html="photo.hero">My<br><em>Photography</em></h1>
-        <p class="hero-line" data-en="A curated collection of portraits, fashion, landscapes and more — each image a story." data-fr="Une collection soignée de portraits, mode, paysages et plus — chaque image, une histoire.">A curated collection of portraits, fashion, landscapes and more — each image a story.</p>
+        <p class="hero-line" data-text-key="photo.p" data-en="A curated collection of portraits, fashion, landscapes and more — each image a story." data-fr="Une collection soignée de portraits, mode, paysages et plus — chaque image, une histoire.">A curated collection of portraits, fashion, landscapes and more — each image a story.</p>
       </div>
       <div class="page-hero-right">
         <img src="img/photography/hero-photo.jpg" alt="Photography hero">
@@ -1267,7 +1291,7 @@
     <section id="photo-contact" class="contact-section">
       <p class="sec-label" data-en="Get In Touch" data-fr="Me contacter">Get In Touch</p>
       <h2 class="sec-title fade-up" data-i18n-html="photo.contact">Let's create<br>something <em>beautiful</em></h2>
-      <p class="contact-sub fade-up" data-en="Available for photography, creative collaborations and branding projects." data-fr="Disponible pour la photographie, les collaborations créatives et les projets de branding.">Available for photography, creative collaborations and branding projects.</p>
+      <p class="contact-sub fade-up" data-text-key="contact.sub" data-en="Available for photography, creative collaborations and branding projects." data-fr="Disponible pour la photographie, les collaborations créatives et les projets de branding.">Available for photography, creative collaborations and branding projects.</p>
       <div class="contact-row fade-up">
         <div class="contact-item">
           <span class="contact-item-label" data-en="Email" data-fr="E-mail">Email</span>
