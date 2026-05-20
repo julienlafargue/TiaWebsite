@@ -544,6 +544,19 @@ html[data-theme="chaotique"] .marquee-strip { background:#1a0033; }
 html[data-theme="chaotique"] .marquee-inner span { color:#00ff88; }
 html[data-theme="chaotique"] .theme-panel { background:#0d001a; border-color:rgba(0,255,136,.2); }
 html[data-theme="chaotique"] .theme-opt:hover { background:#1a0033; color:#00ff88; }
+/* Gallery — chaotique */
+html[data-theme="chaotique"] .g-cat-badge { background:rgba(0,255,136,.12); color:#00ff88; }
+html[data-theme="chaotique"] .g-overlay { background:linear-gradient(to top,rgba(0,0,26,.88) 0%,transparent 55%); }
+html[data-theme="chaotique"] .g-overlay h4 { color:#e0d0ff; }
+html[data-theme="chaotique"] .g-overlay span { color:rgba(0,255,136,.7); }
+html[data-theme="chaotique"] .lightbox { background:rgba(0,0,20,.97); }
+html[data-theme="chaotique"] .lb-close { color:rgba(0,255,136,.6); }
+html[data-theme="chaotique"] .lb-close:hover { color:#00ff88; }
+html[data-theme="chaotique"] .lb-nav { border-color:rgba(0,255,136,.2); color:rgba(0,255,136,.6); }
+html[data-theme="chaotique"] .lb-nav:hover { border-color:#00ff88; color:#00ff88; }
+html[data-theme="chaotique"] .lb-caption h4 { color:#b090e0; }
+html[data-theme="chaotique"] .lb-caption span { color:rgba(0,255,136,.4); }
+html[data-theme="chaotique"] .lb-counter { color:rgba(0,255,136,.4); }
 
 @keyframes glitch {
   0%,87%,100% { transform:none; text-shadow:none; clip-path:none; }
@@ -616,6 +629,19 @@ html[data-theme="amour"] .sec-label {
   0%,100% { transform:scale(1); letter-spacing:4px; }
   50%      { transform:scale(1.03); letter-spacing:5px; }
 }
+/* Gallery — amour */
+html[data-theme="amour"] .g-cat-badge { background:rgba(233,30,140,.22); color:#fff0f5; }
+html[data-theme="amour"] .g-overlay { background:linear-gradient(to top,rgba(74,16,48,.87) 0%,transparent 55%); }
+html[data-theme="amour"] .g-overlay h4 { color:#fff0f5; }
+html[data-theme="amour"] .g-overlay span { color:rgba(255,182,204,.7); }
+html[data-theme="amour"] .lightbox { background:rgba(74,16,48,.97); }
+html[data-theme="amour"] .lb-close { color:rgba(255,182,204,.6); }
+html[data-theme="amour"] .lb-close:hover { color:#ffb6cc; }
+html[data-theme="amour"] .lb-nav { border-color:rgba(255,182,204,.25); color:rgba(255,182,204,.6); }
+html[data-theme="amour"] .lb-nav:hover { border-color:#ffb6cc; color:white; }
+html[data-theme="amour"] .lb-caption h4 { color:#ffb6cc; }
+html[data-theme="amour"] .lb-caption span { color:rgba(255,182,204,.45); }
+html[data-theme="amour"] .lb-counter { color:rgba(255,182,204,.45); }
 /* Credit cards amour */
 html[data-theme="amour"] .credit-card-cat { background:rgba(233,30,140,.22); color:#fff0f5; }
 html[data-theme="amour"] .credit-card-hover { background:linear-gradient(to top,rgba(74,16,48,.93) 0%,rgba(74,16,48,.22) 60%,transparent 100%); }
@@ -708,6 +734,19 @@ html[data-theme="casse"] .sec-title { animation:title-shake 8s ease-in-out infin
 html[data-theme="casse"] .sec-title em { color:#ff4400; animation:none; }
 html[data-theme="casse"] .about-img::before { border-color:#f5d020; }
 html[data-theme="casse"] .contact-section { background:#1a1a1a; }
+/* Gallery — cassé */
+html[data-theme="casse"] .g-cat-badge { background:rgba(245,208,32,.82); color:#1a1a1a; }
+html[data-theme="casse"] .g-overlay { background:linear-gradient(to top,rgba(26,26,26,.88) 0%,transparent 55%); }
+html[data-theme="casse"] .g-overlay h4 { color:#f5f0d0; }
+html[data-theme="casse"] .g-overlay span { color:rgba(245,208,32,.75); }
+html[data-theme="casse"] .lightbox { background:rgba(20,20,20,.97); }
+html[data-theme="casse"] .lb-close { color:rgba(245,208,32,.65); }
+html[data-theme="casse"] .lb-close:hover { color:#f5d020; }
+html[data-theme="casse"] .lb-nav { border-color:rgba(245,208,32,.25); color:rgba(245,208,32,.65); }
+html[data-theme="casse"] .lb-nav:hover { border-color:#f5d020; color:#f5d020; }
+html[data-theme="casse"] .lb-caption h4 { color:#f5d020; }
+html[data-theme="casse"] .lb-caption span { color:rgba(245,208,32,.45); }
+html[data-theme="casse"] .lb-counter { color:rgba(245,208,32,.45); }
 /* Credit cards cassé */
 html[data-theme="casse"] .credit-card-cat { background:rgba(245,208,32,.8); color:#1a1a1a; }
 html[data-theme="casse"] .credit-card-hover { background:linear-gradient(to top,rgba(26,26,26,.94) 0%,rgba(26,26,26,.2) 60%,transparent 100%); }
@@ -824,6 +863,19 @@ html[data-theme="folle"] .tl-item:hover {
 html[data-theme="folle"] .mobile-menu { animation:disco-bg 3s linear infinite; }
 html[data-theme="folle"] .btn-outline { border-color:#ff1744; color:#ff1744; animation:rainbow-text 2s linear infinite; border-image:linear-gradient(to right,#ff1744,#aa00ff) 1; }
 html[data-theme="folle"] .contact-section { background:#311b92; }
+/* Gallery — folle */
+html[data-theme="folle"] .g-cat-badge { animation:rainbow-text 1.5s linear infinite; background:rgba(255,23,68,.18); }
+html[data-theme="folle"] .g-overlay { background:linear-gradient(to top,rgba(49,27,146,.9) 0%,transparent 55%); }
+html[data-theme="folle"] .g-overlay h4 { color:#fffde7; animation:rainbow-text 2s linear infinite; }
+html[data-theme="folle"] .g-overlay span { color:rgba(255,128,171,.8); }
+html[data-theme="folle"] .lightbox { background:rgba(49,27,146,.97); }
+html[data-theme="folle"] .lb-close { animation:rainbow-text 2s linear infinite; }
+html[data-theme="folle"] .lb-close:hover { color:white; }
+html[data-theme="folle"] .lb-nav { border-color:rgba(255,23,68,.3); animation:rainbow-text 2s linear infinite; }
+html[data-theme="folle"] .lb-nav:hover { border-color:#ff1744; color:white; }
+html[data-theme="folle"] .lb-caption h4 { animation:rainbow-text 2s linear infinite; }
+html[data-theme="folle"] .lb-caption span { color:rgba(255,128,171,.55); }
+html[data-theme="folle"] .lb-counter { animation:rainbow-text 2s linear infinite; opacity:.7; }
 /* Credit cards folle */
 html[data-theme="folle"] .credit-card-cat { animation:rainbow-text 1.5s linear infinite; background:rgba(255,23,68,.2); }
 html[data-theme="folle"] .credit-card-hover { background:linear-gradient(to top,rgba(49,27,146,.95) 0%,rgba(49,27,146,.25) 60%,transparent 100%); }
