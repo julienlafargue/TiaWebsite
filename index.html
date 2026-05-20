@@ -1,1902 +1,1476 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TIA-LANA ⚡ THE CHAOS PORTAL</title>
+  <title>Tia-Lana Chinapyel</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB4PSIyOCIgeT0iODAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBUaW1lcyBOZXcgUm9tYW4sIHNlcmlmIiBmb250LXNpemU9Ijc4IiBmb250LXN0eWxlPSJpdGFsaWMiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBwYWludC1vcmRlcj0ic3Ryb2tlIiBmaWxsPSIjNEEyRTJDIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UPC90ZXh0Pjx0ZXh0IHg9IjcyIiB5PSI4MCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIFRpbWVzIE5ldyBSb21hbiwgc2VyaWYiIGZvbnQtc2l6ZT0iNzgiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZmlsbD0iI0M5NzM2QSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TDwvdGV4dD48L3N2Zz4=">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Permanent+Marker&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Righteous&family=Dancing+Script:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    :root {
-      --neon-pink:   #FF006E;
-      --neon-cyan:   #00F5FF;
-      --neon-green:  #39FF14;
-      --neon-yellow: #FFE600;
-      --neon-purple: #BF00FF;
-      --neon-orange: #FF6B00;
-      --dark:        #0A0A0A;
-      --darker:      #050505;
-    }
 
-    /* ══════════════════════════════════════
-       THÈME : CLASSIQUE
-    ══════════════════════════════════════ */
-    body.theme-classique {
-      --neon-pink:   #C9A84C;
-      --neon-cyan:   #E8D5A3;
-      --neon-green:  #8B9E6E;
-      --neon-yellow: #D4AF37;
-      --neon-purple: #7A6E8A;
-      --neon-orange: #C4875E;
-      --dark:        #0F0E0C;
-      --darker:      #080706;
-    }
-    body.theme-classique,
-    body.theme-classique .hero-sub,
-    body.theme-classique .about-text p,
-    body.theme-classique .skill-card p,
-    body.theme-classique .tl-item p,
-    body.theme-classique .act-card p,
-    body.theme-classique .contact-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-    }
-    body.theme-classique .logo,
-    body.theme-classique .hero h1,
-    body.theme-classique .sec-title,
-    body.theme-classique .contact-title,
-    body.theme-classique .skill-card h3,
-    body.theme-classique .tl-item h3,
-    body.theme-classique .act-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: 6px;
-    }
-    body.theme-classique .hero h1 .line2 {
-      animation: classiquePulse 4s ease-in-out infinite;
-      font-style: italic;
-    }
-    @keyframes classiquePulse {
-      0%,100% { text-shadow: 0 0 20px rgba(201,168,76,.4), 0 0 40px rgba(201,168,76,.2); }
-      50%      { text-shadow: 0 0 40px rgba(201,168,76,.7), 0 0 80px rgba(201,168,76,.3); }
-    }
-    body.theme-classique .hero h1 .line3 { font-style: italic; transform: none; }
-    body.theme-classique nav {
-      border-bottom-color: rgba(201,168,76,.4);
-      box-shadow: 0 1px 20px rgba(201,168,76,.15);
-    }
-    body.theme-classique .skill-card { border-color: rgba(201,168,76,.1); }
-    body.theme-classique .about-img-frame { border-color: rgba(201,168,76,.5); box-shadow: 0 0 20px rgba(201,168,76,.2); }
-    body.theme-classique .about-img-glitch { background: rgba(201,168,76,.08); animation: none; }
-    body.theme-classique body::after { opacity: 0; }
-    body.theme-classique #scroll-bar {
-      background: linear-gradient(to right, #C9A84C, #E8D5A3, #D4AF37);
-      box-shadow: 0 0 6px rgba(201,168,76,.5);
-    }
-    body.theme-classique .chaos-marquee { box-shadow: none; }
-    body.theme-classique .chaos-marquee-2 { box-shadow: none; }
-    body.theme-classique .section-tag {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      letter-spacing: 3px;
-      border-color: rgba(201,168,76,.3);
-    }
-    body.theme-classique .hero-eyebrow { letter-spacing: 4px; }
-    body.theme-classique .hero-cta {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: 5px;
-      font-size: 1rem;
-    }
+    /* ─── PAGE SHOW / HIDE ─── */
+    .site-page { display: none; }
 
-    /* ══════════════════════════════════════
-       THÈME : AMOUR
-    ══════════════════════════════════════ */
-    body.theme-amour {
-      --neon-pink:   #FF4D80;
-      --neon-cyan:   #FFB3C6;
-      --neon-green:  #FF8FAB;
-      --neon-yellow: #FF6B9D;
-      --neon-purple: #E91E63;
-      --neon-orange: #F48FB1;
-      --dark:        #0D0508;
-      --darker:      #080204;
-    }
-    body.theme-amour { font-family: 'Dancing Script', cursive; }
-    body.theme-amour .logo,
-    body.theme-amour .hero h1,
-    body.theme-amour .sec-title,
-    body.theme-amour .contact-title {
-      font-family: 'Dancing Script', cursive;
-      letter-spacing: 2px;
-    }
-    body.theme-amour .nav-links a,
-    body.theme-amour .hero-cta,
-    body.theme-amour .contact-cta { font-family: 'Dancing Script', cursive; letter-spacing: 2px; }
-    body.theme-amour .hero h1 .line2 { animation: amourPulse 3s ease-in-out infinite; }
-    @keyframes amourPulse {
-      0%,100% { text-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,77,128,.5); }
-      50% { text-shadow: 0 0 50px var(--neon-pink), 0 0 90px rgba(255,77,128,.8), 0 0 120px rgba(255,77,128,.3); }
-    }
-    body.theme-amour body::after {
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,77,128,.04) 2px, rgba(255,77,128,.04) 4px);
-    }
-    body.theme-amour .chaos-divider::before {
-      background: linear-gradient(to right, transparent, var(--neon-pink) 20%, #FFB3C6 50%, var(--neon-purple) 80%, transparent);
-    }
-    body.theme-amour #scroll-bar {
-      background: linear-gradient(to right, var(--neon-pink), #FFB3C6, var(--neon-purple));
-    }
+    /* ════════════════════════════════════
+       HOME PAGE
+    ════════════════════════════════════ */
 
-    /* ══════════════════════════════════════
-       THÈME : CASSÉ / EN TRAVAUX
-    ══════════════════════════════════════ */
-    body.theme-casse {
-      --neon-pink:   #FF4500;
-      --neon-cyan:   #FFCC00;
-      --neon-green:  #FF6600;
-      --neon-yellow: #FF0000;
-      --neon-purple: #FF8800;
-      --neon-orange: #FFAA00;
-      --dark:        #0A0800;
-      --darker:      #050400;
-    }
-    body.theme-casse::before {
-      content: '';
-      position: fixed; inset: 0;
-      background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,69,0,.025) 10px, rgba(255,69,0,.025) 20px);
-      pointer-events: none; z-index: 99994;
-    }
-    body.theme-casse .hero h1 .line2 { animation: casseGlitch 1.5s infinite; }
-    @keyframes casseGlitch {
-      0%,85%,100% { transform: none; clip-path: none; color: var(--neon-pink); }
-      86% { transform: translateX(-8px) skewX(5deg); clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); color: var(--neon-cyan); }
-      87% { transform: translateX(6px); clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%); color: #fff; }
-      88% { transform: translateX(-4px) skewX(-3deg); clip-path: none; }
-      90% { transform: translateX(10px); color: var(--neon-purple); }
-      92% { transform: translateX(0) scaleX(1.05); clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); }
-    }
-    body.theme-casse .about-img-glitch { animation: casseImgGlitch 1s infinite; }
-    @keyframes casseImgGlitch {
-      0%,80%,100% { opacity: .15; transform: none; }
-      82% { opacity: .5; transform: translate(8px, -4px) scaleX(1.04); }
-      84% { opacity: .2; transform: translate(-6px, 3px); }
-      86% { opacity: .4; transform: translate(4px, 6px) scaleX(.98); }
-      88% { opacity: .1; transform: translate(-2px, -2px); }
-    }
-    body.theme-casse .tl-item:nth-child(even) { transform: skewX(-1deg); }
-    body.theme-casse .tl-item:nth-child(odd) { transform: skewX(.5deg); }
-    body.theme-casse .tl-item:hover { transform: skewX(0) translateX(8px); }
-
-    /* ══════════════════════════════════════
-       THÈME : FOLLE
-    ══════════════════════════════════════ */
-    body.theme-folle {
-      --neon-pink:   #FF00FF;
-      --neon-cyan:   #00FFFF;
-      --neon-green:  #FFFF00;
-      --neon-yellow: #FF8800;
-      --neon-purple: #8800FF;
-      --neon-orange: #FF0088;
-      --dark:        #0A000A;
-      --darker:      #050005;
-    }
-    body.theme-folle,
-    body.theme-folle .hero-sub,
-    body.theme-folle .about-text p,
-    body.theme-folle .skill-card p,
-    body.theme-folle .tl-item p,
-    body.theme-folle .act-card p,
-    body.theme-folle .contact-sub { font-family: 'Permanent Marker', cursive; }
-    body.theme-folle .logo,
-    body.theme-folle .hero h1,
-    body.theme-folle .sec-title,
-    body.theme-folle .contact-title {
-      font-family: 'Permanent Marker', cursive;
-      letter-spacing: 1px;
-    }
-    body.theme-folle .skill-card:nth-child(1) { transform: rotate(-2deg); }
-    body.theme-folle .skill-card:nth-child(2) { transform: rotate(1.5deg); }
-    body.theme-folle .skill-card:nth-child(3) { transform: rotate(-1deg); }
-    body.theme-folle .skill-card:nth-child(4) { transform: rotate(2deg); }
-    body.theme-folle .skill-card:hover { transform: rotate(0) translateX(6px) scale(1.02); }
-    body.theme-folle .act-card:nth-child(odd) { transform: rotate(-1.5deg); }
-    body.theme-folle .act-card:nth-child(even) { transform: rotate(1deg); }
-    body.theme-folle .act-card:hover { transform: rotate(0) scale(1.03); }
-    body.theme-folle .about-badge { animation: folleSpinBadge 3s linear infinite; }
-    @keyframes folleSpinBadge {
-      0% { transform: rotate(0) scale(1); }
-      25% { transform: rotate(90deg) scale(1.1); }
-      50% { transform: rotate(180deg) scale(1); }
-      75% { transform: rotate(270deg) scale(1.1); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    body.theme-folle #cursor-main { border-shape: ellipse; animation: folleWiggleCursor 0.5s ease-in-out infinite; }
-    @keyframes folleWiggleCursor {
-      0%,100% { border-radius: 0; transform: translate(-50%,-50%) rotate(45deg); }
-      25% { border-radius: 50%; transform: translate(-50%,-50%) rotate(135deg) scale(1.3); }
-      50% { border-radius: 0; transform: translate(-50%,-50%) rotate(225deg); }
-      75% { border-radius: 50% 0; transform: translate(-50%,-50%) rotate(315deg) scale(.8); }
-    }
-    body.theme-folle .tl-item:nth-child(1) { transform: rotate(-.5deg); }
-    body.theme-folle .tl-item:nth-child(2) { transform: rotate(.8deg) translateX(10px); }
-    body.theme-folle .tl-item:nth-child(3) { transform: rotate(-.3deg); }
-    body.theme-folle .tl-item:nth-child(4) { transform: rotate(1deg) translateX(-5px); }
-    body.theme-folle .tl-item:hover { transform: rotate(0) translateX(8px) scale(1.01); }
-    body.theme-folle #scroll-bar {
-      background: linear-gradient(to right, #FF00FF, #00FFFF, #FFFF00, #FF8800, #8800FF, #FF0088);
-      animation: follebar 2s linear infinite;
-    }
-    @keyframes follebar {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
-
-    /* ══════════════════════════════════════
-       WIDGET THEME SWITCHER
-    ══════════════════════════════════════ */
-    #theme-switcher {
-      position: fixed;
-      bottom: 32px; right: 32px;
-      z-index: 100000;
-      display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
-    }
-    #theme-toggle-btn {
-      width: 54px; height: 54px;
-      border-radius: 50%;
-      background: rgba(5,5,5,.92);
-      border: 2px solid var(--neon-pink);
-      box-shadow: 0 0 20px rgba(255,0,110,.4), 0 0 40px rgba(255,0,110,.15);
-      color: #fff; font-size: 1.4rem;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all .3s;
-      font-family: 'Space Mono', monospace;
-    }
-    #theme-toggle-btn:hover {
-      box-shadow: 0 0 30px rgba(255,0,110,.7), 0 0 60px rgba(255,0,110,.3);
-      transform: scale(1.08);
-    }
-    #theme-options {
-      display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
-      overflow: hidden; max-height: 0;
-      transition: max-height .4s cubic-bezier(.77,0,.175,1), opacity .3s;
-      opacity: 0; pointer-events: none;
-    }
-    #theme-options.open {
-      max-height: 400px; opacity: 1; pointer-events: all;
-    }
-    .theme-opt-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 18px;
-      background: rgba(5,5,5,.95);
-      border: 1px solid rgba(255,255,255,.12);
-      color: #fff; cursor: pointer;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: .9rem; letter-spacing: 3px;
-      transition: all .25s; white-space: nowrap;
-      box-shadow: 0 4px 20px rgba(0,0,0,.5);
-    }
-    .theme-opt-btn:hover { transform: translateX(-4px); }
-    .theme-opt-btn .opt-icon { font-size: 1.2rem; }
-    .theme-opt-btn[data-t="classique"] { border-color: #C9A84C; }
-    .theme-opt-btn[data-t="classique"]:hover { background: rgba(201,168,76,.15); border-color: #C9A84C; box-shadow: -4px 0 0 #C9A84C, 0 4px 20px rgba(201,168,76,.3); }
-    .theme-opt-btn[data-t="chaotique"] { border-color: #FF006E; }
-    .theme-opt-btn[data-t="chaotique"]:hover { background: rgba(255,0,110,.15); border-color: #FF006E; box-shadow: -4px 0 0 #FF006E, 0 4px 20px rgba(255,0,110,.3); }
-    .theme-opt-btn[data-t="amour"] { border-color: #FF4D80; }
-    .theme-opt-btn[data-t="amour"]:hover { background: rgba(255,77,128,.15); border-color: #FF4D80; box-shadow: -4px 0 0 #FF4D80, 0 4px 20px rgba(255,77,128,.3); }
-    .theme-opt-btn[data-t="casse"] { border-color: #FF4500; }
-    .theme-opt-btn[data-t="casse"]:hover { background: rgba(255,69,0,.15); border-color: #FF4500; box-shadow: -4px 0 0 #FF4500, 0 4px 20px rgba(255,69,0,.3); }
-    .theme-opt-btn[data-t="folle"] { border-color: #FF00FF; }
-    .theme-opt-btn[data-t="folle"]:hover { background: rgba(255,0,255,.15); border-color: #FF00FF; box-shadow: -4px 0 0 #FF00FF, 0 4px 20px rgba(255,0,255,.3); }
-    .theme-opt-btn.active-theme { opacity: .5; pointer-events: none; }
-
-    .theme-label-pill {
-      position: fixed; bottom: 32px; left: 32px;
-      background: rgba(5,5,5,.85);
-      border: 1px solid rgba(255,255,255,.1);
-      padding: 8px 16px;
-      font-family: 'Space Mono', monospace;
-      font-size: .6rem; letter-spacing: 3px; text-transform: uppercase;
-      color: rgba(255,255,255,.4);
-      z-index: 100000;
-      transition: all .4s;
-      pointer-events: none;
-    }
-    .theme-label-pill span { color: var(--neon-pink); }
-
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-
-    body {
-      background: var(--darker);
-      color: #fff;
-      font-family: 'Space Mono', monospace;
-      overflow-x: hidden;
-      cursor: none;
-      transition: background .6s, color .3s;
-    }
-
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
-      pointer-events: none;
-      z-index: 99998;
-    }
-
-    #cursor-main {
-      position: fixed; pointer-events: none; z-index: 99999;
-      width: 20px; height: 20px;
-      border: 2px solid var(--neon-pink);
-      transform: translate(-50%,-50%) rotate(45deg);
-      transition: border-color .1s, width .2s, height .2s;
-      box-shadow: 0 0 10px var(--neon-pink), inset 0 0 6px rgba(255,0,110,.3);
-      animation: cursorSpin 3s linear infinite;
-    }
-    #cursor-dot {
-      position: fixed; pointer-events: none; z-index: 99999;
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--neon-cyan);
-      transform: translate(-50%,-50%);
-      box-shadow: 0 0 8px var(--neon-cyan);
-    }
-    @keyframes cursorSpin { to { transform: translate(-50%,-50%) rotate(405deg); } }
-
-    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      height: 70px; padding: 0 5%;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(5,5,5,.92);
-      border-bottom: 2px solid var(--neon-pink);
-      box-shadow: 0 2px 30px rgba(255,0,110,.4);
-      transition: border-color .5s, box-shadow .5s;
-    }
-    .logo {
-      font-family: 'Black Ops One', sans-serif;
-      font-size: 1.6rem; letter-spacing: 4px;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
-      text-decoration: none;
-      animation: logoPulse 2s ease-in-out infinite;
-      transition: font-family .3s;
-    }
-    @keyframes logoPulse {
-      0%,100% { text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); }
-      50%      { text-shadow: 0 0 5px var(--neon-cyan), 0 0 15px var(--neon-cyan), 0 0 60px rgba(0,245,255,.5); }
-    }
-    .logo span { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
-
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem; letter-spacing: 4px;
-      color: #fff; text-decoration: none;
-      position: relative; transition: color .2s;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--neon-green);
-      box-shadow: 0 0 8px var(--neon-green);
-      transition: width .3s;
-    }
-    .nav-links a:hover { color: var(--neon-green); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .hamburger {
-      display: none; flex-direction: column; gap: 6px;
-      background: none; border: none; cursor: pointer; z-index: 1100;
-    }
-    .hamburger span {
-      display: block; height: 2px; width: 28px;
-      background: var(--neon-pink);
-      box-shadow: 0 0 6px var(--neon-pink);
-      transition: transform .3s, opacity .3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    .mobile-menu {
-      display: none; position: fixed; inset: 0; z-index: 999;
-      background: rgba(5,5,5,.97);
-      flex-direction: column; align-items: center; justify-content: center; gap: 20px;
-      opacity: 0; pointer-events: none; transition: opacity .4s;
-    }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-    .mobile-menu a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem; letter-spacing: 6px;
-      color: #fff; text-decoration: none;
-      transition: color .2s, text-shadow .2s;
-    }
-    .mobile-menu a:hover { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
-
-    #scroll-bar {
-      position: fixed; top: 70px; left: 0; height: 3px; width: 100%;
-      z-index: 1001; transform: scaleX(0); transform-origin: left;
-      background: linear-gradient(to right, var(--neon-pink), var(--neon-cyan), var(--neon-green));
-      box-shadow: 0 0 10px var(--neon-pink);
-      transition: background .5s;
-    }
-
-    section { position: relative; z-index: 1; padding: 120px 8%; }
-
+    /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: flex-start;
-      padding-top: 140px;
-      background: var(--darker);
-      overflow: hidden;
+      display:grid; grid-template-columns:1fr 1fr;
+      height:100vh;
     }
-    .hero-bg-text {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      font-family: 'Black Ops One', sans-serif;
-      font-size: clamp(8rem, 20vw, 22rem);
-      color: rgba(255,0,110,.04);
-      white-space: nowrap; pointer-events: none;
-      animation: bgTextFloat 8s ease-in-out infinite;
-      letter-spacing: -2px;
-      transition: color .5s;
+    .hero-left {
+      display:flex; flex-direction:column; justify-content:center;
+      padding:100px 6% 60px 10%; background:var(--cream); position:relative;
     }
-    @keyframes bgTextFloat {
-      0%,100% { transform: translate(-50%,-50%) rotate(-3deg) scale(1); }
-      50%      { transform: translate(-50%,-50%) rotate(3deg) scale(1.02); }
+    .hero-left::after {
+      content:''; position:absolute; right:-1px; top:0; width:1px; height:100%;
+      background:linear-gradient(to bottom,transparent,var(--blush) 30%,var(--blush) 70%,transparent);
     }
-
-    .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: .75rem; letter-spacing: 6px; text-transform: uppercase;
-      color: var(--neon-green);
-      text-shadow: 0 0 10px var(--neon-green);
-      margin-bottom: 20px;
-      animation: fadeSlideUp .8s ease .2s both;
-      transition: color .4s, text-shadow .4s;
+    .hero-left h1 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:5.5rem; font-weight:300; line-height:1;
+      color:var(--warm-brown); margin-bottom:24px;
     }
-    .hero h1 {
-      font-family: 'Black Ops One', sans-serif;
-      font-size: clamp(3.5rem, 10vw, 10rem);
-      line-height: .92;
-      margin-bottom: 30px;
-      animation: fadeSlideUp .8s ease .4s both;
-      position: relative;
-      transition: font-family .3s;
+    .hero-left h1 em { font-style:italic; color:var(--rose); }
+    .hero-left > p {
+      font-size:.95rem; line-height:2; color:var(--text-mid);
+      max-width:360px; margin-bottom:40px; font-weight:300;
     }
-    .hero h1 .line1 { display: block; color: #fff; }
-    .hero h1 .line2 {
-      display: block;
-      color: var(--neon-pink);
-      text-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,0,110,.5);
-      animation: glitchText 4s infinite;
+    .hero-right { position:relative; overflow:hidden; }
+    .hero-right img {
+      width:100%; height:100%; object-fit:cover; object-position:top center;
+      filter:sepia(8%) saturate(88%);
     }
-    .hero h1 .line3 {
-      display: block;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 30px var(--neon-cyan);
-      font-style: italic; transform: skewX(-5deg); display: inline-block;
-    }
-    .hero-sub {
-      font-size: 1rem; line-height: 2; color: rgba(255,255,255,.6);
-      max-width: 500px; margin-bottom: 48px;
-      animation: fadeSlideUp .8s ease .6s both;
-      transition: font-family .3s;
-    }
-    .hero-sub span { color: var(--neon-yellow); font-weight: 700; }
-
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 14px;
-      padding: 16px 42px;
-      border: 2px solid var(--neon-pink);
-      color: var(--neon-pink);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem; letter-spacing: 4px;
-      text-decoration: none; text-transform: uppercase;
-      transition: all .3s;
-      box-shadow: 0 0 20px rgba(255,0,110,.3), inset 0 0 20px transparent;
-      animation: fadeSlideUp .8s ease .8s both;
-      position: relative; overflow: hidden;
-    }
-    .hero-cta::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--neon-pink);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .3s;
-      z-index: -1;
-    }
-    .hero-cta:hover { color: #000; box-shadow: 0 0 40px rgba(255,0,110,.7); }
-    .hero-cta:hover::before { transform: scaleX(1); }
-
-    .hero-img {
-      position: absolute; right: 0; top: 0; bottom: 0;
-      width: 42%; overflow: hidden;
-    }
-    .hero-img img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top center;
-      filter: saturate(0) contrast(1.2) brightness(.85);
-      mix-blend-mode: luminosity;
-    }
-    .hero-img::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, var(--darker) 0%, transparent 40%),
-                  linear-gradient(to bottom, transparent 60%, var(--darker) 100%);
-    }
-    .hero-img-overlay {
-      position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(135deg, rgba(255,0,110,.15) 0%, rgba(0,245,255,.1) 50%, rgba(191,0,255,.15) 100%);
-      mix-blend-mode: screen;
+    .hero-tag {
+      position:absolute; bottom:36px; left:28px;
+      font-family:'Cormorant Garamond',serif;
+      font-size:7rem; font-weight:300; font-style:italic;
+      color:rgba(255,255,255,.1); pointer-events:none; line-height:1;
     }
 
-    @keyframes glitchText {
-      0%,90%,100% { text-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,0,110,.5); clip-path: none; transform: none; }
-      92% { transform: translateX(-3px) skewX(2deg); clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); color: var(--neon-cyan); }
-      94% { transform: translateX(3px) skewX(-2deg); clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); }
-      96% { transform: translateX(0) skewX(0); clip-path: none; }
-      98% { transform: translateX(2px); color: var(--neon-green); clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); }
+    /* ── HOME ABOUT ── */
+    #about { background:var(--cream); }
+    .about-grid { display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:center; }
+    .about-img { position:relative; }
+    .about-img img {
+      width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top;
+      filter:sepia(6%) saturate(88%);
     }
+    .about-img::before {
+      content:''; position:absolute; top:-18px; left:-18px;
+      width:55%; height:55%; border:1px solid var(--blush); z-index:-1;
+    }
+    .about-img::after {
+      content:''; position:absolute; bottom:-18px; right:-18px;
+      width:36%; height:36%; background:var(--blush); opacity:.4; z-index:-1;
+    }
+    .about-text .sec-title { margin-bottom:20px; }
+    .about-text p { font-size:.95rem; line-height:2; color:var(--text-mid); font-weight:300; margin-bottom:18px; }
+    .stats { display:flex; gap:36px; flex-wrap:wrap; margin-top:36px; padding-top:36px; border-top:1px solid var(--blush); }
+    .stat h4 { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:var(--rose); }
+    .stat p { font-size:.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-light); line-height:1.6; margin:0; }
 
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ── HOME SKILLS ── */
+    #skills { background:var(--soft-white); }
+    .skills-layout { display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:start; }
+    .skills-intro p { font-size:.92rem; line-height:2; color:var(--text-mid); font-weight:300; }
+    #page-home .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    #page-home .skill-card {
+      background:var(--cream); padding:32px 28px;
+      position:relative; overflow:hidden; transition:background .3s;
     }
+    #page-home .skill-card::after {
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:2px; background:var(--rose); transition:width .5s;
+    }
+    #page-home .skill-card:hover::after { width:100%; }
+    #page-home .skill-card:hover { background:#EFE8E1; }
+    .skill-num { font-family:'Cormorant Garamond',serif; font-size:.75rem; color:var(--rose); letter-spacing:2px; margin-bottom:10px; }
+    #page-home .skill-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:400; color:var(--warm-brown); margin-bottom:8px; }
+    #page-home .skill-card p { font-size:.82rem; line-height:1.8; color:var(--text-light); font-weight:300; }
 
-    .chaos-marquee {
-      background: var(--neon-pink);
-      padding: 12px 0; overflow: hidden; white-space: nowrap;
-      position: relative; z-index: 2;
-      box-shadow: 0 0 30px rgba(255,0,110,.6);
-      transition: background .5s;
-    }
-    .chaos-marquee-inner {
-      display: inline-block;
-      animation: marquee 12s linear infinite;
-      font-family: 'Black Ops One', sans-serif;
-      font-size: .9rem; letter-spacing: 4px; color: #000;
-    }
-    .chaos-marquee-inner span { padding: 0 28px; }
-    .chaos-marquee-inner span::before { content: '★ '; }
-    .chaos-marquee-2 {
-      background: var(--neon-cyan);
-      padding: 10px 0; overflow: hidden; white-space: nowrap;
-      position: relative; z-index: 2;
-      box-shadow: 0 0 20px rgba(0,245,255,.5);
-      transition: background .5s;
-    }
-    .chaos-marquee-2 .chaos-marquee-inner {
-      animation: marquee 18s linear infinite reverse;
-      font-size: .75rem; letter-spacing: 6px; color: #000;
-    }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    #about {
-      background: linear-gradient(135deg, #0A0A0A 0%, #0f0520 50%, #0a0a0a 100%);
-      border-top: 1px solid rgba(191,0,255,.3);
-      border-bottom: 1px solid rgba(191,0,255,.3);
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-family: 'Space Mono', monospace;
-      font-size: .65rem; letter-spacing: 5px; text-transform: uppercase;
-      color: var(--neon-purple);
-      text-shadow: 0 0 10px var(--neon-purple);
-      margin-bottom: 20px;
-      border: 1px solid rgba(191,0,255,.4);
-      padding: 6px 16px;
-      transition: color .4s, border-color .4s;
-    }
-
-    .sec-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 1; margin-bottom: 40px;
-      color: #fff;
-      transition: font-family .3s;
-    }
-    .sec-title .accent { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
-    .sec-title .accent2 { color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan); }
-    .sec-title .accent3 { color: var(--neon-green); text-shadow: 0 0 20px var(--neon-green); }
-
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1.4fr;
-      gap: 80px; align-items: center;
-    }
-    .about-img-wrap { position: relative; }
-    .about-img-wrap img {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
-      filter: saturate(0) contrast(1.1); display: block;
-    }
-    .about-img-frame {
-      position: absolute; inset: -8px;
-      border: 2px solid var(--neon-purple);
-      box-shadow: 0 0 30px rgba(191,0,255,.4), inset 0 0 30px rgba(191,0,255,.1);
-      pointer-events: none;
-      animation: frameGlow 3s ease-in-out infinite;
-    }
-    .about-img-glitch {
-      position: absolute; inset: 0;
-      background: var(--neon-purple);
-      mix-blend-mode: screen; opacity: .12;
-      animation: imgGlitch 5s infinite;
-    }
-    @keyframes imgGlitch {
-      0%,95%,100% { opacity: .12; transform: none; }
-      96% { opacity: .3; transform: translate(4px, -2px) scaleX(1.02); }
-      97% { opacity: .1; transform: translate(-4px, 2px); }
-      98% { opacity: .25; transform: translate(2px, 4px); }
-    }
-    @keyframes frameGlow {
-      0%,100% { box-shadow: 0 0 30px rgba(191,0,255,.4), inset 0 0 30px rgba(191,0,255,.1); }
-      50%      { box-shadow: 0 0 60px rgba(191,0,255,.7), inset 0 0 40px rgba(191,0,255,.2), 0 0 100px rgba(191,0,255,.3); }
-    }
-    .about-badge {
-      position: absolute; bottom: -20px; right: -20px;
-      width: 100px; height: 100px;
-      border-radius: 50%; border: 2px solid var(--neon-yellow);
-      background: var(--darker);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      box-shadow: 0 0 30px rgba(255,230,0,.5);
-      animation: badgeSpin 10s linear infinite;
-    }
-    .about-badge span:first-child { font-family: 'Black Ops One'; font-size: 1.8rem; color: var(--neon-yellow); line-height: 1; }
-    .about-badge span:last-child { font-size: .45rem; letter-spacing: 2px; color: rgba(255,230,0,.7); text-transform: uppercase; }
-    @keyframes badgeSpin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
-
-    .about-text p {
-      font-size: .88rem; line-height: 2.2; color: rgba(255,255,255,.65);
-      margin-bottom: 20px;
-    }
-    .about-text p .highlight { color: var(--neon-cyan); font-weight: 700; text-shadow: 0 0 8px rgba(0,245,255,.4); }
-
-    .stats-row { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.1); }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Black Ops One', sans-serif;
-      font-size: 2.8rem; line-height: 1;
-      color: var(--neon-pink);
-      text-shadow: 0 0 20px var(--neon-pink);
-    }
-    .stat-label { font-size: .6rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.4); margin-top: 4px; }
-
-    #skills { background: var(--dark); }
-
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 3px; margin-top: 40px;
-    }
-    .skill-card {
-      background: rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.06);
-      padding: 36px 30px;
-      position: relative; overflow: hidden;
-      transition: all .3s;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 3px; height: 0;
-      transition: height .4s;
-    }
-    .skill-card:nth-child(1)::before { background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
-    .skill-card:nth-child(2)::before { background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
-    .skill-card:nth-child(3)::before { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
-    .skill-card:nth-child(4)::before { background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple); }
-    .skill-card:hover::before { height: 100%; }
-    .skill-card:hover { background: rgba(255,255,255,.04); transform: translateX(6px); }
-
-    .skill-num { font-family: 'Space Mono'; font-size: .65rem; letter-spacing: 3px; color: rgba(255,255,255,.2); margin-bottom: 12px; }
-    .skill-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem; letter-spacing: 3px;
-      color: #fff; margin-bottom: 10px;
-      transition: font-family .3s;
-    }
-    .skill-card p { font-size: .8rem; line-height: 1.9; color: rgba(255,255,255,.5); }
-
-    #experience {
-      background: linear-gradient(135deg, #0a0a0a 0%, #0a1a0a 100%);
-      border-top: 1px solid rgba(57,255,20,.2);
-    }
-    .timeline { display: flex; flex-direction: column; gap: 3px; }
+    /* ── HOME EXPERIENCE ── */
+    #experience { background:var(--cream); }
+    .experience-layout { display:grid; grid-template-columns:1fr 1.6fr; gap:80px; }
+    .timeline { display:flex; flex-direction:column; gap:2px; }
     .tl-item {
-      padding: 30px 28px;
-      background: rgba(255,255,255,.02);
-      border-left: 3px solid transparent;
-      transition: all .3s; cursor: default;
+      padding:28px; background:var(--soft-white);
+      border-left:2px solid transparent; transition:border-color .3s, background .3s;
     }
-    .tl-item:hover { border-left-color: var(--neon-green); background: rgba(57,255,20,.04); transform: translateX(8px); }
-    .tl-date { font-family: 'Space Mono'; font-size: .65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); margin-bottom: 8px; }
-    .tl-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: #fff; margin-bottom: 6px; transition: font-family .3s; }
-    .tl-item p { font-size: .8rem; line-height: 1.9; color: rgba(255,255,255,.5); }
+    .tl-item:hover { border-left-color:var(--rose); background:#EFE8E1; }
+    .tl-date { font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--rose); margin-bottom:8px; }
+    .tl-item h3 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--warm-brown); margin-bottom:8px; }
+    .tl-item p { font-size:.82rem; line-height:1.9; color:var(--text-light); font-weight:300; }
 
-    #acting {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a000a 100%);
-      border-top: 2px solid rgba(255,0,110,.3);
+    /* ── HOME EXPLORE ── */
+    #explore { background:var(--soft-white); }
+    .explore-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    .explore-card { position:relative; overflow:hidden; height:440px; display:block; }
+    .explore-card img {
+      width:100%; height:100%; object-fit:cover; object-position:center;
+      filter:sepia(10%) saturate(85%); transition:transform .8s ease, filter .5s;
+    }
+    .explore-card:hover img { transform:scale(1.06); filter:sepia(0%) saturate(100%); }
+    .explore-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(40,14,12,.88) 0%,rgba(40,14,12,.2) 55%,transparent 100%);
+      display:flex; flex-direction:column; justify-content:flex-end; padding:40px;
+    }
+    .explore-card-label { font-size:.6rem; letter-spacing:4px; text-transform:uppercase; color:rgba(232,200,190,.7); margin-bottom:10px; }
+    .explore-overlay h3 { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:white; line-height:1; margin-bottom:16px; }
+    .explore-overlay h3 em { font-style:italic; color:var(--blush); }
+    .explore-btn {
+      display:inline-flex; align-items:center; gap:10px; padding:12px 28px;
+      border:1px solid rgba(232,200,190,.5); color:var(--blush);
+      font-size:.68rem; letter-spacing:3px; text-transform:uppercase;
+      transition:all .4s; width:fit-content;
+    }
+    .explore-btn span { display:inline-block; transition:transform .4s; }
+    .explore-card:hover .explore-btn { background:rgba(232,200,190,.15); border-color:var(--blush); color:white; }
+    .explore-card:hover .explore-btn span { transform:translateX(5px); }
+
+    /* ════════════════════════════════════
+       ACTING & PHOTO — SHARED PAGE HERO
+    ════════════════════════════════════ */
+    .page-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .page-hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 6% 60px 10%;
+      background: var(--cream); position: relative;
+    }
+    .page-hero-left::after {
+      content: ''; position: absolute; right: -1px; top: 0;
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--blush) 30%, var(--blush) 70%, transparent);
+    }
+    .page-hero-left h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.5rem; font-weight: 300; line-height: 1;
+      color: var(--warm-brown); margin-bottom: 24px;
+    }
+    .page-hero-left h1 em { font-style: italic; color: var(--rose); }
+    .page-hero-left > p {
+      font-size: .95rem; line-height: 2; color: var(--text-mid);
+      max-width: 360px; margin-bottom: 36px; font-weight: 300;
+    }
+    .hero-stats {
+      display: flex; gap: 30px; flex-wrap: wrap;
+      padding-top: 32px; border-top: 1px solid var(--blush);
+    }
+    .hero-stat h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400; color: var(--rose);
+    }
+    .hero-stat p {
+      font-size: .65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--text-light); line-height: 1.6; margin: 0;
+    }
+    .page-hero-right { position: relative; overflow: hidden; }
+    .page-hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      filter: sepia(8%) saturate(88%);
     }
 
-    .acting-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin: 40px 0; }
-    .act-card {
-      background: rgba(255,0,110,.04);
-      border: 1px solid rgba(255,0,110,.15);
-      padding: 28px 22px;
-      position: relative; overflow: hidden; transition: all .3s;
+    /* ════════════════════════════════════
+       ACTING PAGE
+    ════════════════════════════════════ */
+    #act-skills { background: var(--cream); }
+    #page-acting .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    #page-acting .skill-card {
+      background: var(--soft-white); padding: 30px 24px;
+      position: relative; overflow: hidden; transition: background .3s;
     }
-    .act-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--neon-pink);
-      box-shadow: 0 0 10px var(--neon-pink);
-      transition: width .4s;
-    }
-    .act-card:hover::after { width: 100%; }
-    .act-card:hover { background: rgba(255,0,110,.08); }
-    .act-icon { font-size: 1.8rem; margin-bottom: 14px; }
-    .act-card h3 { font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; color: var(--neon-pink); margin-bottom: 8px; transition: font-family .3s; }
-    .act-card p { font-size: .75rem; line-height: 1.8; color: rgba(255,255,255,.5); }
-
-    .credits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
-    .credit-card {
-      position: relative; overflow: hidden;
-      aspect-ratio: 3/4; cursor: pointer;
-      border: 1px solid rgba(255,255,255,.08);
-      transition: transform .4s, box-shadow .4s;
-    }
-    .credit-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 60px rgba(255,0,110,.3); }
-    .credit-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0) brightness(.7); transition: filter .4s; display: block; }
-    .credit-card:hover img { filter: saturate(.6) brightness(.6); }
-    .credit-card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(255,0,110,.8) 0%, transparent 60%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 20px;
-    }
-    .credit-card-cat {
-      position: absolute; top: 12px; left: 12px;
-      font-family: 'Space Mono'; font-size: .55rem; letter-spacing: 2px; text-transform: uppercase;
-      background: rgba(255,0,110,.8); color: #fff;
-      padding: 4px 8px;
-    }
-    .credit-card h4 { font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; color: #fff; margin-bottom: 2px; }
-    .credit-card .role { font-family: 'Space Mono'; font-size: .7rem; font-style: italic; color: rgba(255,200,200,.8); margin-bottom: 2px; }
-    .credit-card .venue { font-family: 'Space Mono'; font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.5); }
-
-    .training-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 40px; }
-    .training-card {
-      background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06);
-      padding: 36px 30px; transition: all .3s;
-      position: relative; overflow: hidden;
-    }
-    .training-card::before {
+    #page-acting .skill-card::after {
       content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--neon-orange);
-      box-shadow: 0 0 10px var(--neon-orange);
-      transition: width .5s;
+      width: 0; height: 2px; background: var(--rose); transition: width .5s;
     }
-    .training-card:hover::before { width: 100%; }
-    .training-date { font-family: 'Space Mono'; font-size: .62rem; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-orange); text-shadow: 0 0 8px var(--neon-orange); margin-bottom: 10px; }
-    .training-card h3 { font-family: 'Bebas Neue'; font-size: 1.4rem; letter-spacing: 3px; color: #fff; margin-bottom: 4px; }
-    .training-card .place { font-size: .78rem; color: rgba(255,255,255,.45); margin-bottom: 14px; }
-    .training-card ul { list-style: none; }
-    .training-card ul li {
-      font-size: .78rem; color: rgba(255,255,255,.55);
-      line-height: 2; padding-left: 14px; position: relative;
-    }
-    .training-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--neon-orange); }
+    #page-acting .skill-card:hover::after { width: 100%; }
+    #page-acting .skill-card:hover { background: #EFE8E1; }
+    #page-acting .skill-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--warm-brown); margin-bottom: 6px; }
+    #page-acting .skill-card p { font-size: .8rem; line-height: 1.8; color: var(--text-light); font-weight: 300; }
 
-    #photography {
-      background: linear-gradient(135deg, #0a0a0a 0%, #001a1a 100%);
-      border-top: 2px solid rgba(0,245,255,.3);
+    #act-credits { background: var(--soft-white); }
+    .credits-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .credit-card {
+      position: relative; overflow: hidden; cursor: pointer;
+      background: var(--cream); aspect-ratio: 3/4;
+      transition: transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s;
     }
+    .credit-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(74,46,44,.15); }
+    .credit-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; display: block; }
+    .credit-card:hover .credit-card-img { transform: scale(1.06); }
+    .credit-card-cat {
+      position: absolute; top: 14px; left: 14px;
+      font-size: .58rem; letter-spacing: 2.5px; text-transform: uppercase;
+      background: rgba(74,46,44,.75); color: var(--cream); padding: 5px 10px;
+      backdrop-filter: blur(4px);
+    }
+    .credit-card-hover {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(74,46,44,.9) 0%, rgba(74,46,44,.2) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 22px;
+    }
+    .credit-card-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400;
+      color: var(--cream); line-height: 1.2; margin-bottom: 4px;
+    }
+    .credit-card-role { font-size: .72rem; color: var(--blush); font-style: italic; margin-bottom: 4px; }
+    .credit-card-venue { font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(232,200,190,.7); }
+    /* Credits Modal */
+    .credit-modal {
+      position: fixed; inset: 0; z-index: 8000;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(74,46,44,.7); backdrop-filter: blur(8px);
+      opacity: 0; pointer-events: none; transition: opacity .35s;
+    }
+    .credit-modal.open { opacity: 1; pointer-events: all; }
+    .cm-inner {
+      background: var(--soft-white); width: 90vw; max-width: 860px;
+      max-height: 90vh; overflow-y: auto;
+      display: grid; grid-template-columns: 1fr 1fr; position: relative;
+    }
+    .cm-close {
+      position: absolute; top: 16px; right: 20px; font-size: 1.6rem; line-height: 1;
+      background: none; border: none; color: var(--warm-brown); cursor: pointer;
+      opacity: .6; transition: opacity .3s; z-index: 1;
+    }
+    .cm-close:hover { opacity: 1; }
+    .cm-img-wrap { overflow: hidden; min-height: 320px; }
+    .cm-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cm-content { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .cm-cat { font-size: .6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
+    .cm-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--warm-brown); line-height: 1.15; margin-bottom: 6px; }
+    .cm-role { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--text-mid); margin-bottom: 26px; }
+    .cm-meta { border-top: 1px solid var(--blush); padding-top: 20px; margin-bottom: 22px; display: flex; flex-direction: column; gap: 10px; }
+    .cm-meta-row { display: flex; gap: 12px; align-items: baseline; }
+    .cm-meta-label { font-size: .58rem; letter-spacing: 3px; text-transform: uppercase; color: var(--rose); min-width: 60px; }
+    .cm-meta-val { font-size: .85rem; color: var(--text-mid); font-weight: 300; }
+    .cm-desc { font-size: .85rem; line-height: 1.9; color: var(--text-light); font-weight: 300; }
+    #act-training { background: var(--cream); }
+    .training-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .training-card {
+      background: var(--soft-white); padding: 38px 32px;
+      position: relative; overflow: hidden; transition: background .3s;
+    }
+    .training-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--rose); transition: width .5s;
+    }
+    .training-card:hover::after { width: 100%; }
+    .training-card:hover { background: #EFE8E1; }
+    .training-date { font-size: .65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--rose); margin-bottom: 10px; }
+    .training-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400; color: var(--warm-brown); margin-bottom: 6px; line-height: 1.2; }
+    .training-card .place { font-size: .8rem; color: var(--text-light); margin-bottom: 14px; font-weight: 300; }
+    .training-card ul { list-style: none; padding: 0; }
+    .training-card ul li { font-size: .82rem; color: var(--text-mid); line-height: 1.9; font-weight: 300; padding-left: 14px; position: relative; }
+    .training-card ul li::before { content: '–'; position: absolute; left: 0; color: var(--rose); }
 
-    .photo-filters {
-      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
-      margin-bottom: 40px;
+    /* ════════════════════════════════════
+       PHOTOGRAPHY PAGE
+    ════════════════════════════════════ */
+    #photo-filters {
+      padding: 0;
+      background: rgba(253,248,243,.96);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 66px;
+      z-index: 100;
+      border-bottom: 1px solid rgba(196,140,120,.12);
     }
-    .filter-label { font-family: 'Space Mono'; font-size: .6rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-right: 8px; }
+    .filters-inner { padding: 20px 10%; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-label { font-size: .6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); margin-right: 8px; }
     .filter-btn {
       padding: 8px 20px;
-      border: 1px solid rgba(0,245,255,.3);
+      border: 1px solid rgba(196,140,120,.3);
       background: transparent; cursor: pointer;
-      font-family: 'Space Mono'; font-size: .65rem; letter-spacing: 2px; text-transform: uppercase;
-      color: rgba(255,255,255,.6); transition: all .3s;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .7rem; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-mid);
+      transition: all .3s;
     }
-    .filter-btn:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
-    .filter-btn.active {
-      background: var(--neon-cyan); border-color: var(--neon-cyan);
-      color: #000; box-shadow: 0 0 20px rgba(0,245,255,.4);
-    }
+    .filter-btn:hover { border-color: var(--rose); color: var(--rose); }
+    .filter-btn.active { background: var(--warm-brown); border-color: var(--warm-brown); color: var(--cream); }
 
-    .masonry { columns: 3; column-gap: 12px; }
+    #photo-gallery { background: var(--soft-white); padding-top: 60px; padding-bottom: 100px; }
+    .masonry { columns: 3; column-gap: 14px; }
     .g-item {
-      break-inside: avoid; margin-bottom: 12px;
+      break-inside: avoid; margin-bottom: 14px;
       position: relative; overflow: hidden; cursor: pointer; display: block;
+    }
+    @keyframes imgDrift1 {
+      0%,100% { transform:translate(0,0); }
+      50%     { transform:translate(-1.2%,-0.8%); }
+    }
+    @keyframes imgDrift2 {
+      0%,100% { transform:translate(0,0); }
+      50%     { transform:translate(1.2%,0.6%); }
+    }
+    @keyframes imgDrift3 {
+      0%,100% { transform:translate(0,0); }
+      50%     { transform:translate(-0.5%,1.1%); }
     }
     .g-item img {
       width: 100%; display: block;
-      filter: saturate(0) brightness(.8);
-      transition: filter .5s, transform .5s;
+      filter: sepia(5%) saturate(88%);
+      transition: filter .5s;
+      animation: imgDrift1 14s ease-in-out infinite;
+      will-change: transform;
     }
-    .g-item:hover img { filter: saturate(.8) brightness(.9) hue-rotate(20deg); transform: scale(1.04); }
+    .g-item:nth-child(3n+2) img { animation-name: imgDrift2; animation-duration: 11s; }
+    .g-item:nth-child(3n) img   { animation-name: imgDrift3; animation-duration: 18s; }
+
     .g-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,245,255,.6) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(58,24,22,.8) 0%, transparent 50%);
       opacity: 0; transition: opacity .4s;
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 16px;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;
     }
     .g-item:hover .g-overlay { opacity: 1; }
-    .g-overlay h4 { font-family: 'Bebas Neue'; font-size: 1.1rem; letter-spacing: 2px; color: #000; }
-    .g-overlay span { font-family: 'Space Mono'; font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,.7); }
+    .g-overlay h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: white; margin-bottom: 3px; }
+    .g-overlay span { font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); }
     .g-item.hidden { display: none; }
 
     .lightbox {
-      position: fixed; inset: 0; background: rgba(5,5,5,.97);
-      z-index: 10000; display: flex; align-items: center; justify-content: center;
+      position: fixed; inset: 0;
+      background: rgba(26,10,8,.97);
+      z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity .4s;
     }
     .lightbox.open { opacity: 1; pointer-events: all; }
     .lb-inner { position: relative; display: flex; align-items: center; gap: 16px; max-width: 92vw; }
-    .lightbox img { max-width: 78vw; max-height: 86vh; object-fit: contain; display: block; filter: saturate(.7); }
-    .lb-close {
-      position: absolute; top: -48px; right: 0;
-      background: none; border: none; color: var(--neon-pink);
-      font-size: 1.8rem; cursor: pointer; font-family: 'Bebas Neue';
-    }
-    .lb-nav {
-      background: none; border: 1px solid rgba(0,245,255,.3);
-      color: rgba(0,245,255,.6); width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 1.2rem; transition: all .3s; flex-shrink: 0;
-      font-family: 'Bebas Neue';
-    }
-    .lb-nav:hover { border-color: var(--neon-cyan); color: #fff; box-shadow: 0 0 20px rgba(0,245,255,.4); }
+    .lightbox img { max-width: 78vw; max-height: 86vh; object-fit: contain; filter: sepia(4%) saturate(88%); display: block; }
+    .lb-close { position: absolute; top: -48px; right: 0; background: none; border: none; color: rgba(232,200,190,.6); font-size: 1.6rem; cursor: pointer; transition: color .3s; line-height: 1; }
+    .lb-close:hover { color: white; }
+    .lb-nav { background: none; border: 1px solid rgba(232,200,190,.2); color: rgba(232,200,190,.6); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: all .3s; flex-shrink: 0; }
+    .lb-nav:hover { border-color: var(--blush); color: white; }
+    .lb-caption { position: absolute; bottom: -48px; left: 0; right: 0; text-align: center; }
+    .lb-caption h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--blush); font-weight: 300; }
+    .lb-caption span { font-size: .62rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(232,200,190,.4); }
+    .lb-counter { position: absolute; top: -48px; left: 0; font-size: .65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(232,200,190,.4); }
 
-    #contact {
-      background: var(--darker);
-      text-align: center;
-      border-top: 2px solid rgba(255,230,0,.3);
-      position: relative; overflow: hidden;
-    }
-    .contact-chaos-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse at 50% 50%, rgba(255,230,0,.05) 0%, transparent 70%);
-    }
-    .contact-title {
-      font-family: 'Black Ops One', sans-serif;
-      font-size: clamp(2.5rem, 7vw, 6rem);
-      line-height: 1; margin-bottom: 20px;
-      color: #fff; position: relative; z-index: 1;
-      transition: font-family .3s;
-    }
-    .contact-title .y { color: var(--neon-yellow); text-shadow: 0 0 30px var(--neon-yellow); }
-    .contact-sub {
-      font-size: .9rem; color: rgba(255,255,255,.5); line-height: 2;
-      margin-bottom: 50px; position: relative; z-index: 1;
-      transition: font-family .3s;
-    }
-    .contact-row {
-      display: flex; justify-content: center; align-items: center;
-      gap: 50px; flex-wrap: wrap; margin-bottom: 50px; position: relative; z-index: 1;
-    }
-    .contact-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .contact-label { font-family: 'Space Mono'; font-size: .6rem; letter-spacing: 4px; text-transform: uppercase; color: var(--neon-yellow); opacity: .7; }
-    .contact-item a {
-      font-family: 'Bebas Neue'; font-size: 1.2rem; letter-spacing: 3px;
-      color: #fff; text-decoration: none; transition: all .3s;
-    }
-    .contact-item a:hover { color: var(--neon-yellow); text-shadow: 0 0 20px var(--neon-yellow); }
-    .contact-divider { width: 1px; height: 40px; background: rgba(255,230,0,.2); }
-
-    .contact-cta {
-      display: inline-flex; align-items: center; gap: 14px;
-      padding: 18px 50px;
-      background: var(--neon-yellow);
-      color: #000;
-      font-family: 'Black Ops One'; font-size: 1rem; letter-spacing: 3px;
-      text-decoration: none; text-transform: uppercase;
-      transition: all .3s; position: relative; z-index: 1;
-      box-shadow: 0 0 30px rgba(255,230,0,.5);
-    }
-    .contact-cta:hover { background: #fff; box-shadow: 0 0 60px rgba(255,230,0,.8), 0 0 100px rgba(255,230,0,.4); transform: scale(1.05); }
-
-    footer {
-      background: #000;
-      border-top: 1px solid rgba(255,255,255,.06);
-      padding: 24px 8%;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-logo { font-family: 'Black Ops One'; font-size: .9rem; color: rgba(255,255,255,.2); letter-spacing: 3px; }
-    footer p { font-family: 'Space Mono'; font-size: .65rem; color: rgba(255,255,255,.2); letter-spacing: 1px; }
-
-    .fade-in {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .9s ease, transform .9s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: none; }
-    .slide-left { opacity: 0; transform: translateX(-40px); transition: opacity .9s ease, transform .9s ease; }
-    .slide-left.visible { opacity: 1; transform: none; }
-    .slide-right { opacity: 0; transform: translateX(40px); transition: opacity .9s ease, transform .9s ease; }
-    .slide-right.visible { opacity: 1; transform: none; }
-
-    .chaos-divider {
-      height: 60px; position: relative; overflow: hidden;
-      background: var(--dark);
-    }
-    .chaos-divider::before {
-      content: '';
-      position: absolute; top: 50%; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--neon-pink) 20%, var(--neon-cyan) 50%, var(--neon-green) 80%, transparent);
-      box-shadow: 0 0 10px rgba(255,0,110,.5);
-      transition: background .5s;
+    /* ── GALLERY CATEGORY BADGE (always visible) ── */
+    .g-cat-badge {
+      position: absolute; top: 11px; left: 11px; z-index: 2;
+      padding: 3px 9px;
+      background: rgba(74,46,44,.72);
+      backdrop-filter: blur(8px);
+      font-size: .56rem; letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(232,200,190,.9);
+      pointer-events: none;
     }
 
-    .noise-overlay {
-      position: fixed; inset: 0; pointer-events: none; z-index: 99997; opacity: .03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    /* ── FILTER BUTTON ICONS ── */
+    .filter-btn { display: inline-flex; align-items: center; gap: 6px; }
+    .f-icon {
+      width: 13px; height: 13px; flex-shrink: 0;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
     }
 
+    /* ── ACTING SKILL ICONS ── */
+    .skill-icon {
+      width: 22px; height: 22px; display: block;
+      stroke: var(--rose); fill: none;
+      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+      margin-bottom: 12px;
+    }
+
+    /* ── CREDITS CATEGORY ICONS ── */
+    .credits-col-title { display: flex; align-items: center; gap: 9px; }
+    .cat-icon {
+      width: 15px; height: 15px; flex-shrink: 0;
+      stroke: var(--text-mid); fill: none;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+      opacity: .75;
+    }
+
+    /* ════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════ */
     @media (max-width: 900px) {
-      .hamburger { display: flex; }
-      .nav-links { display: none; }
-      .mobile-menu { display: flex; }
-      .hero-img { display: none; }
-      .about-grid, .experience-layout { grid-template-columns: 1fr; gap: 50px; }
-      .acting-grid { grid-template-columns: 1fr 1fr; }
-      .credits-grid { grid-template-columns: 1fr 1fr; }
+      /* home */
+      .hero { grid-template-columns:1fr; grid-template-rows:auto auto; height:auto; }
+      .hero-left { padding:100px 8% 48px; order:1; }
+      .hero-left::after { display:none; }
+      .hero-left h1 { font-size:3.6rem; }
+      .hero-right { order:2; height:72vw; min-height:240px; max-height:420px; }
+      .hero-right img { height:100%; object-position:center 15%; }
+      .hero-tag { font-size:4rem; bottom:14px; left:14px; }
+      .about-grid, .skills-layout, .experience-layout { grid-template-columns:1fr; gap:44px; }
+      .about-img { max-width:380px; }
+      .explore-grid { grid-template-columns:1fr; }
+      .explore-card { height:64vw; min-height:280px; }
+      /* acting & photo */
+      .page-hero { grid-template-columns: 1fr; grid-template-rows: auto auto; min-height: auto; }
+      .page-hero-left { padding: 100px 8% 48px; order: 1; }
+      .page-hero-left h1 { font-size: 3.6rem; }
+      .page-hero-left::after { display: none; }
+      .page-hero-right { order: 2; height: 72vw; min-height: 240px; max-height: 420px; }
+      .page-hero-right img { height: 100%; object-position: center 15%; }
+      #page-acting .skills-grid { grid-template-columns: 1fr 1fr; }
+      .credits-cards-grid { grid-template-columns: 1fr 1fr; }
+      .cm-inner { grid-template-columns: 1fr; }
+      .cm-img-wrap { min-height: 260px; }
+      .cm-content { padding: 32px 28px; }
       .training-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 18px; }
+      /* photo */
       .masonry { columns: 2; }
-      .contact-divider { display: none; }
-      footer { flex-direction: column; gap: 8px; text-align: center; }
-      #theme-switcher { bottom: 20px; right: 20px; }
-      .theme-label-pill { display: none; }
+      .filters-inner { padding: 18px 6%; }
+      #photo-gallery { padding-left: 6%; padding-right: 6%; }
+      .lightbox img { max-width: 90vw; }
     }
     @media (max-width: 560px) {
-      .acting-grid { grid-template-columns: 1fr; }
-      .credits-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
+      .hero-left h1 { font-size:2.8rem; }
+      .hero-right { height:80vw; }
+      #page-home .skills-grid { grid-template-columns:1fr; }
+      .stats { gap:20px; }
+      .page-hero-left h1 { font-size: 2.8rem; }
+      .page-hero-right { height: 80vw; }
+      #page-acting .skills-grid { grid-template-columns: 1fr; }
+      .credits-cards-grid { grid-template-columns: 1fr; }
       .masonry { columns: 1; }
+      .lb-nav { display: none; }
     }
   </style>
 </head>
-<body class="theme-chaotique">
+<body>
 
-  <div class="noise-overlay"></div>
-  <canvas id="particles"></canvas>
-  <div id="cursor-main"></div>
-  <div id="cursor-dot"></div>
-  <div id="scroll-bar"></div>
-
-  <!-- THEME SWITCHER -->
-  <div id="theme-switcher">
-    <div id="theme-options">
-      <button class="theme-opt-btn" data-t="classique"><span class="opt-icon">🕯️</span> CLASSIQUE</button>
-      <button class="theme-opt-btn active-theme" data-t="chaotique"><span class="opt-icon">💥</span> CHAOTIQUE</button>
-      <button class="theme-opt-btn" data-t="amour"><span class="opt-icon">💕</span> AMOUR</button>
-      <button class="theme-opt-btn" data-t="casse"><span class="opt-icon">🔧</span> CASSÉ</button>
-      <button class="theme-opt-btn" data-t="folle"><span class="opt-icon">🌀</span> FOLLE</button>
-    </div>
-    <button id="theme-toggle-btn" title="Changer de thème">🎭</button>
-  </div>
-  <div class="theme-label-pill">THÈME : <span id="theme-pill-name">CHAOTIQUE</span></div>
-
-  <!-- NAV -->
-  <nav>
-    <a href="#home" class="logo">TIA-<span>LANA</span></a>
-    <div class="nav-links">
-      <a href="#about">À PROPOS</a>
-      <a href="#acting">ACTING</a>
-      <a href="#photography">PHOTO</a>
-      <a href="#contact">CONTACT</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <div id="page-transition"></div>
+  <div id="scroll-progress"></div>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="ml">À PROPOS</a>
-    <a href="#acting" class="ml">ACTING</a>
-    <a href="#photography" class="ml">PHOTO</a>
-    <a href="#contact" class="ml">CONTACT</a>
-  </div>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg-text" id="hero-bg-text">CHINAPYEL</div>
-    <p class="hero-eyebrow" id="hero-eyebrow">⚡ CREATIVE · PHOTOGRAPHER · ACTRESS · CHAOS GENERATOR ⚡</p>
-    <h1>
-      <span class="line1">TIA-</span>
-      <span class="line2">LANA</span>
-      <span class="line3">CHINAPYEL</span>
-    </h1>
-    <p class="hero-sub" id="hero-sub">
-      Narration visuelle ancrée dans l'émotion, la lumière et <span>l'intimité absolue</span>.<br>
-      Entre Londres et Paris. Et un peu dans la lune.
-    </p>
-    <a href="#about" class="hero-cta" id="hero-cta">ENTRER DANS SON MONDE →</a>
-
-    <div class="hero-img">
-      <img src="./img/home/hero-home2.jpeg" alt="Tia-Lana Chinapyel">
-      <div class="hero-img-overlay"></div>
-    </div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="chaos-marquee">
-    <div class="chaos-marquee-inner" id="marquee1-inner">
-      <span>Photography</span><span>Visual Storytelling</span><span>Acting</span>
-      <span>Branding</span><span>Content Creation</span><span>Stage & Screen</span>
-      <span>COMPLÈTEMENT FOLLE</span><span>Photography</span><span>Visual Storytelling</span><span>Acting</span>
-      <span>Branding</span><span>Content Creation</span><span>Stage & Screen</span>
-      <span>COMPLÈTEMENT FOLLE</span>
-    </div>
-  </div>
-  <div class="chaos-marquee-2">
-    <div class="chaos-marquee-inner" id="marquee2-inner">
-      <span>LONDON</span><span>PARIS</span><span>ANYWHERE</span>
-      <span>NOWHERE</span><span>EVERYWHERE</span><span>TIA-LANA</span>
-      <span>CHAOS IS ART</span><span>LONDON</span><span>PARIS</span><span>ANYWHERE</span>
-      <span>NOWHERE</span><span>EVERYWHERE</span><span>TIA-LANA</span>
-      <span>CHAOS IS ART</span>
+    <a href="index.html#about"   class="ml" data-en="About"       data-fr="À propos">About</a>
+    <a href="acting.html"        class="ml" data-en="Acting"       data-fr="Jeu d'actrice">Acting</a>
+    <a href="photography.html"   class="ml" data-en="Photography"  data-fr="Photographie">Photography</a>
+    <a href="index.html#contact" class="ml" data-en="Contact"      data-fr="Contact">Contact</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="fr">FR</button>
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-img-wrap slide-left">
-        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1974&auto=format&fit=crop" alt="Tia-Lana">
-        <div class="about-img-frame"></div>
-        <div class="about-img-glitch"></div>
-        <div class="about-badge">
-          <span>∞</span>
-          <span id="about-badge-label">STORIES</span>
-        </div>
+  <nav>
+    <div class="logo-wrap">
+      <a href="index.html" class="logo">Tia-<span>Lana</span></a><button id="loveHeart" class="logo-heart" aria-label="Pour Tia-Lana">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </svg>
+</button>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#about"   data-en="About"       data-fr="À propos">About</a>
+      <a href="acting.html"        data-en="Acting"       data-fr="Jeu d'actrice">Acting</a>
+      <a href="photography.html"   data-en="Photography"  data-fr="Photographie">Photography</a>
+      <a href="index.html#contact" data-en="Contact"      data-fr="Contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
       </div>
-      <div class="about-text slide-right">
-        <span class="section-tag" id="about-tag">// ABOUT_ME.EXE</span>
-        <h2 class="sec-title" id="about-title">UNE CRÉATIVE<br>AVEC UNE <span class="accent">HISTOIRE</span><br>À RACONTER</h2>
-        <p id="about-p1">Je m'appelle <span class="highlight">Tia-Lana</span> et je suis une créative née au Royaume-Uni, basée à Paris. J'ai une passion profonde pour la narration visuelle — explorer l'émotion, le récit et l'esthétique à travers la photographie et le jeu d'actrice.</p>
-        <p id="about-p2">Que ce soit derrière l'objectif ou devant, j'apporte le même soin pour la lumière, l'atmosphère et la connexion humaine à chaque projet. <span class="highlight">Et oui, je suis totalement folle.</span> C'est mon superpouvoir.</p>
-        <div class="stats-row stagger">
-          <div class="stat fade-in">
-            <div class="stat-num">3+</div>
-            <div class="stat-label">Années de<br>Travail Créatif</div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HOME PAGE
+  ══════════════════════════════════════════ -->
+  <div id="page-home" class="site-page" style="display:block">
+
+    <section class="hero">
+      <div class="hero-left">
+        <p class="eyebrow hero-line" data-en="Creative · Photographer · Actress" data-fr="Créative · Photographe · Actrice">Creative · Photographer · Actress</p>
+        <h1 class="hero-line">Tia‑<br><em>Lana</em><br>Chinapyel</h1>
+        <p class="hero-line" data-en="Visual storytelling rooted in emotion, light and intimacy. Based between London and Paris." data-fr="Narration visuelle ancrée dans l'émotion, la lumière et l'intimité. Entre Londres et Paris.">Visual storytelling rooted in emotion, light and intimacy. Based between London and Paris.</p>
+        <a href="index.html#about" class="btn-outline hero-line"><span data-en="Discover" data-fr="Découvrir">Discover</span> <span>→</span></a>
+      </div>
+      <div class="hero-right">
+        <img src="./img/home/hero-home2.jpeg" alt="Tia-Lana Chinapyel">
+      </div>
+    </section>
+
+    <div class="marquee-strip">
+      <div class="marquee-inner">
+        <span>Photography</span><span>Visual Storytelling</span><span>Acting</span>
+        <span>Branding</span><span>Content Creation</span><span>Stage & Screen</span>
+        <span>Photography</span><span>Visual Storytelling</span><span>Acting</span>
+        <span>Branding</span><span>Content Creation</span><span>Stage & Screen</span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="about-grid">
+        <div class="about-img slide-left">
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1974&auto=format&fit=crop" alt="Tia-Lana at work">
+        </div>
+        <div class="about-text slide-right">
+          <p class="sec-label draw-line" data-en="About Me" data-fr="À propos">About Me</p>
+          <h2 class="sec-title" data-i18n-html="about.title">A creative with a <em>story to tell</em></h2>
+          <p data-en="My name is Tia-Lana and I'm a UK-born creative based in Paris. I have a deep love for visual storytelling — exploring emotion, narrative and aesthetics through photography and acting." data-fr="Je m'appelle Tia-Lana, je suis une créative née au Royaume-Uni et basée à Paris. J'ai une profonde passion pour la narration visuelle — l'exploration de l'émotion, du récit et de l'esthétique à travers la photographie et le jeu d'actrice.">My name is Tia-Lana and I'm a UK-born creative based in Paris. I have a deep love for visual storytelling — exploring emotion, narrative and aesthetics through photography and acting.</p>
+          <p data-en="Whether behind the lens or in front of it, I bring the same care for light, atmosphere and human connection to every project." data-fr="Que ce soit derrière l'objectif ou devant, j'apporte le même soin pour la lumière, l'atmosphère et la connexion humaine à chaque projet.">Whether behind the lens or in front of it, I bring the same care for light, atmosphere and human connection to every project.</p>
+          <div class="stats stagger">
+            <div class="stat fade-up"><h4>3+</h4><p data-en="Years of Creative Work" data-fr="Années de travail créatif">Years of<br>Creative Work</p></div>
+            <div class="stat fade-up"><h4>2</h4><p data-en="Cities, London & Paris" data-fr="Villes, Londres & Paris">Cities,<br>London & Paris</p></div>
+            <div class="stat fade-up"><h4>∞</h4><p data-en="Stories to Tell" data-fr="Histoires à raconter">Stories<br>to Tell</p></div>
           </div>
-          <div class="stat fade-in">
-            <div class="stat-num">2</div>
-            <div class="stat-label">Villes,<br>Londres & Paris</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-connector fade-up" style="background:linear-gradient(to bottom,var(--cream),var(--soft-white))">
+      <div class="connector-inner">
+        <div class="connector-line"></div>
+        <div class="connector-content">
+          <span class="connector-next" data-en="Up next" data-fr="Ensuite">Up next</span>
+          <span class="connector-title" data-en="Skills & Expertise" data-fr="Compétences & Expertise">Skills &amp; Expertise</span>
+        </div>
+        <div class="connector-line"></div>
+      </div>
+    </div>
+
+    <section id="skills">
+      <div class="skills-layout">
+        <div class="slide-left">
+          <p class="sec-label draw-line" data-en="Expertise" data-fr="Expertise">Expertise</p>
+          <h2 class="sec-title" data-i18n-html="skills.title">What I<br><em>create</em></h2>
+          <div class="skills-intro">
+            <p data-en="From behind the lens to centre stage — my skills span the full creative spectrum." data-fr="De derrière l'objectif à la scène — mes compétences couvrent tout le spectre créatif.">From behind the lens to centre stage — my skills span the full creative spectrum.</p>
           </div>
-          <div class="stat fade-in">
-            <div class="stat-num">∞</div>
-            <div class="stat-label">Histoires<br>à Raconter</div>
+        </div>
+        <div class="skills-grid stagger">
+          <div class="skill-card fade-up"><div class="skill-num">01</div><svg class="skill-icon" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg><h3 data-en="Photography" data-fr="Photographie">Photography</h3><p data-en="Portrait, fashion, product & landscape." data-fr="Portrait, mode, produit & paysage.">Portrait, fashion, product & landscape.</p></div>
+          <div class="skill-card fade-up"><div class="skill-num">02</div><svg class="skill-icon" viewBox="0 0 24 24"><path d="M2 9c0-1 1-2 2-2h16c1 0 2 1 2 2v2c0 4.4-3.6 8-8 8h0c-4.4 0-8-3.6-8-8V9z"/><path d="M9 14.5s1 1.5 3 1.5 3-1.5 3-1.5"/><circle cx="9.5" cy="10.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14.5" cy="10.5" r=".7" fill="currentColor" stroke="none"/></svg><h3 data-en="Acting" data-fr="Jeu d'actrice">Acting</h3><p data-en="Stage & screen — trained at LAMDA & Cours Florent." data-fr="Scène & écran — formée au LAMDA & Cours Florent.">Stage & screen — trained at LAMDA & Cours Florent.</p></div>
+          <div class="skill-card fade-up"><div class="skill-num">03</div><svg class="skill-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><h3 data-en="Branding" data-fr="Identité de marque">Branding</h3><p data-en="Visual identity, concepts and storytelling." data-fr="Identité visuelle, concepts et narration.">Visual identity, concepts and storytelling.</p></div>
+          <div class="skill-card fade-up"><div class="skill-num">04</div><svg class="skill-icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg><h3 data-en="Content Creation" data-fr="Création de contenu">Content Creation</h3><p data-en="Social media visuals with strong engagement." data-fr="Visuels pour réseaux sociaux à fort engagement.">Social media visuals with strong engagement.</p></div>
+          <div class="skill-card fade-up"><div class="skill-num">05</div><svg class="skill-icon" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg><h3>Photoshop &amp; Canva</h3><p data-en="Editing, retouching and visual design." data-fr="Retouche, montage et design visuel.">Editing, retouching and visual design.</p></div>
+          <div class="skill-card fade-up"><div class="skill-num">06</div><svg class="skill-icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"/></svg><h3 data-en="Voiceover & Singing" data-fr="Voix off & Chant">Voiceover &amp; Singing</h3><p data-en="Commercial VO, BBC Radio 4, The O2 Arena." data-fr="Voix off commerciale, BBC Radio 4, The O2 Arena.">Commercial VO, BBC Radio 4, The O2 Arena.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-connector fade-up" style="background:linear-gradient(to bottom,var(--soft-white),var(--cream))">
+      <div class="connector-inner">
+        <div class="connector-line"></div>
+        <div class="connector-content">
+          <span class="connector-next" data-en="Up next" data-fr="Ensuite">Up next</span>
+          <span class="connector-title" data-en="My Experience" data-fr="Mon Expérience">My Experience</span>
+        </div>
+        <div class="connector-line"></div>
+      </div>
+    </div>
+
+    <section id="experience">
+      <div class="experience-layout">
+        <div class="slide-left">
+          <p class="sec-label draw-line" data-en="Journey" data-fr="Parcours">Journey</p>
+          <h2 class="sec-title" data-i18n-html="exp.title">My<br><em>Experience</em></h2>
+          <p style="font-size:.88rem;line-height:2;color:var(--text-light);font-weight:300;margin-top:-10px;" data-en="A path shaped by creativity, curiosity and a deep commitment to the arts." data-fr="Un parcours façonné par la créativité, la curiosité et un engagement profond pour les arts.">A path shaped by creativity, curiosity and a deep commitment to the arts.</p>
+        </div>
+        <div class="timeline stagger">
+          <div class="tl-item fade-up"><div class="tl-date">2024 — Present</div><h3 data-en="Freelance Photographer" data-fr="Photographe freelance">Freelance Photographer</h3><p data-en="Creative photoshoots, editing and visual content for personal and client projects." data-fr="Séances photo créatives, retouche et contenu visuel pour projets personnels et clients.">Creative photoshoots, editing and visual content for personal and client projects.</p></div>
+          <div class="tl-item fade-up"><div class="tl-date">2024 — Present</div><h3>Cours Florent — Acting in English</h3><p data-en="Stage & Screen training at one of Paris's leading drama schools." data-fr="Formation scène & écran dans l'une des meilleures écoles de théâtre de Paris.">Stage &amp; Screen training at one of Paris's leading drama schools.</p></div>
+          <div class="tl-item fade-up"><div class="tl-date">2024</div><h3 data-en="Junior Brand Advisor — CXG Agency" data-fr="Conseillère Marque Junior — CXG Agency">Junior Brand Advisor — CXG Agency</h3><p data-en="Brand performance evaluation, customer experience and creative recommendations." data-fr="Évaluation de la performance de marque, expérience client et recommandations créatives.">Brand performance evaluation, customer experience and creative recommendations.</p></div>
+          <div class="tl-item fade-up"><div class="tl-date">2023</div><h3 data-en="Junior Project Designer — MCM" data-fr="Designer Projet Junior — MCM">Junior Project Designer — MCM</h3><p data-en="Creative concepts for products and branding projects." data-fr="Concepts créatifs pour projets produit et identité de marque.">Creative concepts for products and branding projects.</p></div>
+          <div class="tl-item fade-up"><div class="tl-date">2012 — 2019</div><h3 data-en="LAMDA — Grades 1–6, all Distinction" data-fr="LAMDA — Niveaux 1–6, tous Mention Très Bien">LAMDA — Grades 1–6, all Distinction</h3><p data-en="London Academy of Music and Dramatic Art. Bronze Medal, Grade 6." data-fr="London Academy of Music and Dramatic Art. Médaille de Bronze, Niveau 6.">London Academy of Music and Dramatic Art. Bronze Medal, Grade 6.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-connector fade-up" style="background:linear-gradient(to bottom,var(--cream),var(--soft-white))">
+      <div class="connector-inner">
+        <div class="connector-line"></div>
+        <div class="connector-content">
+          <span class="connector-next" data-en="Discover" data-fr="Découvrir">Discover</span>
+          <span class="connector-title" data-en="My Two Worlds" data-fr="Mes Deux Univers">My Two Worlds</span>
+        </div>
+        <div class="connector-line"></div>
+      </div>
+    </div>
+
+    <section id="explore">
+      <div class="fade-up" style="margin-bottom:50px;">
+        <p class="sec-label draw-line" data-en="Explore" data-fr="Explorer">Explore</p>
+        <h2 class="sec-title" data-i18n-html="explore.title">My two <em>worlds</em></h2>
+      </div>
+      <div class="explore-grid stagger">
+        <a href="acting.html" class="explore-card scale-in">
+          <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=2071&auto=format&fit=crop" alt="Acting">
+          <div class="explore-overlay">
+            <span class="explore-card-label" data-en="Stage & Screen" data-fr="Scène & Écran">Stage &amp; Screen</span>
+            <h3 data-i18n-html="explore.acting">Acting &amp;<br><em>Performance</em></h3>
+            <div class="explore-btn"><span data-en="Discover" data-fr="Découvrir">Discover</span> <span>→</span></div>
+          </div>
+        </a>
+        <a href="photography.html" class="explore-card scale-in">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop" alt="Photography">
+          <div class="explore-overlay">
+            <span class="explore-card-label" data-en="Visual Art" data-fr="Art Visuel">Visual Art</span>
+            <h3 data-i18n-html="explore.photo">Photography &amp;<br><em>Gallery</em></h3>
+            <div class="explore-btn"><span data-en="Explore" data-fr="Explorer">Explore</span> <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <p class="sec-label" data-en="Get In Touch" data-fr="Me contacter">Get In Touch</p>
+      <h2 class="sec-title fade-up" data-i18n-html="contact.title">Let's create<br>something <em>beautiful</em></h2>
+      <p class="contact-sub fade-up" data-en="Available for photography, acting, creative collaborations and branding projects." data-fr="Disponible pour la photographie, le jeu d'actrice, les collaborations créatives et les projets de branding.">Available for photography, acting, creative collaborations and branding projects.</p>
+      <div class="contact-row fade-up">
+        <div class="contact-item">
+          <span class="contact-item-label" data-en="Email" data-fr="E-mail">Email</span>
+          <a href="mailto:tiachinapyel@gmail.com">tiachinapyel@gmail.com</a>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+          <span class="contact-item-label" data-en="Location" data-fr="Localisation">Location</span>
+          <a>Paris, France</a>
+        </div>
+      </div>
+      <a href="mailto:tiachinapyel@gmail.com" class="btn-ghost fade-up"><span data-en="Start a Conversation" data-fr="Démarrons une conversation">Start a Conversation</span> <span>→</span></a>
+    </section>
+
+  </div><!-- #page-home -->
+
+  <!-- ══════════════════════════════════════════
+       ACTING PAGE
+  ══════════════════════════════════════════ -->
+  <div id="page-acting" class="site-page">
+
+    <section class="page-hero">
+      <div class="page-hero-left">
+        <span class="eyebrow hero-line" data-en="Actress · Stage &amp; Screen" data-fr="Actrice · Scène &amp; Écran">Actress · Stage &amp; Screen</span>
+        <h1 class="hero-line">Tia‑<br><em>Lana</em><br>Chinapyel</h1>
+        <p class="hero-line" data-en="British actress based in Paris. Theatre, television, film and voiceover — storytelling in every form." data-fr="Actrice britannique basée à Paris. Théâtre, télévision, cinéma et voix off — narration sous toutes ses formes.">British actress based in Paris. Theatre, television, film and voiceover — storytelling in every form.</p>
+        <div class="hero-stats stagger hero-line">
+          <div class="hero-stat fade-up"><h4>BBC · ITV</h4><p data-en="Television" data-fr="Télévision">Television</p></div>
+          <div class="hero-stat fade-up"><h4>NT</h4><p data-en="National Theatre" data-fr="National Theatre">National<br>Theatre</p></div>
+          <div class="hero-stat fade-up"><h4>16–22</h4><p data-en="Playing Age" data-fr="Âge de jeu">Playing<br>Age</p></div>
+          <div class="hero-stat fade-up"><h4>RP · GA</h4><p data-en="Accents" data-fr="Accents">Accents</p></div>
+        </div>
+      </div>
+      <div class="page-hero-right">
+        <img src="./img/acting/hero-acting.png" alt="Tia-Lana portrait">
+      </div>
+    </section>
+
+    <div class="marquee-strip">
+      <div class="marquee-inner">
+        <span>Theatre</span><span>Television</span><span>Film</span>
+        <span>Voiceover</span><span>Radio</span><span>Commercials</span>
+        <span>Theatre</span><span>Television</span><span>Film</span>
+        <span>Voiceover</span><span>Radio</span><span>Commercials</span>
+      </div>
+    </div>
+
+    <section id="act-skills">
+      <div class="fade-up" style="margin-bottom:50px;">
+        <p class="sec-label draw-line" data-en="Abilities" data-fr="Aptitudes">Abilities</p>
+        <h2 class="sec-title" data-i18n-html="acting.skills">Skills &amp; <em>Abilities</em></h2>
+      </div>
+      <div class="skills-grid stagger">
+        <div class="skill-card fade-up">
+          <div class="skill-num">01</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M2 9c0-1 1-2 2-2h16c1 0 2 1 2 2v2c0 4.4-3.6 8-8 8h0c-4.4 0-8-3.6-8-8V9z"/><path d="M9 14.5s1 1.5 3 1.5 3-1.5 3-1.5"/><circle cx="9.5" cy="10.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14.5" cy="10.5" r=".7" fill="currentColor" stroke="none"/></svg>
+          <h3 data-en="Acting" data-fr="Jeu d'actrice">Acting</h3><p data-en="Stage & screen — trained at LAMDA and Cours Florent, Paris." data-fr="Scène & écran — formée au LAMDA et au Cours Florent, Paris.">Stage &amp; screen — trained at LAMDA and Cours Florent, Paris.</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">02</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"/></svg>
+          <h3 data-en="Voiceover" data-fr="Voix off">Voiceover</h3><p data-en="Commercial and narrative voiceover. BBC Radio 4 credit." data-fr="Voix off commerciale et narrative. Crédit BBC Radio 4.">Commercial and narrative voiceover. BBC Radio 4 credit.</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">03</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <h3 data-en="Singing" data-fr="Chant">Singing</h3><p data-en="Performed at The O2 Arena. Solo and ensemble vocalist." data-fr="Scène au The O2 Arena. Vocaliste solo et en ensemble.">Performed at The O2 Arena. Solo and ensemble vocalist.</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">04</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M20 4l-6 6"/><path d="M3.5 20.5a2 2 0 002.8 0l4-4a4 4 0 005.4-5.9L11.5 15 9 12.5l4.5-4.5a4 4 0 00-5.9 5.4l-4 4a2 2 0 000 2.8 2 2 0 002.8 0z"/></svg>
+          <h3 data-en="Guitar" data-fr="Guitare">Guitar</h3><p data-en="Self-accompanied musician for musical performance work." data-fr="Musicienne auto-accompagnée pour le travail de performance musicale.">Self-accompanied musician for musical performance work.</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">05</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <h3 data-en="Presenting" data-fr="Présentation">Presenting</h3><p data-en="Camera-confident. Lead interviewer experience on radio." data-fr="À l'aise devant la caméra. Expérience d'intervieweuse principale à la radio.">Camera-confident. Lead interviewer experience on radio.</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">06</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg>
+          <h3 data-en="Accents" data-fr="Accents">Accents</h3><p data-en="RP and General American. English native. French (learning)." data-fr="RP et Américain General. Anglophone native. Français (en apprentissage).">RP and General American. English native. French (learning).</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">07</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M6 11l6-3 6 3M9 11l-2 9M15 11l2 9M9 15h6"/></svg>
+          <h3 data-en="Movement" data-fr="Mouvement">Movement</h3><p data-en="Physical performance across opera, theatre and screen." data-fr="Performance physique à travers l'opéra, le théâtre et l'écran.">Physical performance across opera, theatre and screen.</p>
+        </div>
+        <div class="skill-card fade-up">
+          <div class="skill-num">08</div>
+          <svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M9.5 9.5a4 4 0 000 5.66M14.5 9.5a4 4 0 010 5.66M7 7a8 8 0 000 11.31M17 7a8 8 0 010 11.31"/></svg>
+          <h3 data-en="Radio Drama" data-fr="Dramatique radio">Radio Drama</h3><p data-en="BBC Radio 4. Comfortable in mic-led performance contexts." data-fr="BBC Radio 4. À l'aise dans les contextes de performance au micro.">BBC Radio 4. Comfortable in mic-led performance contexts.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-connector fade-up" style="background:linear-gradient(to bottom,var(--cream),var(--soft-white))">
+      <div class="connector-inner">
+        <div class="connector-line"></div>
+        <div class="connector-content">
+          <span class="connector-next" data-en="Up next" data-fr="Ensuite">Up next</span>
+          <span class="connector-title" data-en="Professional Credits" data-fr="Crédits professionnels">Professional Credits</span>
+        </div>
+        <div class="connector-line"></div>
+      </div>
+    </div>
+
+    <section id="act-credits">
+      <div class="fade-up" style="margin-bottom:50px;">
+        <p class="sec-label draw-line" data-en="Professional Credits" data-fr="Crédits professionnels">Professional Credits</p>
+        <h2 class="sec-title" data-i18n-html="acting.credits">Stage &amp; <em>Screen</em></h2>
+      </div>
+      <div class="credits-cards-grid">
+
+        <!-- Theatre -->
+        <div class="credit-card fade-up"
+          data-cat="Theatre" data-title="Oliver Twist" data-role="Oliver"
+          data-venue="Regent's Park Open Air Theatre" data-year="2016"
+          data-desc="A landmark open-air production of the Charles Dickens classic, performed in the heart of Regent's Park. Playing Oliver brought together vocal training, physical storytelling and large-scale ensemble work under the open sky."
+          data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1287&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1287&auto=format&fit=crop" alt="Oliver Twist" loading="lazy">
+          <span class="credit-card-cat">Theatre</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Oliver Twist</div>
+            <div class="credit-card-role">Oliver</div>
+            <div class="credit-card-venue">Regent's Park Open Air Theatre</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="chaos-divider"></div>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <span class="section-tag fade-in" id="skills-tag">// SKILLS.LOAD()</span>
-    <h2 class="sec-title fade-in" id="skills-title">CE QUE<br>JE <span class="accent2">CRÉE</span></h2>
-    <div class="skills-grid stagger">
-      <div class="skill-card fade-in">
-        <div class="skill-num">01 ___</div>
-        <h3 id="skill-1-title">PHOTOGRAPHIE</h3>
-        <p id="skill-1-desc">Portrait, lifestyle, mode. Je capture la lumière et l'émotion avec une passion dévorante pour chaque instant volé.</p>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-num">02 ___</div>
-        <h3 id="skill-2-title">JEU D'ACTRICE</h3>
-        <p id="skill-2-desc">Scène, écran, voix. Une présence électrique et une capacité à incarner n'importe quel univers narratif.</p>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-num">03 ___</div>
-        <h3 id="skill-3-title">DIRECTION ARTISTIQUE</h3>
-        <p id="skill-3-desc">Branding visuel, identité de marque, conception de contenu. L'art de construire un univers cohérent et puissant.</p>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-num">04 ___</div>
-        <h3 id="skill-4-title">CONTENT CREATION</h3>
-        <p id="skill-4-desc">Réseaux sociaux, campagnes visuelles, storytelling multiformat. Chaque pixel raconte une histoire.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="chaos-divider"></div>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div style="display:grid; grid-template-columns: 1fr 1.6fr; gap: 80px;" class="experience-layout">
-      <div>
-        <span class="section-tag fade-in" id="exp-tag">// EXPERIENCE.LOG</span>
-        <h2 class="sec-title fade-in" id="exp-title">MON<br><span class="accent3">PARCOURS</span></h2>
-        <p class="fade-in" id="exp-desc" style="font-size:.88rem; line-height:2.2; color:rgba(255,255,255,.5);">
-          Une trajectoire construite autour de la passion, de l'audace et d'une légère obsession pour la perfection.
-        </p>
-      </div>
-      <div class="timeline">
-        <div class="tl-item fade-in" id="tl-0">
-          <div class="tl-date">2023 — Présent</div>
-          <h3>PHOTOGRAPHE FREELANCE</h3>
-          <p>Projets personnels et éditoriaux entre Londres et Paris. Spécialisation en portrait et narration visuelle.</p>
+        <div class="credit-card fade-up"
+          data-cat="Theatre" data-title="Behind The Beautiful Forevers" data-role="Noori"
+          data-venue="National Theatre" data-year="2014"
+          data-desc="David Hare's powerful adaptation of Katherine Boo's Pulitzer Prize-winning non-fiction book, staged at the National Theatre. A deeply human story set in the slums of Mumbai — playing Noori required emotional depth and physical precision."
+          data-img="https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=2071&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=2071&auto=format&fit=crop" alt="Behind The Beautiful Forevers" loading="lazy">
+          <span class="credit-card-cat">Theatre</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Behind The Beautiful Forevers</div>
+            <div class="credit-card-role">Noori</div>
+            <div class="credit-card-venue">National Theatre</div>
+          </div>
         </div>
-        <div class="tl-item fade-in" id="tl-1">
-          <div class="tl-date">2022 — 2023</div>
-          <h3>FORMATION EN JEU D'ACTRICE</h3>
-          <p>Développement d'une technique polyvalente — théâtre physique, cinéma, performance devant caméra.</p>
+
+        <div class="credit-card fade-up"
+          data-cat="Theatre" data-title="Aida" data-role="Slave Child"
+          data-venue="Brighton Dome" data-year="2013"
+          data-desc="Verdi's sweeping opera staged at the iconic Brighton Dome. As Slave Child, this role demanded discipline within a large opera cast, combining movement, presence and ensemble choreography."
+          data-img="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=2070&auto=format&fit=crop" alt="Aida" loading="lazy">
+          <span class="credit-card-cat">Theatre</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Aida</div>
+            <div class="credit-card-role">Slave Child</div>
+            <div class="credit-card-venue">Brighton Dome</div>
+          </div>
         </div>
-        <div class="tl-item fade-in" id="tl-2">
-          <div class="tl-date">2021 — 2022</div>
-          <h3>DIRECTION ARTISTIQUE & BRANDING</h3>
-          <p>Collaboration avec des marques pour créer des identités visuelles fortes et des campagnes de contenu.</p>
+
+        <div class="credit-card fade-up"
+          data-cat="Theatre" data-title="Carmen" data-role="Street Urchin"
+          data-venue="Devonshire Park Theatre" data-year="2013"
+          data-desc="Bizet's beloved opera brought to Devonshire Park. The role of Street Urchin required spontaneity and street-level energy woven into the rich tapestry of this classic production."
+          data-img="https://images.unsplash.com/photo-1514306191717-452ec28c7814?q=80&w=2069&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1514306191717-452ec28c7814?q=80&w=2069&auto=format&fit=crop" alt="Carmen" loading="lazy">
+          <span class="credit-card-cat">Theatre</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Carmen</div>
+            <div class="credit-card-role">Street Urchin</div>
+            <div class="credit-card-venue">Devonshire Park Theatre</div>
+          </div>
         </div>
-        <div class="tl-item fade-in" id="tl-3">
-          <div class="tl-date">Depuis toujours</div>
-          <h3>COMPLÈTEMENT FOLLE</h3>
-          <p>Naissance officielle d'une vision du monde en dehors de tous les codes. C'est pas un bug, c'est une feature.</p>
+
+        <div class="credit-card fade-up"
+          data-cat="Theatre" data-title="Nabucco" data-role="Poor Child"
+          data-venue="Ellen Kent Tour" data-year="2012"
+          data-desc="Verdi's Nabucco on the Ellen Kent national tour — a sweeping production visiting major UK venues. Playing Poor Child within the opera's dramatic biblical narrative required stillness and emotional presence amid spectacular staging."
+          data-img="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?q=80&w=2070&auto=format&fit=crop" alt="Nabucco" loading="lazy">
+          <span class="credit-card-cat">Theatre</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Nabucco</div>
+            <div class="credit-card-role">Poor Child</div>
+            <div class="credit-card-venue">Ellen Kent Tour</div>
+          </div>
+        </div>
+
+        <!-- Film -->
+        <div class="credit-card fade-up"
+          data-cat="Film" data-title="Behind The Beautiful Forevers" data-role="Noori"
+          data-venue="NT Live" data-year="2014"
+          data-desc="The National Theatre production was captured live for NT Live cinema broadcast, bringing this acclaimed show to audiences across the UK and internationally. A rare opportunity to perform for both a live theatre audience and the camera simultaneously."
+          data-img="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Behind The Beautiful Forevers NT Live" loading="lazy">
+          <span class="credit-card-cat">Film</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Behind The Beautiful Forevers</div>
+            <div class="credit-card-role">Noori</div>
+            <div class="credit-card-venue">NT Live</div>
+          </div>
+        </div>
+
+        <!-- Television -->
+        <div class="credit-card fade-up"
+          data-cat="Television" data-title="The Honourable Woman" data-role="Seed's Daughter"
+          data-venue="BBC Two" data-year="2014"
+          data-desc="Hugo Blick's critically acclaimed BAFTA-winning political thriller starring Maggie Gyllenhaal. Playing Seed's Daughter in this high-profile BBC Two drama offered experience on a professional screen set at the highest level of British television."
+          data-img="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop" alt="The Honourable Woman" loading="lazy">
+          <span class="credit-card-cat">Television</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">The Honourable Woman</div>
+            <div class="credit-card-role">Seed's Daughter</div>
+            <div class="credit-card-venue">BBC Two</div>
+          </div>
+        </div>
+
+        <div class="credit-card fade-up"
+          data-cat="Television" data-title="Thunderbirds Are Go" data-role="Ava &amp; Lettie"
+          data-venue="ITV" data-year="2015"
+          data-desc="Voicing two recurring characters — Ava and Lettie — in ITV's Thunderbirds Are Go reboot. This voice acting role built on existing voiceover experience, demanding distinct characterisation for two separate young personalities."
+          data-img="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop" alt="Thunderbirds Are Go" loading="lazy">
+          <span class="credit-card-cat">Television</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Thunderbirds Are Go</div>
+            <div class="credit-card-role">Ava &amp; Lettie (Voice)</div>
+            <div class="credit-card-venue">ITV</div>
+          </div>
+        </div>
+
+        <div class="credit-card fade-up"
+          data-cat="Television" data-title="John Bishop: Only Joking" data-role="Comedienne"
+          data-venue="Sky 1" data-year="2013"
+          data-desc="Sky 1 comedy special with renowned stand-up John Bishop. Appearing as Comedienne in this sketch format required comic timing, physical characterisation and the ability to hold screen in a fast-paced entertainment format."
+          data-img="https://images.unsplash.com/photo-1527224538127-2104bb71c51b?q=80&w=2071&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1527224538127-2104bb71c51b?q=80&w=2071&auto=format&fit=crop" alt="John Bishop Only Joking" loading="lazy">
+          <span class="credit-card-cat">Television</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">John Bishop: Only Joking</div>
+            <div class="credit-card-role">Comedienne</div>
+            <div class="credit-card-venue">Sky 1</div>
+          </div>
+        </div>
+
+        <!-- Radio -->
+        <div class="credit-card fade-up"
+          data-cat="Radio" data-title="Tumanbay" data-role="Young General Qulan"
+          data-venue="BBC Radio 4" data-year="2016"
+          data-desc="Award-winning BBC Radio 4 drama set in a vast medieval empire. Playing Young General Qulan required pure vocal performance — conveying age, authority and vulnerability through voice alone in this richly produced audio drama."
+          data-img="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2070&auto=format&fit=crop" alt="Tumanbay BBC Radio 4" loading="lazy">
+          <span class="credit-card-cat">Radio</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Tumanbay</div>
+            <div class="credit-card-role">Young General Qulan</div>
+            <div class="credit-card-venue">BBC Radio 4</div>
+          </div>
+        </div>
+
+        <!-- Commercials -->
+        <div class="credit-card fade-up"
+          data-cat="Commercial" data-title="NSPCC" data-role="Lead Girl"
+          data-venue="National Campaign" data-year="2015"
+          data-desc="Lead role in a national NSPCC awareness campaign. As the principal young performer, this role carried the emotional weight of a serious message — demanding authenticity, sensitivity and a strong on-camera presence."
+          data-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="NSPCC Campaign" loading="lazy">
+          <span class="credit-card-cat">Commercial</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">NSPCC</div>
+            <div class="credit-card-role">Lead Girl</div>
+            <div class="credit-card-venue">National Campaign</div>
+          </div>
+        </div>
+
+        <div class="credit-card fade-up"
+          data-cat="Commercial" data-title="Nutella" data-role="Child"
+          data-venue="European Campaign" data-year="2014"
+          data-desc="European commercial for Ferrero's Nutella brand — a high-energy, warmly lit family spot. Playing Child in a pan-European campaign brought experience of international advertising production and tight, precise on-camera direction."
+          data-img="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?q=80&w=2070&auto=format&fit=crop" alt="Nutella Commercial" loading="lazy">
+          <span class="credit-card-cat">Commercial</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Nutella</div>
+            <div class="credit-card-role">Child</div>
+            <div class="credit-card-venue">European Campaign</div>
+          </div>
+        </div>
+
+        <div class="credit-card fade-up"
+          data-cat="Commercial" data-title="Boots Christmas" data-role="School Girl"
+          data-venue="UK Campaign" data-year="2013"
+          data-desc="Part of the Boots annual Christmas campaign — one of the most-watched UK festive ads. Appearing as School Girl in a warm, story-driven spot that ran nationally across TV and digital platforms."
+          data-img="https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=2069&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=2069&auto=format&fit=crop" alt="Boots Christmas Campaign" loading="lazy">
+          <span class="credit-card-cat">Commercial</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Boots — Christmas Campaign</div>
+            <div class="credit-card-role">School Girl</div>
+            <div class="credit-card-venue">UK Campaign</div>
+          </div>
+        </div>
+
+        <div class="credit-card fade-up"
+          data-cat="Commercial" data-title="Barnardo's" data-role="School Girl"
+          data-venue="UK Campaign" data-year="2013"
+          data-desc="Barnardo's charity campaign raising awareness of child vulnerability. Playing School Girl in this emotionally resonant spot required restraint and genuine feeling — the kind of performance that serves the story rather than the performer."
+          data-img="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop" alt="Barnardo's Campaign" loading="lazy">
+          <span class="credit-card-cat">Commercial</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Barnardo's</div>
+            <div class="credit-card-role">School Girl</div>
+            <div class="credit-card-venue">UK Campaign</div>
+          </div>
+        </div>
+
+        <!-- Aida Ellen Kent (6th theatre) -->
+        <div class="credit-card fade-up"
+          data-cat="Theatre" data-title="Aida" data-role="Princess Daughter"
+          data-venue="Ellen Kent Tour" data-year="2012"
+          data-desc="A second Verdi Aida, this time as Princess Daughter on the Ellen Kent national tour. The elevated role required composure and regal bearing within one of opera's most dramatically intense narratives, performed across major UK venues."
+          data-img="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070&auto=format&fit=crop">
+          <img class="credit-card-img" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070&auto=format&fit=crop" alt="Aida Ellen Kent Tour" loading="lazy">
+          <span class="credit-card-cat">Theatre</span>
+          <div class="credit-card-hover">
+            <div class="credit-card-title">Aida</div>
+            <div class="credit-card-role">Princess Daughter</div>
+            <div class="credit-card-venue">Ellen Kent Tour</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Credits Modal -->
+    <div class="credit-modal" id="creditModal" role="dialog" aria-modal="true">
+      <div class="cm-inner">
+        <button class="cm-close" id="cmClose" aria-label="Close">&#x2715;</button>
+        <div class="cm-img-wrap">
+          <img id="cmImg" src="" alt="">
+        </div>
+        <div class="cm-content">
+          <p class="cm-cat" id="cmCat"></p>
+          <h3 class="cm-title" id="cmTitle"></h3>
+          <p class="cm-role" id="cmRole"></p>
+          <div class="cm-meta">
+            <div class="cm-meta-row">
+              <span class="cm-meta-label" data-en="Venue" data-fr="Lieu">Venue</span>
+              <span class="cm-meta-val" id="cmVenue"></span>
+            </div>
+            <div class="cm-meta-row">
+              <span class="cm-meta-label" data-en="Year" data-fr="Année">Year</span>
+              <span class="cm-meta-val" id="cmYear"></span>
+            </div>
+          </div>
+          <p class="cm-desc" id="cmDesc"></p>
         </div>
       </div>
     </div>
-  </section>
 
-  <div class="chaos-divider"></div>
-
-  <!-- ACTING -->
-  <section id="acting">
-    <span class="section-tag fade-in" id="acting-tag">// ACTING.EXECUTE()</span>
-    <h2 class="sec-title fade-in" id="acting-title"><span class="accent">SCÈNE</span> &<br>ÉCRAN</h2>
-
-    <div class="acting-grid stagger">
-      <div class="act-card fade-in">
-        <div class="act-icon" id="act-icon-1">🎭</div>
-        <h3 id="act-1-title">THÉÂTRE PHYSIQUE</h3>
-        <p id="act-1-desc">Corps, voix, espace. Une technique enracinée dans la présence totale et l'énergie brute de la scène.</p>
-      </div>
-      <div class="act-card fade-in">
-        <div class="act-icon" id="act-icon-2">🎬</div>
-        <h3 id="act-2-title">CINÉMA & TV</h3>
-        <p id="act-2-desc">Jeu réaliste devant caméra. La nuance, le regard, le silence — tout parle sur un écran.</p>
-      </div>
-      <div class="act-card fade-in">
-        <div class="act-icon" id="act-icon-3">🎤</div>
-        <h3 id="act-3-title">VOIX & DOUBLAGE</h3>
-        <p id="act-3-desc">Une voix distinctive, modulable, capable d'incarner des univers très différents avec authenticité.</p>
-      </div>
-      <div class="act-card fade-in">
-        <div class="act-icon" id="act-icon-4">⚡</div>
-        <h3 id="act-4-title">IMPROVISATION</h3>
-        <p id="act-4-desc">L'impro comme terrain de jeu infini. Réactivité, créativité, connexion immédiate avec les partenaires.</p>
+    <div class="section-connector fade-up" style="background:linear-gradient(to bottom,var(--soft-white),var(--cream))">
+      <div class="connector-inner">
+        <div class="connector-line"></div>
+        <div class="connector-content">
+          <span class="connector-next" data-en="Up next" data-fr="Ensuite">Up next</span>
+          <span class="connector-title" data-en="My Training" data-fr="Ma Formation">My Training</span>
+        </div>
+        <div class="connector-line"></div>
       </div>
     </div>
 
-    <h3 class="sec-title fade-in" style="margin-top:80px; font-size:clamp(1.8rem,4vw,3rem);">SCÈNE & <span class="accent">ÉCRAN</span> — CRÉDITS</h3>
-    <div class="credits-grid stagger">
-      <div class="credit-card fade-in">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Production">
-        <div class="credit-card-cat">Théâtre</div>
-        <div class="credit-card-overlay">
-          <h4>LES ÂMES SAUVAGES</h4>
-          <div class="role">Rôle principal — Clara</div>
-          <div class="venue">Théâtre de la Bastille, Paris · 2024</div>
+    <section id="act-training">
+      <div class="fade-up" style="margin-bottom:50px;">
+        <p class="sec-label draw-line" data-en="Training" data-fr="Formation">Formation</p>
+        <h2 class="sec-title" data-i18n-html="acting.training">My <em>Training</em></h2>
+      </div>
+      <div class="training-grid stagger">
+        <div class="training-card scale-in">
+          <div class="training-date" data-en="September 2024 — Present" data-fr="Septembre 2024 — Présent">September 2024 — Present</div>
+          <h3>Cours Florent</h3>
+          <p class="place">Paris, France</p>
+          <ul><li data-en="Acting in English — Stage & Screen" data-fr="Jeu d'actrice en anglais — Scène & Écran">Acting in English — Stage &amp; Screen</li></ul>
+        </div>
+        <div class="training-card scale-in">
+          <div class="training-date">2012 — 2019</div>
+          <h3>London Academy of Music and Dramatic Art</h3>
+          <p class="place">London, UK</p>
+          <ul>
+            <li data-en="Acting Solo — Grades 1–6, all Distinction" data-fr="Jeu solo — Niveaux 1–6, tous Mention Très Bien">Acting Solo — Grades 1–6, all Distinction</li>
+            <li data-en="Bronze Medal, Grade 6" data-fr="Médaille de Bronze, Niveau 6">Bronze Medal, Grade 6</li>
+            <li data-en="Verse & Prose — Grade 2, Distinction" data-fr="Vers & Prose — Niveau 2, Mention Très Bien">Verse &amp; Prose — Grade 2, Distinction</li>
+          </ul>
         </div>
       </div>
-      <div class="credit-card fade-in">
-        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=800&auto=format&fit=crop" alt="Production">
-        <div class="credit-card-cat">Court Métrage</div>
-        <div class="credit-card-overlay">
-          <h4>BETWEEN LIGHTS</h4>
-          <div class="role">Protagoniste — Mia</div>
-          <div class="venue">Festival Courts en Seine · 2023</div>
+    </section>
+
+    <section id="act-contact" class="contact-section">
+      <p class="sec-label" data-en="Work Together" data-fr="Travaillons ensemble">Work Together</p>
+      <h2 class="sec-title fade-up" data-i18n-html="acting.contact">Let's create<br>something <em>memorable</em></h2>
+      <p class="contact-sub fade-up" data-en="Available for theatre, screen, voiceover and commercial projects." data-fr="Disponible pour le théâtre, l'écran, la voix off et les projets commerciaux.">Available for theatre, screen, voiceover and commercial projects.</p>
+      <div class="contact-row fade-up">
+        <div class="contact-item">
+          <span class="contact-item-label" data-en="Email" data-fr="E-mail">Email</span>
+          <a href="mailto:tiachinapyel@gmail.com">tiachinapyel@gmail.com</a>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+          <span class="contact-item-label" data-en="Location" data-fr="Localisation">Location</span>
+          <a>Paris, France</a>
         </div>
       </div>
-      <div class="credit-card fade-in">
-        <img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?q=80&w=800&auto=format&fit=crop" alt="Production">
-        <div class="credit-card-cat">Performance</div>
-        <div class="credit-card-overlay">
-          <h4>NUIT BLANCHE</h4>
-          <div class="role">Performance solo</div>
-          <div class="venue">Centre Pompidou · 2023</div>
+      <a href="mailto:tiachinapyel@gmail.com" class="btn-ghost fade-up"><span data-en="Get In Touch" data-fr="Me contacter">Get In Touch</span> <span>→</span></a>
+    </section>
+
+  </div><!-- #page-acting -->
+
+  <!-- ══════════════════════════════════════════
+       PHOTOGRAPHY PAGE
+  ══════════════════════════════════════════ -->
+  <div id="page-photography" class="site-page">
+
+    <section class="page-hero">
+      <div class="page-hero-left">
+        <span class="eyebrow hero-line" data-en="Visual Art · Photography" data-fr="Art Visuel · Photographie">Visual Art · Photography</span>
+        <h1 class="hero-line" data-i18n-html="photo.hero">My<br><em>Photography</em></h1>
+        <p class="hero-line" data-en="A curated collection of portraits, fashion, landscapes and more — each image a story." data-fr="Une collection soignée de portraits, mode, paysages et plus — chaque image, une histoire.">A curated collection of portraits, fashion, landscapes and more — each image a story.</p>
+      </div>
+      <div class="page-hero-right">
+        <img src="img/photography/hero-photo.jpg" alt="Photography hero">
+      </div>
+    </section>
+
+    <div class="marquee-strip">
+      <div class="marquee-inner">
+        <span>Portrait</span><span>Fashion</span><span>Landscape</span>
+        <span>Product</span><span>Creative</span><span>Editorial</span>
+        <span>Portrait</span><span>Fashion</span><span>Landscape</span>
+        <span>Product</span><span>Creative</span><span>Editorial</span>
+      </div>
+    </div>
+
+    <div id="photo-filters">
+      <div class="filters-inner">
+        <span class="filter-label" data-en="Filter" data-fr="Filtrer">Filter</span>
+        <button class="filter-btn active" data-filter="all">
+          <svg class="f-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span data-en="All" data-fr="Tout">All</span>
+        </button>
+        <button class="filter-btn" data-filter="portrait">
+          <svg class="f-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span data-en="Portrait" data-fr="Portrait">Portrait</span>
+        </button>
+        <!-- Fashion filter removed as requested -->
+        <button class="filter-btn" data-filter="landscape">
+          <svg class="f-icon" viewBox="0 0 24 24"><path d="M3 20l5-9 4 6 3-4 5 7H3z"/><circle cx="19" cy="6" r="2"/></svg>
+          <span data-en="Landscape" data-fr="Paysage">Landscape</span>
+        </button>
+        <button class="filter-btn" data-filter="product">
+          <svg class="f-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <span data-en="Product" data-fr="Produit">Product</span>
+        </button>
+        <button class="filter-btn" data-filter="creative">
+          <svg class="f-icon" viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          <span data-en="Creative" data-fr="Créatif">Creative</span>
+        </button>
+        <button class="filter-btn" data-filter="other">
+          <svg class="f-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/></svg>
+          <span data-en="Other" data-fr="Autre">Other</span>
+        </button>
+      </div>
+    </div>
+
+    <section id="photo-gallery">
+      <div class="masonry" id="grid">
+        <div class="g-item" data-cat="portrait" data-title="Photo Q" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-q.png" alt="Photography Q" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo Q</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo B" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-b.png" alt="Photography B" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo B</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo R" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-r.png" alt="Photography R" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo R</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo C" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-c.png" alt="Photography C" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo C</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo D" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-d.jpg" alt="Photography D" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo D</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo S" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-s.png" alt="Photography S" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo S</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo F" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-f.png" alt="Photography F" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo F</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo G" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-g.png" alt="Photography G" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo G</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="product" data-title="Photo E" data-sub="Product">
+          <img src="img/photography/Photos%20Pro/photo-e.png" alt="Photography E" loading="lazy">
+          <span class="g-cat-badge">Product</span>
+          <div class="g-overlay"><h4>Photo E</h4><span>Product</span></div>
+        </div>
+        <div class="g-item" data-cat="product" data-title="Photo J" data-sub="Product">
+          <img src="img/photography/Photos%20Pro/photo-j.png" alt="Photography J" loading="lazy">
+          <span class="g-cat-badge">Product</span>
+          <div class="g-overlay"><h4>Photo J</h4><span>Product</span></div>
+        </div>
+        <div class="g-item" data-cat="product" data-title="Photo K" data-sub="Product">
+          <img src="img/photography/Photos%20Pro/photo-k.png" alt="Photography K" loading="lazy">
+          <span class="g-cat-badge">Product</span>
+          <div class="g-overlay"><h4>Photo K</h4><span>Product</span></div>
+        </div>
+        <div class="g-item" data-cat="product" data-title="Photo M" data-sub="Product">
+          <img src="img/photography/Photos%20Pro/photo-m.png" alt="Photography M" loading="lazy">
+          <span class="g-cat-badge">Product</span>
+          <div class="g-overlay"><h4>Photo M</h4><span>Product</span></div>
+        </div>
+        <div class="g-item" data-cat="product" data-title="Photo O" data-sub="Product">
+          <img src="img/photography/Photos%20Pro/photo-o.png" alt="Photography O" loading="lazy">
+          <span class="g-cat-badge">Product</span>
+          <div class="g-overlay"><h4>Photo O</h4><span>Product</span></div>
+        </div>
+        <div class="g-item" data-cat="landscape" data-title="Photo W" data-sub="Landscape">
+          <img src="img/photography/Photos%20Pro/photo-w.png" alt="Photography W" loading="lazy">
+          <span class="g-cat-badge">Landscape</span>
+          <div class="g-overlay"><h4>Photo W</h4><span>Landscape</span></div>
+        </div>
+        <div class="g-item" data-cat="landscape" data-title="Photo X" data-sub="Landscape">
+          <img src="img/photography/Photos%20Pro/photo-x.png" alt="Photography X" loading="lazy">
+          <span class="g-cat-badge">Landscape</span>
+          <div class="g-overlay"><h4>Photo X</h4><span>Landscape</span></div>
+        </div>
+        <div class="g-item" data-cat="landscape" data-title="Photo AA" data-sub="Landscape">
+          <img src="img/photography/Photos%20Pro/photo-aa.png" alt="Photography AA" loading="lazy">
+          <span class="g-cat-badge">Landscape</span>
+          <div class="g-overlay"><h4>Photo AA</h4><span>Landscape</span></div>
+        </div>
+        <div class="g-item" data-cat="landscape" data-title="Photo AB" data-sub="Landscape">
+          <img src="img/photography/Photos%20Pro/photo-ab.png" alt="Photography AB" loading="lazy">
+          <span class="g-cat-badge">Landscape</span>
+          <div class="g-overlay"><h4>Photo AB</h4><span>Landscape</span></div>
+        </div>
+        <div class="g-item" data-cat="creative" data-title="Photo T" data-sub="Creative">
+          <img src="img/photography/Photos%20Pro/photo-t.png" alt="Photography T" loading="lazy">
+          <span class="g-cat-badge">Creative</span>
+          <div class="g-overlay"><h4>Photo T</h4><span>Creative</span></div>
+        </div>
+        <div class="g-item" data-cat="creative" data-title="Photo Z" data-sub="Creative">
+          <img src="img/photography/Photos%20Pro/photo-z.png" alt="Photography Z" loading="lazy">
+          <span class="g-cat-badge">Creative</span>
+          <div class="g-overlay"><h4>Photo Z</h4><span>Creative</span></div>
+        </div>
+        <div class="g-item" data-cat="creative" data-title="Photo AD" data-sub="Creative">
+          <img src="img/photography/Photos%20Pro/photo-ad.png" alt="Photography AD" loading="lazy">
+          <span class="g-cat-badge">Creative</span>
+          <div class="g-overlay"><h4>Photo AD</h4><span>Creative</span></div>
+        </div>
+        <div class="g-item" data-cat="other" data-title="Photo AC" data-sub="Other">
+          <img src="img/photography/Photos%20Pro/photo-ac.png" alt="Photography AC" loading="lazy">
+          <span class="g-cat-badge">Other</span>
+          <div class="g-overlay"><h4>Photo AC</h4><span>Other</span></div>
+        </div>
+        <div class="g-item" data-cat="other" data-title="Photo AE" data-sub="Other">
+          <img src="img/photography/Photos%20Pro/photo-ae.png" alt="Photography AE" loading="lazy">
+          <span class="g-cat-badge">Other</span>
+          <div class="g-overlay"><h4>Photo AE</h4><span>Other</span></div>
+        </div>
+        <div class="g-item" data-cat="other" data-title="Photo V" data-sub="Other">
+          <img src="img/photography/Photos%20Pro/photo-v.png" alt="Photography V" loading="lazy">
+          <span class="g-cat-badge">Other</span>
+          <div class="g-overlay"><h4>Photo V</h4><span>Other</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo H" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-h.png" alt="Photography H" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo H</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo A" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-a.png" alt="Photography A" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo A</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo I" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-i.png" alt="Photography I" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo I</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="creative" data-title="Photo L" data-sub="Creative">
+          <img src="img/photography/Photos%20Pro/photo-l.png" alt="Photography L" loading="lazy">
+          <span class="g-cat-badge">Creative</span>
+          <div class="g-overlay"><h4>Photo L</h4><span>Creative</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo N" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-n.png" alt="Photography N" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo N</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo P" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-p.png" alt="Photography P" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo P</h4><span>Portrait</span></div>
+        </div>
+        <div class="g-item" data-cat="landscape" data-title="Photo U" data-sub="Landscape">
+          <img src="img/photography/Photos%20Pro/photo-u.png" alt="Photography U" loading="lazy">
+          <span class="g-cat-badge">Landscape</span>
+          <div class="g-overlay"><h4>Photo U</h4><span>Landscape</span></div>
+        </div>
+        <div class="g-item" data-cat="portrait" data-title="Photo Y" data-sub="Portrait">
+          <img src="img/photography/Photos%20Pro/photo-y.png" alt="Photography Y" loading="lazy">
+          <span class="g-cat-badge">Portrait</span>
+          <div class="g-overlay"><h4>Photo Y</h4><span>Portrait</span></div>
         </div>
       </div>
+    </section>
+
+    <section id="photo-contact" class="contact-section">
+      <p class="sec-label" data-en="Get In Touch" data-fr="Me contacter">Get In Touch</p>
+      <h2 class="sec-title fade-up" data-i18n-html="photo.contact">Let's create<br>something <em>beautiful</em></h2>
+      <p class="contact-sub fade-up" data-en="Available for photography, creative collaborations and branding projects." data-fr="Disponible pour la photographie, les collaborations créatives et les projets de branding.">Available for photography, creative collaborations and branding projects.</p>
+      <div class="contact-row fade-up">
+        <div class="contact-item">
+          <span class="contact-item-label" data-en="Email" data-fr="E-mail">Email</span>
+          <a href="mailto:tiachinapyel@gmail.com">tiachinapyel@gmail.com</a>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+          <span class="contact-item-label" data-en="Location" data-fr="Localisation">Location</span>
+          <a>Paris, France</a>
+        </div>
+      </div>
+      <a href="mailto:tiachinapyel@gmail.com" class="btn-ghost fade-up"><span data-en="Start a Conversation" data-fr="Démarrons une conversation">Start a Conversation</span> <span>→</span></a>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+      <div class="lb-inner">
+        <span class="lb-counter" id="lbCounter"></span>
+        <button class="lb-close" id="lbClose">✕</button>
+        <button class="lb-nav" id="lbPrev">←</button>
+        <img src="" alt="" id="lbImg">
+        <button class="lb-nav" id="lbNext">→</button>
+        <div class="lb-caption" id="lbCaption"><h4></h4><span></span></div>
+      </div>
     </div>
 
-    <h3 class="sec-title fade-in" style="margin-top:80px; font-size:clamp(1.8rem,4vw,3rem);">MA <span class="accent">FORMATION</span></h3>
-    <div class="training-grid stagger">
-      <div class="training-card fade-in">
-        <div class="training-date">2022 — 2023</div>
-        <h3>COURS FLORENT</h3>
-        <div class="place">Paris, France</div>
-        <ul>
-          <li>Jeu dramatique & technique Stanislavski</li>
-          <li>Théâtre physique & Lecoq</li>
-          <li>Scènes contemporaines</li>
-        </ul>
-      </div>
-      <div class="training-card fade-in">
-        <div class="training-date">2021 — 2022</div>
-        <h3>LONDON DRAMA SCHOOL</h3>
-        <div class="place">Londres, Royaume-Uni</div>
-        <ul>
-          <li>Acting for Camera</li>
-          <li>Voice & Speech</li>
-          <li>Shakespeare & texte classique</li>
-        </ul>
-      </div>
-      <div class="training-card fade-in">
-        <div class="training-date">2022</div>
-        <h3>MASTER CLASS VIDÉO & VO</h3>
-        <div class="place">Paris & Distanciel</div>
-        <ul>
-          <li>Voix off commerciale</li>
-          <li>Doublage cinéma</li>
-        </ul>
-      </div>
-      <div class="training-card fade-in">
-        <div class="training-date">En Continu</div>
-        <h3>WORKSHOPS & MASTERCLASS</h3>
-        <div class="place">Londres, Paris, Berlin</div>
-        <ul>
-          <li>Improvisation avancée</li>
-          <li>Caméra & émotions</li>
-          <li>Mouvement & danse contemporaine</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  </div><!-- #page-photography -->
 
-  <div class="chaos-divider"></div>
-
-  <!-- PHOTOGRAPHY -->
-  <section id="photography">
-    <span class="section-tag fade-in" id="photo-tag">// GALLERY.RENDER()</span>
-    <h2 class="sec-title fade-in" id="photo-title">MA<br><span class="accent2">PHOTOGRAPHIE</span></h2>
-
-    <div class="photo-filters fade-in">
-      <span class="filter-label">FILTRER :</span>
-      <button class="filter-btn active" data-filter="all">TOUT</button>
-      <button class="filter-btn" data-filter="portrait">PORTRAIT</button>
-      <button class="filter-btn" data-filter="lifestyle">LIFESTYLE</button>
-      <button class="filter-btn" data-filter="editorial">ÉDITORIAL</button>
-      <button class="filter-btn" data-filter="pro">PRO</button>
-    </div>
-
-    <div class="masonry" id="gallery">
-      <div class="g-item" data-cat="portrait">
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800" alt="Portrait 1">
-        <div class="g-overlay"><h4>LUMIÈRE DORÉE</h4><span>Portrait · 2024</span></div>
-      </div>
-      <div class="g-item" data-cat="lifestyle">
-        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800" alt="Lifestyle 1">
-        <div class="g-overlay"><h4>URBAN FLOW</h4><span>Lifestyle · 2024</span></div>
-      </div>
-      <div class="g-item" data-cat="editorial">
-        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800" alt="Editorial 1">
-        <div class="g-overlay"><h4>ÉDITION NOIRE</h4><span>Éditorial · 2023</span></div>
-      </div>
-      <div class="g-item" data-cat="portrait">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800" alt="Portrait 2">
-        <div class="g-overlay"><h4>REGARD PROFOND</h4><span>Portrait · 2024</span></div>
-      </div>
-      <div class="g-item" data-cat="pro">
-        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=800" alt="Pro 1">
-        <div class="g-overlay"><h4>PORTFOLIO PRO</h4><span>Pro · 2023</span></div>
-      </div>
-      <div class="g-item" data-cat="lifestyle">
-        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=800" alt="Lifestyle 2">
-        <div class="g-overlay"><h4>MOMENT VOLÉ</h4><span>Lifestyle · 2023</span></div>
-      </div>
-      <div class="g-item" data-cat="editorial">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800" alt="Editorial 2">
-        <div class="g-overlay"><h4>SÉRIE BLANCHE</h4><span>Éditorial · 2024</span></div>
-      </div>
-      <div class="g-item" data-cat="portrait">
-        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800" alt="Portrait 3">
-        <div class="g-overlay"><h4>OMBRE & LUMIÈRE</h4><span>Portrait · 2023</span></div>
-      </div>
-      <div class="g-item" data-cat="pro">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800" alt="Pro 2">
-        <div class="g-overlay"><h4>SIGNATURE</h4><span>Pro · 2024</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <div class="lb-inner">
-      <button class="lb-nav" id="lb-prev">‹</button>
-      <div style="position:relative;">
-        <button class="lb-close" id="lb-close">✕</button>
-        <img src="" alt="" id="lb-img">
-      </div>
-      <button class="lb-nav" id="lb-next">›</button>
-    </div>
-  </div>
-
-  <div class="chaos-divider"></div>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-chaos-bg"></div>
-    <span class="section-tag fade-in" id="contact-tag">// CONTACT.INIT()</span>
-    <h2 class="contact-title fade-in" id="contact-title">CRÉONS QUELQUE<br>CHOSE D'<span class="y">INOUBLIABLE</span></h2>
-    <p class="contact-sub fade-in" id="contact-sub">
-      Disponible pour des projets photo, actoraux, et tout ce qui<br>
-      sort un peu des sentiers battus. Especially the weird stuff.
-    </p>
-    <div class="contact-row fade-in">
-      <div class="contact-item">
-        <span class="contact-label">EMAIL</span>
-        <a href="mailto:tia@tialana.com">tia@tialana.com</a>
-      </div>
-      <div class="contact-divider"></div>
-      <div class="contact-item">
-        <span class="contact-label">INSTAGRAM</span>
-        <a href="#">@tialana</a>
-      </div>
-      <div class="contact-divider"></div>
-      <div class="contact-item">
-        <span class="contact-label">BASÉE À</span>
-        <a href="#">London · Paris</a>
-      </div>
-    </div>
-    <a href="mailto:tia@tialana.com" class="contact-cta fade-in" id="contact-cta">
-      ENVOYER UN MESSAGE ⚡
-    </a>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-logo">TIA-LANA CHINAPYEL</span>
-    <p id="footer-copy">© 2024 — Tous droits réservés</p>
+    <span class="footer-logo">Tia-Lana Chinapyel</span>
+    <p data-en="© 2026 — All rights reserved" data-fr="© 2026 — Tous droits réservés">© 2026 — All rights reserved</p>
   </footer>
 
+  <script src="shared.js"></script>
   <script>
-    /* ══════════════════════════════════════════════════════
-       SYSTÈME DE THÈMES
-    ══════════════════════════════════════════════════════ */
-    const THEMES = {
-      classique: {
-        label: 'CLASSIQUE',
-        icon: '🕯️',
-        texts: {
-          'hero-eyebrow':   'Photographe · Comédienne · Directrice Artistique',
-          'hero-sub':       'Une créative franco-britannique qui capture <span>l\'émotion et la lumière</span>.<br>Entre Londres et Paris, au service de l\'histoire que vous souhaitez raconter.',
-          'hero-cta':       'Découvrir mon travail →',
-          'hero-bg-text':   'CHINAPYEL',
-          'about-tag':      'À propos',
-          'about-title':    'UNE ARTISTE<br>AU SERVICE DE <span class="accent">L\'HISTOIRE</span><br>ET DE LA LUMIÈRE',
-          'about-p1':       'Je m\'appelle <span class="highlight">Tia-Lana Chinapyel</span>, créative née au Royaume-Uni et basée à Paris. Mon travail est guidé par une conviction : chaque image, chaque interprétation doit porter en elle une vérité émotionnelle.',
-          'about-p2':       'Derrière l\'objectif comme devant la caméra, j\'apporte le même soin à la lumière, à la composition et à la connexion humaine. <span class="highlight">La précision et la sensibilité</span> sont les deux piliers de ma pratique artistique.',
-          'about-badge-label': 'CRÉATIONS',
-          'skills-tag':     'Savoir-faire',
-          'skills-title':   'MES<br><span class="accent2">DISCIPLINES</span>',
-          'skill-1-title':  'PHOTOGRAPHIE',
-          'skill-1-desc':   'Portrait, éditorial, lifestyle. Une approche rigoureuse de la lumière naturelle et une sensibilité profonde pour révéler la singularité de chaque sujet.',
-          'skill-2-title':  'JEU D\'ACTRICE',
-          'skill-2-desc':   'Scène et écran. Une technique construite sur la précision du texte, la justesse du corps et la profondeur de l\'émotion incarnée.',
-          'skill-3-title':  'DIRECTION ARTISTIQUE',
-          'skill-3-desc':   'Identité visuelle, conception de campagnes, direction de contenu. L\'art de donner une cohérence esthétique forte à une vision.',
-          'skill-4-title':  'CRÉATION DE CONTENU',
-          'skill-4-desc':   'Storytelling visuel et multiformat. Des contenus pensés pour durer, ancrés dans une narration singulière et maîtrisée.',
-          'exp-tag':        'Parcours',
-          'exp-title':      'MON<br><span class="accent3">EXPÉRIENCE</span>',
-          'exp-desc':       'Un parcours construit avec exigence, entre deux capitales culturelles, au croisement de l\'image et de la scène.',
-          'acting-tag':     'Jeu & Interprétation',
-          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN',
-          'act-icon-1': '🎭', 'act-1-title': 'THÉÂTRE',
-          'act-1-desc': 'Une présence scénique construite sur la rigueur technique et l\'écoute. Le corps comme instrument premier de l\'expression.',
-          'act-icon-2': '🎬', 'act-2-title': 'CINÉMA & TÉLÉVISION',
-          'act-2-desc': 'Jeu réaliste devant caméra. La finesse du regard, la précision du silence, la vérité de chaque instant capturé.',
-          'act-icon-3': '🎙️', 'act-3-title': 'VOIX & DOUBLAGE',
-          'act-3-desc': 'Une voix posée, modulable et expressive, capable d\'habiter des univers narratifs très différents avec authenticité.',
-          'act-icon-4': '✦', 'act-4-title': 'IMPROVISATION',
-          'act-4-desc': 'La spontanéité comme discipline. Une réactivité affûtée et une présence totale au service de la scène et du partenaire.',
-          'photo-tag':      'Galerie',
-          'photo-title':    'MA<br><span class="accent2">PHOTOGRAPHIE</span>',
-          'contact-tag':    'Contact',
-          'contact-title':  'TRAVAILLONS<br>ENSEMBLE SUR QUELQUE CHOSE D\'<span class="y">ESSENTIEL</span>',
-          'contact-sub':    'Disponible pour des collaborations en photographie, jeu d\'actrice<br>et direction artistique. Projets exigeants bienvenus.',
-          'contact-cta':    'Me contacter →',
-          'footer-copy':    '© 2024 Tia-Lana Chinapyel — Tous droits réservés',
-        },
-        timeline: [
-          { date: '2023 — Présent', title: 'PHOTOGRAPHE FREELANCE', desc: 'Projets personnels et éditoriaux entre Londres et Paris. Spécialisation en portrait et narration visuelle avec une approche documentaire.' },
-          { date: '2022 — 2023', title: 'FORMATION EN JEU D\'ACTRICE', desc: 'Développement d\'une technique rigoureuse — théâtre physique, jeu à la caméra, travail vocal et interprétation du texte classique.' },
-          { date: '2021 — 2022', title: 'DIRECTION ARTISTIQUE & BRANDING', desc: 'Collaboration avec des marques pour concevoir des identités visuelles cohérentes et des campagnes de contenu à forte intention.' },
-          { date: 'En continu', title: 'RECHERCHE & DÉVELOPPEMENT', desc: 'Exploration permanente des frontières entre photographie, performance et narration. Un processus de création en constante évolution.' },
-        ],
-        marquee1: ['Photographie', 'Narration Visuelle', 'Jeu d\'Actrice', 'Direction Artistique', 'Création de Contenu', 'Scène & Écran', 'Tia-Lana Chinapyel'],
-        marquee2: ['LONDON', 'PARIS', 'FRANCO-BRITANNIQUE', 'LUMIÈRE & ÉMOTION', 'PORTRAIT', 'ÉDITORIAL', 'L\'IMAGE AU SERVICE DU RÉCIT'],
-      },
-      chaotique: {
-        label: 'CHAOTIQUE',
-        icon: '💥',
-        texts: {
-          'hero-eyebrow':   '⚡ CREATIVE · PHOTOGRAPHER · ACTRESS · CHAOS GENERATOR ⚡',
-          'hero-sub':       'Narration visuelle ancrée dans l\'émotion, la lumière et <span>l\'intimité absolue</span>.<br>Entre Londres et Paris. Et un peu dans la lune.',
-          'hero-cta':       'ENTRER DANS SON MONDE →',
-          'hero-bg-text':   'CHINAPYEL',
-          'about-tag':      '// ABOUT_ME.EXE',
-          'about-title':    'UNE CRÉATIVE<br>AVEC UNE <span class="accent">HISTOIRE</span><br>À RACONTER',
-          'about-p1':       'Je m\'appelle <span class="highlight">Tia-Lana</span> et je suis une créative née au Royaume-Uni, basée à Paris. J\'ai une passion profonde pour la narration visuelle — explorer l\'émotion, le récit et l\'esthétique à travers la photographie et le jeu d\'actrice.',
-          'about-p2':       'Que ce soit derrière l\'objectif ou devant, j\'apporte le même soin pour la lumière, l\'atmosphère et la connexion humaine à chaque projet. <span class="highlight">Et oui, je suis totalement folle.</span> C\'est mon superpouvoir.',
-          'about-badge-label': 'STORIES',
-          'skills-tag':     '// SKILLS.LOAD()',
-          'skills-title':   'CE QUE<br>JE <span class="accent2">CRÉE</span>',
-          'skill-1-title':  'PHOTOGRAPHIE',
-          'skill-1-desc':   'Portrait, lifestyle, mode. Je capture la lumière et l\'émotion avec une passion dévorante pour chaque instant volé.',
-          'skill-2-title':  'JEU D\'ACTRICE',
-          'skill-2-desc':   'Scène, écran, voix. Une présence électrique et une capacité à incarner n\'importe quel univers narratif.',
-          'skill-3-title':  'DIRECTION ARTISTIQUE',
-          'skill-3-desc':   'Branding visuel, identité de marque, conception de contenu. L\'art de construire un univers cohérent et puissant.',
-          'skill-4-title':  'CONTENT CREATION',
-          'skill-4-desc':   'Réseaux sociaux, campagnes visuelles, storytelling multiformat. Chaque pixel raconte une histoire.',
-          'exp-tag':        '// EXPERIENCE.LOG',
-          'exp-title':      'MON<br><span class="accent3">PARCOURS</span>',
-          'exp-desc':       'Une trajectoire construite autour de la passion, de l\'audace et d\'une légère obsession pour la perfection.',
-          'acting-tag':     '// ACTING.EXECUTE()',
-          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN',
-          'act-icon-1': '🎭', 'act-1-title': 'THÉÂTRE PHYSIQUE',
-          'act-1-desc': 'Corps, voix, espace. Une technique enracinée dans la présence totale et l\'énergie brute de la scène.',
-          'act-icon-2': '🎬', 'act-2-title': 'CINÉMA & TV',
-          'act-2-desc': 'Jeu réaliste devant caméra. La nuance, le regard, le silence — tout parle sur un écran.',
-          'act-icon-3': '🎤', 'act-3-title': 'VOIX & DOUBLAGE',
-          'act-3-desc': 'Une voix distinctive, modulable, capable d\'incarner des univers très différents avec authenticité.',
-          'act-icon-4': '⚡', 'act-4-title': 'IMPROVISATION',
-          'act-4-desc': 'L\'impro comme terrain de jeu infini. Réactivité, créativité, connexion immédiate avec les partenaires.',
-          'photo-tag':      '// GALLERY.RENDER()',
-          'photo-title':    'MA<br><span class="accent2">PHOTOGRAPHIE</span>',
-          'contact-tag':    '// CONTACT.INIT()',
-          'contact-title':  'CRÉONS QUELQUE<br>CHOSE D\'<span class="y">INOUBLIABLE</span>',
-          'contact-sub':    'Disponible pour des projets photo, actoraux, et tout ce qui<br>sort un peu des sentiers battus. Especially the weird stuff.',
-          'contact-cta':    'ENVOYER UN MESSAGE ⚡',
-          'footer-copy':    '© 2024 — Tous droits réservés',
-        },
-        timeline: [
-          { date: '2023 — Présent', title: 'PHOTOGRAPHE FREELANCE', desc: 'Projets personnels et éditoriaux entre Londres et Paris. Spécialisation en portrait et narration visuelle.' },
-          { date: '2022 — 2023', title: 'FORMATION EN JEU D\'ACTRICE', desc: 'Développement d\'une technique polyvalente — théâtre physique, cinéma, performance devant caméra.' },
-          { date: '2021 — 2022', title: 'DIRECTION ARTISTIQUE & BRANDING', desc: 'Collaboration avec des marques pour créer des identités visuelles fortes et des campagnes de contenu.' },
-          { date: 'Depuis toujours', title: 'COMPLÈTEMENT FOLLE', desc: 'Naissance officielle d\'une vision du monde en dehors de tous les codes. C\'est pas un bug, c\'est une feature.' },
-        ],
-        marquee1: ['Photography','Visual Storytelling','Acting','Branding','Content Creation','Stage & Screen','COMPLÈTEMENT FOLLE'],
-        marquee2: ['LONDON','PARIS','ANYWHERE','NOWHERE','EVERYWHERE','TIA-LANA','CHAOS IS ART'],
-      },
+    let photoInitialized = false;
 
-      amour: {
-        label: 'AMOUR',
-        icon: '💕',
-        texts: {
-          'hero-eyebrow':   '💕 RÊVEUSE · LUMINEUSE · PASSIONNÉE · CRÉATRICE D\'ÉMOTIONS 💕',
-          'hero-sub':       'Des images qui effleurent l\'âme, une lumière qui raconte <span>l\'amour en toutes ses formes</span>.<br>Entre deux villes, un cœur qui déborde.',
-          'hero-cta':       'ENTRER DANS SON CŒUR →',
-          'hero-bg-text':   'AMOUR',
-          'about-tag':      '// MON HISTOIRE 💕',
-          'about-title':    'UNE ÂME QUI<br>AIME AVEC <span class="accent">TOUT CE</span><br>QU\'ELLE A',
-          'about-p1':       'Je m\'appelle <span class="highlight">Tia-Lana</span> et je suis née avec trop d\'amour à donner. Alors je le mets dans chaque image, chaque rôle, chaque regard capturé.',
-          'about-p2':       'L\'amour est ma technique. La tendresse, mon esthétique. <span class="highlight">Et mon cœur déborde</span> sur chaque projet que je touche — c\'est pas une métaphore.',
-          'about-badge-label': 'LOVE',
-          'skills-tag':     '// PASSION.LOAD()',
-          'skills-title':   'CE QUE<br>J\'<span class="accent2">AIME</span> CRÉER',
-          'skill-1-title':  'PHOTOGRAPHIE DU CŒUR',
-          'skill-1-desc':   'Capturer les âmes nues, les instants de grâce, la lumière qui rend les gens beaux. Parce que tout le monde mérite d\'être vu avec amour.',
-          'skill-2-title':  'INCARNER DES ÉMOTIONS',
-          'skill-2-desc':   'Jouer, c\'est aimer profondément — un personnage, une scène, un public. Je donne tout ce que j\'ai, toujours.',
-          'skill-3-title':  'CRÉER LA BEAUTÉ',
-          'skill-3-desc':   'Tisser des identités visuelles avec douceur et intention. Parce que la beauté mérite d\'être partagée.',
-          'skill-4-title':  'RACONTER L\'AMOUR',
-          'skill-4-desc':   'Des contenus qui touchent, qui restent, qui font pleurer (dans le bon sens). L\'art de créer de l\'émotion vraie.',
-          'exp-tag':        '// MON CHEMIN 💕',
-          'exp-title':      'MON<br><span class="accent3">HISTOIRE</span>',
-          'exp-desc':       'Une trajectoire tissée de rencontres, d\'émotions et d\'un amour inconditionnel pour l\'art et les êtres.',
-          'acting-tag':     '// SCÈNE.AMOUR()',
-          'acting-title':   '<span class="accent">CŒUR</span> &<br>ÂME',
-          'act-icon-1': '💕', 'act-1-title': 'THÉÂTRE DU CŒUR',
-          'act-1-desc': 'Être sur scène, c\'est être vulnérable et magnifique en même temps. Je joue avec tout ce que j\'ai.',
-          'act-icon-2': '🌹', 'act-2-title': 'CINÉMA & ÉMOTIONS',
-          'act-2-desc': 'La caméra capte ce que les mots ne peuvent pas dire. Le regard, le souffle, le silence aimant.',
-          'act-icon-3': '🎶', 'act-3-title': 'VOIX & DOUCEUR',
-          'act-3-desc': 'Une voix qui enveloppe, qui réchauffe, qui sait se faire douce ou intense selon ce que le cœur demande.',
-          'act-icon-4': '✨', 'act-4-title': 'IMPROVISATION',
-          'act-4-desc': 'L\'amour de l\'instant présent, de la connexion vraie avec les partenaires. L\'impro comme acte d\'amour.',
-          'photo-tag':      '// GALERIE.DOUCE()',
-          'photo-title':    'MON<br><span class="accent2">ÂME EN IMAGES</span>',
-          'contact-tag':    '// PARLER.ENSEMBLE()',
-          'contact-title':  'CRÉONS QUELQUE<br>CHOSE D\'<span class="y">ÉMOUVANT</span>',
-          'contact-sub':    'Pour des projets qui ont de l\'âme, de la douceur, et cette petite<br>lumière qui fait pleurer les gens — dans le bon sens.',
-          'contact-cta':    'ÉCRIRE AVEC AMOUR 💕',
-          'footer-copy':    '© 2024 — Fait avec amour ❤️',
-        },
-        timeline: [
-          { date: '2023 — Présent', title: 'PHOTOGRAPHE DU CŒUR', desc: 'Capturer les âmes nues, les instants volés, les sourires qui débordent. Entre Londres et Paris, avec tout l\'amour du monde.' },
-          { date: '2022 — 2023', title: 'APPRENDRE À AIMER JOUER', desc: 'Découvrir que jouer, c\'est aimer profondément — un personnage, une scène, un public. Toujours avec le cœur en premier.' },
-          { date: '2021 — 2022', title: 'CRÉER DE BELLES CHOSES', desc: 'Tisser des identités visuelles avec douceur et passion. Parce que la beauté mérite d\'exister et d\'être partagée.' },
-          { date: 'Depuis toujours', title: 'AMOUREUSE DE LA VIE', desc: 'Tomber amoureuse de chaque lumière, chaque visage, chaque silence. C\'est une maladie. Une très belle maladie.' },
-        ],
-        marquee1: ['Amour','Douceur','Lumière','Émotion','Tendresse','Beauté','LE CŒUR À L\'OUVRAGE'],
-        marquee2: ['LONDON','PARIS','PARTOUT OÙ TU ES','DANS TON CŒUR','DANS MES RÊVES','TIA-LANA','L\'AMOUR EST ART'],
-      },
+    function initPhotographyPage() {
+      if (photoInitialized) return;
+      photoInitialized = true;
 
-      casse: {
-        label: 'CASSÉ',
-        icon: '🔧',
-        texts: {
-          'hero-eyebrow':   '⚠️ ERREUR · 404 · CHARGEMENT EN COURS... · NE PAS TOUCHER ⚠️',
-          'hero-sub':       'Site en cours de reconstruction. Ou pas. Les photos existent. Peut-être. <span>[ERREUR DE CHARGEMENT]</span>.<br>Merci pour votre patience. Ou pas.',
-          'hero-cta':       'ESSAYER D\'ENTRER → (ça marche pas)',
-          'hero-bg-text':   '404',
-          'about-tag':      '// FICHIER_CORROMPU.exe',
-          'about-title':    'UNE CRÉA-<br>[DONNÉES <span class="accent">MANQUANTES</span>]<br>⚠️ ERREUR',
-          'about-p1':       'Je m\'appelle <span class="highlight">[NOM MANQUANT]</span>... désolée le fichier est partiellement corrompu. Je suis quelque chose en rapport avec la photographie et/ou le théâtre. Je crois.',
-          'about-p2':       'Le reste de ce paragraphe a été perdu lors d\'une mise à jour ratée. <span class="highlight">⚠️ CONTENU NON DISPONIBLE.</span> Ce n\'est pas un problème technique, c\'est une feature.',
-          'about-badge-label': 'ERROR',
-          'skills-tag':     '// SKILLS.LOAD() — TIMEOUT',
-          'skills-title':   'CE QUE<br>JE <span class="accent2">TENTE</span> DE FAIRE',
-          'skill-1-title':  'PHOTOGRAPHIE [PARFOIS]',
-          'skill-1-desc':   '⚠️ Service intermittent. Les photos existent mais le disque dur plante régulièrement. Résultats variables selon la météo.',
-          'skill-2-title':  'JEU [EN MAINTENANCE]',
-          'skill-2-desc':   'Module partiellement fonctionnel. Certaines émotions disponibles, d\'autres en cours de réinstallation.',
-          'skill-3-title':  'DIRECTION [⚠️ ERREUR]',
-          'skill-3-desc':   '[CONTENU INDISPONIBLE] Des marques. Des trucs visuels. Ça marchait bien jusqu\'à la dernière panne système.',
-          'skill-4-title':  'CONTENU [CHARGEMENT...]',
-          'skill-4-desc':   '████████░░ 80% — La barre de progression est bloquée depuis 3 jours. On attend. On attend toujours.',
-          'exp-tag':        '// EXPERIENCE.LOG [CORROMPU]',
-          'exp-title':      'MON<br><span class="accent3">PARCOURS (?)</span>',
-          'exp-desc':       '⚠️ Fichier partiellement récupéré. Certaines données peuvent être inexactes, manquantes ou complètement inventées.',
-          'acting-tag':     '// ACTING.exe [EN MAINTENANCE]',
-          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN [⚠️]',
-          'act-icon-1': '⚠️', 'act-1-title': 'THÉÂTRE [INSTABLE]',
-          'act-1-desc': 'Module en cours de réparation. Corps disponible, voix intermittente, énergie de scène à 43%. Désolée pour le dérangement.',
-          'act-icon-2': '📺', 'act-2-title': 'CINÉMA [HORS LIGNE]',
-          'act-2-desc': 'Connexion perdue avec la réalité cinématographique. Tentative de reconnexion en cours depuis [DATE INCONNUE].',
-          'act-icon-3': '🔇', 'act-3-title': 'VOIX [MUET]',
-          'act-3-desc': 'Le module vocal a planté lors de la dernière mise à jour. Redémarrage prévu. Date inconnue. Peut-être jamais.',
-          'act-icon-4': '❓', 'act-4-title': 'IMPROVISATION [???]',
-          'act-4-desc': 'undefined. null. NaN. L\'impro fonctionne encore mais on ne sait pas vraiment pourquoi. Ne pas toucher.',
-          'photo-tag':      '// GALLERY.RENDER() — ERREUR 500',
-          'photo-title':    'MA<br><span class="accent2">GALERIE [CHARGEMENT...]</span>',
-          'contact-tag':    '// CONTACT.INIT() — FAILED',
-          'contact-title':  'CONTACTER<br><span class="y">[EN TRAVAUX]</span>',
-          'contact-sub':    'Le formulaire est en maintenance. Ou cassé. C\'est difficile à dire.<br>Essayez quand même, parfois ça marche par accident.',
-          'contact-cta':    'TENTER D\'ENVOYER ⚠️',
-          'footer-copy':    '© [ANNÉE MANQUANTE] — Droits peut-être réservés',
-        },
-        timeline: [
-          { date: '2023 — ???', title: 'PHOTOGRAPHE (JE CROIS)', desc: '⚠️ Statut incertain. Projets en cours mais le disque dur plante régulièrement. Les photos existent. Certaines d\'entre elles.' },
-          { date: '[DATE CORROMPUE]', title: 'FORMATION EN [FICHIER MANQUANT]', desc: 'Cette entrée est partiellement illisible. Des cours ont eu lieu. Des choses ont été apprises. Peut-être. Probablement.' },
-          { date: 'Erreur de lecture', title: 'DIRECTION ██████ & ██████', desc: '[CONTENU CENSURÉ PAR L\'ADMINISTRATEUR SYSTÈME] Des marques. Des trucs visuels. Ça marchait bien jusqu\'à la panne.' },
-          { date: 'null / undefined', title: '█████████████ FOLLE', desc: 'NaN. undefined. Erreur fatale non résolue depuis la naissance. C\'est dans la nature du fichier. Ne pas forcer l\'arrêt.' },
-        ],
-        marquee1: ['⚠️ EN TRAVAUX','ERREUR 404','CHARGEMENT...','█████████','NE PAS TOUCHER','⚠️ EN MAINTENANCE','DÉSOLÉE'],
-        marquee2: ['LONDON','PARIS','[VILLE INCONNUE]','NULL','UNDEFINED','TIA-LANA (?)','⚠️ SITE CASSÉ'],
-      },
+      const btns  = document.querySelectorAll('#page-photography .filter-btn');
+      const items = document.querySelectorAll('#page-photography .g-item');
 
-      folle: {
-        label: 'FOLLE',
-        icon: '🌀',
-        texts: {
-          'hero-eyebrow':   '🌀 genre je sais pas · photographe ?? · actrice peut-être · AAAAH 🌀',
-          'hero-sub':       'ok donc j\'ai un appareil photo et parfois je fais des trucs et c\'est <span>vraiment très bien je crois??</span><br>aussi j\'aime les chats et le chaos. surtout le chaos.',
-          'hero-cta':       'CLIQUER ICI lol →',
-          'hero-bg-text':   'AAAAAAH',
-          'about-tag':      '// ???_ME.wtf',
-          'about-title':    'QUELQU\'UN<br>QUI FAIT DES <span class="accent">TRUCS</span><br>C\'EST BIEN NON',
-          'about-p1':       'alors <span class="highlight">tia-lana</span> c\'est moi et je fais des photos et du théâtre et des fois je mange du nutella directement à la cuillère et c\'est une démarche artistique, j\'ai décidé.',
-          'about-p2':       'la photographie c\'est comme regarder la réalité mais en mieux ou en pire selon les jours. <span class="highlight">et oui je suis folle.</span> mais genre la folle sympathique. enfin j\'espère??',
-          'about-badge-label': '???',
-          'skills-tag':     '// trucs.que.je.fais()',
-          'skills-title':   'CE QUE<br>JE <span class="accent2">FAIS</span> (à peu près)',
-          'skill-1-title':  'PHOTOS WOOHOO',
-          'skill-1-desc':   'des portraits des gens des lumières des trucs beaux. entre Londres et Paris. et aussi dans ma chambre avec mon iPhone des fois. c\'est de l\'art aussi.',
-          'skill-2-title':  'JOUER LA COMÉDIE !!',
-          'skill-2-desc':   'et maintenant je joue la comédie dans la vraie vie aussi parfois et c\'est trop pratique comme compétence pour les situations awkward.',
-          'skill-3-title':  'FAIRE DES TRUCS BEAUX',
-          'skill-3-desc':   'des marques des logos des trucs visuels. les gens étaient contents. moi aussi. c\'était vraiment très bien en fait.',
-          'skill-4-title':  'CONTENU PARTOUT !!',
-          'skill-4-desc':   'je mets des trucs sur internet et des fois les gens aiment. des fois ils aimaient pas. la vie. c\'est cool quand même.',
-          'exp-tag':        '// ma vie.wtf',
-          'exp-title':      'CE QUI<br><span class="accent3">S\'EST PASSÉ</span>',
-          'exp-desc':       'une série d\'événements plus ou moins planifiés qui ont mené à maintenant. la vie quoi. c\'est chelou mais c\'est sympa.',
-          'acting-tag':     '// theatre.exe (?)',
-          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN et tout ça',
-          'act-icon-1': '🎭', 'act-1-title': 'THÉÂTRE JE SAIS !!',
-          'act-1-desc': 'être sur scène c\'est trop bien parce que tout le monde te regarde et tu peux faire des trucs et personne te dit rien. c\'est mon endroit préféré.',
-          'act-icon-2': '📱', 'act-2-title': 'FILMS & TRUCS',
-          'act-2-desc': 'devant une caméra c\'est bizarre parce qu\'il y a une caméra mais aussi c\'est bien parce que tu peux recommencer si tu rates ton truc.',
-          'act-icon-3': '🎤', 'act-3-title': 'MA VOIX !! hehe',
-          'act-3-desc': 'j\'ai une voix et elle fait des sons différents selon les situations. c\'est une compétence apparemment. les gens paient pour ça??',
-          'act-icon-4': '🌀', 'act-4-title': 'IMPRO c\'est fun',
-          'act-4-desc': 'l\'impro c\'est comme la vraie vie mais en mieux parce qu\'il y a des règles mais personne les suit vraiment. je me sens chez moi.',
-          'photo-tag':      '// mes belles photos :)',
-          'photo-title':    'MES<br><span class="accent2">PHOTOS !!</span>',
-          'contact-tag':    '// dire bonjour :)',
-          'contact-title':  'ON FAIT DES<br>TRUCS <span class="y">ENSEMBLE</span> ??',
-          'contact-sub':    'si tu veux faire des photos ou du théâtre ou n\'importe quoi de créatif<br>envoie-moi un message. ou deux. ou vingt. j\'adore recevoir des messages.',
-          'contact-cta':    'COUCOU !! 🌀',
-          'footer-copy':    '© 2024 — fait avec beaucoup de café et très peu de sommeil',
-        },
-        timeline: [
-          { date: '2023 — maintenant', title: 'JE FAIS DES PHOTOS !!', desc: 'des portraits des gens des lumières des trucs beaux. entre Londres et Paris. et aussi dans ma chambre avec mon iPhone des fois.' },
-          { date: '2022 — 2023', title: 'J\'AI APPRIS À JOUER !!', desc: 'et maintenant je joue la comédie dans la vraie vie aussi parfois c\'est trop pratique comme compétence pour plein de situations.' },
-          { date: '2021 — 2022', title: 'J\'AI FAIT DES CHOSES !!', desc: 'des marques des logos des trucs visuels. les gens étaient contents. moi aussi. c\'était bien. vraiment très bien en fait.' },
-          { date: 'toujours toujours', title: 'FOLLE DEPUIS TOUJOURS !!', desc: 'c\'est mon mode par défaut. j\'ai essayé d\'être normale pendant 5 minutes en 2019 et c\'était horrible. jamais plus.' },
-        ],
-        marquee1: ['photoooos !!','THEATRE!!','je fais des trucs','c\'est sympa','venez voir','AAAAAAH','merci byeee 🌀'],
-        marquee2: ['LONDON','PARIS','DANS MA TÊTE','UN PEU PARTOUT','NULLE PART VRAIMENT','TIA-LANA !!','c\'est moi hihi'],
-      },
-    };
-
-    let currentTheme = 'chaotique';
-
-    function buildMarquee(items) {
-      const doubled = [...items, ...items];
-      return doubled.map(t => `<span>${t}</span>`).join('');
-    }
-
-    function applyTheme(name) {
-      const t = THEMES[name];
-      if (!t) return;
-
-      document.body.classList.remove('theme-chaotique','theme-amour','theme-casse','theme-folle');
-      document.body.classList.add('theme-' + name);
-
-      Object.entries(t.texts).forEach(([id, html]) => {
-        const el = document.getElementById(id);
-        if (el) el.innerHTML = html;
-      });
-
-      t.timeline.forEach((tl, i) => {
-        const el = document.getElementById('tl-' + i);
-        if (!el) return;
-        el.querySelector('.tl-date').textContent = tl.date;
-        el.querySelector('h3').textContent = tl.title;
-        el.querySelector('p').textContent = tl.desc;
-      });
-
-      document.getElementById('marquee1-inner').innerHTML = buildMarquee(t.marquee1);
-      document.getElementById('marquee2-inner').innerHTML = buildMarquee(t.marquee2);
-
-      document.getElementById('theme-pill-name').textContent = t.label;
-      document.getElementById('theme-toggle-btn').textContent = t.icon;
-
-      document.querySelectorAll('.theme-opt-btn').forEach(btn => {
-        btn.classList.toggle('active-theme', btn.dataset.t === name);
-      });
-
-      currentTheme = name;
-      try { localStorage.setItem('tia-theme', name); } catch(e) {}
-    }
-
-    document.getElementById('theme-toggle-btn').addEventListener('click', () => {
-      const opts = document.getElementById('theme-options');
-      opts.classList.toggle('open');
-    });
-
-    document.querySelectorAll('.theme-opt-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        applyTheme(btn.dataset.t);
-        document.getElementById('theme-options').classList.remove('open');
-      });
-    });
-
-    document.addEventListener('click', e => {
-      if (!e.target.closest('#theme-switcher')) {
-        document.getElementById('theme-options').classList.remove('open');
+      function updateVisible() {
+        visible = [...items].filter(i => !i.classList.contains('hidden'));
       }
-    });
 
-    try {
-      const saved = localStorage.getItem('tia-theme');
-      if (saved && THEMES[saved]) applyTheme(saved);
-    } catch(e) {}
-
-
-    /* ── PARTICLES ── */
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    const W = () => canvas.width  = window.innerWidth;
-    const H = () => canvas.height = window.innerHeight;
-    W(); H();
-    window.addEventListener('resize', () => { W(); H(); });
-
-    const COLORS = ['#FF006E','#00F5FF','#39FF14','#FFE600','#BF00FF','#FF6B00'];
-    const particles = [];
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        r: Math.random() * 1.5 + .3,
-        vx: (Math.random() - .5) * .4,
-        vy: (Math.random() - .5) * .4,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        opacity: Math.random() * .5 + .1,
-      });
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + Math.round(p.opacity * 255).toString(16).padStart(2,'0');
-        ctx.fill();
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-      });
-      requestAnimationFrame(drawParticles);
-    }
-    drawParticles();
-
-    /* ── CURSOR ── */
-    const cursorMain = document.getElementById('cursor-main');
-    const cursorDot  = document.getElementById('cursor-dot');
-    let mx = 0, my = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursorDot.style.left = mx + 'px';
-      cursorDot.style.top  = my + 'px';
-    });
-    (function animCursor() {
-      const cx = parseFloat(cursorMain.style.left) || mx;
-      const cy = parseFloat(cursorMain.style.top)  || my;
-      cursorMain.style.left = (cx + (mx - cx) * .15) + 'px';
-      cursorMain.style.top  = (cy + (my - cy) * .15) + 'px';
-      requestAnimationFrame(animCursor);
-    })();
-    document.addEventListener('mouseover', e => {
-      if (e.target.closest('a, button')) {
-        cursorMain.style.width = cursorMain.style.height = '36px';
-        cursorMain.style.borderColor = 'var(--neon-green)';
-        cursorMain.style.boxShadow = '0 0 16px var(--neon-green), inset 0 0 8px rgba(57,255,20,.3)';
-      } else {
-        cursorMain.style.width = cursorMain.style.height = '20px';
-        cursorMain.style.borderColor = 'var(--neon-pink)';
-        cursorMain.style.boxShadow = '0 0 10px var(--neon-pink), inset 0 0 6px rgba(255,0,110,.3)';
-      }
-    });
-
-    /* ── SCROLL PROGRESS ── */
-    window.addEventListener('scroll', () => {
-      const d = document.documentElement;
-      const pct = window.scrollY / (d.scrollHeight - d.clientHeight);
-      document.getElementById('scroll-bar').style.transform = `scaleX(${pct})`;
-    }, { passive: true });
-
-    /* ── HAMBURGER ── */
-    const ham  = document.getElementById('hamburger');
-    const menu = document.getElementById('mobileMenu');
-    ham.addEventListener('click', () => {
-      ham.classList.toggle('open');
-      menu.classList.toggle('open');
-      document.body.style.overflow = ham.classList.contains('open') ? 'hidden' : '';
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      ham.classList.remove('open');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    }));
-
-    /* ── SCROLL ANIMATIONS ── */
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: .08, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.fade-in, .slide-left, .slide-right').forEach(el => obs.observe(el));
-
-    document.querySelectorAll('.stagger').forEach(parent => {
-      [...parent.children].forEach((child, i) => {
-        child.style.transitionDelay = `${i * 80}ms`;
-      });
-    });
-
-    /* ── PHOTO FILTERS ── */
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.dataset.filter;
-        document.querySelectorAll('.g-item').forEach(item => {
-          const show = cat === 'all' || item.dataset.cat === cat;
-          item.classList.toggle('hidden', !show);
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const f = btn.dataset.filter;
+          items.forEach(item => {
+            item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f);
+          });
+          updateVisible();
         });
       });
-    });
 
-    /* ── LIGHTBOX ── */
-    const lb    = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    const items = () => [...document.querySelectorAll('.g-item:not(.hidden)')];
-    let curIdx = 0;
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lbImg');
+      const lbClose = document.getElementById('lbClose');
+      const lbPrev  = document.getElementById('lbPrev');
+      const lbNext  = document.getElementById('lbNext');
+      const lbCap   = document.getElementById('lbCaption');
+      const lbCount = document.getElementById('lbCounter');
 
-    document.querySelectorAll('.g-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const vis = items();
-        curIdx = vis.indexOf(item);
+      let idx = 0, visible = [];
+      updateVisible();
+
+      function openLb(i) {
+        idx = i;
+        const item = visible[i];
         lbImg.src = item.querySelector('img').src;
+        lbCap.querySelector('h4').textContent = item.dataset.title;
+        lbCap.querySelector('span').textContent = item.dataset.sub;
+        lbCount.textContent = `${i + 1} / ${visible.length}`;
         lb.classList.add('open');
         document.body.style.overflow = 'hidden';
+      }
+
+      function closeLb() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          updateVisible();
+          const i = visible.indexOf(item);
+          if (i !== -1) openLb(i);
+        });
       });
-    });
-    function lbClose() { lb.classList.remove('open'); document.body.style.overflow = ''; }
-    document.getElementById('lb-close').addEventListener('click', lbClose);
-    lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
 
-    document.getElementById('lb-prev').addEventListener('click', () => {
-      const vis = items();
-      curIdx = (curIdx - 1 + vis.length) % vis.length;
-      lbImg.src = vis[curIdx].querySelector('img').src;
-    });
-    document.getElementById('lb-next').addEventListener('click', () => {
-      const vis = items();
-      curIdx = (curIdx + 1) % vis.length;
-      lbImg.src = vis[curIdx].querySelector('img').src;
-    });
-    document.addEventListener('keydown', e => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') lbClose();
-      if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
-      if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
-    });
+      lbClose.addEventListener('click', closeLb);
+      lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+      lbPrev.addEventListener('click', () => openLb((idx - 1 + visible.length) % visible.length));
+      lbNext.addEventListener('click', () => openLb((idx + 1) % visible.length));
 
-    /* ── COUNTER ANIM ── */
-    const counterObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const raw = el.textContent.trim();
-        const num = parseFloat(raw);
-        if (isNaN(num) || num === 0) return;
-        const suffix = raw.replace(/^[\d.]+/, '');
-        const dur = 1200;
-        let t0 = null;
-        const step = ts => {
-          if (!t0) t0 = ts;
-          const p = Math.min((ts - t0) / dur, 1);
-          el.textContent = Math.round((1 - Math.pow(1-p,3)) * num) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        counterObs.unobserve(el);
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')     closeLb();
+        if (e.key === 'ArrowLeft')  lbPrev.click();
+        if (e.key === 'ArrowRight') lbNext.click();
       });
-    }, { threshold: .6 });
-    document.querySelectorAll('.stat-num').forEach(el => counterObs.observe(el));
 
-    /* ── GLITCH CURSOR TRAIL ── */
-    const trailColors = ['#FF006E','#00F5FF','#39FF14','#BF00FF'];
-    let trailIdx = 0;
-    document.addEventListener('mousemove', e => {
-      if (Math.random() > .25) return;
-      const dot = document.createElement('div');
-      const size = Math.random() * 6 + 2;
-      dot.style.cssText = `
-        position:fixed;left:${e.clientX}px;top:${e.clientY}px;
-        width:${size}px;height:${size}px;border-radius:50%;
-        background:${trailColors[trailIdx % trailColors.length]};
-        pointer-events:none;z-index:99996;
-        transform:translate(-50%,-50%);
-        box-shadow:0 0 ${size*3}px ${trailColors[trailIdx % trailColors.length]};
-        transition:opacity .6s,transform .6s;
+      let tx = 0;
+      lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+      lb.addEventListener('touchend',   e => {
+        const d = tx - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 50) d > 0 ? lbNext.click() : lbPrev.click();
+      });
+    }
+
+    /* ── Love page transition ── */
+    function makeLoveHeart(vcx, vcy) {
+      const size = 64;
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('id', 'loveOverlay');
+      svg.setAttribute('viewBox', '0 0 100 90');
+      svg.style.cssText = `
+        position:fixed; overflow:visible; pointer-events:none; z-index:9998;
+        width:${size}px; height:${size}px;
+        left:${vcx - size/2}px; top:${vcy - size/2}px;
+        transform:scale(0.001); transform-origin:center center;
+        transition:transform 5.5s cubic-bezier(.12,0,.08,1);
       `;
-      trailIdx++;
-      document.body.appendChild(dot);
-      requestAnimationFrame(() => { dot.style.opacity = '0'; dot.style.transform = 'translate(-50%,-50%) scale(3)'; });
-      setTimeout(() => dot.remove(), 700);
-    });
-  </script>
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M50 82 C28 65, 2 50, 2 28 C2 14, 14 4, 28 4 C37 4, 44 9, 50 16 C56 9, 63 4, 72 4 C86 4, 98 14, 98 28 C98 50, 72 65, 50 82Z');
+      path.setAttribute('fill', '#C9736A');
+      svg.appendChild(path);
+      document.body.appendChild(svg);
+      return svg;
+    }
 
+    function resetLoveHeart() {
+      const ov = document.getElementById('loveOverlay');
+      if (ov) { ov.style.transition = 'none'; ov.remove(); }
+      const h = document.getElementById('loveHeart');
+      if (h) { h.removeAttribute('style'); }
+    }
+
+    document.getElementById('loveHeart').addEventListener('click', function () {
+      const el = this;
+      el.style.pointerEvents = 'none';
+
+      const r   = el.getBoundingClientRect();
+      const ex  = r.left + r.width  / 2;
+      const ey  = r.top  + r.height / 2;
+      const vcx = window.innerWidth  / 2;
+      const vcy = window.innerHeight / 2;
+
+      /* Phase 1 — heart drifts to center */
+      el.style.transition = 'transform .7s cubic-bezier(.4,0,.2,1)';
+      el.style.transform  = `translate(${vcx - ex}px,${vcy - ey}px) scale(2.0)`;
+      el.style.animation  = 'heartbeat .22s ease-in-out infinite';
+
+      /* Phase 2 — SVG heart expands from center */
+      setTimeout(() => {
+        el.style.opacity = '0';
+        const svg = makeLoveHeart(vcx, vcy);
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          svg.style.transform = 'scale(75)';
+          setTimeout(() => { location.href = 'love.html'; }, 1600);
+        }));
+      }, 680);
+    });
+
+    /* Remove overlay on back navigation (bfcache) or any page restore */
+    window.addEventListener('pageshow', resetLoveHeart);
+    window.addEventListener('DOMContentLoaded', resetLoveHeart);
+
+    /* ── Credits Modal ── */
+    (function () {
+      const modal = document.getElementById('creditModal');
+      const closeBtn = document.getElementById('cmClose');
+
+      function openModal(card) {
+        document.getElementById('cmImg').src = card.dataset.img;
+        document.getElementById('cmImg').alt = card.dataset.title;
+        document.getElementById('cmCat').textContent = card.dataset.cat;
+        document.getElementById('cmTitle').textContent = card.dataset.title;
+        document.getElementById('cmRole').textContent = card.dataset.role;
+        document.getElementById('cmVenue').textContent = card.dataset.venue;
+        document.getElementById('cmYear').textContent = card.dataset.year;
+        document.getElementById('cmDesc').textContent = card.dataset.desc;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.credit-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    })();
+  </script>
 </body>
 </html>
