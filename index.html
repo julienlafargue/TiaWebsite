@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TIA-LANA ⚡ THE CHAOS PORTAL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Permanent+Marker&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Permanent+Marker&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Righteous&family=Dancing+Script:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -19,6 +19,292 @@
       --darker:      #050505;
     }
 
+    /* ══════════════════════════════════════
+       THÈME : CLASSIQUE
+    ══════════════════════════════════════ */
+    body.theme-classique {
+      --neon-pink:   #C9A84C;
+      --neon-cyan:   #E8D5A3;
+      --neon-green:  #8B9E6E;
+      --neon-yellow: #D4AF37;
+      --neon-purple: #7A6E8A;
+      --neon-orange: #C4875E;
+      --dark:        #0F0E0C;
+      --darker:      #080706;
+    }
+    body.theme-classique,
+    body.theme-classique .hero-sub,
+    body.theme-classique .about-text p,
+    body.theme-classique .skill-card p,
+    body.theme-classique .tl-item p,
+    body.theme-classique .act-card p,
+    body.theme-classique .contact-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+    body.theme-classique .logo,
+    body.theme-classique .hero h1,
+    body.theme-classique .sec-title,
+    body.theme-classique .contact-title,
+    body.theme-classique .skill-card h3,
+    body.theme-classique .tl-item h3,
+    body.theme-classique .act-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: 6px;
+    }
+    body.theme-classique .hero h1 .line2 {
+      animation: classiquePulse 4s ease-in-out infinite;
+      font-style: italic;
+    }
+    @keyframes classiquePulse {
+      0%,100% { text-shadow: 0 0 20px rgba(201,168,76,.4), 0 0 40px rgba(201,168,76,.2); }
+      50%      { text-shadow: 0 0 40px rgba(201,168,76,.7), 0 0 80px rgba(201,168,76,.3); }
+    }
+    body.theme-classique .hero h1 .line3 { font-style: italic; transform: none; }
+    body.theme-classique nav {
+      border-bottom-color: rgba(201,168,76,.4);
+      box-shadow: 0 1px 20px rgba(201,168,76,.15);
+    }
+    body.theme-classique .skill-card { border-color: rgba(201,168,76,.1); }
+    body.theme-classique .about-img-frame { border-color: rgba(201,168,76,.5); box-shadow: 0 0 20px rgba(201,168,76,.2); }
+    body.theme-classique .about-img-glitch { background: rgba(201,168,76,.08); animation: none; }
+    body.theme-classique body::after { opacity: 0; }
+    body.theme-classique #scroll-bar {
+      background: linear-gradient(to right, #C9A84C, #E8D5A3, #D4AF37);
+      box-shadow: 0 0 6px rgba(201,168,76,.5);
+    }
+    body.theme-classique .chaos-marquee { box-shadow: none; }
+    body.theme-classique .chaos-marquee-2 { box-shadow: none; }
+    body.theme-classique .section-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      letter-spacing: 3px;
+      border-color: rgba(201,168,76,.3);
+    }
+    body.theme-classique .hero-eyebrow { letter-spacing: 4px; }
+    body.theme-classique .hero-cta {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: 5px;
+      font-size: 1rem;
+    }
+
+    /* ══════════════════════════════════════
+       THÈME : AMOUR
+    ══════════════════════════════════════ */
+    body.theme-amour {
+      --neon-pink:   #FF4D80;
+      --neon-cyan:   #FFB3C6;
+      --neon-green:  #FF8FAB;
+      --neon-yellow: #FF6B9D;
+      --neon-purple: #E91E63;
+      --neon-orange: #F48FB1;
+      --dark:        #0D0508;
+      --darker:      #080204;
+    }
+    body.theme-amour { font-family: 'Dancing Script', cursive; }
+    body.theme-amour .logo,
+    body.theme-amour .hero h1,
+    body.theme-amour .sec-title,
+    body.theme-amour .contact-title {
+      font-family: 'Dancing Script', cursive;
+      letter-spacing: 2px;
+    }
+    body.theme-amour .nav-links a,
+    body.theme-amour .hero-cta,
+    body.theme-amour .contact-cta { font-family: 'Dancing Script', cursive; letter-spacing: 2px; }
+    body.theme-amour .hero h1 .line2 { animation: amourPulse 3s ease-in-out infinite; }
+    @keyframes amourPulse {
+      0%,100% { text-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,77,128,.5); }
+      50% { text-shadow: 0 0 50px var(--neon-pink), 0 0 90px rgba(255,77,128,.8), 0 0 120px rgba(255,77,128,.3); }
+    }
+    body.theme-amour body::after {
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,77,128,.04) 2px, rgba(255,77,128,.04) 4px);
+    }
+    body.theme-amour .chaos-divider::before {
+      background: linear-gradient(to right, transparent, var(--neon-pink) 20%, #FFB3C6 50%, var(--neon-purple) 80%, transparent);
+    }
+    body.theme-amour #scroll-bar {
+      background: linear-gradient(to right, var(--neon-pink), #FFB3C6, var(--neon-purple));
+    }
+
+    /* ══════════════════════════════════════
+       THÈME : CASSÉ / EN TRAVAUX
+    ══════════════════════════════════════ */
+    body.theme-casse {
+      --neon-pink:   #FF4500;
+      --neon-cyan:   #FFCC00;
+      --neon-green:  #FF6600;
+      --neon-yellow: #FF0000;
+      --neon-purple: #FF8800;
+      --neon-orange: #FFAA00;
+      --dark:        #0A0800;
+      --darker:      #050400;
+    }
+    body.theme-casse::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,69,0,.025) 10px, rgba(255,69,0,.025) 20px);
+      pointer-events: none; z-index: 99994;
+    }
+    body.theme-casse .hero h1 .line2 { animation: casseGlitch 1.5s infinite; }
+    @keyframes casseGlitch {
+      0%,85%,100% { transform: none; clip-path: none; color: var(--neon-pink); }
+      86% { transform: translateX(-8px) skewX(5deg); clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%); color: var(--neon-cyan); }
+      87% { transform: translateX(6px); clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%); color: #fff; }
+      88% { transform: translateX(-4px) skewX(-3deg); clip-path: none; }
+      90% { transform: translateX(10px); color: var(--neon-purple); }
+      92% { transform: translateX(0) scaleX(1.05); clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); }
+    }
+    body.theme-casse .about-img-glitch { animation: casseImgGlitch 1s infinite; }
+    @keyframes casseImgGlitch {
+      0%,80%,100% { opacity: .15; transform: none; }
+      82% { opacity: .5; transform: translate(8px, -4px) scaleX(1.04); }
+      84% { opacity: .2; transform: translate(-6px, 3px); }
+      86% { opacity: .4; transform: translate(4px, 6px) scaleX(.98); }
+      88% { opacity: .1; transform: translate(-2px, -2px); }
+    }
+    body.theme-casse .tl-item:nth-child(even) { transform: skewX(-1deg); }
+    body.theme-casse .tl-item:nth-child(odd) { transform: skewX(.5deg); }
+    body.theme-casse .tl-item:hover { transform: skewX(0) translateX(8px); }
+
+    /* ══════════════════════════════════════
+       THÈME : FOLLE
+    ══════════════════════════════════════ */
+    body.theme-folle {
+      --neon-pink:   #FF00FF;
+      --neon-cyan:   #00FFFF;
+      --neon-green:  #FFFF00;
+      --neon-yellow: #FF8800;
+      --neon-purple: #8800FF;
+      --neon-orange: #FF0088;
+      --dark:        #0A000A;
+      --darker:      #050005;
+    }
+    body.theme-folle,
+    body.theme-folle .hero-sub,
+    body.theme-folle .about-text p,
+    body.theme-folle .skill-card p,
+    body.theme-folle .tl-item p,
+    body.theme-folle .act-card p,
+    body.theme-folle .contact-sub { font-family: 'Permanent Marker', cursive; }
+    body.theme-folle .logo,
+    body.theme-folle .hero h1,
+    body.theme-folle .sec-title,
+    body.theme-folle .contact-title {
+      font-family: 'Permanent Marker', cursive;
+      letter-spacing: 1px;
+    }
+    body.theme-folle .skill-card:nth-child(1) { transform: rotate(-2deg); }
+    body.theme-folle .skill-card:nth-child(2) { transform: rotate(1.5deg); }
+    body.theme-folle .skill-card:nth-child(3) { transform: rotate(-1deg); }
+    body.theme-folle .skill-card:nth-child(4) { transform: rotate(2deg); }
+    body.theme-folle .skill-card:hover { transform: rotate(0) translateX(6px) scale(1.02); }
+    body.theme-folle .act-card:nth-child(odd) { transform: rotate(-1.5deg); }
+    body.theme-folle .act-card:nth-child(even) { transform: rotate(1deg); }
+    body.theme-folle .act-card:hover { transform: rotate(0) scale(1.03); }
+    body.theme-folle .about-badge { animation: folleSpinBadge 3s linear infinite; }
+    @keyframes folleSpinBadge {
+      0% { transform: rotate(0) scale(1); }
+      25% { transform: rotate(90deg) scale(1.1); }
+      50% { transform: rotate(180deg) scale(1); }
+      75% { transform: rotate(270deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    body.theme-folle #cursor-main { border-shape: ellipse; animation: folleWiggleCursor 0.5s ease-in-out infinite; }
+    @keyframes folleWiggleCursor {
+      0%,100% { border-radius: 0; transform: translate(-50%,-50%) rotate(45deg); }
+      25% { border-radius: 50%; transform: translate(-50%,-50%) rotate(135deg) scale(1.3); }
+      50% { border-radius: 0; transform: translate(-50%,-50%) rotate(225deg); }
+      75% { border-radius: 50% 0; transform: translate(-50%,-50%) rotate(315deg) scale(.8); }
+    }
+    body.theme-folle .tl-item:nth-child(1) { transform: rotate(-.5deg); }
+    body.theme-folle .tl-item:nth-child(2) { transform: rotate(.8deg) translateX(10px); }
+    body.theme-folle .tl-item:nth-child(3) { transform: rotate(-.3deg); }
+    body.theme-folle .tl-item:nth-child(4) { transform: rotate(1deg) translateX(-5px); }
+    body.theme-folle .tl-item:hover { transform: rotate(0) translateX(8px) scale(1.01); }
+    body.theme-folle #scroll-bar {
+      background: linear-gradient(to right, #FF00FF, #00FFFF, #FFFF00, #FF8800, #8800FF, #FF0088);
+      animation: follebar 2s linear infinite;
+    }
+    @keyframes follebar {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* ══════════════════════════════════════
+       WIDGET THEME SWITCHER
+    ══════════════════════════════════════ */
+    #theme-switcher {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 100000;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+    }
+    #theme-toggle-btn {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: rgba(5,5,5,.92);
+      border: 2px solid var(--neon-pink);
+      box-shadow: 0 0 20px rgba(255,0,110,.4), 0 0 40px rgba(255,0,110,.15);
+      color: #fff; font-size: 1.4rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .3s;
+      font-family: 'Space Mono', monospace;
+    }
+    #theme-toggle-btn:hover {
+      box-shadow: 0 0 30px rgba(255,0,110,.7), 0 0 60px rgba(255,0,110,.3);
+      transform: scale(1.08);
+    }
+    #theme-options {
+      display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+      overflow: hidden; max-height: 0;
+      transition: max-height .4s cubic-bezier(.77,0,.175,1), opacity .3s;
+      opacity: 0; pointer-events: none;
+    }
+    #theme-options.open {
+      max-height: 400px; opacity: 1; pointer-events: all;
+    }
+    .theme-opt-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      background: rgba(5,5,5,.95);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff; cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: .9rem; letter-spacing: 3px;
+      transition: all .25s; white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,.5);
+    }
+    .theme-opt-btn:hover { transform: translateX(-4px); }
+    .theme-opt-btn .opt-icon { font-size: 1.2rem; }
+    .theme-opt-btn[data-t="classique"] { border-color: #C9A84C; }
+    .theme-opt-btn[data-t="classique"]:hover { background: rgba(201,168,76,.15); border-color: #C9A84C; box-shadow: -4px 0 0 #C9A84C, 0 4px 20px rgba(201,168,76,.3); }
+    .theme-opt-btn[data-t="chaotique"] { border-color: #FF006E; }
+    .theme-opt-btn[data-t="chaotique"]:hover { background: rgba(255,0,110,.15); border-color: #FF006E; box-shadow: -4px 0 0 #FF006E, 0 4px 20px rgba(255,0,110,.3); }
+    .theme-opt-btn[data-t="amour"] { border-color: #FF4D80; }
+    .theme-opt-btn[data-t="amour"]:hover { background: rgba(255,77,128,.15); border-color: #FF4D80; box-shadow: -4px 0 0 #FF4D80, 0 4px 20px rgba(255,77,128,.3); }
+    .theme-opt-btn[data-t="casse"] { border-color: #FF4500; }
+    .theme-opt-btn[data-t="casse"]:hover { background: rgba(255,69,0,.15); border-color: #FF4500; box-shadow: -4px 0 0 #FF4500, 0 4px 20px rgba(255,69,0,.3); }
+    .theme-opt-btn[data-t="folle"] { border-color: #FF00FF; }
+    .theme-opt-btn[data-t="folle"]:hover { background: rgba(255,0,255,.15); border-color: #FF00FF; box-shadow: -4px 0 0 #FF00FF, 0 4px 20px rgba(255,0,255,.3); }
+    .theme-opt-btn.active-theme { opacity: .5; pointer-events: none; }
+
+    .theme-label-pill {
+      position: fixed; bottom: 32px; left: 32px;
+      background: rgba(5,5,5,.85);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 8px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      z-index: 100000;
+      transition: all .4s;
+      pointer-events: none;
+    }
+    .theme-label-pill span { color: var(--neon-pink); }
+
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
 
@@ -28,30 +314,23 @@
       font-family: 'Space Mono', monospace;
       overflow-x: hidden;
       cursor: none;
+      transition: background .6s, color .3s;
     }
 
-    /* ── SCANLINES ── */
     body::after {
       content: '';
       position: fixed; inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.07) 2px,
-        rgba(0,0,0,0.07) 4px
-      );
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
       pointer-events: none;
       z-index: 99998;
     }
 
-    /* ── CUSTOM CURSOR ── */
     #cursor-main {
       position: fixed; pointer-events: none; z-index: 99999;
       width: 20px; height: 20px;
       border: 2px solid var(--neon-pink);
       transform: translate(-50%,-50%) rotate(45deg);
-      transition: border-color .1s;
+      transition: border-color .1s, width .2s, height .2s;
       box-shadow: 0 0 10px var(--neon-pink), inset 0 0 6px rgba(255,0,110,.3);
       animation: cursorSpin 3s linear infinite;
     }
@@ -64,12 +343,8 @@
     }
     @keyframes cursorSpin { to { transform: translate(-50%,-50%) rotate(405deg); } }
 
-    /* ── PARTICLE CANVAS ── */
-    #particles {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    }
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
       height: 70px; padding: 0 5%;
@@ -77,15 +352,16 @@
       background: rgba(5,5,5,.92);
       border-bottom: 2px solid var(--neon-pink);
       box-shadow: 0 2px 30px rgba(255,0,110,.4);
+      transition: border-color .5s, box-shadow .5s;
     }
     .logo {
       font-family: 'Black Ops One', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 4px;
+      font-size: 1.6rem; letter-spacing: 4px;
       color: var(--neon-cyan);
       text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
       text-decoration: none;
       animation: logoPulse 2s ease-in-out infinite;
+      transition: font-family .3s;
     }
     @keyframes logoPulse {
       0%,100% { text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); }
@@ -111,7 +387,6 @@
     .nav-links a:hover { color: var(--neon-green); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* hamburger */
     .hamburger {
       display: none; flex-direction: column; gap: 6px;
       background: none; border: none; cursor: pointer; z-index: 1100;
@@ -141,18 +416,16 @@
     }
     .mobile-menu a:hover { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
 
-    /* ── SCROLL PROGRESS ── */
     #scroll-bar {
       position: fixed; top: 70px; left: 0; height: 3px; width: 100%;
       z-index: 1001; transform: scaleX(0); transform-origin: left;
       background: linear-gradient(to right, var(--neon-pink), var(--neon-cyan), var(--neon-green));
       box-shadow: 0 0 10px var(--neon-pink);
+      transition: background .5s;
     }
 
-    /* ── SECTIONS ── */
     section { position: relative; z-index: 1; padding: 120px 8%; }
 
-    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column;
@@ -170,6 +443,7 @@
       white-space: nowrap; pointer-events: none;
       animation: bgTextFloat 8s ease-in-out infinite;
       letter-spacing: -2px;
+      transition: color .5s;
     }
     @keyframes bgTextFloat {
       0%,100% { transform: translate(-50%,-50%) rotate(-3deg) scale(1); }
@@ -183,6 +457,7 @@
       text-shadow: 0 0 10px var(--neon-green);
       margin-bottom: 20px;
       animation: fadeSlideUp .8s ease .2s both;
+      transition: color .4s, text-shadow .4s;
     }
     .hero h1 {
       font-family: 'Black Ops One', sans-serif;
@@ -191,6 +466,7 @@
       margin-bottom: 30px;
       animation: fadeSlideUp .8s ease .4s both;
       position: relative;
+      transition: font-family .3s;
     }
     .hero h1 .line1 { display: block; color: #fff; }
     .hero h1 .line2 {
@@ -209,6 +485,7 @@
       font-size: 1rem; line-height: 2; color: rgba(255,255,255,.6);
       max-width: 500px; margin-bottom: 48px;
       animation: fadeSlideUp .8s ease .6s both;
+      transition: font-family .3s;
     }
     .hero-sub span { color: var(--neon-yellow); font-weight: 700; }
 
@@ -257,7 +534,6 @@
       mix-blend-mode: screen;
     }
 
-    /* ── GLITCH ANIMATIONS ── */
     @keyframes glitchText {
       0%,90%,100% { text-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,0,110,.5); clip-path: none; transform: none; }
       92% { transform: translateX(-3px) skewX(2deg); clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); color: var(--neon-cyan); }
@@ -271,12 +547,12 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── CHAOS MARQUEE ── */
     .chaos-marquee {
       background: var(--neon-pink);
       padding: 12px 0; overflow: hidden; white-space: nowrap;
       position: relative; z-index: 2;
       box-shadow: 0 0 30px rgba(255,0,110,.6);
+      transition: background .5s;
     }
     .chaos-marquee-inner {
       display: inline-block;
@@ -286,21 +562,19 @@
     }
     .chaos-marquee-inner span { padding: 0 28px; }
     .chaos-marquee-inner span::before { content: '★ '; }
-
     .chaos-marquee-2 {
       background: var(--neon-cyan);
       padding: 10px 0; overflow: hidden; white-space: nowrap;
       position: relative; z-index: 2;
       box-shadow: 0 0 20px rgba(0,245,255,.5);
+      transition: background .5s;
     }
     .chaos-marquee-2 .chaos-marquee-inner {
       animation: marquee 18s linear infinite reverse;
       font-size: .75rem; letter-spacing: 6px; color: #000;
     }
-
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── ABOUT SECTION ── */
     #about {
       background: linear-gradient(135deg, #0A0A0A 0%, #0f0520 50%, #0a0a0a 100%);
       border-top: 1px solid rgba(191,0,255,.3);
@@ -316,6 +590,7 @@
       margin-bottom: 20px;
       border: 1px solid rgba(191,0,255,.4);
       padding: 6px 16px;
+      transition: color .4s, border-color .4s;
     }
 
     .sec-title {
@@ -323,6 +598,7 @@
       font-size: clamp(2.5rem, 6vw, 5rem);
       line-height: 1; margin-bottom: 40px;
       color: #fff;
+      transition: font-family .3s;
     }
     .sec-title .accent { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
     .sec-title .accent2 { color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan); }
@@ -332,13 +608,10 @@
       display: grid; grid-template-columns: 1fr 1.4fr;
       gap: 80px; align-items: center;
     }
-    .about-img-wrap {
-      position: relative;
-    }
+    .about-img-wrap { position: relative; }
     .about-img-wrap img {
       width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
-      filter: saturate(0) contrast(1.1);
-      display: block;
+      filter: saturate(0) contrast(1.1); display: block;
     }
     .about-img-frame {
       position: absolute; inset: -8px;
@@ -374,19 +647,13 @@
     }
     .about-badge span:first-child { font-family: 'Black Ops One'; font-size: 1.8rem; color: var(--neon-yellow); line-height: 1; }
     .about-badge span:last-child { font-size: .45rem; letter-spacing: 2px; color: rgba(255,230,0,.7); text-transform: uppercase; }
-    @keyframes badgeSpin {
-      from { transform: rotate(0); }
-      to   { transform: rotate(360deg); }
-    }
+    @keyframes badgeSpin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 
     .about-text p {
       font-size: .88rem; line-height: 2.2; color: rgba(255,255,255,.65);
       margin-bottom: 20px;
     }
-    .about-text p .highlight {
-      color: var(--neon-cyan); font-weight: 700;
-      text-shadow: 0 0 8px rgba(0,245,255,.4);
-    }
+    .about-text p .highlight { color: var(--neon-cyan); font-weight: 700; text-shadow: 0 0 8px rgba(0,245,255,.4); }
 
     .stats-row { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.1); }
     .stat { text-align: center; }
@@ -398,10 +665,7 @@
     }
     .stat-label { font-size: .6rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.4); margin-top: 4px; }
 
-    /* ── SKILLS SECTION ── */
-    #skills {
-      background: var(--dark);
-    }
+    #skills { background: var(--dark); }
 
     .skills-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -432,10 +696,10 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.8rem; letter-spacing: 3px;
       color: #fff; margin-bottom: 10px;
+      transition: font-family .3s;
     }
     .skill-card p { font-size: .8rem; line-height: 1.9; color: rgba(255,255,255,.5); }
 
-    /* ── EXPERIENCE ── */
     #experience {
       background: linear-gradient(135deg, #0a0a0a 0%, #0a1a0a 100%);
       border-top: 1px solid rgba(57,255,20,.2);
@@ -449,10 +713,9 @@
     }
     .tl-item:hover { border-left-color: var(--neon-green); background: rgba(57,255,20,.04); transform: translateX(8px); }
     .tl-date { font-family: 'Space Mono'; font-size: .65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); margin-bottom: 8px; }
-    .tl-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: #fff; margin-bottom: 6px; }
+    .tl-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: #fff; margin-bottom: 6px; transition: font-family .3s; }
     .tl-item p { font-size: .8rem; line-height: 1.9; color: rgba(255,255,255,.5); }
 
-    /* ── ACTING ── */
     #acting {
       background: linear-gradient(135deg, #0a0a0a 0%, #1a000a 100%);
       border-top: 2px solid rgba(255,0,110,.3);
@@ -476,10 +739,9 @@
     .act-card:hover::after { width: 100%; }
     .act-card:hover { background: rgba(255,0,110,.08); }
     .act-icon { font-size: 1.8rem; margin-bottom: 14px; }
-    .act-card h3 { font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; color: var(--neon-pink); margin-bottom: 8px; }
+    .act-card h3 { font-family: 'Bebas Neue'; font-size: 1.3rem; letter-spacing: 2px; color: var(--neon-pink); margin-bottom: 8px; transition: font-family .3s; }
     .act-card p { font-size: .75rem; line-height: 1.8; color: rgba(255,255,255,.5); }
 
-    /* Credits */
     .credits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
     .credit-card {
       position: relative; overflow: hidden;
@@ -506,7 +768,6 @@
     .credit-card .role { font-family: 'Space Mono'; font-size: .7rem; font-style: italic; color: rgba(255,200,200,.8); margin-bottom: 2px; }
     .credit-card .venue { font-family: 'Space Mono'; font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.5); }
 
-    /* Training */
     .training-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 40px; }
     .training-card {
       background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06);
@@ -530,7 +791,6 @@
     }
     .training-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--neon-orange); }
 
-    /* ── PHOTOGRAPHY ── */
     #photography {
       background: linear-gradient(135deg, #0a0a0a 0%, #001a1a 100%);
       border-top: 2px solid rgba(0,245,255,.3);
@@ -576,7 +836,6 @@
     .g-overlay span { font-family: 'Space Mono'; font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,.7); }
     .g-item.hidden { display: none; }
 
-    /* Lightbox */
     .lightbox {
       position: fixed; inset: 0; background: rgba(5,5,5,.97);
       z-index: 10000; display: flex; align-items: center; justify-content: center;
@@ -599,7 +858,6 @@
     }
     .lb-nav:hover { border-color: var(--neon-cyan); color: #fff; box-shadow: 0 0 20px rgba(0,245,255,.4); }
 
-    /* ── CONTACT ── */
     #contact {
       background: var(--darker);
       text-align: center;
@@ -615,11 +873,13 @@
       font-size: clamp(2.5rem, 7vw, 6rem);
       line-height: 1; margin-bottom: 20px;
       color: #fff; position: relative; z-index: 1;
+      transition: font-family .3s;
     }
     .contact-title .y { color: var(--neon-yellow); text-shadow: 0 0 30px var(--neon-yellow); }
     .contact-sub {
       font-size: .9rem; color: rgba(255,255,255,.5); line-height: 2;
       margin-bottom: 50px; position: relative; z-index: 1;
+      transition: font-family .3s;
     }
     .contact-row {
       display: flex; justify-content: center; align-items: center;
@@ -646,7 +906,6 @@
     }
     .contact-cta:hover { background: #fff; box-shadow: 0 0 60px rgba(255,230,0,.8), 0 0 100px rgba(255,230,0,.4); transform: scale(1.05); }
 
-    /* ── FOOTER ── */
     footer {
       background: #000;
       border-top: 1px solid rgba(255,255,255,.06);
@@ -656,20 +915,16 @@
     .footer-logo { font-family: 'Black Ops One'; font-size: .9rem; color: rgba(255,255,255,.2); letter-spacing: 3px; }
     footer p { font-family: 'Space Mono'; font-size: .65rem; color: rgba(255,255,255,.2); letter-spacing: 1px; }
 
-    /* ── SCROLL ANIMATIONS ── */
     .fade-in {
       opacity: 0; transform: translateY(28px);
       transition: opacity .9s ease, transform .9s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
-
     .slide-left { opacity: 0; transform: translateX(-40px); transition: opacity .9s ease, transform .9s ease; }
     .slide-left.visible { opacity: 1; transform: none; }
-
     .slide-right { opacity: 0; transform: translateX(40px); transition: opacity .9s ease, transform .9s ease; }
     .slide-right.visible { opacity: 1; transform: none; }
 
-    /* ── SECTION DIVIDERS ── */
     .chaos-divider {
       height: 60px; position: relative; overflow: hidden;
       background: var(--dark);
@@ -680,15 +935,14 @@
       height: 1px;
       background: linear-gradient(to right, transparent, var(--neon-pink) 20%, var(--neon-cyan) 50%, var(--neon-green) 80%, transparent);
       box-shadow: 0 0 10px rgba(255,0,110,.5);
+      transition: background .5s;
     }
 
-    /* ── NOISE OVERLAY ── */
     .noise-overlay {
       position: fixed; inset: 0; pointer-events: none; z-index: 99997; opacity: .03;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hamburger { display: flex; }
       .nav-links { display: none; }
@@ -701,6 +955,8 @@
       .masonry { columns: 2; }
       .contact-divider { display: none; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
+      #theme-switcher { bottom: 20px; right: 20px; }
+      .theme-label-pill { display: none; }
     }
     @media (max-width: 560px) {
       .acting-grid { grid-template-columns: 1fr; }
@@ -710,13 +966,26 @@
     }
   </style>
 </head>
-<body>
+<body class="theme-chaotique">
 
   <div class="noise-overlay"></div>
   <canvas id="particles"></canvas>
   <div id="cursor-main"></div>
   <div id="cursor-dot"></div>
   <div id="scroll-bar"></div>
+
+  <!-- THEME SWITCHER -->
+  <div id="theme-switcher">
+    <div id="theme-options">
+      <button class="theme-opt-btn" data-t="classique"><span class="opt-icon">🕯️</span> CLASSIQUE</button>
+      <button class="theme-opt-btn active-theme" data-t="chaotique"><span class="opt-icon">💥</span> CHAOTIQUE</button>
+      <button class="theme-opt-btn" data-t="amour"><span class="opt-icon">💕</span> AMOUR</button>
+      <button class="theme-opt-btn" data-t="casse"><span class="opt-icon">🔧</span> CASSÉ</button>
+      <button class="theme-opt-btn" data-t="folle"><span class="opt-icon">🌀</span> FOLLE</button>
+    </div>
+    <button id="theme-toggle-btn" title="Changer de thème">🎭</button>
+  </div>
+  <div class="theme-label-pill">THÈME : <span id="theme-pill-name">CHAOTIQUE</span></div>
 
   <!-- NAV -->
   <nav>
@@ -741,18 +1010,18 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-bg-text">CHINAPYEL</div>
-    <p class="hero-eyebrow">⚡ CREATIVE · PHOTOGRAPHER · ACTRESS · CHAOS GENERATOR ⚡</p>
+    <div class="hero-bg-text" id="hero-bg-text">CHINAPYEL</div>
+    <p class="hero-eyebrow" id="hero-eyebrow">⚡ CREATIVE · PHOTOGRAPHER · ACTRESS · CHAOS GENERATOR ⚡</p>
     <h1>
       <span class="line1">TIA-</span>
       <span class="line2">LANA</span>
       <span class="line3">CHINAPYEL</span>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" id="hero-sub">
       Narration visuelle ancrée dans l'émotion, la lumière et <span>l'intimité absolue</span>.<br>
       Entre Londres et Paris. Et un peu dans la lune.
     </p>
-    <a href="#about" class="hero-cta">ENTRER DANS SON MONDE →</a>
+    <a href="#about" class="hero-cta" id="hero-cta">ENTRER DANS SON MONDE →</a>
 
     <div class="hero-img">
       <img src="./img/home/hero-home2.jpeg" alt="Tia-Lana Chinapyel">
@@ -762,7 +1031,7 @@
 
   <!-- MARQUEE -->
   <div class="chaos-marquee">
-    <div class="chaos-marquee-inner">
+    <div class="chaos-marquee-inner" id="marquee1-inner">
       <span>Photography</span><span>Visual Storytelling</span><span>Acting</span>
       <span>Branding</span><span>Content Creation</span><span>Stage & Screen</span>
       <span>COMPLÈTEMENT FOLLE</span><span>Photography</span><span>Visual Storytelling</span><span>Acting</span>
@@ -771,7 +1040,7 @@
     </div>
   </div>
   <div class="chaos-marquee-2">
-    <div class="chaos-marquee-inner">
+    <div class="chaos-marquee-inner" id="marquee2-inner">
       <span>LONDON</span><span>PARIS</span><span>ANYWHERE</span>
       <span>NOWHERE</span><span>EVERYWHERE</span><span>TIA-LANA</span>
       <span>CHAOS IS ART</span><span>LONDON</span><span>PARIS</span><span>ANYWHERE</span>
@@ -789,14 +1058,14 @@
         <div class="about-img-glitch"></div>
         <div class="about-badge">
           <span>∞</span>
-          <span>STORIES</span>
+          <span id="about-badge-label">STORIES</span>
         </div>
       </div>
       <div class="about-text slide-right">
-        <span class="section-tag">// ABOUT_ME.EXE</span>
-        <h2 class="sec-title">UNE CRÉATIVE<br>AVEC UNE <span class="accent">HISTOIRE</span><br>À RACONTER</h2>
-        <p>Je m'appelle <span class="highlight">Tia-Lana</span> et je suis une créative née au Royaume-Uni, basée à Paris. J'ai une passion profonde pour la narration visuelle — explorer l'émotion, le récit et l'esthétique à travers la photographie et le jeu d'actrice.</p>
-        <p>Que ce soit derrière l'objectif ou devant, j'apporte le même soin pour la lumière, l'atmosphère et la connexion humaine à chaque projet. <span class="highlight">Et oui, je suis totalement folle.</span> C'est mon superpouvoir.</p>
+        <span class="section-tag" id="about-tag">// ABOUT_ME.EXE</span>
+        <h2 class="sec-title" id="about-title">UNE CRÉATIVE<br>AVEC UNE <span class="accent">HISTOIRE</span><br>À RACONTER</h2>
+        <p id="about-p1">Je m'appelle <span class="highlight">Tia-Lana</span> et je suis une créative née au Royaume-Uni, basée à Paris. J'ai une passion profonde pour la narration visuelle — explorer l'émotion, le récit et l'esthétique à travers la photographie et le jeu d'actrice.</p>
+        <p id="about-p2">Que ce soit derrière l'objectif ou devant, j'apporte le même soin pour la lumière, l'atmosphère et la connexion humaine à chaque projet. <span class="highlight">Et oui, je suis totalement folle.</span> C'est mon superpouvoir.</p>
         <div class="stats-row stagger">
           <div class="stat fade-in">
             <div class="stat-num">3+</div>
@@ -819,28 +1088,28 @@
 
   <!-- SKILLS -->
   <section id="skills">
-    <span class="section-tag fade-in">// SKILLS.LOAD()</span>
-    <h2 class="sec-title fade-in">CE QUE<br>JE <span class="accent2">CRÉE</span></h2>
+    <span class="section-tag fade-in" id="skills-tag">// SKILLS.LOAD()</span>
+    <h2 class="sec-title fade-in" id="skills-title">CE QUE<br>JE <span class="accent2">CRÉE</span></h2>
     <div class="skills-grid stagger">
       <div class="skill-card fade-in">
         <div class="skill-num">01 ___</div>
-        <h3>PHOTOGRAPHIE</h3>
-        <p>Portrait, lifestyle, mode. Je capture la lumière et l'émotion avec une passion dévorante pour chaque instant volé.</p>
+        <h3 id="skill-1-title">PHOTOGRAPHIE</h3>
+        <p id="skill-1-desc">Portrait, lifestyle, mode. Je capture la lumière et l'émotion avec une passion dévorante pour chaque instant volé.</p>
       </div>
       <div class="skill-card fade-in">
         <div class="skill-num">02 ___</div>
-        <h3>JEU D'ACTRICE</h3>
-        <p>Scène, écran, voix. Une présence électrique et une capacité à incarner n'importe quel univers narratif.</p>
+        <h3 id="skill-2-title">JEU D'ACTRICE</h3>
+        <p id="skill-2-desc">Scène, écran, voix. Une présence électrique et une capacité à incarner n'importe quel univers narratif.</p>
       </div>
       <div class="skill-card fade-in">
         <div class="skill-num">03 ___</div>
-        <h3>DIRECTION ARTISTIQUE</h3>
-        <p>Branding visuel, identité de marque, conception de contenu. L'art de construire un univers cohérent et puissant.</p>
+        <h3 id="skill-3-title">DIRECTION ARTISTIQUE</h3>
+        <p id="skill-3-desc">Branding visuel, identité de marque, conception de contenu. L'art de construire un univers cohérent et puissant.</p>
       </div>
       <div class="skill-card fade-in">
         <div class="skill-num">04 ___</div>
-        <h3>CONTENT CREATION</h3>
-        <p>Réseaux sociaux, campagnes visuelles, storytelling multiformat. Chaque pixel raconte une histoire.</p>
+        <h3 id="skill-4-title">CONTENT CREATION</h3>
+        <p id="skill-4-desc">Réseaux sociaux, campagnes visuelles, storytelling multiformat. Chaque pixel raconte une histoire.</p>
       </div>
     </div>
   </section>
@@ -851,29 +1120,29 @@
   <section id="experience">
     <div style="display:grid; grid-template-columns: 1fr 1.6fr; gap: 80px;" class="experience-layout">
       <div>
-        <span class="section-tag fade-in">// EXPERIENCE.LOG</span>
-        <h2 class="sec-title fade-in">MON<br><span class="accent3">PARCOURS</span></h2>
-        <p class="fade-in" style="font-size:.88rem; line-height:2.2; color:rgba(255,255,255,.5);">
+        <span class="section-tag fade-in" id="exp-tag">// EXPERIENCE.LOG</span>
+        <h2 class="sec-title fade-in" id="exp-title">MON<br><span class="accent3">PARCOURS</span></h2>
+        <p class="fade-in" id="exp-desc" style="font-size:.88rem; line-height:2.2; color:rgba(255,255,255,.5);">
           Une trajectoire construite autour de la passion, de l'audace et d'une légère obsession pour la perfection.
         </p>
       </div>
       <div class="timeline">
-        <div class="tl-item fade-in">
+        <div class="tl-item fade-in" id="tl-0">
           <div class="tl-date">2023 — Présent</div>
           <h3>PHOTOGRAPHE FREELANCE</h3>
           <p>Projets personnels et éditoriaux entre Londres et Paris. Spécialisation en portrait et narration visuelle.</p>
         </div>
-        <div class="tl-item fade-in">
+        <div class="tl-item fade-in" id="tl-1">
           <div class="tl-date">2022 — 2023</div>
           <h3>FORMATION EN JEU D'ACTRICE</h3>
           <p>Développement d'une technique polyvalente — théâtre physique, cinéma, performance devant caméra.</p>
         </div>
-        <div class="tl-item fade-in">
+        <div class="tl-item fade-in" id="tl-2">
           <div class="tl-date">2021 — 2022</div>
           <h3>DIRECTION ARTISTIQUE & BRANDING</h3>
           <p>Collaboration avec des marques pour créer des identités visuelles fortes et des campagnes de contenu.</p>
         </div>
-        <div class="tl-item fade-in">
+        <div class="tl-item fade-in" id="tl-3">
           <div class="tl-date">Depuis toujours</div>
           <h3>COMPLÈTEMENT FOLLE</h3>
           <p>Naissance officielle d'une vision du monde en dehors de tous les codes. C'est pas un bug, c'est une feature.</p>
@@ -886,29 +1155,29 @@
 
   <!-- ACTING -->
   <section id="acting">
-    <span class="section-tag fade-in">// ACTING.EXECUTE()</span>
-    <h2 class="sec-title fade-in"><span class="accent">SCÈNE</span> &<br>ÉCRAN</h2>
+    <span class="section-tag fade-in" id="acting-tag">// ACTING.EXECUTE()</span>
+    <h2 class="sec-title fade-in" id="acting-title"><span class="accent">SCÈNE</span> &<br>ÉCRAN</h2>
 
     <div class="acting-grid stagger">
       <div class="act-card fade-in">
-        <div class="act-icon">🎭</div>
-        <h3>THÉÂTRE PHYSIQUE</h3>
-        <p>Corps, voix, espace. Une technique enracinée dans la présence totale et l'énergie brute de la scène.</p>
+        <div class="act-icon" id="act-icon-1">🎭</div>
+        <h3 id="act-1-title">THÉÂTRE PHYSIQUE</h3>
+        <p id="act-1-desc">Corps, voix, espace. Une technique enracinée dans la présence totale et l'énergie brute de la scène.</p>
       </div>
       <div class="act-card fade-in">
-        <div class="act-icon">🎬</div>
-        <h3>CINÉMA & TV</h3>
-        <p>Jeu réaliste devant caméra. La nuance, le regard, le silence — tout parle sur un écran.</p>
+        <div class="act-icon" id="act-icon-2">🎬</div>
+        <h3 id="act-2-title">CINÉMA & TV</h3>
+        <p id="act-2-desc">Jeu réaliste devant caméra. La nuance, le regard, le silence — tout parle sur un écran.</p>
       </div>
       <div class="act-card fade-in">
-        <div class="act-icon">🎤</div>
-        <h3>VOIX & DOUBLAGE</h3>
-        <p>Une voix distinctive, modulable, capable d'incarner des univers très différents avec authenticité.</p>
+        <div class="act-icon" id="act-icon-3">🎤</div>
+        <h3 id="act-3-title">VOIX & DOUBLAGE</h3>
+        <p id="act-3-desc">Une voix distinctive, modulable, capable d'incarner des univers très différents avec authenticité.</p>
       </div>
       <div class="act-card fade-in">
-        <div class="act-icon">⚡</div>
-        <h3>IMPROVISATION</h3>
-        <p>L'impro comme terrain de jeu infini. Réactivité, créativité, connexion immédiate avec les partenaires.</p>
+        <div class="act-icon" id="act-icon-4">⚡</div>
+        <h3 id="act-4-title">IMPROVISATION</h3>
+        <p id="act-4-desc">L'impro comme terrain de jeu infini. Réactivité, créativité, connexion immédiate avec les partenaires.</p>
       </div>
     </div>
 
@@ -991,8 +1260,8 @@
 
   <!-- PHOTOGRAPHY -->
   <section id="photography">
-    <span class="section-tag fade-in">// GALLERY.RENDER()</span>
-    <h2 class="sec-title fade-in">MA<br><span class="accent2">PHOTOGRAPHIE</span></h2>
+    <span class="section-tag fade-in" id="photo-tag">// GALLERY.RENDER()</span>
+    <h2 class="sec-title fade-in" id="photo-title">MA<br><span class="accent2">PHOTOGRAPHIE</span></h2>
 
     <div class="photo-filters fade-in">
       <span class="filter-label">FILTRER :</span>
@@ -1060,9 +1329,9 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-chaos-bg"></div>
-    <span class="section-tag fade-in">// CONTACT.INIT()</span>
-    <h2 class="contact-title fade-in">CRÉONS QUELQUE<br>CHOSE D'<span class="y">INOUBLIABLE</span></h2>
-    <p class="contact-sub fade-in">
+    <span class="section-tag fade-in" id="contact-tag">// CONTACT.INIT()</span>
+    <h2 class="contact-title fade-in" id="contact-title">CRÉONS QUELQUE<br>CHOSE D'<span class="y">INOUBLIABLE</span></h2>
+    <p class="contact-sub fade-in" id="contact-sub">
       Disponible pour des projets photo, actoraux, et tout ce qui<br>
       sort un peu des sentiers battus. Especially the weird stuff.
     </p>
@@ -1082,7 +1351,7 @@
         <a href="#">London · Paris</a>
       </div>
     </div>
-    <a href="mailto:tia@tialana.com" class="contact-cta fade-in">
+    <a href="mailto:tia@tialana.com" class="contact-cta fade-in" id="contact-cta">
       ENVOYER UN MESSAGE ⚡
     </a>
   </section>
@@ -1090,10 +1359,349 @@
   <!-- FOOTER -->
   <footer>
     <span class="footer-logo">TIA-LANA CHINAPYEL</span>
-    <p>© 2024 — Tous droits réservés</p>
+    <p id="footer-copy">© 2024 — Tous droits réservés</p>
   </footer>
 
   <script>
+    /* ══════════════════════════════════════════════════════
+       SYSTÈME DE THÈMES
+    ══════════════════════════════════════════════════════ */
+    const THEMES = {
+      classique: {
+        label: 'CLASSIQUE',
+        icon: '🕯️',
+        texts: {
+          'hero-eyebrow':   'Photographe · Comédienne · Directrice Artistique',
+          'hero-sub':       'Une créative franco-britannique qui capture <span>l\'émotion et la lumière</span>.<br>Entre Londres et Paris, au service de l\'histoire que vous souhaitez raconter.',
+          'hero-cta':       'Découvrir mon travail →',
+          'hero-bg-text':   'CHINAPYEL',
+          'about-tag':      'À propos',
+          'about-title':    'UNE ARTISTE<br>AU SERVICE DE <span class="accent">L\'HISTOIRE</span><br>ET DE LA LUMIÈRE',
+          'about-p1':       'Je m\'appelle <span class="highlight">Tia-Lana Chinapyel</span>, créative née au Royaume-Uni et basée à Paris. Mon travail est guidé par une conviction : chaque image, chaque interprétation doit porter en elle une vérité émotionnelle.',
+          'about-p2':       'Derrière l\'objectif comme devant la caméra, j\'apporte le même soin à la lumière, à la composition et à la connexion humaine. <span class="highlight">La précision et la sensibilité</span> sont les deux piliers de ma pratique artistique.',
+          'about-badge-label': 'CRÉATIONS',
+          'skills-tag':     'Savoir-faire',
+          'skills-title':   'MES<br><span class="accent2">DISCIPLINES</span>',
+          'skill-1-title':  'PHOTOGRAPHIE',
+          'skill-1-desc':   'Portrait, éditorial, lifestyle. Une approche rigoureuse de la lumière naturelle et une sensibilité profonde pour révéler la singularité de chaque sujet.',
+          'skill-2-title':  'JEU D\'ACTRICE',
+          'skill-2-desc':   'Scène et écran. Une technique construite sur la précision du texte, la justesse du corps et la profondeur de l\'émotion incarnée.',
+          'skill-3-title':  'DIRECTION ARTISTIQUE',
+          'skill-3-desc':   'Identité visuelle, conception de campagnes, direction de contenu. L\'art de donner une cohérence esthétique forte à une vision.',
+          'skill-4-title':  'CRÉATION DE CONTENU',
+          'skill-4-desc':   'Storytelling visuel et multiformat. Des contenus pensés pour durer, ancrés dans une narration singulière et maîtrisée.',
+          'exp-tag':        'Parcours',
+          'exp-title':      'MON<br><span class="accent3">EXPÉRIENCE</span>',
+          'exp-desc':       'Un parcours construit avec exigence, entre deux capitales culturelles, au croisement de l\'image et de la scène.',
+          'acting-tag':     'Jeu & Interprétation',
+          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN',
+          'act-icon-1': '🎭', 'act-1-title': 'THÉÂTRE',
+          'act-1-desc': 'Une présence scénique construite sur la rigueur technique et l\'écoute. Le corps comme instrument premier de l\'expression.',
+          'act-icon-2': '🎬', 'act-2-title': 'CINÉMA & TÉLÉVISION',
+          'act-2-desc': 'Jeu réaliste devant caméra. La finesse du regard, la précision du silence, la vérité de chaque instant capturé.',
+          'act-icon-3': '🎙️', 'act-3-title': 'VOIX & DOUBLAGE',
+          'act-3-desc': 'Une voix posée, modulable et expressive, capable d\'habiter des univers narratifs très différents avec authenticité.',
+          'act-icon-4': '✦', 'act-4-title': 'IMPROVISATION',
+          'act-4-desc': 'La spontanéité comme discipline. Une réactivité affûtée et une présence totale au service de la scène et du partenaire.',
+          'photo-tag':      'Galerie',
+          'photo-title':    'MA<br><span class="accent2">PHOTOGRAPHIE</span>',
+          'contact-tag':    'Contact',
+          'contact-title':  'TRAVAILLONS<br>ENSEMBLE SUR QUELQUE CHOSE D\'<span class="y">ESSENTIEL</span>',
+          'contact-sub':    'Disponible pour des collaborations en photographie, jeu d\'actrice<br>et direction artistique. Projets exigeants bienvenus.',
+          'contact-cta':    'Me contacter →',
+          'footer-copy':    '© 2024 Tia-Lana Chinapyel — Tous droits réservés',
+        },
+        timeline: [
+          { date: '2023 — Présent', title: 'PHOTOGRAPHE FREELANCE', desc: 'Projets personnels et éditoriaux entre Londres et Paris. Spécialisation en portrait et narration visuelle avec une approche documentaire.' },
+          { date: '2022 — 2023', title: 'FORMATION EN JEU D\'ACTRICE', desc: 'Développement d\'une technique rigoureuse — théâtre physique, jeu à la caméra, travail vocal et interprétation du texte classique.' },
+          { date: '2021 — 2022', title: 'DIRECTION ARTISTIQUE & BRANDING', desc: 'Collaboration avec des marques pour concevoir des identités visuelles cohérentes et des campagnes de contenu à forte intention.' },
+          { date: 'En continu', title: 'RECHERCHE & DÉVELOPPEMENT', desc: 'Exploration permanente des frontières entre photographie, performance et narration. Un processus de création en constante évolution.' },
+        ],
+        marquee1: ['Photographie', 'Narration Visuelle', 'Jeu d\'Actrice', 'Direction Artistique', 'Création de Contenu', 'Scène & Écran', 'Tia-Lana Chinapyel'],
+        marquee2: ['LONDON', 'PARIS', 'FRANCO-BRITANNIQUE', 'LUMIÈRE & ÉMOTION', 'PORTRAIT', 'ÉDITORIAL', 'L\'IMAGE AU SERVICE DU RÉCIT'],
+      },
+      chaotique: {
+        label: 'CHAOTIQUE',
+        icon: '💥',
+        texts: {
+          'hero-eyebrow':   '⚡ CREATIVE · PHOTOGRAPHER · ACTRESS · CHAOS GENERATOR ⚡',
+          'hero-sub':       'Narration visuelle ancrée dans l\'émotion, la lumière et <span>l\'intimité absolue</span>.<br>Entre Londres et Paris. Et un peu dans la lune.',
+          'hero-cta':       'ENTRER DANS SON MONDE →',
+          'hero-bg-text':   'CHINAPYEL',
+          'about-tag':      '// ABOUT_ME.EXE',
+          'about-title':    'UNE CRÉATIVE<br>AVEC UNE <span class="accent">HISTOIRE</span><br>À RACONTER',
+          'about-p1':       'Je m\'appelle <span class="highlight">Tia-Lana</span> et je suis une créative née au Royaume-Uni, basée à Paris. J\'ai une passion profonde pour la narration visuelle — explorer l\'émotion, le récit et l\'esthétique à travers la photographie et le jeu d\'actrice.',
+          'about-p2':       'Que ce soit derrière l\'objectif ou devant, j\'apporte le même soin pour la lumière, l\'atmosphère et la connexion humaine à chaque projet. <span class="highlight">Et oui, je suis totalement folle.</span> C\'est mon superpouvoir.',
+          'about-badge-label': 'STORIES',
+          'skills-tag':     '// SKILLS.LOAD()',
+          'skills-title':   'CE QUE<br>JE <span class="accent2">CRÉE</span>',
+          'skill-1-title':  'PHOTOGRAPHIE',
+          'skill-1-desc':   'Portrait, lifestyle, mode. Je capture la lumière et l\'émotion avec une passion dévorante pour chaque instant volé.',
+          'skill-2-title':  'JEU D\'ACTRICE',
+          'skill-2-desc':   'Scène, écran, voix. Une présence électrique et une capacité à incarner n\'importe quel univers narratif.',
+          'skill-3-title':  'DIRECTION ARTISTIQUE',
+          'skill-3-desc':   'Branding visuel, identité de marque, conception de contenu. L\'art de construire un univers cohérent et puissant.',
+          'skill-4-title':  'CONTENT CREATION',
+          'skill-4-desc':   'Réseaux sociaux, campagnes visuelles, storytelling multiformat. Chaque pixel raconte une histoire.',
+          'exp-tag':        '// EXPERIENCE.LOG',
+          'exp-title':      'MON<br><span class="accent3">PARCOURS</span>',
+          'exp-desc':       'Une trajectoire construite autour de la passion, de l\'audace et d\'une légère obsession pour la perfection.',
+          'acting-tag':     '// ACTING.EXECUTE()',
+          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN',
+          'act-icon-1': '🎭', 'act-1-title': 'THÉÂTRE PHYSIQUE',
+          'act-1-desc': 'Corps, voix, espace. Une technique enracinée dans la présence totale et l\'énergie brute de la scène.',
+          'act-icon-2': '🎬', 'act-2-title': 'CINÉMA & TV',
+          'act-2-desc': 'Jeu réaliste devant caméra. La nuance, le regard, le silence — tout parle sur un écran.',
+          'act-icon-3': '🎤', 'act-3-title': 'VOIX & DOUBLAGE',
+          'act-3-desc': 'Une voix distinctive, modulable, capable d\'incarner des univers très différents avec authenticité.',
+          'act-icon-4': '⚡', 'act-4-title': 'IMPROVISATION',
+          'act-4-desc': 'L\'impro comme terrain de jeu infini. Réactivité, créativité, connexion immédiate avec les partenaires.',
+          'photo-tag':      '// GALLERY.RENDER()',
+          'photo-title':    'MA<br><span class="accent2">PHOTOGRAPHIE</span>',
+          'contact-tag':    '// CONTACT.INIT()',
+          'contact-title':  'CRÉONS QUELQUE<br>CHOSE D\'<span class="y">INOUBLIABLE</span>',
+          'contact-sub':    'Disponible pour des projets photo, actoraux, et tout ce qui<br>sort un peu des sentiers battus. Especially the weird stuff.',
+          'contact-cta':    'ENVOYER UN MESSAGE ⚡',
+          'footer-copy':    '© 2024 — Tous droits réservés',
+        },
+        timeline: [
+          { date: '2023 — Présent', title: 'PHOTOGRAPHE FREELANCE', desc: 'Projets personnels et éditoriaux entre Londres et Paris. Spécialisation en portrait et narration visuelle.' },
+          { date: '2022 — 2023', title: 'FORMATION EN JEU D\'ACTRICE', desc: 'Développement d\'une technique polyvalente — théâtre physique, cinéma, performance devant caméra.' },
+          { date: '2021 — 2022', title: 'DIRECTION ARTISTIQUE & BRANDING', desc: 'Collaboration avec des marques pour créer des identités visuelles fortes et des campagnes de contenu.' },
+          { date: 'Depuis toujours', title: 'COMPLÈTEMENT FOLLE', desc: 'Naissance officielle d\'une vision du monde en dehors de tous les codes. C\'est pas un bug, c\'est une feature.' },
+        ],
+        marquee1: ['Photography','Visual Storytelling','Acting','Branding','Content Creation','Stage & Screen','COMPLÈTEMENT FOLLE'],
+        marquee2: ['LONDON','PARIS','ANYWHERE','NOWHERE','EVERYWHERE','TIA-LANA','CHAOS IS ART'],
+      },
+
+      amour: {
+        label: 'AMOUR',
+        icon: '💕',
+        texts: {
+          'hero-eyebrow':   '💕 RÊVEUSE · LUMINEUSE · PASSIONNÉE · CRÉATRICE D\'ÉMOTIONS 💕',
+          'hero-sub':       'Des images qui effleurent l\'âme, une lumière qui raconte <span>l\'amour en toutes ses formes</span>.<br>Entre deux villes, un cœur qui déborde.',
+          'hero-cta':       'ENTRER DANS SON CŒUR →',
+          'hero-bg-text':   'AMOUR',
+          'about-tag':      '// MON HISTOIRE 💕',
+          'about-title':    'UNE ÂME QUI<br>AIME AVEC <span class="accent">TOUT CE</span><br>QU\'ELLE A',
+          'about-p1':       'Je m\'appelle <span class="highlight">Tia-Lana</span> et je suis née avec trop d\'amour à donner. Alors je le mets dans chaque image, chaque rôle, chaque regard capturé.',
+          'about-p2':       'L\'amour est ma technique. La tendresse, mon esthétique. <span class="highlight">Et mon cœur déborde</span> sur chaque projet que je touche — c\'est pas une métaphore.',
+          'about-badge-label': 'LOVE',
+          'skills-tag':     '// PASSION.LOAD()',
+          'skills-title':   'CE QUE<br>J\'<span class="accent2">AIME</span> CRÉER',
+          'skill-1-title':  'PHOTOGRAPHIE DU CŒUR',
+          'skill-1-desc':   'Capturer les âmes nues, les instants de grâce, la lumière qui rend les gens beaux. Parce que tout le monde mérite d\'être vu avec amour.',
+          'skill-2-title':  'INCARNER DES ÉMOTIONS',
+          'skill-2-desc':   'Jouer, c\'est aimer profondément — un personnage, une scène, un public. Je donne tout ce que j\'ai, toujours.',
+          'skill-3-title':  'CRÉER LA BEAUTÉ',
+          'skill-3-desc':   'Tisser des identités visuelles avec douceur et intention. Parce que la beauté mérite d\'être partagée.',
+          'skill-4-title':  'RACONTER L\'AMOUR',
+          'skill-4-desc':   'Des contenus qui touchent, qui restent, qui font pleurer (dans le bon sens). L\'art de créer de l\'émotion vraie.',
+          'exp-tag':        '// MON CHEMIN 💕',
+          'exp-title':      'MON<br><span class="accent3">HISTOIRE</span>',
+          'exp-desc':       'Une trajectoire tissée de rencontres, d\'émotions et d\'un amour inconditionnel pour l\'art et les êtres.',
+          'acting-tag':     '// SCÈNE.AMOUR()',
+          'acting-title':   '<span class="accent">CŒUR</span> &<br>ÂME',
+          'act-icon-1': '💕', 'act-1-title': 'THÉÂTRE DU CŒUR',
+          'act-1-desc': 'Être sur scène, c\'est être vulnérable et magnifique en même temps. Je joue avec tout ce que j\'ai.',
+          'act-icon-2': '🌹', 'act-2-title': 'CINÉMA & ÉMOTIONS',
+          'act-2-desc': 'La caméra capte ce que les mots ne peuvent pas dire. Le regard, le souffle, le silence aimant.',
+          'act-icon-3': '🎶', 'act-3-title': 'VOIX & DOUCEUR',
+          'act-3-desc': 'Une voix qui enveloppe, qui réchauffe, qui sait se faire douce ou intense selon ce que le cœur demande.',
+          'act-icon-4': '✨', 'act-4-title': 'IMPROVISATION',
+          'act-4-desc': 'L\'amour de l\'instant présent, de la connexion vraie avec les partenaires. L\'impro comme acte d\'amour.',
+          'photo-tag':      '// GALERIE.DOUCE()',
+          'photo-title':    'MON<br><span class="accent2">ÂME EN IMAGES</span>',
+          'contact-tag':    '// PARLER.ENSEMBLE()',
+          'contact-title':  'CRÉONS QUELQUE<br>CHOSE D\'<span class="y">ÉMOUVANT</span>',
+          'contact-sub':    'Pour des projets qui ont de l\'âme, de la douceur, et cette petite<br>lumière qui fait pleurer les gens — dans le bon sens.',
+          'contact-cta':    'ÉCRIRE AVEC AMOUR 💕',
+          'footer-copy':    '© 2024 — Fait avec amour ❤️',
+        },
+        timeline: [
+          { date: '2023 — Présent', title: 'PHOTOGRAPHE DU CŒUR', desc: 'Capturer les âmes nues, les instants volés, les sourires qui débordent. Entre Londres et Paris, avec tout l\'amour du monde.' },
+          { date: '2022 — 2023', title: 'APPRENDRE À AIMER JOUER', desc: 'Découvrir que jouer, c\'est aimer profondément — un personnage, une scène, un public. Toujours avec le cœur en premier.' },
+          { date: '2021 — 2022', title: 'CRÉER DE BELLES CHOSES', desc: 'Tisser des identités visuelles avec douceur et passion. Parce que la beauté mérite d\'exister et d\'être partagée.' },
+          { date: 'Depuis toujours', title: 'AMOUREUSE DE LA VIE', desc: 'Tomber amoureuse de chaque lumière, chaque visage, chaque silence. C\'est une maladie. Une très belle maladie.' },
+        ],
+        marquee1: ['Amour','Douceur','Lumière','Émotion','Tendresse','Beauté','LE CŒUR À L\'OUVRAGE'],
+        marquee2: ['LONDON','PARIS','PARTOUT OÙ TU ES','DANS TON CŒUR','DANS MES RÊVES','TIA-LANA','L\'AMOUR EST ART'],
+      },
+
+      casse: {
+        label: 'CASSÉ',
+        icon: '🔧',
+        texts: {
+          'hero-eyebrow':   '⚠️ ERREUR · 404 · CHARGEMENT EN COURS... · NE PAS TOUCHER ⚠️',
+          'hero-sub':       'Site en cours de reconstruction. Ou pas. Les photos existent. Peut-être. <span>[ERREUR DE CHARGEMENT]</span>.<br>Merci pour votre patience. Ou pas.',
+          'hero-cta':       'ESSAYER D\'ENTRER → (ça marche pas)',
+          'hero-bg-text':   '404',
+          'about-tag':      '// FICHIER_CORROMPU.exe',
+          'about-title':    'UNE CRÉA-<br>[DONNÉES <span class="accent">MANQUANTES</span>]<br>⚠️ ERREUR',
+          'about-p1':       'Je m\'appelle <span class="highlight">[NOM MANQUANT]</span>... désolée le fichier est partiellement corrompu. Je suis quelque chose en rapport avec la photographie et/ou le théâtre. Je crois.',
+          'about-p2':       'Le reste de ce paragraphe a été perdu lors d\'une mise à jour ratée. <span class="highlight">⚠️ CONTENU NON DISPONIBLE.</span> Ce n\'est pas un problème technique, c\'est une feature.',
+          'about-badge-label': 'ERROR',
+          'skills-tag':     '// SKILLS.LOAD() — TIMEOUT',
+          'skills-title':   'CE QUE<br>JE <span class="accent2">TENTE</span> DE FAIRE',
+          'skill-1-title':  'PHOTOGRAPHIE [PARFOIS]',
+          'skill-1-desc':   '⚠️ Service intermittent. Les photos existent mais le disque dur plante régulièrement. Résultats variables selon la météo.',
+          'skill-2-title':  'JEU [EN MAINTENANCE]',
+          'skill-2-desc':   'Module partiellement fonctionnel. Certaines émotions disponibles, d\'autres en cours de réinstallation.',
+          'skill-3-title':  'DIRECTION [⚠️ ERREUR]',
+          'skill-3-desc':   '[CONTENU INDISPONIBLE] Des marques. Des trucs visuels. Ça marchait bien jusqu\'à la dernière panne système.',
+          'skill-4-title':  'CONTENU [CHARGEMENT...]',
+          'skill-4-desc':   '████████░░ 80% — La barre de progression est bloquée depuis 3 jours. On attend. On attend toujours.',
+          'exp-tag':        '// EXPERIENCE.LOG [CORROMPU]',
+          'exp-title':      'MON<br><span class="accent3">PARCOURS (?)</span>',
+          'exp-desc':       '⚠️ Fichier partiellement récupéré. Certaines données peuvent être inexactes, manquantes ou complètement inventées.',
+          'acting-tag':     '// ACTING.exe [EN MAINTENANCE]',
+          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN [⚠️]',
+          'act-icon-1': '⚠️', 'act-1-title': 'THÉÂTRE [INSTABLE]',
+          'act-1-desc': 'Module en cours de réparation. Corps disponible, voix intermittente, énergie de scène à 43%. Désolée pour le dérangement.',
+          'act-icon-2': '📺', 'act-2-title': 'CINÉMA [HORS LIGNE]',
+          'act-2-desc': 'Connexion perdue avec la réalité cinématographique. Tentative de reconnexion en cours depuis [DATE INCONNUE].',
+          'act-icon-3': '🔇', 'act-3-title': 'VOIX [MUET]',
+          'act-3-desc': 'Le module vocal a planté lors de la dernière mise à jour. Redémarrage prévu. Date inconnue. Peut-être jamais.',
+          'act-icon-4': '❓', 'act-4-title': 'IMPROVISATION [???]',
+          'act-4-desc': 'undefined. null. NaN. L\'impro fonctionne encore mais on ne sait pas vraiment pourquoi. Ne pas toucher.',
+          'photo-tag':      '// GALLERY.RENDER() — ERREUR 500',
+          'photo-title':    'MA<br><span class="accent2">GALERIE [CHARGEMENT...]</span>',
+          'contact-tag':    '// CONTACT.INIT() — FAILED',
+          'contact-title':  'CONTACTER<br><span class="y">[EN TRAVAUX]</span>',
+          'contact-sub':    'Le formulaire est en maintenance. Ou cassé. C\'est difficile à dire.<br>Essayez quand même, parfois ça marche par accident.',
+          'contact-cta':    'TENTER D\'ENVOYER ⚠️',
+          'footer-copy':    '© [ANNÉE MANQUANTE] — Droits peut-être réservés',
+        },
+        timeline: [
+          { date: '2023 — ???', title: 'PHOTOGRAPHE (JE CROIS)', desc: '⚠️ Statut incertain. Projets en cours mais le disque dur plante régulièrement. Les photos existent. Certaines d\'entre elles.' },
+          { date: '[DATE CORROMPUE]', title: 'FORMATION EN [FICHIER MANQUANT]', desc: 'Cette entrée est partiellement illisible. Des cours ont eu lieu. Des choses ont été apprises. Peut-être. Probablement.' },
+          { date: 'Erreur de lecture', title: 'DIRECTION ██████ & ██████', desc: '[CONTENU CENSURÉ PAR L\'ADMINISTRATEUR SYSTÈME] Des marques. Des trucs visuels. Ça marchait bien jusqu\'à la panne.' },
+          { date: 'null / undefined', title: '█████████████ FOLLE', desc: 'NaN. undefined. Erreur fatale non résolue depuis la naissance. C\'est dans la nature du fichier. Ne pas forcer l\'arrêt.' },
+        ],
+        marquee1: ['⚠️ EN TRAVAUX','ERREUR 404','CHARGEMENT...','█████████','NE PAS TOUCHER','⚠️ EN MAINTENANCE','DÉSOLÉE'],
+        marquee2: ['LONDON','PARIS','[VILLE INCONNUE]','NULL','UNDEFINED','TIA-LANA (?)','⚠️ SITE CASSÉ'],
+      },
+
+      folle: {
+        label: 'FOLLE',
+        icon: '🌀',
+        texts: {
+          'hero-eyebrow':   '🌀 genre je sais pas · photographe ?? · actrice peut-être · AAAAH 🌀',
+          'hero-sub':       'ok donc j\'ai un appareil photo et parfois je fais des trucs et c\'est <span>vraiment très bien je crois??</span><br>aussi j\'aime les chats et le chaos. surtout le chaos.',
+          'hero-cta':       'CLIQUER ICI lol →',
+          'hero-bg-text':   'AAAAAAH',
+          'about-tag':      '// ???_ME.wtf',
+          'about-title':    'QUELQU\'UN<br>QUI FAIT DES <span class="accent">TRUCS</span><br>C\'EST BIEN NON',
+          'about-p1':       'alors <span class="highlight">tia-lana</span> c\'est moi et je fais des photos et du théâtre et des fois je mange du nutella directement à la cuillère et c\'est une démarche artistique, j\'ai décidé.',
+          'about-p2':       'la photographie c\'est comme regarder la réalité mais en mieux ou en pire selon les jours. <span class="highlight">et oui je suis folle.</span> mais genre la folle sympathique. enfin j\'espère??',
+          'about-badge-label': '???',
+          'skills-tag':     '// trucs.que.je.fais()',
+          'skills-title':   'CE QUE<br>JE <span class="accent2">FAIS</span> (à peu près)',
+          'skill-1-title':  'PHOTOS WOOHOO',
+          'skill-1-desc':   'des portraits des gens des lumières des trucs beaux. entre Londres et Paris. et aussi dans ma chambre avec mon iPhone des fois. c\'est de l\'art aussi.',
+          'skill-2-title':  'JOUER LA COMÉDIE !!',
+          'skill-2-desc':   'et maintenant je joue la comédie dans la vraie vie aussi parfois et c\'est trop pratique comme compétence pour les situations awkward.',
+          'skill-3-title':  'FAIRE DES TRUCS BEAUX',
+          'skill-3-desc':   'des marques des logos des trucs visuels. les gens étaient contents. moi aussi. c\'était vraiment très bien en fait.',
+          'skill-4-title':  'CONTENU PARTOUT !!',
+          'skill-4-desc':   'je mets des trucs sur internet et des fois les gens aiment. des fois ils aimaient pas. la vie. c\'est cool quand même.',
+          'exp-tag':        '// ma vie.wtf',
+          'exp-title':      'CE QUI<br><span class="accent3">S\'EST PASSÉ</span>',
+          'exp-desc':       'une série d\'événements plus ou moins planifiés qui ont mené à maintenant. la vie quoi. c\'est chelou mais c\'est sympa.',
+          'acting-tag':     '// theatre.exe (?)',
+          'acting-title':   '<span class="accent">SCÈNE</span> &<br>ÉCRAN et tout ça',
+          'act-icon-1': '🎭', 'act-1-title': 'THÉÂTRE JE SAIS !!',
+          'act-1-desc': 'être sur scène c\'est trop bien parce que tout le monde te regarde et tu peux faire des trucs et personne te dit rien. c\'est mon endroit préféré.',
+          'act-icon-2': '📱', 'act-2-title': 'FILMS & TRUCS',
+          'act-2-desc': 'devant une caméra c\'est bizarre parce qu\'il y a une caméra mais aussi c\'est bien parce que tu peux recommencer si tu rates ton truc.',
+          'act-icon-3': '🎤', 'act-3-title': 'MA VOIX !! hehe',
+          'act-3-desc': 'j\'ai une voix et elle fait des sons différents selon les situations. c\'est une compétence apparemment. les gens paient pour ça??',
+          'act-icon-4': '🌀', 'act-4-title': 'IMPRO c\'est fun',
+          'act-4-desc': 'l\'impro c\'est comme la vraie vie mais en mieux parce qu\'il y a des règles mais personne les suit vraiment. je me sens chez moi.',
+          'photo-tag':      '// mes belles photos :)',
+          'photo-title':    'MES<br><span class="accent2">PHOTOS !!</span>',
+          'contact-tag':    '// dire bonjour :)',
+          'contact-title':  'ON FAIT DES<br>TRUCS <span class="y">ENSEMBLE</span> ??',
+          'contact-sub':    'si tu veux faire des photos ou du théâtre ou n\'importe quoi de créatif<br>envoie-moi un message. ou deux. ou vingt. j\'adore recevoir des messages.',
+          'contact-cta':    'COUCOU !! 🌀',
+          'footer-copy':    '© 2024 — fait avec beaucoup de café et très peu de sommeil',
+        },
+        timeline: [
+          { date: '2023 — maintenant', title: 'JE FAIS DES PHOTOS !!', desc: 'des portraits des gens des lumières des trucs beaux. entre Londres et Paris. et aussi dans ma chambre avec mon iPhone des fois.' },
+          { date: '2022 — 2023', title: 'J\'AI APPRIS À JOUER !!', desc: 'et maintenant je joue la comédie dans la vraie vie aussi parfois c\'est trop pratique comme compétence pour plein de situations.' },
+          { date: '2021 — 2022', title: 'J\'AI FAIT DES CHOSES !!', desc: 'des marques des logos des trucs visuels. les gens étaient contents. moi aussi. c\'était bien. vraiment très bien en fait.' },
+          { date: 'toujours toujours', title: 'FOLLE DEPUIS TOUJOURS !!', desc: 'c\'est mon mode par défaut. j\'ai essayé d\'être normale pendant 5 minutes en 2019 et c\'était horrible. jamais plus.' },
+        ],
+        marquee1: ['photoooos !!','THEATRE!!','je fais des trucs','c\'est sympa','venez voir','AAAAAAH','merci byeee 🌀'],
+        marquee2: ['LONDON','PARIS','DANS MA TÊTE','UN PEU PARTOUT','NULLE PART VRAIMENT','TIA-LANA !!','c\'est moi hihi'],
+      },
+    };
+
+    let currentTheme = 'chaotique';
+
+    function buildMarquee(items) {
+      const doubled = [...items, ...items];
+      return doubled.map(t => `<span>${t}</span>`).join('');
+    }
+
+    function applyTheme(name) {
+      const t = THEMES[name];
+      if (!t) return;
+
+      document.body.classList.remove('theme-chaotique','theme-amour','theme-casse','theme-folle');
+      document.body.classList.add('theme-' + name);
+
+      Object.entries(t.texts).forEach(([id, html]) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = html;
+      });
+
+      t.timeline.forEach((tl, i) => {
+        const el = document.getElementById('tl-' + i);
+        if (!el) return;
+        el.querySelector('.tl-date').textContent = tl.date;
+        el.querySelector('h3').textContent = tl.title;
+        el.querySelector('p').textContent = tl.desc;
+      });
+
+      document.getElementById('marquee1-inner').innerHTML = buildMarquee(t.marquee1);
+      document.getElementById('marquee2-inner').innerHTML = buildMarquee(t.marquee2);
+
+      document.getElementById('theme-pill-name').textContent = t.label;
+      document.getElementById('theme-toggle-btn').textContent = t.icon;
+
+      document.querySelectorAll('.theme-opt-btn').forEach(btn => {
+        btn.classList.toggle('active-theme', btn.dataset.t === name);
+      });
+
+      currentTheme = name;
+      try { localStorage.setItem('tia-theme', name); } catch(e) {}
+    }
+
+    document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+      const opts = document.getElementById('theme-options');
+      opts.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.theme-opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyTheme(btn.dataset.t);
+        document.getElementById('theme-options').classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('#theme-switcher')) {
+        document.getElementById('theme-options').classList.remove('open');
+      }
+    });
+
+    try {
+      const saved = localStorage.getItem('tia-theme');
+      if (saved && THEMES[saved]) applyTheme(saved);
+    } catch(e) {}
+
+
     /* ── PARTICLES ── */
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
@@ -1209,9 +1817,9 @@
     });
 
     /* ── LIGHTBOX ── */
-    const lb     = document.getElementById('lightbox');
-    const lbImg  = document.getElementById('lb-img');
-    const items  = () => [...document.querySelectorAll('.g-item:not(.hidden)')];
+    const lb    = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const items = () => [...document.querySelectorAll('.g-item:not(.hidden)')];
     let curIdx = 0;
 
     document.querySelectorAll('.g-item').forEach(item => {
