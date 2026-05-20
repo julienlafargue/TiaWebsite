@@ -217,9 +217,69 @@ const HTML_THEME_TRANSLATIONS = {
   },
 };
 
+/* ── Mood texts (for theme=humeur sub-system) ── */
+const MOOD_TEXTS = {
+  legere: {
+    'hero.eyebrow':   { en: 'Sunshine · Creating · Smiling ☀️', fr: 'Soleil · Créer · Sourire ☀️' },
+    'hero.p':         { en: 'Today everything feels light. Creating with joy, shooting with a smile, living fully.', fr: "Aujourd'hui tout est léger. Créer avec joie, photographier en souriant, vivre pleinement." },
+    'about.p1':       { en: "My name is Tia-Lana and right now I feel like the world is bright. I create because it makes me happy — and I hope it makes you happy too.", fr: "Je m'appelle Tia-Lana et en ce moment le monde me semble lumineux. Je crée parce que ça me rend heureuse — et j'espère que ça vous rend heureux aussi." },
+    'about.p2':       { en: 'Light, atmosphere, connection — today everything flows. Come create something joyful with me.', fr: "Lumière, atmosphère, connexion — aujourd'hui tout coule. Venez créer quelque chose de joyeux avec moi." },
+    'contact.sub':    { en: 'In a good mood and ready to create something bright and beautiful together.', fr: 'De bonne humeur et prête à créer quelque chose de lumineux et beau ensemble.' },
+    'acting.eyebrow': { en: 'Actress · Full of Light ☀️', fr: 'Actrice · Pleine de Lumière ☀️' },
+    'acting.p':       { en: 'British actress in Paris, today filled with light and ready to bring joy to every role and every frame.', fr: "Actrice britannique à Paris, aujourd'hui pleine de lumière et prête à apporter de la joie à chaque rôle et chaque plan." },
+    'photo.eyebrow':  { en: 'Visual Joy · Photography ☀️', fr: 'Joie Visuelle · Photographie ☀️' },
+    'photo.p':        { en: 'A collection made with light in my eyes — every portrait a smile, every landscape a breath of fresh air.', fr: "Une collection faite avec de la lumière dans les yeux — chaque portrait un sourire, chaque paysage un souffle d'air frais." },
+  },
+  melancolique: {
+    'hero.eyebrow':   { en: 'Quietly · Dreaming · Feeling 🌙', fr: 'Doucement · Rêvant · Ressentant 🌙' },
+    'hero.p':         { en: 'Some days the light is softer. The shadows have stories too. And sometimes, the most honest art comes from stillness.', fr: "Certains jours la lumière est plus douce. Les ombres aussi racontent des histoires. Et parfois, l'art le plus honnête vient du silence." },
+    'about.p1':       { en: "My name is Tia-Lana and I'm in a quieter place today. Visual storytelling feels more intimate from here — closer, truer.", fr: "Je m'appelle Tia-Lana et je suis dans un endroit plus tranquille aujourd'hui. La narration visuelle semble plus intime d'ici — plus proche, plus vraie." },
+    'about.p2':       { en: 'In quieter moments, I find the images that matter most. The light is gentler. The connection, deeper.', fr: "Dans les moments plus tranquilles, je trouve les images qui comptent le plus. La lumière est plus douce. La connexion, plus profonde." },
+    'contact.sub':    { en: 'Available for intimate, introspective and thoughtful creative projects.', fr: 'Disponible pour des projets créatifs intimes, introspectifs et réfléchis.' },
+    'acting.eyebrow': { en: 'Actress · Quietly Present 🌙', fr: 'Actrice · Doucement Présente 🌙' },
+    'acting.p':       { en: 'British actress in Paris, in a pensive and present place. The quieter roles feel most true today.', fr: "Actrice britannique à Paris, dans un état pensif et présent. Les rôles plus silencieux semblent les plus vrais aujourd'hui." },
+    'photo.eyebrow':  { en: 'Quiet Light · Photography 🌙', fr: 'Lumière Douce · Photographie 🌙' },
+    'photo.p':        { en: 'A collection seen through quieter eyes — where every shadow is as important as every light.', fr: "Une collection vue avec des yeux plus tranquilles — où chaque ombre est aussi importante que chaque lumière." },
+  },
+  intense: {
+    'hero.eyebrow':   { en: 'Fire · Passion · Alive 🔥', fr: 'Feu · Passion · Vivante 🔥' },
+    'hero.p':         { en: 'Burning with something to say. Every frame, every role — with everything I have. No half measures.', fr: "Brûlant de quelque chose à dire. Chaque cliché, chaque rôle — avec tout ce que j'ai. Pas de demi-mesures." },
+    'about.p1':       { en: 'My name is Tia-Lana and right now I am on fire. The kind of creative energy that demands to be expressed — in every image, every performance.', fr: "Je m'appelle Tia-Lana et en ce moment je suis en feu. Le genre d'énergie créative qui exige d'être exprimée — dans chaque image, chaque performance." },
+    'about.p2':       { en: "When I feel this intensely, the work becomes something else entirely. Raw, real, powerful. Come find out what that looks like.", fr: "Quand je ressens avec cette intensité, le travail devient quelque chose d'autre. Brut, réel, puissant. Venez voir à quoi ça ressemble." },
+    'contact.sub':    { en: 'Ready for bold, powerful, unforgettable projects. Let\'s make something that burns.', fr: "Prête pour des projets audacieux, puissants, inoubliables. Créons quelque chose qui brûle." },
+    'acting.eyebrow': { en: 'Actress · On Fire 🔥', fr: 'Actrice · En Feu 🔥' },
+    'acting.p':       { en: 'British actress in Paris, burning at full intensity. Every role taken on with raw, unfiltered energy.', fr: "Actrice britannique à Paris, brûlant à pleine intensité. Chaque rôle abordé avec une énergie brute et sans filtre." },
+    'photo.eyebrow':  { en: 'Raw Power · Photography 🔥', fr: 'Puissance Brute · Photographie 🔥' },
+    'photo.p':        { en: 'A collection made in the heat of the moment — dramatic, visceral, unafraid of shadow or contrast.', fr: "Une collection faite dans le feu de l'action — dramatique, viscérale, sans peur de l'ombre ou du contraste." },
+  },
+  douce: {
+    'hero.eyebrow':   { en: 'Gently · Tenderly · Softly 🌸', fr: 'Doucement · Tendrement · Délicatement 🌸' },
+    'hero.p':         { en: 'In a soft and tender moment, where every image is a gentle breath of air and every word is chosen with care.', fr: "Dans un moment doux et tendre, où chaque image est un souffle léger et chaque mot est choisi avec soin." },
+    'about.p1':       { en: "My name is Tia-Lana and today I feel tender. There's a softness to the way I see the world right now — in the light, in people's faces, in the spaces between words.", fr: "Je m'appelle Tia-Lana et aujourd'hui je me sens tendre. Il y a une douceur dans ma façon de voir le monde en ce moment — dans la lumière, dans les visages, dans les espaces entre les mots." },
+    'about.p2':       { en: 'Some of my most beautiful work comes from these soft, unhurried moments. A quiet light. A gentle gaze. A tender connection.', fr: "Certains de mes plus beaux travaux viennent de ces moments doux et sans hâte. Une lumière tranquille. Un regard doux. Une connexion tendre." },
+    'contact.sub':    { en: 'Available for soft, heartfelt and delicate creative projects. Let\'s create something gentle together.', fr: "Disponible pour des projets créatifs doux, sincères et délicats. Créons quelque chose de tendre ensemble." },
+    'acting.eyebrow': { en: 'Actress · Tenderly Present 🌸', fr: 'Actrice · Tendrement Présente 🌸' },
+    'acting.p':       { en: 'British actress in Paris, in a tender and gentle state. Drawn today to roles that ask for softness and care.', fr: "Actrice britannique à Paris, dans un état tendre et doux. Attirée aujourd'hui par les rôles qui demandent de la douceur et du soin." },
+    'photo.eyebrow':  { en: 'Soft Light · Photography 🌸', fr: 'Lumière Douce · Photographie 🌸' },
+    'photo.p':        { en: 'A collection made with a gentle hand — where softness is strength and tenderness is the whole point.', fr: "Une collection faite avec une main douce — où la douceur est une force et la tendresse est l'essentiel." },
+  },
+  electrique: {
+    'hero.eyebrow':   { en: 'Energy · Power · Now ⚡', fr: 'Énergie · Puissance · Maintenant ⚡' },
+    'hero.p':         { en: 'Charged and ready. Something electric is building and it\'s time to create. Everything feels possible right now.', fr: "Chargée et prête. Quelque chose d'électrique se prépare et il est temps de créer. Tout semble possible en ce moment." },
+    'about.p1':       { en: "My name is Tia-Lana and I'm buzzing with creative energy. The kind where ideas come faster than I can capture them and every project feels electric.", fr: "Je m'appelle Tia-Lana et je déborde d'énergie créative. Le genre où les idées viennent plus vite que je ne peux les capturer et chaque projet semble électrique." },
+    'about.p2':       { en: 'In this state, I bring a current to every project — sharp, fast, charged. The work crackles with it.', fr: "Dans cet état, j'apporte un courant à chaque projet — vif, rapide, chargé. Le travail en est traversé." },
+    'contact.sub':    { en: 'Ready to spark something bold and electric. Let\'s create before the energy fades.', fr: "Prête à faire jaillir quelque chose d'audacieux et d'électrique. Créons avant que l'énergie disparaisse." },
+    'acting.eyebrow': { en: 'Actress · Fully Charged ⚡', fr: 'Actrice · Pleinement Chargée ⚡' },
+    'acting.p':       { en: 'British actress in Paris, fully charged and crackling. High-energy roles feel like home today.', fr: "Actrice britannique à Paris, pleinement chargée et crépitante. Les rôles à haute énergie semblent naturels aujourd'hui." },
+    'photo.eyebrow':  { en: 'Electric Vision · Photography ⚡', fr: 'Vision Électrique · Photographie ⚡' },
+    'photo.p':        { en: 'A collection shot with electric intensity — sharp contrasts, charged moments, and images that crackle.', fr: "Une collection prise avec une intensité électrique — contrastes tranchants, moments chargés, et des images qui crépitent." },
+  },
+};
+
 /* ── Language system ── */
-let currentLang = localStorage.getItem('tl-lang') || 'en';
+let currentLang  = localStorage.getItem('tl-lang')  || 'en';
 let currentTheme = localStorage.getItem('tl-theme') || 'classique';
+let currentMood  = localStorage.getItem('tl-mood')  || 'legere';
 
 function applyLang(lang) {
   document.documentElement.lang = lang;
@@ -235,7 +295,9 @@ function applyLang(lang) {
     if (dict[key]) el.innerHTML = dict[key];
   });
   /* Apply theme text overrides on top of base lang */
-  const overrides = THEME_TEXTS[currentTheme];
+  const overrides = currentTheme === 'humeur'
+    ? MOOD_TEXTS[currentMood]
+    : THEME_TEXTS[currentTheme];
   if (overrides) {
     document.querySelectorAll('[data-text-key]').forEach(el => {
       const key = el.dataset.textKey;
@@ -263,6 +325,8 @@ function applyTheme(theme) {
   document.querySelectorAll('.theme-opt').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.theme === theme);
   });
+  const moodBar = document.getElementById('moodBar');
+  if (moodBar) moodBar.classList.toggle('visible', theme === 'humeur');
   applyLang(currentLang);
 }
 
@@ -270,6 +334,22 @@ function setTheme(theme) {
   currentTheme = theme;
   localStorage.setItem('tl-theme', theme);
   applyTheme(theme);
+}
+
+/* ── Mood system (sub-system of theme=humeur) ── */
+function applyMood(mood) {
+  currentMood = mood;
+  document.documentElement.dataset.mood = mood || 'legere';
+  document.querySelectorAll('.mood-opt').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mood === mood);
+  });
+  applyLang(currentLang);
+}
+
+function setMood(mood) {
+  currentMood = mood;
+  localStorage.setItem('tl-mood', mood);
+  applyMood(mood);
 }
 
 /* ── Scroll Animations (IntersectionObserver) ── */
@@ -629,6 +709,12 @@ document.addEventListener('DOMContentLoaded', () => {
       setTheme(btn.dataset.theme);
       if (themePanel) themePanel.classList.remove('open');
     });
+  });
+
+  /* Mood bar init */
+  applyMood(currentMood);
+  document.querySelectorAll('.mood-opt').forEach(btn => {
+    btn.addEventListener('click', () => setMood(btn.dataset.mood));
   });
 
   initHamburger();

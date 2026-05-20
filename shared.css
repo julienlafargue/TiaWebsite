@@ -885,6 +885,219 @@ html[data-theme="folle"] .credit-card-venue { color:rgba(255,128,171,.7); }
 html[data-theme="folle"] footer { background:#311b92; }
 html[data-theme="folle"] .marquee-strip { background:linear-gradient(to right,#ff1744,#ff6d00,#ffd600,#00c853,#0091ea,#aa00ff); background-size:200%; animation:running-rainbow 3s linear infinite; }
 
+/* ══════════════════════════════════════════
+   THEME: HUMEUR (mood sub-system)
+══════════════════════════════════════════ */
+
+/* Mood bar — hidden by default, shown when theme=humeur */
+.mood-bar {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 5%;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,.07);
+  position: sticky;
+  top: 72px;
+  z-index: 990;
+  flex-wrap: wrap;
+  transition: background .4s, border-color .4s;
+}
+.mood-bar.visible { display: flex; }
+.mood-label {
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.mood-opt {
+  font-size: .72rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: transparent;
+  cursor: pointer;
+  letter-spacing: .04em;
+  color: var(--ink);
+  transition: background .2s, color .2s, border-color .2s, transform .15s;
+}
+.mood-opt:hover { transform: translateY(-1px); }
+.mood-opt.active {
+  background: var(--rose);
+  color: #fff;
+  border-color: var(--rose);
+}
+
+/* ── Légère (light / sunny) ── */
+html[data-theme="humeur"][data-mood="legere"] {
+  --cream:  #fffdf4;
+  --blush:  #fff8dc;
+  --rose:   #f9a825;
+  --ink:    #3e2c00;
+  --muted:  #8a7340;
+  --hover-bg: #fff3cd;
+  --filter-bg: rgba(255,253,244,.96);
+  --filter-border: rgba(249,168,37,.15);
+}
+html[data-theme="humeur"][data-mood="legere"] body { background:#fffdf4; }
+html[data-theme="humeur"][data-mood="legere"] .hero-left h1,
+html[data-theme="humeur"][data-mood="legere"] .page-hero-left h1 {
+  animation: sunny-sway 4s ease-in-out infinite;
+}
+@keyframes sunny-sway {
+  0%,100% { transform:rotate(0deg); }
+  30%      { transform:rotate(.4deg); }
+  70%      { transform:rotate(-.4deg); }
+}
+html[data-theme="humeur"][data-mood="legere"] .eyebrow,
+html[data-theme="humeur"][data-mood="legere"] .sec-label { animation:sunny-pulse 2.5s ease-in-out infinite; }
+@keyframes sunny-pulse {
+  0%,100% { opacity:1; }
+  50%      { opacity:.6; }
+}
+html[data-theme="humeur"][data-mood="legere"] #scroll-progress { background:linear-gradient(to right,#f9a825,#fff176); }
+
+/* ── Mélancolique ── */
+html[data-theme="humeur"][data-mood="melancolique"] {
+  --cream:  #0e1117;
+  --blush:  #161b24;
+  --rose:   #7986cb;
+  --ink:    #c5cae9;
+  --muted:  #7986cb;
+  --hover-bg: #1a2035;
+  --filter-bg: rgba(14,17,23,.96);
+  --filter-border: rgba(121,134,203,.15);
+}
+html[data-theme="humeur"][data-mood="melancolique"] body { background:#0e1117; }
+html[data-theme="humeur"][data-mood="melancolique"] nav { background:rgba(14,17,23,.92); border-color:rgba(121,134,203,.12); }
+html[data-theme="humeur"][data-mood="melancolique"] .sec-title { color:#c5cae9; }
+html[data-theme="humeur"][data-mood="melancolique"] .sec-title em { color:#7986cb; }
+html[data-theme="humeur"][data-mood="melancolique"] .card,
+html[data-theme="humeur"][data-mood="melancolique"] .skill-card,
+html[data-theme="humeur"][data-mood="melancolique"] .training-card { background:#161b24; border-color:rgba(121,134,203,.15); }
+html[data-theme="humeur"][data-mood="melancolique"] .contact-section { background:#161b24; }
+html[data-theme="humeur"][data-mood="melancolique"] footer { background:#0a0d14; }
+html[data-theme="humeur"][data-mood="melancolique"] .hero-left h1,
+html[data-theme="humeur"][data-mood="melancolique"] .page-hero-left h1 { animation:drift-down 6s ease-in-out infinite; }
+@keyframes drift-down {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(6px); }
+}
+html[data-theme="humeur"][data-mood="melancolique"] .eyebrow,
+html[data-theme="humeur"][data-mood="melancolique"] .sec-label { color:#5c6bc0; }
+html[data-theme="humeur"][data-mood="melancolique"] #scroll-progress { background:#3949ab; }
+html[data-theme="humeur"][data-mood="melancolique"] .mood-bar { background:#0e1117; border-color:rgba(121,134,203,.15); }
+html[data-theme="humeur"][data-mood="melancolique"] .mood-label { color:#5c6bc0; }
+html[data-theme="humeur"][data-mood="melancolique"] .mood-opt { color:#c5cae9; border-color:rgba(121,134,203,.2); }
+
+/* ── Intense ── */
+html[data-theme="humeur"][data-mood="intense"] {
+  --cream:  #0d0000;
+  --blush:  #1a0000;
+  --rose:   #ff3d00;
+  --ink:    #ffccbc;
+  --muted:  #ff8a65;
+  --hover-bg: #2a0000;
+  --filter-bg: rgba(13,0,0,.96);
+  --filter-border: rgba(255,61,0,.2);
+}
+html[data-theme="humeur"][data-mood="intense"] body { background:#0d0000; }
+html[data-theme="humeur"][data-mood="intense"] nav { background:rgba(13,0,0,.92); border-color:rgba(255,61,0,.15); }
+html[data-theme="humeur"][data-mood="intense"] .sec-title { color:#ffccbc; }
+html[data-theme="humeur"][data-mood="intense"] .sec-title em { color:#ff3d00; }
+html[data-theme="humeur"][data-mood="intense"] .card,
+html[data-theme="humeur"][data-mood="intense"] .skill-card,
+html[data-theme="humeur"][data-mood="intense"] .training-card { background:#1a0000; border-color:rgba(255,61,0,.15); }
+html[data-theme="humeur"][data-mood="intense"] .contact-section { background:#1a0000; }
+html[data-theme="humeur"][data-mood="intense"] footer { background:#0a0000; }
+html[data-theme="humeur"][data-mood="intense"] .eyebrow,
+html[data-theme="humeur"][data-mood="intense"] .sec-label { animation:ember-flicker 1.6s ease-in-out infinite; color:#ff6e40; }
+@keyframes ember-flicker {
+  0%,100% { opacity:1; text-shadow:0 0 8px rgba(255,61,0,.6); }
+  40%      { opacity:.7; text-shadow:0 0 16px rgba(255,61,0,.9); }
+  70%      { opacity:.9; text-shadow:0 0 4px rgba(255,61,0,.3); }
+}
+html[data-theme="humeur"][data-mood="intense"] .hero-left h1,
+html[data-theme="humeur"][data-mood="intense"] .page-hero-left h1 { animation:intensity-pulse 2s ease-in-out infinite; }
+@keyframes intensity-pulse {
+  0%,100% { text-shadow:none; }
+  50%      { text-shadow:0 0 30px rgba(255,61,0,.4); }
+}
+html[data-theme="humeur"][data-mood="intense"] #scroll-progress { background:linear-gradient(to right,#b71c1c,#ff3d00); }
+html[data-theme="humeur"][data-mood="intense"] .mood-bar { background:#0d0000; border-color:rgba(255,61,0,.15); }
+html[data-theme="humeur"][data-mood="intense"] .mood-label { color:#ff6e40; }
+html[data-theme="humeur"][data-mood="intense"] .mood-opt { color:#ffccbc; border-color:rgba(255,61,0,.2); }
+
+/* ── Douce ── */
+html[data-theme="humeur"][data-mood="douce"] {
+  --cream:  #fdf6f9;
+  --blush:  #fce4ec;
+  --rose:   #e91e8c;
+  --ink:    #4a1942;
+  --muted:  #b06090;
+  --hover-bg: #fce4ec;
+  --filter-bg: rgba(253,246,249,.96);
+  --filter-border: rgba(233,30,140,.1);
+}
+html[data-theme="humeur"][data-mood="douce"] body { background:#fdf6f9; }
+html[data-theme="humeur"][data-mood="douce"] .hero-left h1,
+html[data-theme="humeur"][data-mood="douce"] .page-hero-left h1 { animation:petal-fall 5s ease-in-out infinite; }
+@keyframes petal-fall {
+  0%,100% { transform:translateY(0) rotate(0); }
+  33%      { transform:translateY(-4px) rotate(-.3deg); }
+  66%      { transform:translateY(2px) rotate(.3deg); }
+}
+html[data-theme="humeur"][data-mood="douce"] .eyebrow,
+html[data-theme="humeur"][data-mood="douce"] .sec-label { animation:gentle-glow 3s ease-in-out infinite; }
+@keyframes gentle-glow {
+  0%,100% { color:#e91e8c; opacity:1; }
+  50%      { color:#f06292; opacity:.75; }
+}
+html[data-theme="humeur"][data-mood="douce"] #scroll-progress { background:linear-gradient(to right,#f8bbd0,#e91e8c); }
+html[data-theme="humeur"][data-mood="douce"] .contact-section { background:#fce4ec; color:#4a1942; }
+
+/* ── Électrique ── */
+html[data-theme="humeur"][data-mood="electrique"] {
+  --cream:  #050510;
+  --blush:  #0a0a1f;
+  --rose:   #00e5ff;
+  --ink:    #e0f7fa;
+  --muted:  #80deea;
+  --hover-bg: #0a1628;
+  --filter-bg: rgba(5,5,16,.96);
+  --filter-border: rgba(0,229,255,.2);
+}
+html[data-theme="humeur"][data-mood="electrique"] body { background:#050510; }
+html[data-theme="humeur"][data-mood="electrique"] nav { background:rgba(5,5,16,.92); border-color:rgba(0,229,255,.15); }
+html[data-theme="humeur"][data-mood="electrique"] .sec-title { color:#e0f7fa; }
+html[data-theme="humeur"][data-mood="electrique"] .sec-title em { color:#00e5ff; }
+html[data-theme="humeur"][data-mood="electrique"] .card,
+html[data-theme="humeur"][data-mood="electrique"] .skill-card,
+html[data-theme="humeur"][data-mood="electrique"] .training-card { background:#0a0a1f; border-color:rgba(0,229,255,.15); }
+html[data-theme="humeur"][data-mood="electrique"] .contact-section { background:#0a0a1f; }
+html[data-theme="humeur"][data-mood="electrique"] footer { background:#03030d; }
+html[data-theme="humeur"][data-mood="electrique"] .eyebrow,
+html[data-theme="humeur"][data-mood="electrique"] .sec-label { animation:electric-zap 1.2s steps(1) infinite; color:#00e5ff; }
+@keyframes electric-zap {
+  0%,90%  { opacity:1; text-shadow:0 0 8px #00e5ff, 0 0 20px rgba(0,229,255,.4); }
+  92%     { opacity:.1; text-shadow:none; }
+  94%     { opacity:1; text-shadow:0 0 20px #00e5ff; }
+  96%     { opacity:.3; text-shadow:none; }
+  100%    { opacity:1; text-shadow:0 0 8px #00e5ff; }
+}
+html[data-theme="humeur"][data-mood="electrique"] .hero-left h1,
+html[data-theme="humeur"][data-mood="electrique"] .page-hero-left h1 { animation:charge-up 3s ease-in-out infinite; }
+@keyframes charge-up {
+  0%,100% { text-shadow:none; }
+  50%      { text-shadow:0 0 40px rgba(0,229,255,.3), 0 0 80px rgba(0,229,255,.1); }
+}
+html[data-theme="humeur"][data-mood="electrique"] #scroll-progress { background:linear-gradient(to right,#0d47a1,#00e5ff); }
+html[data-theme="humeur"][data-mood="electrique"] .mood-bar { background:#050510; border-color:rgba(0,229,255,.15); }
+html[data-theme="humeur"][data-mood="electrique"] .mood-label { color:#80deea; }
+html[data-theme="humeur"][data-mood="electrique"] .mood-opt { color:#e0f7fa; border-color:rgba(0,229,255,.2); }
+
 /* ── RESPONSIVE SHARED ── */
 @media (max-width:900px) {
   .hamburger  { display:flex; }
