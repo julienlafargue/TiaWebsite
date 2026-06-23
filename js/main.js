@@ -94,7 +94,7 @@ function initScrollCue() {
     scrolling = true;
     const start = window.scrollY;
     const dist = target - start;
-    const dur = 900;
+    const dur = 380;
     let t0;
     const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
     const step = (ts) => {

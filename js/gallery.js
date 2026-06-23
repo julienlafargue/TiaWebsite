@@ -36,18 +36,15 @@ function initGallery() {
   function render(filter) {
     const list = filter === "all" ? ALL : ALL.filter((p) => p.cat === filter);
     root.innerHTML = "";
-    // réparti en ~3 bandes horizontales
-    const strips = Math.min(3, Math.max(1, Math.ceil(list.length / 6)));
-    const per = Math.ceil(list.length / strips);
-    for (let s = 0; s < strips; s++) {
-      const strip = document.createElement("div");
-      strip.className = "filmstrip";
-      const track = document.createElement("div");
-      track.className = "filmstrip__track";
-      list.slice(s * per, s * per + per).forEach((p) => track.appendChild(frame(p)));
-      strip.appendChild(track);
-      root.appendChild(strip);
-    }
+    // bandes de pellicule VERTICALES (négatifs suspendus) — réparties en colonnes
+    const cols = Math.min(5, Math.max(2, Math.round(list.length / 5)));
+    const columns = Array.from({ length: cols }, () => {
+      const v = document.createElement("div");
+      v.className = "vstrip";
+      return v;
+    });
+    list.forEach((p, i) => columns[i % cols].appendChild(frame(p)));
+    columns.forEach((v) => { if (v.children.length) root.appendChild(v); });
   }
 
   // filtres

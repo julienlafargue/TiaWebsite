@@ -1333,3 +1333,189 @@ section { position: relative; }
 }
 .viewer__nav button:hover { color: var(--blue-bright); }
 .viewer :focus-visible { outline-color: var(--blue-bright); }
+
+/* ============================================================
+   STYLES PAR PAGE — chaque page sa propre identité
+   ============================================================ */
+
+/* on retire les petits sur-titres descriptifs partout */
+.section-head .eyebrow { display: none; }
+
+/* ---------- HOME : couverture magazine « MAG » ---------- */
+.page-home .grain { mix-blend-mode: multiply; opacity: 0.08; }
+.mag {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5rem var(--gutter) 3rem;
+  background: var(--paper);
+}
+.mag__page {
+  position: relative;
+  width: min(92vw, 660px);
+  aspect-ratio: 3 / 4.2;
+  overflow: hidden;
+  background: #d7d5cf;
+  box-shadow: 0 40px 80px -40px rgba(0,0,0,0.45);
+}
+.mag__photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 18%;
+  filter: grayscale(1) contrast(1.02) brightness(1.08) blur(2.5px);
+}
+.mag__page::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(215,213,207,0.5), rgba(215,213,207,0.15) 40%, rgba(215,213,207,0.55));
+}
+.mag__masthead {
+  position: absolute; top: 7%; left: 7%; right: 7%;
+  z-index: 2;
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.55rem, 1.3vw, 0.8rem);
+  letter-spacing: 0.01em;
+  color: #111;
+}
+.mag__title {
+  position: absolute; top: 13%; left: 6%; right: 6%;
+  z-index: 2;
+  display: flex; flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.mag__title span { font-size: clamp(2.6rem, 13.5vw, 6.6rem); color: var(--accent); }
+.mag__title span:nth-child(2) {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+}
+.mag__tagline {
+  position: absolute; bottom: 6.5%; right: 7%;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.55rem, 1.3vw, 0.8rem);
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+.page-home .scroll-cue { color: var(--ink); }
+.page-home .site-footer { border-top-color: var(--ink); }
+
+/* ---------- GALLERY : pellicules VERTICALES ---------- */
+.page-gallery main { max-width: var(--max-w); }
+.page-gallery .display { font-family: var(--font-mono); font-weight: 400; letter-spacing: -0.02em; }
+.page-gallery .filters { gap: 0.4rem; }
+.film {
+  display: flex;
+  flex-direction: row;            /* colonnes de pellicule */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1.6rem);
+}
+.vstrip {
+  position: relative;
+  background: #050507;
+  padding: 14px 12px;             /* place pour les perforations latérales */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+  transform: rotate(var(--tilt, 0deg));
+}
+.vstrip:nth-child(3n) { --tilt: -1deg; }
+.vstrip:nth-child(3n+1) { --tilt: 1deg; }
+/* perforations gauche/droite */
+.vstrip::before, .vstrip::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 7px;
+  background: repeating-linear-gradient(180deg, transparent 0 9px, #d8d4c8 9px 17px, transparent 17px 26px);
+  opacity: 0.8;
+}
+.vstrip::before { left: 3px; }
+.vstrip::after { right: 3px; }
+.vstrip .film-frame {
+  flex: 0 0 auto;
+  width: clamp(140px, 17vw, 200px);
+  aspect-ratio: 3 / 4;
+}
+
+/* ---------- ABOUT : papier / éditorial (réf img1) ---------- */
+.page-about .grain { mix-blend-mode: multiply; opacity: 0.07; }
+.page-about .display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 13vw, 8rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.page-about .display::after { content: "."; color: var(--accent); }
+.page-about .lead strong {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.6em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 0.2em;
+}
+.page-about .quote {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--ink);
+  font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+}
+.page-about .hr-blue { border-top-color: var(--accent); }
+.page-about .polaroid { background: #fff; border-color: rgba(0,0,0,0.12); }
+.page-about .cta { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-about .cta:hover { background: transparent; color: var(--accent); }
+.page-about aside[style] { border-left-color: var(--accent) !important; }
+.page-about .site-footer { border-top-color: var(--ink); }
+
+/* ---------- PROCESS : collage sombre, texte lumineux (réf img2) ---------- */
+.page-process .grain { opacity: 0.1; }
+.page-process .display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 12vw, 7rem);
+  text-shadow: 0 0 34px rgba(255,255,255,0.35);
+}
+.page-process .lead,
+.page-process .proc-row p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.page-process h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: lowercase;
+  text-shadow: 0 0 26px rgba(255,255,255,0.3);
+}
+.page-process .annot { color: var(--accent); }
+.page-process .polaroid { background: #14130f; border-color: rgba(255,255,255,0.08); }
+.page-process .polaroid img { filter: saturate(0.5) contrast(1.05) brightness(0.85); }
+.page-process .polaroid figcaption { color: rgba(255,255,255,0.45); }
+.page-process .quote { font-family: var(--font-serif); font-style: italic; color: var(--ink); }
+.page-process .site-footer { border-top-color: rgba(255,255,255,0.2); }
+
+/* ---------- BOOKING : éditorial clair ---------- */
+.page-booking .grain { mix-blend-mode: multiply; opacity: 0.06; }
+.page-booking .display { font-family: var(--font-display); font-weight: 800; }
+.page-booking .card { background: #fff; border: 2px solid var(--ink); }
+.page-booking .card .price { color: var(--accent); }
+.page-booking .card li::before { color: var(--accent); }
+.page-booking .cta { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-booking .cta:hover { background: transparent; color: var(--accent); }
+.page-booking .form input,
+.page-booking .form textarea,
+.page-booking .form select { background: #fff; border-color: rgba(0,0,0,0.25); color: var(--ink); }
+.page-booking .form label { color: var(--ink); }
+.page-booking .site-footer { border-top-color: var(--ink); }
