@@ -7,6 +7,7 @@
    - prefers-reduced-motion : ni rotation ni shutter
    ============================================================ */
 import { reducedMotion } from "./main.js";
+import { t } from "./i18n.js";
 
 const DIR = "img/photography/pro/";
 /* fabrique une entrée photo. desc = placeholder éditorial [TODO]. */
@@ -97,12 +98,11 @@ function buildViewer(photos, title) {
   overlay.setAttribute("aria-label", `Appareil — ${title}`);
   overlay.hidden = true;
   overlay.innerHTML = `
-    <button class="viewer__close" aria-label="Fermer">✕ Fermer</button>
     <div class="camera">
       <div class="camera__deck">
         <span class="camera__finder"></span>
-        <span class="camera__brand">TIA · 35MM</span>
-        <span class="camera__release"></span>
+        <span class="camera__brand">TIA-LANA · 35MM</span>
+        <button class="camera__release" data-i18n-attr="aria-label:viewer.close" aria-label="Close">✕</button>
       </div>
       <div class="camera__window">
         <img class="viewer__img" alt="" />
@@ -117,8 +117,8 @@ function buildViewer(photos, title) {
     <div class="viewer__meta">
       <p class="viewer__desc"></p>
       <div class="viewer__nav">
-        <button class="viewer__prev" aria-label="Photo précédente">‹ Précédente</button>
-        <button class="viewer__next" aria-label="Photo suivante">Suivante ›</button>
+        <button class="viewer__prev" data-i18n="viewer.prev">${t("viewer.prev")}</button>
+        <button class="viewer__next" data-i18n="viewer.next">${t("viewer.next")}</button>
       </div>
     </div>`;
   document.body.appendChild(overlay);
@@ -128,7 +128,7 @@ function buildViewer(photos, title) {
   const win = overlay.querySelector(".camera__window");
   const counter = overlay.querySelector(".viewer__counter");
   const desc = overlay.querySelector(".viewer__desc");
-  const closeBtn = overlay.querySelector(".viewer__close");
+  const closeBtn = overlay.querySelector(".camera__release");
 
   let idx = 0;
   let lastFocus = null;
@@ -210,7 +210,8 @@ function buildViewer(photos, title) {
 function buildReel(root, cat) {
   const data = CATEGORIES[cat] || CATEGORIES.photographie;
   const photos = data.photos;
-  const viewer = buildViewer(photos, data.title);
+  const title = t(`cat.${cat}`);
+  const viewer = buildViewer(photos, title);
 
   root.classList.add("reel");
   const n = photos.length;
@@ -222,9 +223,9 @@ function buildReel(root, cat) {
   center.innerHTML = `
     <span class="reel__arrow reel__arrow--up" aria-hidden="true">↑</span>
     <p class="reel__kicker">TIA-LANA CHINAPYEL</p>
-    <h2 class="reel__title">${data.title}</h2>
+    <h2 class="reel__title" data-i18n="cat.${cat}">${title}</h2>
     <p class="reel__sub">${data.meta}</p>
-    <p class="reel__stars" aria-label="${data.stars} sur 5">${stars}</p>
+    <p class="reel__stars" aria-label="${data.stars}/5">${stars}</p>
     <span class="reel__proj" aria-hidden="true">▼ PROJECTOR · UP FOR ${pad(n)}</span>`;
   root.appendChild(center);
 
@@ -235,7 +236,7 @@ function buildReel(root, cat) {
     const slot = document.createElement("button");
     slot.className = "reel__slot";
     slot.style.setProperty("--ang", `${angle}deg`);
-    slot.setAttribute("aria-label", `Voir : ${p.alt}`);
+    slot.setAttribute("aria-label", p.alt);
     slot.innerHTML = `
       <span class="reel__win">
         <img src="${p.src}" alt="" loading="lazy" decoding="async" />
@@ -251,29 +252,22 @@ function buildReel(root, cat) {
     num.textContent = i + 1;
     root.appendChild(num);
   });
-
-  // petite animation d'insertion du disque à l'arrivée
-  if (!reducedMotion()) {
-    root.animate(
-      [
-        { transform: "translateY(24px) scale(0.94) rotate(-4deg)", opacity: 0 },
-        { transform: "none", opacity: 1 },
-      ],
-      { duration: 600, easing: "cubic-bezier(0.16,1,0.3,1)", fill: "backwards" }
-    );
-  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-reel]").forEach((root) => {
     const cat = root.dataset.cat || param() || "photographie";
     buildReel(root, cat);
-    // titre de page dynamique
-    const t = (CATEGORIES[cat] || CATEGORIES.photographie).title;
-    document.title = `${t} — TIA`;
+    // titre de page dynamique (traduit + se met à jour au changement de langue)
     const h = document.querySelector("[data-reel-title]");
-    if (h) h.textContent = t;
+    if (h) h.dataset.i18n = `cat.${cat}`;
+    const sync = () => {
+      h && (h.textContent = t(`cat.${cat}`));
+      document.title = `${t(`cat.${cat}`)} — TIA-LANA`;
+    };
+    sync();
+    document.addEventListener("langchange", sync);
   });
 });
 
-export { CATEGORIES };
+export { CATEGORIES, buildViewer };

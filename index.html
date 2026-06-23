@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIA — Photography · Art Direction · Issue 01</title>
-  <meta name="description" content="Portfolio de Tia : photographie et direction artistique. Une galerie numérique éditoriale — Issue 01, 2026, Paris." />
-  <meta name="theme-color" content="#F2EFE7" />
-  <meta property="og:title" content="TIA — Photography · Art Direction" />
-  <meta property="og:description" content="Une galerie numérique éditoriale. Issue 01 — 2026." />
+  <title>TIA-LANA — Photography · Art Direction</title>
+  <meta name="description" content="Tia-Lana Chinapyel — photography & art direction. A digital editorial gallery. Paris, 2026." />
+  <meta name="theme-color" content="#07080D" />
+  <meta property="og:title" content="TIA-LANA — Photography · Art Direction" />
+  <meta property="og:description" content="A digital editorial gallery." />
   <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,81 +20,66 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Aller au contenu</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="site-nav">
-    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="process.html">Process</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
+    <a class="brand" href="index.html">TIA-LANA<span class="red">.</span></a>
+    <div class="nav-right">
+      <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
+    </div>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="work.html" data-i18n="nav.work">Gallery</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="process.html" data-i18n="nav.process">Process</a>
+      <a href="booking.html" data-i18n="nav.booking">Booking</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <main id="main">
-    <!-- ============ COUVERTURE — titre répété sur portrait ============ -->
+    <!-- ============ COVER — repeated wordmark over portrait ============ -->
     <section class="cover">
-      <!-- portrait plein cadre, en couche de fond -->
       <figure class="cover__hero">
-        <img src="img/home/hero-home.png" alt="Portrait éditorial de Tia-Lana Chinapyel." width="900" height="1200" />
+        <img src="img/home/hero-home.png" alt="Editorial portrait of Tia-Lana Chinapyel." width="900" height="1200" />
       </figure>
 
-      <!-- masthead -->
-      <div class="cover__masthead">
-        <span>TIA-LANA MAGAZINE</span>
-        <span>ISSUE 001</span>
-        <span>PARIS · 2026</span>
-        <span>PHOTOGRAPHY + ART DIRECTION</span>
-      </div>
-
-      <!-- wordmark répété (décoratif) ; le nom complet est annoncé aux lecteurs d'écran -->
       <h1 class="cover__words" aria-label="Tia-Lana Chinapyel">
-        <span class="cover__word" aria-hidden="true">TIA</span>
-        <span class="cover__word cover__word--out" aria-hidden="true">TIA</span>
-        <span class="cover__word" aria-hidden="true">TIA</span>
+        <span class="cover__word" aria-hidden="true">TIA-LANA</span>
+        <span class="cover__word cover__word--out" aria-hidden="true">TIA-LANA</span>
+        <span class="cover__word" aria-hidden="true">TIA-LANA</span>
       </h1>
 
-      <!-- pied : nom complet + baseline + CTA -->
       <div class="cover__foot">
-        <div class="stack">
-          <p class="cover__name">Tia-Lana Chinapyel — Photography &amp; Art Direction</p>
-          <p class="cl--mono">Shoot it · Frame it · Keep it</p>
-        </div>
-        <a class="cta" href="work.html" data-cursor="entrer">Entrer dans la galerie →</a>
-        <span class="scroll-hint" aria-hidden="true">Scroll ↓</span>
+        <p class="cover__name" data-i18n="cover.name">Tia-Lana Chinapyel — Photography &amp; Art Direction</p>
+        <a class="cta" href="work.html" data-cursor="enter" data-i18n="cover.enter">Enter the gallery →</a>
+        <span class="scroll-hint" aria-hidden="true" data-i18n="cover.scroll">Scroll ↓</span>
       </div>
     </section>
 
-    <!-- ============ TEASER MUR DE TÉLÉS ============ -->
-    <section class="wrap" style="padding-block:clamp(3rem,7vh,5rem)" aria-labelledby="tv-title">
-      <div class="section-head reveal" style="margin-bottom:1.5rem">
-        <span class="section-num">01</span>
-        <div class="stack">
-          <span class="eyebrow">Choisis ta chaîne → entre dedans</span>
-          <h2 id="tv-title">Allume une télé.</h2>
-        </div>
+    <!-- ============ TV WALL ============ -->
+    <section class="wrap" style="padding-block:clamp(2.5rem,6vh,4.5rem)" aria-labelledby="tv-title">
+      <div class="section-head reveal" style="margin-bottom:1.25rem">
+        <span class="eyebrow" data-i18n="home.eyebrow">Pick a channel → step inside</span>
+        <h2 id="tv-title" data-i18n="home.title">Turn on a TV.</h2>
       </div>
 
-      <!-- Le mur de télés se peuple via js/tv-grid.js -->
-      <div data-tv-grid class="reveal" aria-label="Mur de télévisions, une chaîne par catégorie"></div>
+      <!-- Populated by js/tv-grid.js -->
+      <div data-tv-grid class="reveal" aria-label="Wall of TVs, one channel per category"></div>
     </section>
   </main>
 
   <footer class="site-footer wrap">
     <div class="grid12">
-      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
-      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+      <p class="footer-brand col-span-6" data-i18n="footer.brand">TIA-LANA — PARIS</p>
+      <p class="meta col-span-6" style="text-align:right" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
     </div>
   </footer>
 
-  <span class="notice">notice the details</span>
-
-  <!-- GSAP via CDN (seule dépendance autorisée) -->
+  <!-- GSAP via CDN (only allowed dependency) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/cursor.js"></script>
   <script type="module" src="js/transitions.js"></script>

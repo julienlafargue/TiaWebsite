@@ -5,9 +5,9 @@ HTML / CSS / JS vanilla. Une seule dépendance externe : **GSAP** (CDN).
 Statique, prêt pour **GitHub Pages**. Aucun build obligatoire.
 
 ```
-index.html          Accueil (couverture magazine)
+index.html          Accueil (couverture + mur de télés)
 about.html          Le cerveau d'artiste (collage polaroid)
-work.html           Grille TV (6 catégories) → ouvre une roue
+work.html           Galerie filtrable (toutes les photos par type) + visionneuse
 reel.html           Roue View-Master par catégorie (?cat=) + visionneuse
 process.html        Carnet de bord (process général)
 booking.html        Shooting touristes Paris + formulaire
@@ -80,6 +80,11 @@ Garder `muted` + `playsinline` (autoplay mobile + a11y).
 - **Mur de télés** : `js/tv-grid.js` — les 6 catégories sont dans `CATS`, la disposition du
   mur (catégories + cellules décor static/glitch + panneau index) dans `WALL`. Chaque cellule
   est un CRT 100 % CSS (pas d'image de cadre).
+- **Bilingue EN/FR** : anglais par défaut. Le texte des pages est en anglais (fallback) +
+  attributs `data-i18n`. Les traductions vivent dans le dictionnaire de `js/i18n.js`. Le
+  sélecteur EN/FR de la nav (`[data-lang-toggle]`) mémorise le choix dans `localStorage`.
+- **Galerie** : `js/gallery.js` agrège toutes les photos de `CATEGORIES` (photo-wheel.js) et
+  gère les filtres ; clic = visionneuse « appareil ».
 - **Tokens CSS** (`css/tokens.css`) = source unique pour couleurs et tailles.
 - **JS modulaire** : un fichier par composant, modules ES (`type="module"`).
 - **Accessibilité** : focus visibles, nav clavier, `prefers-reduced-motion`
