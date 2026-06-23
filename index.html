@@ -34,7 +34,6 @@
       <a href="about.html" data-i18n="nav.about">About</a>
       <a href="process.html" data-i18n="nav.process">Process</a>
       <a href="booking.html" data-i18n="nav.booking">Booking</a>
-      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
@@ -42,7 +41,8 @@
     <!-- ============ COVER — repeated wordmark over portrait ============ -->
     <section class="cover">
       <figure class="cover__hero">
-        <img src="img/home/hero-home.png" alt="Editorial portrait of Tia-Lana Chinapyel." width="900" height="1200" />
+        <img class="cover__blur" src="img/home/hero-home.png" alt="Editorial portrait of Tia-Lana Chinapyel." width="900" height="1200" />
+        <img class="cover__sharp" src="img/home/hero-home.png" alt="" aria-hidden="true" width="900" height="1200" />
       </figure>
 
       <h1 class="cover__words" aria-label="Tia-Lana Chinapyel">
@@ -53,13 +53,15 @@
 
       <div class="cover__foot">
         <p class="cover__name" data-i18n="cover.name">Tia-Lana Chinapyel — Photography &amp; Art Direction</p>
-        <a class="cta" href="work.html" data-cursor="enter" data-i18n="cover.enter">Enter the gallery →</a>
-        <span class="scroll-hint" aria-hidden="true" data-i18n="cover.scroll">Scroll ↓</span>
+        <a class="scroll-cue" href="#wall" data-cursor="scroll" aria-label="Scroll to the gallery">
+          <span class="scroll-cue__txt" data-i18n="cover.scroll">Scroll</span>
+          <span class="scroll-cue__chev" aria-hidden="true"></span>
+        </a>
       </div>
     </section>
 
     <!-- ============ TV WALL ============ -->
-    <section class="wrap" style="padding-block:clamp(2.5rem,6vh,4.5rem)" aria-labelledby="tv-title">
+    <section id="wall" class="wrap" style="padding-block:clamp(2.5rem,6vh,4.5rem)" aria-labelledby="tv-title">
       <div class="section-head reveal" style="margin-bottom:1.25rem">
         <span class="eyebrow" data-i18n="home.eyebrow">Pick a channel → step inside</span>
         <h2 id="tv-title" data-i18n="home.title">Turn on a TV.</h2>

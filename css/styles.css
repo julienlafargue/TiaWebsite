@@ -201,7 +201,7 @@ section { position: relative; }
   flex-wrap: wrap;
   margin-bottom: var(--space-lg);
 }
-.section-head .eyebrow { color: var(--blue-bright); }
+.section-head .eyebrow { color: rgba(var(--ink-rgb), 0.55); }
 
 .pad-block { padding-block: clamp(4rem, 12vh, 10rem); }
 
@@ -413,10 +413,29 @@ section { position: relative; }
   z-index: 0;
 }
 .cover__hero img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 22%;
-  filter: grayscale(0.35) contrast(1.06) brightness(0.78);
+}
+/* « blur out the unimportant » : portrait flou N&B */
+.cover__blur { filter: grayscale(1) contrast(1.05) brightness(0.7) blur(7px); }
+/* tranche verticale nette, duotone bleu (réf) */
+.cover__sharp {
+  filter: grayscale(1) contrast(1.12) brightness(0.92);
+  -webkit-mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  mix-blend-mode: luminosity;
+}
+.cover__hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: var(--blue);
+  mix-blend-mode: color;
+  -webkit-mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  opacity: 0.9;
 }
 /* vignette + teinte bleue pour la lisibilité et la cohérence */
 .cover__hero::after {
@@ -509,6 +528,34 @@ section { position: relative; }
 }
 @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
 
+/* invitation à descendre */
+.scroll-cue {
+  position: absolute;
+  left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+}
+.scroll-cue__chev {
+  width: 16px; height: 16px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: cuebob 1.6s var(--ease) infinite;
+}
+@keyframes cuebob {
+  0%,100% { transform: rotate(45deg) translate(0,0); opacity: 0.5; }
+  50%     { transform: rotate(45deg) translate(4px,4px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .scroll-cue__chev { animation: none; } }
+
 @media (max-width: 820px) {
   .cover__masthead { font-size: 0.56rem; letter-spacing: 0.06em; gap: 0.3rem 0.8rem; }
   .cover__foot { flex-direction: column; align-items: flex-start; }
@@ -552,7 +599,7 @@ section { position: relative; }
   border: 1.5px solid var(--ink);
   transition: all var(--dur) var(--ease);
 }
-.filter-btn[aria-pressed="true"] { background: var(--blue); color: #fff; border-color: var(--blue); }
+.filter-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
 /* ============================================================
    Cartes formules (booking)
@@ -678,6 +725,73 @@ section { position: relative; }
 }
 .gallery-item:hover .gallery-item__cat,
 .gallery-item:focus-visible .gallery-item__cat { opacity: 1; }
+
+/* ---- Galerie en bandes 35mm ---- */
+.film { display: flex; flex-direction: column; gap: clamp(1.4rem, 3vw, 2.4rem); }
+.filmstrip {
+  position: relative;
+  background: #08090c;
+  border-radius: 4px;
+  padding: 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #2a2c33 #08090c;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.7);
+}
+/* perforations haut/bas */
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute; left: 0; right: 0; height: 12px;
+  background: repeating-linear-gradient(90deg, transparent 0 9px, #cfcabb 9px 19px, transparent 19px 28px);
+  opacity: 0.85;
+}
+.filmstrip::before { top: 4px; }
+.filmstrip::after { bottom: 4px; }
+.filmstrip__track {
+  display: flex;
+  gap: 4px;
+  padding: 0 4px;
+  width: max-content;
+}
+.film-frame {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(150px, 20vw, 230px);
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: none;
+  background: #000;
+  cursor: pointer;
+  overflow: hidden;
+}
+.film-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.35) contrast(1.12) brightness(0.92);
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.film-frame:hover img,
+.film-frame:focus-visible img { filter: saturate(1) contrast(1.02) brightness(1); transform: scale(1.04); }
+.film-frame__no {
+  position: absolute; top: 6px; left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  text-shadow: 0 1px 2px #000;
+}
+.film-frame__cat {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.4rem 0.6rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent);
+  opacity: 0; transition: opacity var(--dur) var(--ease);
+}
+.film-frame:hover .film-frame__cat,
+.film-frame:focus-visible .film-frame__cat { opacity: 1; }
 
 /* Utilitaires */
 .col-span-6 { grid-column: span 6; }
@@ -915,12 +1029,30 @@ section { position: relative; }
 /* ============================================================
    COMPOSANT B — Roue View-Master crème + visionneuse « appareil »
    ============================================================ */
-:root { --reel-d: min(86vw, 640px); --reel-spin: 90s; }
-.reel {
+:root { --reel-d: min(92vw, 760px); --reel-spin: 90s; }
+.reel-stage {
   position: relative;
   width: var(--reel-d);
-  aspect-ratio: 1;
   margin: 1.5rem auto 0;
+}
+/* flèche centrale qui suit le curseur (hors disque) */
+.reel__pointer {
+  position: absolute;
+  top: 30%; left: 50%;
+  width: clamp(18px, 3vw, 26px);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(255,255,255,0.6));
+}
+.reel__pointer svg { width: 100%; height: auto; display: block; }
+@media (max-width: 600px) { .reel__pointer { display: none; } }
+
+.reel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
   border-radius: 50%;
   /* disque crème, objet physique posé sur la scène sombre */
   background:
@@ -934,10 +1066,11 @@ section { position: relative; }
   animation: reelspin var(--reel-spin) linear infinite;
 }
 /* pause au survol / focus pour cliquer tranquillement */
-.reel:hover, .reel:focus-within { animation-play-state: paused; }
+.reel:hover, .reel:focus-within,
+.reel:hover .reel__win, .reel:focus-within .reel__win { animation-play-state: paused; }
 @keyframes reelspin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .reel { animation: none !important; }
+  .reel, .reel__win { animation: none !important; }
 }
 /* anneau gravé + encoches de bobine */
 .reel::before {
@@ -1026,19 +1159,22 @@ section { position: relative; }
   display: block;
   position: relative;
   width: 100%; height: 100%;
-  border-radius: 16% / 12%;
+  border-radius: 12% / 9%;
   overflow: hidden;
   background: #05060a;
-  /* monture diapo crème + ombre interne */
+  /* photo réellement encastrée dans le carton du disque */
+  border: 2px solid #b4ac96;
   box-shadow:
-    0 0 0 5px #fffdf6,
-    0 0 0 6px #cbc3b0,
-    0 6px 12px -4px rgba(0,0,0,0.5);
+    inset 0 0 0 3px rgba(20,16,8,0.55),
+    inset 0 6px 14px rgba(0,0,0,0.75),
+    0 1px 0 rgba(255,255,255,0.55);
+  /* contre-rotation : la fenêtre reste droite pendant que le disque tourne */
+  animation: reelspin var(--reel-spin) linear infinite reverse;
 }
 .reel__win img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: saturate(0.7) contrast(1.05);
+  filter: saturate(0.78) contrast(1.06);
   transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 .reel__slot:hover .reel__win img,
