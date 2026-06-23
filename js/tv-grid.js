@@ -6,15 +6,16 @@
    - Hover : vibration ±1px (GSAP sinon WAAPI) · reduced-motion respecté
    ============================================================ */
 import { reducedMotion } from "./main.js";
+import { t } from "./i18n.js";
 
-/* Les 6 catégories (mode photo, poster = vraie image). */
+/* Les 6 catégories (mode photo, poster = vraie image). Le libellé vient de l'i18n. */
 const CATS = [
-  { cat: "photographie", label: "CH 01 · PHOTOGRAPHIE",       tag: "REC",  rec: true,  poster: "img/photography/pro/photo-b.png" },
-  { cat: "affiches",     label: "CH 02 · AFFICHES CINÉMA",    tag: "PLAY", poster: "img/photography/pro/photo-u.png" },
-  { cat: "portraits",    label: "CH 03 · PORTRAITS",          tag: "LIVE", rec: true,  poster: "img/photography/pro/photo-g.png" },
-  { cat: "identites",    label: "CH 04 · IDENTITÉS",          tag: "01",   poster: "img/photography/pro/photo-ae.png" },
-  { cat: "editions",     label: "CH 05 · ÉDITIONS",           tag: "RUSH", poster: "img/photography/pro/photo-s.png" },
-  { cat: "encours",      label: "CH 06 · EN COURS",           tag: "WIP",  poster: "img/photography/pro/photo-f.png" },
+  { cat: "photographie", ch: "01", tag: "REC",  rec: true, poster: "img/photography/pro/photo-b.png" },
+  { cat: "affiches",     ch: "02", tag: "PLAY",            poster: "img/photography/pro/photo-u.png" },
+  { cat: "portraits",    ch: "03", tag: "LIVE", rec: true, poster: "img/photography/pro/photo-g.png" },
+  { cat: "identites",    ch: "04", tag: "01",              poster: "img/photography/pro/photo-ae.png" },
+  { cat: "editions",     ch: "05", tag: "RUSH",            poster: "img/photography/pro/photo-s.png" },
+  { cat: "encours",      ch: "06", tag: "WIP",             poster: "img/photography/pro/photo-f.png" },
 ];
 
 /* Disposition du mur (3×3). Le centre est le panneau index. */
@@ -48,34 +49,32 @@ const controlsHTML = `
     <span class="crt__knob"></span>
   </div>`;
 
-/* ---- Clic : « entrer dans la télé » (zoom de l'écran) → navigation ---- */
-function zap(cat, screenEl) {
+/* ---- Clic : on « entre dans toute la télé » (boîtier zoomé) → navigation ---- */
+function zap(cat, cellEl) {
   const dest = `reel.html?cat=${cat}`;
-  if (reducedMotion() || !screenEl) { location.href = dest; return; }
+  if (reducedMotion() || !cellEl) { location.href = dest; return; }
 
-  const r = screenEl.getBoundingClientRect();
+  const r = cellEl.getBoundingClientRect();
   const vw = window.innerWidth, vh = window.innerHeight;
-  const img = screenEl.querySelector("img");
 
-  // clone plein écran que l'on part à la taille de l'écran cliqué puis on agrandit
-  const zoom = document.createElement("div");
-  zoom.className = "tv-zoom";
+  // clone de la cellule entière (boîtier + écran), agrandi jusqu'au plein écran
+  const zoom = cellEl.cloneNode(true);
+  zoom.classList.add("tv-zoom");
   zoom.style.cssText =
-    `position:fixed;inset:0;z-index:${getComputedStyle(document.documentElement).getPropertyValue("--z-overlay")||9000};` +
-    `background:#04050a;overflow:hidden;transform-origin:top left;`;
-  if (img) zoom.innerHTML = `<img src="${img.src}" style="width:100%;height:100%;object-fit:cover">`;
+    `position:fixed;left:0;top:0;width:${vw}px;height:${vh}px;margin:0;z-index:9000;` +
+    `transform-origin:top left;will-change:transform;`;
   document.body.appendChild(zoom);
 
   const sx = r.width / vw, sy = r.height / vh;
   const anim = zoom.animate(
     [
-      { transform: `translate(${r.left}px,${r.top}px) scale(${sx},${sy})`, opacity: 0.6 },
-      { transform: `translate(0,0) scale(1,1)`, opacity: 1 },
+      { transform: `translate(${r.left}px,${r.top}px) scale(${sx},${sy})` },
+      { transform: `translate(${vw * 0.5 - r.width * 0.5}px,${vh * 0.5 - r.height * 0.5}px) scale(${sx * 1.05},${sy * 1.05})`, offset: 0.18 },
+      { transform: `translate(0,0) scale(1,1)` },
     ],
-    { duration: 520, easing: "cubic-bezier(0.7,0,0.25,1)", fill: "forwards" }
+    { duration: 560, easing: "cubic-bezier(0.7,0,0.25,1)", fill: "forwards" }
   );
   anim.onfinish = () => {
-    // « power-on » : flash blanc bref puis on entre
     const flash = document.createElement("div");
     flash.className = "page-fx flash";
     flash.style.opacity = "1";
@@ -108,13 +107,13 @@ function makeCat(spec) {
   el.setAttribute("role", "link");
   el.tabIndex = 0;
   el.dataset.cat = ch.cat;
-  const name = (ch.label.split("· ")[1] || ch.label).trim();
-  el.setAttribute("aria-label", `Catégorie ${name} — ouvrir la roue`);
+  const name = t(`cat.${ch.cat}`);
+  el.setAttribute("aria-label", `${name}`);
   el.innerHTML =
-    screenHTML("photo", ch.poster, ch.tag, ch.rec, null, name) +
+    screenHTML("photo", ch.poster, ch.tag, ch.rec, null, `<span data-i18n="cat.${ch.cat}">${name}</span>`) +
     controlsHTML +
-    `<span class="crt__label">${ch.label.split(" · ")[0]}</span>`;
-  const go = () => zap(ch.cat, el.querySelector(".crt__screen"));
+    `<span class="crt__label">CH ${ch.ch}</span>`;
+  const go = () => zap(ch.cat, el);
   el.addEventListener("click", go);
   el.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
@@ -140,7 +139,7 @@ function makeIndex() {
   el.innerHTML = `
     <h3>Index</h3>
     <ol>
-      ${CATS.map((c, i) => `<li><span>#${String(i + 1).padStart(2, "0")}</span><a href="reel.html?cat=${c.cat}">${(c.label.split("· ")[1] || "").trim()}</a></li>`).join("")}
+      ${CATS.map((c) => `<li><span>#${c.ch}</span><a href="reel.html?cat=${c.cat}" data-i18n="cat.${c.cat}">${t(`cat.${c.cat}`)}</a></li>`).join("")}
     </ol>`;
   return el;
 }

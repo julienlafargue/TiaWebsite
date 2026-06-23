@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roue — TIA</title>
-  <meta name="description" content="Une roue de photos par catégorie. Choisis une vignette pour la voir en grand." />
-  <meta name="theme-color" content="#F2EFE7" />
+  <title>Reel — TIA-LANA</title>
+  <meta name="description" content="A photo reel by category. Click a frame to view it large." />
+  <meta name="theme-color" content="#07080D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
@@ -15,46 +15,47 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Aller au contenu</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="site-nav">
-    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
-      <a href="work.html" aria-current="page">Work</a>
-      <a href="about.html">About</a>
-      <a href="process.html">Process</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
+    <a class="brand" href="index.html">TIA-LANA<span class="red">.</span></a>
+    <div class="nav-right">
+      <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
+    </div>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="work.html" data-i18n="nav.work">Gallery</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="process.html" data-i18n="nav.process">Process</a>
+      <a href="booking.html" data-i18n="nav.booking">Booking</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <main id="main" class="wrap pad-block">
-    <a class="meta" href="work.html" style="display:inline-block;margin-bottom:2rem">← Work</a>
+    <a class="meta" href="work.html" style="display:inline-block;margin-bottom:1.5rem" data-i18n="nav.work">Gallery</a>
 
-    <div class="section-head reveal">
-      <span class="section-num">04</span>
+    <div class="section-head reveal" style="margin-bottom:0.5rem">
       <div class="stack">
-        <span class="eyebrow">Tourne la roue</span>
-        <h1 class="display" data-reel-title>Roue</h1>
+        <span class="eyebrow" data-i18n="reel.hint">Click a frame →</span>
+        <h1 class="reel-heading" data-reel-title>Reel</h1>
       </div>
     </div>
 
     <!-- La roue se peuple via js/photo-wheel.js, catégorie lue dans ?cat= -->
-    <div data-reel class="reveal" aria-label="Roue de photos — choisis une vignette pour l'agrandir"></div>
+    <div data-reel class="reveal" aria-label="Photo reel — click a frame to enlarge"></div>
   </main>
 
   <footer class="site-footer wrap">
     <div class="grid12">
-      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
-      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+      <p class="footer-brand col-span-6" data-i18n="footer.brand">TIA-LANA — PARIS</p>
+      <p class="meta col-span-6" style="text-align:right" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
     </div>
   </footer>
 
-  <span class="notice">notice the details</span>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/cursor.js"></script>
   <script type="module" src="js/transitions.js"></script>

@@ -53,13 +53,25 @@ body {
 
 .brand {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.4rem;
-  letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 40, "SOFT" 100;
+  font-weight: 800;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 .brand .red { color: var(--red); }
+
+/* groupe droite de la nav : langue + menu mobile */
+.nav-right { display: flex; align-items: center; gap: 1rem; order: 3; }
+.lang-toggle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.55rem;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+}
 
 .nav-links {
   display: flex;
@@ -113,10 +125,9 @@ body {
   }
 }
 
-/* ============================================================
-   Mention récurrente « notice the details »
-   ============================================================ */
+/* Mention « notice the details » retirée (filler) */
 .notice {
+  display: none;
   position: fixed;
   left: var(--gutter);
   bottom: var(--space-sm);
@@ -367,11 +378,19 @@ section { position: relative; }
    Footer
    ============================================================ */
 .site-footer {
-  border-top: var(--line);
+  border-top: 2px solid var(--blue);
   padding-block: var(--space-lg);
   margin-top: var(--space-xl);
 }
-.site-footer .meta { color: rgba(var(--ink-rgb), 0.7); }
+.site-footer .meta { color: rgba(var(--ink-rgb), 0.6); align-self: end; }
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
 
 /* ============================================================
    Page Accueil — couverture « titre répété sur portrait »
@@ -442,9 +461,10 @@ section { position: relative; }
   font-family: var(--font-display);
   font-weight: 800;
   text-transform: uppercase;
-  font-size: clamp(3.5rem, 18vh, 11rem);
-  line-height: 0.82;
-  letter-spacing: -0.05em;
+  font-size: clamp(2rem, 12vw, 7.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
   color: var(--blue);
 }
 /* une ligne en contour : le portrait transparaît dans les lettres */
@@ -623,6 +643,42 @@ section { position: relative; }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: var(--space-sm); }
 .gallery img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
 
+/* galerie filtrable (page Work) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 20vw, 230px), 1fr));
+  gap: clamp(0.5rem, 1.2vw, 1rem);
+}
+.gallery-item {
+  position: relative;
+  padding: 0; border: none; background: #0c0d12;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+}
+.gallery-item[hidden] { display: none; }
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.55) brightness(0.92);
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.gallery-item:hover img,
+.gallery-item:focus-visible img { filter: saturate(1) brightness(1); transform: scale(1.05); }
+.gallery-item__cat {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.4rem 0.7rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent);
+  opacity: 0; transition: opacity var(--dur) var(--ease);
+}
+.gallery-item:hover .gallery-item__cat,
+.gallery-item:focus-visible .gallery-item__cat { opacity: 1; }
+
 /* Utilitaires */
 .col-span-6 { grid-column: span 6; }
 .col-span-7 { grid-column: span 7; }
@@ -647,8 +703,8 @@ section { position: relative; }
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(5px, 0.7vw, 11px);
   padding: clamp(6px, 1vw, 14px);
-  /* mur compact : tient dans un écran (heading + mur) */
-  max-width: min(96vw, 880px);
+  /* mur : plus grand mais reste visible en un écran */
+  max-width: min(98vw, 1060px);
   margin-inline: auto;
   background:
     radial-gradient(120% 120% at 50% 0%, #15161c, #000 80%);
@@ -859,7 +915,7 @@ section { position: relative; }
 /* ============================================================
    COMPOSANT B — Roue View-Master crème + visionneuse « appareil »
    ============================================================ */
-:root { --reel-d: min(86vw, 640px); }
+:root { --reel-d: min(86vw, 640px); --reel-spin: 90s; }
 .reel {
   position: relative;
   width: var(--reel-d);
@@ -874,6 +930,14 @@ section { position: relative; }
     0 40px 70px -30px rgba(0,0,0,0.8),
     inset 0 2px 6px rgba(255,255,255,0.8),
     inset 0 -10px 26px rgba(120,110,90,0.25);
+  /* rotation lente continue (tout le disque, comme une vraie bobine) */
+  animation: reelspin var(--reel-spin) linear infinite;
+}
+/* pause au survol / focus pour cliquer tranquillement */
+.reel:hover, .reel:focus-within { animation-play-state: paused; }
+@keyframes reelspin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .reel { animation: none !important; }
 }
 /* anneau gravé + encoches de bobine */
 .reel::before {
@@ -906,6 +970,14 @@ section { position: relative; }
   color: #1a160d;
   z-index: 2;
 }
+.reel-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
 .reel__arrow { font-size: 1.1rem; color: #1a160d; }
 .reel__kicker {
   font-family: var(--font-mono);
@@ -915,10 +987,10 @@ section { position: relative; }
 }
 .reel__title {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 3.4vw, 2rem);
+  font-size: clamp(0.8rem, 2.3vw, 1.25rem);
   font-weight: 800;
   text-transform: uppercase;
-  line-height: 0.92;
+  line-height: 0.95;
   color: #15120a;
 }
 .reel__sub {
@@ -1028,14 +1100,6 @@ section { position: relative; }
   padding: var(--gutter);
 }
 .viewer[hidden] { display: none; }
-.viewer__close {
-  align-self: flex-end;
-  font-family: var(--font-mono);
-  font-size: var(--fs-cap);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--ink);
-}
 
 /* le boîtier de l'appareil */
 .camera {
@@ -1063,11 +1127,18 @@ section { position: relative; }
   font-size: 0.6rem; letter-spacing: 0.18em;
   color: rgba(255,255,255,0.55);
 }
+/* le déclencheur rouge = bouton FERMER */
 .camera__release {
-  width: 26px; height: 26px; border-radius: 50%;
+  width: 30px; height: 30px; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #ff6b78, var(--red) 70%);
   box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.85rem; line-height: 1;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease);
 }
+.camera__release:hover { transform: scale(1.12); }
+.camera__release:active { transform: scale(0.92); }
 .camera__lens, .camera__dial {
   width: 34px; height: 34px; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #3a3d45, #0a0b0e 72%);

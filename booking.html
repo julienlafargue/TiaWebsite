@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Booking — Shooting à Paris · TIA</title>
-  <meta name="description" content="Shoote ton passage à Paris : trois formules photo avec Tia. Portraits, souvenirs éditoriaux, balade et déclics." />
-  <meta name="theme-color" content="#F2EFE7" />
+  <title>Booking — Paris shoot · TIA-LANA</title>
+  <meta name="description" content="Shoot your stop in Paris: three photo packages with Tia-Lana. Portraits, editorial keepsakes, walk and clicks." />
+  <meta name="theme-color" content="#07080D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
@@ -15,106 +15,107 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Aller au contenu</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="site-nav">
-    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="process.html">Process</a>
-      <a href="booking.html" aria-current="page">Booking</a>
-      <a href="contact.html">Contact</a>
+    <a class="brand" href="index.html">TIA-LANA<span class="red">.</span></a>
+    <div class="nav-right">
+      <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
+    </div>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="work.html" data-i18n="nav.work">Gallery</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="process.html" data-i18n="nav.process">Process</a>
+      <a href="booking.html" aria-current="page" data-i18n="nav.booking">Booking</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <main id="main" class="wrap pad-block">
     <div class="section-head reveal">
-      <span class="section-num">06</span>
       <div class="stack">
-        <span class="eyebrow">Tourist shooting · Paris</span>
-        <h1 class="display">Shoote ton<br />passage à Paris.</h1>
-        <p class="lead">Une heure, une lumière, ton visage dans la ville. Tu repars avec des images qui ne ressemblent à personne d'autre.</p>
+        <span class="eyebrow" data-i18n="booking.eyebrow">Tourist shooting · Paris</span>
+        <h1 class="display"><span data-i18n="booking.title_a">Shoot your</span><br /><span data-i18n="booking.title_b">stop in Paris.</span></h1>
+        <p class="lead" data-i18n="booking.lead">One hour, one light, your face in the city. You leave with images that look like no one else.</p>
       </div>
     </div>
 
-    <!-- 3 formules -->
-    <section class="cards reveal" aria-label="Formules">
+    <!-- 3 packages -->
+    <section class="cards reveal" aria-label="Packages">
       <article class="card rot-n1">
         <span class="eyebrow">Express</span>
-        <h3>1 heure</h3>
-        <span class="price">120€</span>
+        <h3>1 hour</h3>
+        <span class="price">€120</span>
         <ul>
-          <li>1 lieu emblématique</li>
-          <li>15 photos retouchées</li>
-          <li>Livraison sous 5 jours</li>
+          <li>1 iconic location</li>
+          <li>15 retouched photos</li>
+          <li>Delivery within 5 days</li>
         </ul>
-        <a class="cta" href="#form">Réserver →</a>
+        <a class="cta" href="#form" data-i18n="booking.book">Book →</a>
       </article>
 
       <article class="card rot-p1">
-        <span class="sticker sticker--red rot-p3" style="align-self:flex-start">POPULAIRE</span>
-        <span class="eyebrow">Balade</span>
-        <h3>2 heures</h3>
-        <span class="price">220€</span>
+        <span class="sticker sticker--red rot-p3" style="align-self:flex-start" data-i18n="booking.popular">POPULAR</span>
+        <span class="eyebrow">Walk</span>
+        <h3>2 hours</h3>
+        <span class="price">€220</span>
         <ul>
-          <li>2 à 3 lieux, une balade</li>
-          <li>35 photos retouchées</li>
-          <li>1 tirage offert</li>
+          <li>2 to 3 spots, a walk</li>
+          <li>35 retouched photos</li>
+          <li>1 print included</li>
         </ul>
-        <a class="cta" href="#form">Réserver →</a>
+        <a class="cta" href="#form" data-i18n="booking.book">Book →</a>
       </article>
 
       <article class="card rot-n2">
-        <span class="eyebrow">Éditorial</span>
-        <h3>Demi-journée</h3>
-        <span class="price">450€</span>
+        <span class="eyebrow">Editorial</span>
+        <h3>Half day</h3>
+        <span class="price">€450</span>
         <ul>
-          <li>Direction artistique complète</li>
-          <li>60+ photos retouchées</li>
-          <li>Mini-mag souvenir imprimé</li>
+          <li>Full art direction</li>
+          <li>60+ retouched photos</li>
+          <li>Printed mini-mag keepsake</li>
         </ul>
-        <a class="cta" href="#form">Réserver →</a>
+        <a class="cta" href="#form" data-i18n="booking.book">Book →</a>
       </article>
     </section>
 
-    <!-- Formulaire (Formspree — statique, pas de backend) -->
+    <!-- Form (Formspree — static, no backend) -->
     <section id="form" class="reveal" style="margin-top:6rem" aria-labelledby="form-title">
       <div class="section-head" style="margin-bottom:2rem">
-        <span class="section-num">07</span>
         <div class="stack">
-          <span class="eyebrow">Réservation</span>
-          <h2 id="form-title">Bloque ta date</h2>
+          <span class="eyebrow" data-i18n="booking.form_eyebrow">Reservation</span>
+          <h2 id="form-title" data-i18n="booking.form_title">Lock your date</h2>
         </div>
       </div>
 
-      <!-- TODO: remplacer YOUR_FORM_ID par l'identifiant Formspree (formspree.io) -->
+      <!-- TODO: replace YOUR_FORM_ID with the Formspree id (formspree.io) -->
       <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="form__field">
-          <label for="name">Nom</label>
+          <label for="name" data-i18n="booking.f_name">Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required />
         </div>
         <div class="form__field">
-          <label for="email">Email</label>
+          <label for="email" data-i18n="booking.f_email">Email</label>
           <input id="email" name="email" type="email" autocomplete="email" required />
         </div>
         <div class="form__field form__field--full">
-          <label for="formula">Formule</label>
+          <label for="formula" data-i18n="booking.f_formula">Package</label>
           <select id="formula" name="formula">
-            <option>1 heure — Express</option>
-            <option>2 heures — Balade</option>
-            <option>Demi-journée — Éditorial</option>
+            <option>1 hour — Express</option>
+            <option>2 hours — Walk</option>
+            <option>Half day — Editorial</option>
           </select>
         </div>
         <div class="form__field form__field--full">
-          <label for="msg">Ton idée, ta date</label>
-          <textarea id="msg" name="message" rows="5" placeholder="Le 12, vers le coucher du soleil, du côté de Belleville…"></textarea>
+          <label for="msg" data-i18n="booking.f_msg">Your idea, your date</label>
+          <textarea id="msg" name="message" rows="5" placeholder="The 12th, around sunset, near Belleville…"></textarea>
         </div>
         <div class="form__actions form__field--full">
-          <button class="cta" type="submit">Envoyer la demande →</button>
-          <p class="meta">Ou directement : <a class="text-blue" href="mailto:hello@tia.example?subject=Booking%20Paris">hello@tia.example</a></p>
+          <button class="cta" type="submit" data-i18n="booking.send">Send request →</button>
+          <p class="meta"><span data-i18n="booking.or">Or directly:</span> <a class="text-blue" href="mailto:hello@tia-lana.example?subject=Paris%20Booking">hello@tia-lana.example</a></p>
         </div>
       </form>
     </section>
@@ -122,14 +123,13 @@
 
   <footer class="site-footer wrap">
     <div class="grid12">
-      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
-      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+      <p class="footer-brand col-span-6" data-i18n="footer.brand">TIA-LANA — PARIS</p>
+      <p class="meta col-span-6" style="text-align:right" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
     </div>
   </footer>
 
-  <span class="notice">notice the details</span>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/cursor.js"></script>
   <script type="module" src="js/transitions.js"></script>

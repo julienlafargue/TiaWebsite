@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — TIA</title>
-  <meta name="description" content="Tia : photographe et directrice artistique basée à Paris. Esprit curieux, toujours en train de construire quelque chose." />
-  <meta name="theme-color" content="#F2EFE7" />
+  <title>About — TIA-LANA</title>
+  <meta name="description" content="Tia-Lana Chinapyel: photographer and art director based in Paris. Curious mind, always building." />
+  <meta name="theme-color" content="#07080D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
@@ -15,73 +15,71 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Aller au contenu</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="site-nav">
-    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
-      <a href="work.html">Work</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="process.html">Process</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
+    <a class="brand" href="index.html">TIA-LANA<span class="red">.</span></a>
+    <div class="nav-right">
+      <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
+    </div>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="work.html" data-i18n="nav.work">Gallery</a>
+      <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
+      <a href="process.html" data-i18n="nav.process">Process</a>
+      <a href="booking.html" data-i18n="nav.booking">Booking</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <main id="main" class="wrap pad-block">
     <div class="section-head reveal">
-      <span class="section-num">02</span>
       <div class="stack">
-        <span class="eyebrow">Le cerveau, ouvert</span>
-        <h1 class="display">About</h1>
+        <span class="eyebrow" data-i18n="about.eyebrow">The brain, open</span>
+        <h1 class="display" data-i18n="about.title">About</h1>
       </div>
     </div>
 
     <div class="grid12 stack-lg">
-      <!-- Polaroid + paper-clip -->
       <figure class="polaroid rot-n2 reveal col-span-5">
-        <!-- paper-clip en SVG inline (jamais bitmap) -->
         <svg class="paperclip" viewBox="0 0 34 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M22 14v36a9 9 0 0 1-18 0V12a6 6 0 0 1 12 0v34a3 3 0 0 1-6 0V16"
                 stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
         </svg>
-        <img src="img/photography/pro/photo-b.png" alt="Polaroid : portrait de Tia en plein tournage." width="600" height="750" />
-        <figcaption>Tia · sur le vif · 35mm</figcaption>
+        <img src="img/photography/pro/photo-b.png" alt="Polaroid: portrait of Tia-Lana on set." width="600" height="750" />
+        <figcaption>Tia-Lana · on the fly · 35mm</figcaption>
       </figure>
 
-      <!-- Bio 2 colonnes éditoriales -->
       <div class="col-span-7 reveal">
         <p class="lead two-col">
           <strong>Tia-Lana Chinapyel.</strong>
-          Je fais des images. Parfois je les capture, parfois je les invente.
-          Photographe le matin, directrice artistique l'après-midi — et l'inverse le lendemain.
+          I make images. Sometimes I capture them, sometimes I invent them.
+          Photographer in the morning, art director in the afternoon — and the other way around the next day.
           <br /><br />
-          Je travaille entre le portrait, l'éditorial et l'affiche de cinéma.
-          J'aime les marques qui ont quelque chose à dire et les visages qui ne mentent pas.
-          Tout commence par un carnet, un repérage, une idée notée trop vite.
+          I work between portrait, editorial and film posters. I like brands that have
+          something to say and faces that don't lie. It all starts with a notebook, a location
+          scout, an idea jotted down too fast.
         </p>
 
         <hr class="hr-blue" />
 
         <p class="meta">
-          BASED IN PARIS · LOVES LE GRAIN, LES NÉONS, LE 35MM · CURIOUS MIND · ALWAYS BUILDING…
+          BASED IN PARIS · LOVES GRAIN, NEON, 35MM · CURIOUS MIND · ALWAYS BUILDING…
         </p>
 
         <blockquote class="quote rot-p1" style="margin-top:2rem">
-          « Une bonne image, c'est un secret bien cadré. »
+          “A good image is a well-framed secret.”
         </blockquote>
       </div>
     </div>
 
-    <!-- Teaser process -->
     <section class="reveal" style="margin-top:6rem">
       <div class="grid12">
         <div class="col-span-8 stack">
-          <span class="eyebrow">Dans les coulisses</span>
-          <h2>Tu veux voir comment ça se fabrique ?</h2>
-          <a class="cta cta--ghost" href="process.html">Mon process →</a>
+          <span class="eyebrow" data-i18n="about.teaser_eyebrow">Behind the scenes</span>
+          <h2 data-i18n="about.teaser_title">Want to see how it's made?</h2>
+          <a class="cta cta--ghost" href="process.html" data-i18n="about.process_cta">My process →</a>
         </div>
       </div>
     </section>
@@ -89,14 +87,13 @@
 
   <footer class="site-footer wrap">
     <div class="grid12">
-      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
-      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+      <p class="footer-brand col-span-6" data-i18n="footer.brand">TIA-LANA — PARIS</p>
+      <p class="meta col-span-6" style="text-align:right" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
     </div>
   </footer>
 
-  <span class="notice">notice the details</span>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/cursor.js"></script>
   <script type="module" src="js/transitions.js"></script>

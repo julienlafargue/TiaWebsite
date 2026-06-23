@@ -4,6 +4,8 @@
    Les composants lourds vivent dans leurs propres fichiers.
    ============================================================ */
 
+import { t } from "./i18n.js";
+
 /** true si l'utilisateur préfère moins d'animations */
 export const reducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -16,7 +18,8 @@ function initNav() {
   toggle.addEventListener("click", () => {
     const open = nav.classList.toggle("open");
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.textContent = open ? "Fermer" : "Menu";
+    toggle.removeAttribute("data-i18n"); // texte géré manuellement quand ouvert
+    toggle.textContent = open ? t("nav.close") : t("nav.menu");
   });
   // referme au clic sur un lien
   nav.querySelectorAll(".nav-links a").forEach((a) =>
@@ -70,8 +73,9 @@ function initBookFab() {
   const a = document.createElement("a");
   a.className = "book-fab";
   a.href = "booking.html";
-  a.setAttribute("aria-label", "Booker un shooting");
-  a.innerHTML = `<span class="book-fab__ico" aria-hidden="true">📷</span><span class="book-fab__txt">Booker un shooting</span>`;
+  a.setAttribute("aria-label", t("fab.book"));
+  a.setAttribute("data-i18n-attr", "aria-label:fab.book");
+  a.innerHTML = `<span class="book-fab__ico" aria-hidden="true">📷</span><span class="book-fab__txt" data-i18n="fab.book">${t("fab.book")}</span>`;
   document.body.appendChild(a);
 }
 
