@@ -1,0 +1,56 @@
+/* ============================================================
+   tokens.css — variables CSS (fondation visuelle)
+   Toutes les couleurs et tailles passent par ici.
+   ============================================================ */
+:root {
+  /* ---- Palette ---- */
+  --paper:        #F2EFE7; /* fond papier, partout */
+  --ink:          #0A0A0A; /* noir profond — texte, cadres */
+  --blue:         #1E3FFF; /* bleu électrique — accent unique */
+  --red:          #D6263A; /* rouge cinéma — logos, étiquettes */
+  --cream:        #E8E4D8; /* crème panneau — blocs secondaires */
+  --paper-rgb:    242, 239, 231;
+  --ink-rgb:      10, 10, 10;
+
+  /* ---- Typographie ---- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans:    "Space Grotesk", system-ui, sans-serif;
+  --font-mono:    "Space Mono", ui-monospace, monospace;
+
+  /* Échelle fluide (clamp) — hero énorme, body stable */
+  --fs-hero:    clamp(3.5rem, 14vw, 14rem);
+  --fs-display: clamp(2.6rem, 9vw, 8rem);
+  --fs-h2:      clamp(2rem, 5vw, 3.4rem);
+  --fs-h3:      clamp(1.4rem, 3vw, 2.2rem);
+  --fs-lead:    clamp(1.1rem, 2vw, 1.5rem);
+  --fs-body:    1rem;
+  --fs-cap:     0.8rem;  /* légendes */
+  --fs-mono:    0.7rem;  /* numérotations, métadonnées */
+
+  /* ---- Espacements ---- */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  8rem;
+  --gutter:    clamp(1.25rem, 4vw, 4rem);
+
+  /* ---- Grille 12 colonnes ---- */
+  --cols: 12;
+  --max-w: 1680px;
+
+  /* ---- Mouvement ---- */
+  --ease:      cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:  200ms;
+  --dur:       400ms;
+  --dur-slow:  700ms;
+
+  /* ---- Divers ---- */
+  --radius: 2px;
+  --line:   2px solid var(--ink);
+  --z-grain: 9999;
+  --z-cursor: 10000;
+  --z-overlay: 9000;
+  --z-nav: 500;
+}

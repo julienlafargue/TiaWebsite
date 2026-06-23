@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Process — TIA</title>
+  <meta name="description" content="Le carnet de bord de Tia : mood boards, repérages, croquis et photos de tournage. Le cerveau d'artiste, visible." />
+  <meta name="theme-color" content="#F2EFE7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0;0,9..144,400..700,0..100,1;1,9..144,400..700,0..100,0;1,9..144,400..700,0..100,1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="process.html" aria-current="page">Process</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap pad-block">
+    <div class="section-head reveal">
+      <span class="section-num">05</span>
+      <div class="stack">
+        <span class="eyebrow">Carnet de bord</span>
+        <h1 class="display">Process</h1>
+        <p class="lead">Rien ne sort du néant. Voilà comment une image arrive — du gribouillis au tirage.</p>
+      </div>
+    </div>
+
+    <!-- Blocs alternés image / texte -->
+    <section class="proc-row reveal">
+      <div class="proc-img">
+        <figure class="polaroid rot-n2">
+          <img src="img/photography/pro/photo-e.png" alt="[TODO: mood board / collage d'inspirations]" loading="lazy" />
+          <figcaption>Mood board</figcaption>
+        </figure>
+      </div>
+      <div class="stack">
+        <span class="annot">// ça commence ici</span>
+        <h2>01 — Collecter</h2>
+        <p>[TODO: comment naît une idée. Images volées, couleurs, une chanson, une lumière vue dans la rue.]</p>
+      </div>
+    </section>
+
+    <section class="proc-row reveal">
+      <div class="proc-img">
+        <figure class="polaroid rot-p2">
+          <img src="img/photography/pro/photo-n.png" alt="[TODO: croquis / storyboard]" loading="lazy" />
+          <figcaption>Croquis</figcaption>
+        </figure>
+      </div>
+      <div class="stack">
+        <span class="annot">// on dessine mal, mais on dessine</span>
+        <h2>02 — Cadrer</h2>
+        <p>[TODO: le passage à l'intention. Storyboard, plan de lumière, références techniques.]</p>
+      </div>
+    </section>
+
+    <section class="proc-row reveal">
+      <div class="proc-img">
+        <figure class="polaroid rot-n1">
+          <img src="img/photography/pro/photo-t.png" alt="[TODO: repérage de lieu]" loading="lazy" />
+          <figcaption>Repérage</figcaption>
+        </figure>
+      </div>
+      <div class="stack">
+        <span class="annot">// Paris, 7h, personne</span>
+        <h2>03 — Repérer</h2>
+        <p>[TODO: le terrain. Trouver le lieu, l'heure, la météo. La moitié du travail.]</p>
+      </div>
+    </section>
+
+    <section class="proc-row reveal">
+      <div class="proc-img">
+        <figure class="polaroid rot-p1">
+          <img src="img/photography/pro/photo-u.png" alt="[TODO: photo de tournage / backstage]" loading="lazy" />
+          <figcaption>Tournage</figcaption>
+        </figure>
+      </div>
+      <div class="stack">
+        <span class="annot">// et là, ça se passe</span>
+        <h2>04 — Déclencher</h2>
+        <p>[TODO: le moment. Diriger, attendre, rater, recommencer, attraper l'instant.]</p>
+      </div>
+    </section>
+
+    <blockquote class="quote reveal rot-n1" style="margin:4rem 0">
+      « Le process, c'est 90 % de doute et 10 % de déclic. Le déclic vaut tout. »
+    </blockquote>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="grid12">
+      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
+      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+    </div>
+  </footer>
+
+  <span class="notice">notice the details</span>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/cursor.js"></script>
+  <script type="module" src="js/transitions.js"></script>
+</body>
+</html>

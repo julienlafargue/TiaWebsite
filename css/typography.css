@@ -1,0 +1,100 @@
+/* ============================================================
+   typography.css — hiérarchie éditoriale
+   Fraunces (display) · Space Grotesk (sans) · Space Mono (mono)
+   ============================================================ */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* ---- Display éditorial : Fraunces, SOFT activé ---- */
+.display,
+h1.display,
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  /* axes variables Fraunces : optical size + soft */
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  text-wrap: balance;
+}
+
+.hero-title { font-size: var(--fs-hero); }
+.display     { font-size: var(--fs-display); }
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 72, "SOFT" 80;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Italique éditorial pour citations */
+.italic {
+  font-style: italic;
+  font-variation-settings: "opsz" 40, "SOFT" 100;
+}
+
+/* ---- Corps ---- */
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+p { max-width: 62ch; }
+
+/* ---- Mono : numérotations, métadonnées ---- */
+.mono,
+.section-num,
+.meta,
+.caption {
+  font-family: var(--font-mono);
+}
+
+.section-num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 12vw, 11rem);
+  font-weight: 400;
+  line-height: 0.8;
+  color: var(--ink);
+}
+
+/* Légendes : majuscules espacées */
+.caption,
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-cap);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.meta {
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+}
+
+.quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--blue);
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+}
+
+::selection { background: var(--blue); color: var(--paper); }
