@@ -91,7 +91,7 @@ p { max-width: 62ch; }
 .quote {
   font-family: var(--font-display);
   font-style: italic;
-  color: var(--blue);
+  color: var(--ink);
   font-size: var(--fs-h3);
   line-height: 1.15;
   font-variation-settings: "opsz" 48, "SOFT" 100;

@@ -113,7 +113,7 @@ function makeTV(ch, i) {
 
 /* ---- Effet zapping : flash → static → navigation ---- */
 function zap(cat) {
-  const dest = `work.html?cat=${cat}`;
+  const dest = `reel.html?cat=${cat}`;
   if (reducedMotion()) { location.href = dest; return; }
 
   // 1. flash blanc 80ms
