@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — TIA</title>
+  <meta name="description" content="Tia : photographe et directrice artistique basée à Paris. Esprit curieux, toujours en train de construire quelque chose." />
+  <meta name="theme-color" content="#F2EFE7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0;0,9..144,400..700,0..100,1;1,9..144,400..700,0..100,0;1,9..144,400..700,0..100,1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+      <a href="work.html">Work</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="process.html">Process</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap pad-block">
+    <div class="section-head reveal">
+      <span class="section-num">02</span>
+      <div class="stack">
+        <span class="eyebrow">Le cerveau, ouvert</span>
+        <h1 class="display">About</h1>
+      </div>
+    </div>
+
+    <div class="grid12 stack-lg">
+      <!-- Polaroid + paper-clip -->
+      <figure class="polaroid rot-n2 reveal col-span-5">
+        <!-- paper-clip en SVG inline (jamais bitmap) -->
+        <svg class="paperclip" viewBox="0 0 34 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M22 14v36a9 9 0 0 1-18 0V12a6 6 0 0 1 12 0v34a3 3 0 0 1-6 0V16"
+                stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <img src="img/photography/pro/photo-b.png" alt="Polaroid : portrait de Tia en plein tournage." width="600" height="750" />
+        <figcaption>Tia · sur le vif · 35mm</figcaption>
+      </figure>
+
+      <!-- Bio 2 colonnes éditoriales -->
+      <div class="col-span-7 reveal">
+        <p class="lead two-col">
+          Je fais des images. Parfois je les capture, parfois je les invente.
+          Photographe le matin, directrice artistique l'après-midi — et l'inverse le lendemain.
+          <br /><br />
+          Je travaille entre le portrait, l'éditorial et l'affiche de cinéma.
+          J'aime les marques qui ont quelque chose à dire et les visages qui ne mentent pas.
+          Tout commence par un carnet, un repérage, une idée notée trop vite.
+        </p>
+
+        <hr class="hr-blue" />
+
+        <p class="meta">
+          BASED IN PARIS · LOVES LE GRAIN, LES NÉONS, LE 35MM · CURIOUS MIND · ALWAYS BUILDING…
+        </p>
+
+        <blockquote class="quote rot-p1" style="margin-top:2rem">
+          « Une bonne image, c'est un secret bien cadré. »
+        </blockquote>
+      </div>
+    </div>
+
+    <!-- Teaser process -->
+    <section class="reveal" style="margin-top:6rem">
+      <div class="grid12">
+        <div class="col-span-8 stack">
+          <span class="eyebrow text-blue">Dans les coulisses</span>
+          <h2>Tu veux voir comment ça se fabrique ?</h2>
+          <a class="cta cta--ghost" href="process.html">Mon process →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="grid12">
+      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
+      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+    </div>
+  </footer>
+
+  <span class="notice">notice the details</span>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/cursor.js"></script>
+  <script type="module" src="js/transitions.js"></script>
+</body>
+</html>

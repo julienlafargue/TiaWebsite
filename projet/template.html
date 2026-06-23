@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[TODO: TITRE DU PROJET] — TIA</title>
+  <meta name="description" content="[TODO: courte description du projet pour le SEO]" />
+  <meta name="theme-color" content="#F2EFE7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0;0,9..144,400..700,0..100,1;1,9..144,400..700,0..100,0;1,9..144,400..700,0..100,1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <!-- chemins en ../ car la page est dans /projet -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/typography.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="../index.html">TIA<span class="red">.</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+      <a href="../work.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="../process.html">Process</a>
+      <a href="../booking.html">Booking</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap pad-block">
+    <a class="meta text-blue" href="../work.html" style="display:inline-block;margin-bottom:2rem">← Retour au Work</a>
+
+    <article>
+      <!-- Header projet -->
+      <header class="section-head reveal" style="margin-bottom:2rem">
+        <span class="section-num">04</span>
+        <div class="stack">
+          <span class="eyebrow">[TODO: CATÉGORIE]</span>
+          <h1 class="display">[TODO: TITRE DU PROJET]</h1>
+        </div>
+      </header>
+
+      <p class="meta reveal" style="margin-bottom:4rem">
+        CLIENT — [TODO: CLIENT] &nbsp;·&nbsp; ANNÉE — [TODO: 2026] &nbsp;·&nbsp; RÔLE — [TODO: PHOTO + DA]
+      </p>
+
+      <!-- View-Master / appareil photo -->
+      <section class="reveal" aria-labelledby="vm-title">
+        <h2 id="vm-title" class="caption text-blue" style="text-align:center;margin-bottom:1.5rem">
+          Déclenche pour parcourir la série
+        </h2>
+        <!-- data-images optionnel : liste séparée par des virgules, sinon jeu par défaut -->
+        <div data-camera
+             data-images="../img/photography/pro/photo-a.png,../img/photography/pro/photo-c.png,../img/photography/pro/photo-f.png,../img/photography/pro/photo-k.png,../img/photography/pro/photo-p.png,../img/photography/pro/photo-s.png">
+        </div>
+      </section>
+
+      <!-- Texte éditorial -->
+      <section class="grid12 reveal" style="margin-top:6rem">
+        <div class="col-span-8 stack-lg">
+          <div class="stack">
+            <span class="eyebrow text-blue">Intention</span>
+            <p class="lead">[TODO: l'intention de départ. Une phrase forte. Pourquoi ce projet existe.]</p>
+          </div>
+          <div class="stack">
+            <span class="eyebrow text-blue">Process</span>
+            <p>[TODO: comment ça s'est fabriqué. Repérages, lumière, choix, accidents heureux.]</p>
+          </div>
+          <div class="stack">
+            <span class="eyebrow text-blue">Résultat</span>
+            <p>[TODO: ce qui en est sorti. Le livrable, l'impact, ce qu'on en retient.]</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Making of : croquis → setup → résultat -->
+      <section class="reveal" style="margin-top:6rem">
+        <h2 style="margin-bottom:2rem">Making of</h2>
+        <div class="makingof">
+          <figure class="polaroid rot-n1">
+            <img src="../img/photography/pro/photo-d.jpg" alt="[TODO: croquis / mood board du projet]" loading="lazy" />
+            <figcaption>01 · Croquis</figcaption>
+          </figure>
+          <figure class="polaroid rot-p2">
+            <img src="../img/photography/pro/photo-g.png" alt="[TODO: setup / repérage / lumière]" loading="lazy" />
+            <figcaption>02 · Setup</figcaption>
+          </figure>
+          <figure class="polaroid rot-n2">
+            <img src="../img/photography/pro/photo-i.png" alt="[TODO: image finale du projet]" loading="lazy" />
+            <figcaption>03 · Résultat</figcaption>
+          </figure>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="grid12">
+      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
+      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+    </div>
+  </footer>
+
+  <span class="notice">notice the details</span>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/cursor.js"></script>
+  <script type="module" src="../js/transitions.js"></script>
+  <script type="module" src="../js/photo-wheel.js"></script>
+</body>
+</html>

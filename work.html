@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — TIA</title>
+  <meta name="description" content="Le travail de Tia, six chaînes : photographie, affiches cinéma, identités de marque, éditions, portraits, projets en cours." />
+  <meta name="theme-color" content="#F2EFE7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0;0,9..144,400..700,0..100,1;1,9..144,400..700,0..100,0;1,9..144,400..700,0..100,1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+      <a href="work.html" aria-current="page">Work</a>
+      <a href="about.html">About</a>
+      <a href="process.html">Process</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap pad-block">
+    <div class="section-head reveal">
+      <span class="section-num">03</span>
+      <div class="stack">
+        <span class="eyebrow">Choisis ta chaîne</span>
+        <h1 class="display">Work</h1>
+      </div>
+    </div>
+
+    <!-- Grille TV (peuplée par tv-grid.js) -->
+    <div data-tv-grid class="reveal" aria-label="Six chaînes par catégorie"></div>
+
+    <!-- Filtres -->
+    <div class="filters reveal" role="group" aria-label="Filtrer par catégorie" style="margin-top:4rem">
+      <button class="filter-btn" data-filter="all" aria-pressed="true">Tout</button>
+      <button class="filter-btn" data-filter="photographie" aria-pressed="false">Photographie</button>
+      <button class="filter-btn" data-filter="affiches" aria-pressed="false">Affiches cinéma</button>
+      <button class="filter-btn" data-filter="identites" aria-pressed="false">Identités</button>
+      <button class="filter-btn" data-filter="editions" aria-pressed="false">Éditions</button>
+      <button class="filter-btn" data-filter="portraits" aria-pressed="false">Portraits</button>
+      <button class="filter-btn" data-filter="encours" aria-pressed="false">En cours</button>
+    </div>
+
+    <!-- Liste des projets -->
+    <ul class="project-list reveal" id="project-list" aria-live="polite"></ul>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="grid12">
+      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
+      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+    </div>
+  </footer>
+
+  <span class="notice">notice the details</span>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/cursor.js"></script>
+  <script type="module" src="js/transitions.js"></script>
+  <script type="module" src="js/tv-grid.js"></script>
+
+  <!-- Logique de filtrage spécifique à la page Work -->
+  <script type="module">
+    // [TODO: remplacer par les vrais projets] — chaque entrée pointe vers projet/template.html
+    const PROJECTS = [
+      { name: "Néons & Inconnus",     year: "2026", cat: "photographie", thumb: "img/photography/pro/photo-a.png" },
+      { name: "Issue 01 — Éditorial", year: "2026", cat: "editions",     thumb: "img/photography/pro/photo-c.png" },
+      { name: "Affiche · LA NUIT",    year: "2025", cat: "affiches",     thumb: "img/photography/pro/photo-h.png" },
+      { name: "Marque · ATELIER 9",   year: "2025", cat: "identites",    thumb: "img/photography/pro/photo-m.png" },
+      { name: "Portraits de passage", year: "2025", cat: "portraits",    thumb: "img/photography/pro/photo-v.png" },
+      { name: "Repérages · Paris",    year: "2024", cat: "photographie", thumb: "img/photography/pro/photo-r.png" },
+      { name: "Affiche · SOLEIL BAS", year: "2024", cat: "affiches",     thumb: "img/photography/pro/photo-k.png" },
+      { name: "WIP · sans titre",     year: "2026", cat: "encours",      thumb: "img/photography/pro/photo-z.png" },
+    ];
+
+    const list = document.getElementById("project-list");
+    const buttons = [...document.querySelectorAll(".filter-btn")];
+
+    function render(cat) {
+      const items = cat === "all" ? PROJECTS : PROJECTS.filter((p) => p.cat === cat);
+      list.innerHTML = items
+        .map(
+          (p, i) => `
+        <li>
+          <a class="project-row" href="projet/template.html">
+            <span class="idx">${String(i + 1).padStart(2, "0")}</span>
+            <span class="pname">${p.name}</span>
+            <span class="pmeta">${p.cat} · ${p.year}</span>
+            <img class="pthumb" src="${p.thumb}" alt="" loading="lazy" />
+          </a>
+        </li>`
+        )
+        .join("");
+    }
+
+    function select(cat) {
+      buttons.forEach((b) =>
+        b.setAttribute("aria-pressed", String(b.dataset.filter === cat))
+      );
+      render(cat);
+    }
+
+    buttons.forEach((b) => b.addEventListener("click", () => select(b.dataset.filter)));
+
+    // catégorie initiale depuis ?cat= (effet zapping depuis la grille TV)
+    const initial = new URLSearchParams(location.search).get("cat") || "all";
+    select(buttons.some((b) => b.dataset.filter === initial) ? initial : "all");
+  </script>
+</body>
+</html>

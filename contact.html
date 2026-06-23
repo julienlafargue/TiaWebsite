@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · Colophon — TIA</title>
+  <meta name="description" content="Contact et colophon de Tia : email, Instagram, crédits typographiques. Issue 01, 2026, Paris." />
+  <meta name="theme-color" content="#F2EFE7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0;0,9..144,400..700,0..100,1;1,9..144,400..700,0..100,0;1,9..144,400..700,0..100,1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">TIA<span class="red">.</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="process.html">Process</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap pad-block">
+    <div class="section-head reveal">
+      <span class="section-num">07</span>
+      <div class="stack">
+        <span class="eyebrow">Ours / Colophon</span>
+        <h1 class="display">On parle ?</h1>
+      </div>
+    </div>
+
+    <div class="grid12 stack-lg">
+      <!-- Coordonnées -->
+      <div class="col-span-6 stack-lg reveal">
+        <div class="stack">
+          <span class="eyebrow text-blue">Email</span>
+          <a class="quote" href="mailto:hello@tia.example">hello@tia.example</a>
+        </div>
+        <div class="stack">
+          <span class="eyebrow text-blue">Instagram</span>
+          <a class="lead" href="https://instagram.com/" target="_blank" rel="noopener" data-no-transition>@tia.[TODO]</a>
+        </div>
+        <div class="stack">
+          <span class="eyebrow text-blue">Ailleurs</span>
+          <p class="meta">[TODO: BEHANCE] · [TODO: VIMEO] · [TODO: LINKEDIN]</p>
+        </div>
+        <a class="cta" href="booking.html">Réserver un shooting →</a>
+      </div>
+
+      <!-- Colophon -->
+      <aside class="col-span-6 reveal" style="border-left:2px solid var(--blue);padding-left:2rem">
+        <h2 style="margin-bottom:1.5rem">Colophon</h2>
+        <p class="meta stack" style="line-height:2">
+          ISSUE 01 — 2026 · PARIS<br />
+          SET IN FRAUNCES &amp; SPACE GROTESK<br />
+          DÉTAILS EN SPACE MONO<br />
+          PALETTE — PAPIER, ENCRE, BLEU ÉLECTRIQUE<br />
+          GRAIN — MAISON · 100 % FAIT MAIN<br />
+          BUILT WITH HTML · CSS · UN PEU DE JS<br />
+          NO TRACKERS · NO COOKIES · JUST IMAGES
+        </p>
+        <blockquote class="quote rot-p1" style="margin-top:2rem">« Merci d'avoir regardé. »</blockquote>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div class="grid12">
+      <p class="meta col-span-6">TIA — PARIS<br />PHOTOGRAPHY · ART DIRECTION</p>
+      <p class="meta col-span-6" style="text-align:right">© 2026 · ISSUE 01<br />NOTICE THE DETAILS</p>
+    </div>
+  </footer>
+
+  <span class="notice">notice the details</span>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/cursor.js"></script>
+  <script type="module" src="js/transitions.js"></script>
+</body>
+</html>
