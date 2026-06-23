@@ -8,13 +8,14 @@
   <meta name="theme-color" content="#07080D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Dancing+Script:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/typography.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body class="page-about">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
@@ -29,7 +30,6 @@
       <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
       <a href="process.html" data-i18n="nav.process">Process</a>
       <a href="booking.html" data-i18n="nav.booking">Booking</a>
-      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
@@ -81,6 +81,49 @@
           <h2 data-i18n="about.teaser_title">Want to see how it's made?</h2>
           <a class="cta cta--ghost" href="process.html" data-i18n="about.process_cta">My process →</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT + COLOPHON (fusionné) ============ -->
+    <section id="contact" class="reveal" style="margin-top:7rem" aria-labelledby="contact-title">
+      <div class="section-head" style="margin-bottom:2.5rem">
+        <div class="stack">
+          <span class="eyebrow" data-i18n="contact.eyebrow">Colophon</span>
+          <h2 id="contact-title" data-i18n="contact.title">Let's talk?</h2>
+        </div>
+      </div>
+
+      <div class="grid12 stack-lg">
+        <div class="col-span-6 stack-lg">
+          <div class="stack">
+            <span class="eyebrow">Email</span>
+            <a class="quote" href="mailto:hello@tia-lana.example">hello@tia-lana.example</a>
+          </div>
+          <div class="stack">
+            <span class="eyebrow">Instagram</span>
+            <a class="lead" href="https://instagram.com/" target="_blank" rel="noopener" data-no-transition>@tia-lana.[TODO]</a>
+          </div>
+          <div class="stack">
+            <span class="eyebrow">Elsewhere</span>
+            <p class="meta">[TODO: BEHANCE] · [TODO: VIMEO] · [TODO: LINKEDIN]</p>
+          </div>
+          <a class="cta" href="booking.html" data-i18n="contact.cta">Book a shoot →</a>
+        </div>
+
+        <aside class="col-span-6" style="border-left:2px solid var(--blue);padding-left:2rem">
+          <h3 style="margin-bottom:1.5rem">Colophon</h3>
+          <p class="meta stack" style="line-height:2">
+            TIA-LANA CHINAPYEL<br />
+            PARIS · 2026<br />
+            SET IN SYNE &amp; SPACE GROTESK<br />
+            DETAILS IN SPACE MONO<br />
+            PALETTE — INK, PAPER, ELECTRIC BLUE<br />
+            GRAIN — HOUSE-MADE · 100% HANDMADE<br />
+            BUILT WITH HTML · CSS · A LITTLE JS<br />
+            NO TRACKERS · NO COOKIES · JUST IMAGES
+          </p>
+          <blockquote class="quote rot-p1" style="margin-top:2rem">“Thanks for looking.”</blockquote>
+        </aside>
       </div>
     </section>
   </main>

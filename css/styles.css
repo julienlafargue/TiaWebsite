@@ -201,7 +201,7 @@ section { position: relative; }
   flex-wrap: wrap;
   margin-bottom: var(--space-lg);
 }
-.section-head .eyebrow { color: var(--blue-bright); }
+.section-head .eyebrow { color: rgba(var(--ink-rgb), 0.55); }
 
 .pad-block { padding-block: clamp(4rem, 12vh, 10rem); }
 
@@ -413,10 +413,29 @@ section { position: relative; }
   z-index: 0;
 }
 .cover__hero img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center 22%;
-  filter: grayscale(0.35) contrast(1.06) brightness(0.78);
+}
+/* « blur out the unimportant » : portrait flou N&B */
+.cover__blur { filter: grayscale(1) contrast(1.05) brightness(0.7) blur(7px); }
+/* tranche verticale nette, duotone bleu (réf) */
+.cover__sharp {
+  filter: grayscale(1) contrast(1.12) brightness(0.92);
+  -webkit-mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  mix-blend-mode: luminosity;
+}
+.cover__hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: var(--blue);
+  mix-blend-mode: color;
+  -webkit-mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  mask: linear-gradient(90deg, transparent 38%, #000 40%, #000 60%, transparent 62%);
+  opacity: 0.9;
 }
 /* vignette + teinte bleue pour la lisibilité et la cohérence */
 .cover__hero::after {
@@ -509,6 +528,34 @@ section { position: relative; }
 }
 @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
 
+/* invitation à descendre */
+.scroll-cue {
+  position: absolute;
+  left: 50%; bottom: 0;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+}
+.scroll-cue__chev {
+  width: 16px; height: 16px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: cuebob 1.6s var(--ease) infinite;
+}
+@keyframes cuebob {
+  0%,100% { transform: rotate(45deg) translate(0,0); opacity: 0.5; }
+  50%     { transform: rotate(45deg) translate(4px,4px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .scroll-cue__chev { animation: none; } }
+
 @media (max-width: 820px) {
   .cover__masthead { font-size: 0.56rem; letter-spacing: 0.06em; gap: 0.3rem 0.8rem; }
   .cover__foot { flex-direction: column; align-items: flex-start; }
@@ -552,7 +599,7 @@ section { position: relative; }
   border: 1.5px solid var(--ink);
   transition: all var(--dur) var(--ease);
 }
-.filter-btn[aria-pressed="true"] { background: var(--blue); color: #fff; border-color: var(--blue); }
+.filter-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
 /* ============================================================
    Cartes formules (booking)
@@ -678,6 +725,73 @@ section { position: relative; }
 }
 .gallery-item:hover .gallery-item__cat,
 .gallery-item:focus-visible .gallery-item__cat { opacity: 1; }
+
+/* ---- Galerie en bandes 35mm ---- */
+.film { display: flex; flex-direction: column; gap: clamp(1.4rem, 3vw, 2.4rem); }
+.filmstrip {
+  position: relative;
+  background: #08090c;
+  border-radius: 4px;
+  padding: 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #2a2c33 #08090c;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.7);
+}
+/* perforations haut/bas */
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute; left: 0; right: 0; height: 12px;
+  background: repeating-linear-gradient(90deg, transparent 0 9px, #cfcabb 9px 19px, transparent 19px 28px);
+  opacity: 0.85;
+}
+.filmstrip::before { top: 4px; }
+.filmstrip::after { bottom: 4px; }
+.filmstrip__track {
+  display: flex;
+  gap: 4px;
+  padding: 0 4px;
+  width: max-content;
+}
+.film-frame {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(150px, 20vw, 230px);
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: none;
+  background: #000;
+  cursor: pointer;
+  overflow: hidden;
+}
+.film-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.35) contrast(1.12) brightness(0.92);
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.film-frame:hover img,
+.film-frame:focus-visible img { filter: saturate(1) contrast(1.02) brightness(1); transform: scale(1.04); }
+.film-frame__no {
+  position: absolute; top: 6px; left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  text-shadow: 0 1px 2px #000;
+}
+.film-frame__cat {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 1.4rem 0.6rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent);
+  opacity: 0; transition: opacity var(--dur) var(--ease);
+}
+.film-frame:hover .film-frame__cat,
+.film-frame:focus-visible .film-frame__cat { opacity: 1; }
 
 /* Utilitaires */
 .col-span-6 { grid-column: span 6; }
@@ -915,12 +1029,30 @@ section { position: relative; }
 /* ============================================================
    COMPOSANT B — Roue View-Master crème + visionneuse « appareil »
    ============================================================ */
-:root { --reel-d: min(86vw, 640px); --reel-spin: 90s; }
-.reel {
+:root { --reel-d: min(92vw, 760px); --reel-spin: 90s; }
+.reel-stage {
   position: relative;
   width: var(--reel-d);
-  aspect-ratio: 1;
   margin: 1.5rem auto 0;
+}
+/* flèche centrale qui suit le curseur (hors disque) */
+.reel__pointer {
+  position: absolute;
+  top: 30%; left: 50%;
+  width: clamp(18px, 3vw, 26px);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(255,255,255,0.6));
+}
+.reel__pointer svg { width: 100%; height: auto; display: block; }
+@media (max-width: 600px) { .reel__pointer { display: none; } }
+
+.reel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
   border-radius: 50%;
   /* disque crème, objet physique posé sur la scène sombre */
   background:
@@ -934,10 +1066,11 @@ section { position: relative; }
   animation: reelspin var(--reel-spin) linear infinite;
 }
 /* pause au survol / focus pour cliquer tranquillement */
-.reel:hover, .reel:focus-within { animation-play-state: paused; }
+.reel:hover, .reel:focus-within,
+.reel:hover .reel__win, .reel:focus-within .reel__win { animation-play-state: paused; }
 @keyframes reelspin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .reel { animation: none !important; }
+  .reel, .reel__win { animation: none !important; }
 }
 /* anneau gravé + encoches de bobine */
 .reel::before {
@@ -1026,19 +1159,22 @@ section { position: relative; }
   display: block;
   position: relative;
   width: 100%; height: 100%;
-  border-radius: 16% / 12%;
+  border-radius: 12% / 9%;
   overflow: hidden;
   background: #05060a;
-  /* monture diapo crème + ombre interne */
+  /* photo réellement encastrée dans le carton du disque */
+  border: 2px solid #b4ac96;
   box-shadow:
-    0 0 0 5px #fffdf6,
-    0 0 0 6px #cbc3b0,
-    0 6px 12px -4px rgba(0,0,0,0.5);
+    inset 0 0 0 3px rgba(20,16,8,0.55),
+    inset 0 6px 14px rgba(0,0,0,0.75),
+    0 1px 0 rgba(255,255,255,0.55);
+  /* contre-rotation : la fenêtre reste droite pendant que le disque tourne */
+  animation: reelspin var(--reel-spin) linear infinite reverse;
 }
 .reel__win img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: saturate(0.7) contrast(1.05);
+  filter: saturate(0.78) contrast(1.06);
   transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 .reel__slot:hover .reel__win img,
@@ -1197,3 +1333,189 @@ section { position: relative; }
 }
 .viewer__nav button:hover { color: var(--blue-bright); }
 .viewer :focus-visible { outline-color: var(--blue-bright); }
+
+/* ============================================================
+   STYLES PAR PAGE — chaque page sa propre identité
+   ============================================================ */
+
+/* on retire les petits sur-titres descriptifs partout */
+.section-head .eyebrow { display: none; }
+
+/* ---------- HOME : couverture magazine « MAG » ---------- */
+.page-home .grain { mix-blend-mode: multiply; opacity: 0.08; }
+.mag {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5rem var(--gutter) 3rem;
+  background: var(--paper);
+}
+.mag__page {
+  position: relative;
+  width: min(92vw, 660px);
+  aspect-ratio: 3 / 4.2;
+  overflow: hidden;
+  background: #d7d5cf;
+  box-shadow: 0 40px 80px -40px rgba(0,0,0,0.45);
+}
+.mag__photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 18%;
+  filter: grayscale(1) contrast(1.02) brightness(1.08) blur(2.5px);
+}
+.mag__page::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(215,213,207,0.5), rgba(215,213,207,0.15) 40%, rgba(215,213,207,0.55));
+}
+.mag__masthead {
+  position: absolute; top: 7%; left: 7%; right: 7%;
+  z-index: 2;
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.55rem, 1.3vw, 0.8rem);
+  letter-spacing: 0.01em;
+  color: #111;
+}
+.mag__title {
+  position: absolute; top: 13%; left: 6%; right: 6%;
+  z-index: 2;
+  display: flex; flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.mag__title span { font-size: clamp(2.6rem, 13.5vw, 6.6rem); color: var(--accent); }
+.mag__title span:nth-child(2) {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+}
+.mag__tagline {
+  position: absolute; bottom: 6.5%; right: 7%;
+  z-index: 2;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(0.55rem, 1.3vw, 0.8rem);
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+.page-home .scroll-cue { color: var(--ink); }
+.page-home .site-footer { border-top-color: var(--ink); }
+
+/* ---------- GALLERY : pellicules VERTICALES ---------- */
+.page-gallery main { max-width: var(--max-w); }
+.page-gallery .display { font-family: var(--font-mono); font-weight: 400; letter-spacing: -0.02em; }
+.page-gallery .filters { gap: 0.4rem; }
+.film {
+  display: flex;
+  flex-direction: row;            /* colonnes de pellicule */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1.6rem);
+}
+.vstrip {
+  position: relative;
+  background: #050507;
+  padding: 14px 12px;             /* place pour les perforations latérales */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+  transform: rotate(var(--tilt, 0deg));
+}
+.vstrip:nth-child(3n) { --tilt: -1deg; }
+.vstrip:nth-child(3n+1) { --tilt: 1deg; }
+/* perforations gauche/droite */
+.vstrip::before, .vstrip::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 7px;
+  background: repeating-linear-gradient(180deg, transparent 0 9px, #d8d4c8 9px 17px, transparent 17px 26px);
+  opacity: 0.8;
+}
+.vstrip::before { left: 3px; }
+.vstrip::after { right: 3px; }
+.vstrip .film-frame {
+  flex: 0 0 auto;
+  width: clamp(140px, 17vw, 200px);
+  aspect-ratio: 3 / 4;
+}
+
+/* ---------- ABOUT : papier / éditorial (réf img1) ---------- */
+.page-about .grain { mix-blend-mode: multiply; opacity: 0.07; }
+.page-about .display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 13vw, 8rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.page-about .display::after { content: "."; color: var(--accent); }
+.page-about .lead strong {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.6em;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 0.2em;
+}
+.page-about .quote {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--ink);
+  font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+}
+.page-about .hr-blue { border-top-color: var(--accent); }
+.page-about .polaroid { background: #fff; border-color: rgba(0,0,0,0.12); }
+.page-about .cta { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-about .cta:hover { background: transparent; color: var(--accent); }
+.page-about aside[style] { border-left-color: var(--accent) !important; }
+.page-about .site-footer { border-top-color: var(--ink); }
+
+/* ---------- PROCESS : collage sombre, texte lumineux (réf img2) ---------- */
+.page-process .grain { opacity: 0.1; }
+.page-process .display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 12vw, 7rem);
+  text-shadow: 0 0 34px rgba(255,255,255,0.35);
+}
+.page-process .lead,
+.page-process .proc-row p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.page-process h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: lowercase;
+  text-shadow: 0 0 26px rgba(255,255,255,0.3);
+}
+.page-process .annot { color: var(--accent); }
+.page-process .polaroid { background: #14130f; border-color: rgba(255,255,255,0.08); }
+.page-process .polaroid img { filter: saturate(0.5) contrast(1.05) brightness(0.85); }
+.page-process .polaroid figcaption { color: rgba(255,255,255,0.45); }
+.page-process .quote { font-family: var(--font-serif); font-style: italic; color: var(--ink); }
+.page-process .site-footer { border-top-color: rgba(255,255,255,0.2); }
+
+/* ---------- BOOKING : éditorial clair ---------- */
+.page-booking .grain { mix-blend-mode: multiply; opacity: 0.06; }
+.page-booking .display { font-family: var(--font-display); font-weight: 800; }
+.page-booking .card { background: #fff; border: 2px solid var(--ink); }
+.page-booking .card .price { color: var(--accent); }
+.page-booking .card li::before { color: var(--accent); }
+.page-booking .cta { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-booking .cta:hover { background: transparent; color: var(--accent); }
+.page-booking .form input,
+.page-booking .form textarea,
+.page-booking .form select { background: #fff; border-color: rgba(0,0,0,0.25); color: var(--ink); }
+.page-booking .form label { color: var(--ink); }
+.page-booking .site-footer { border-top-color: var(--ink); }

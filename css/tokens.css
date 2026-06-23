@@ -3,22 +3,27 @@
    Toutes les couleurs et tailles passent par ici.
    ============================================================ */
 :root {
-  /* ---- Palette (thème sombre, bleu électrique dominant) ----
-     Les noms sémantiques sont conservés : --paper = fond, --ink = texte/bordures.
-     On a juste inversé les valeurs pour passer en sombre. */
-  --paper:        #07080D; /* fond noir bleuté — partout */
-  --ink:          #EDEEF5; /* presque blanc — texte, cadres */
-  --blue:         #1E3FFF; /* bleu électrique — COULEUR PRINCIPALE (aplats, gros titres) */
-  --blue-bright:  #4E6BFF; /* bleu lisible — texte bleu courant sur fond noir */
-  --red:          #FF2E43; /* rouge cinéma vif — spot type « RUSH » */
-  --cream:        #11131C; /* panneau sombre — blocs secondaires */
-  --paper-rgb:    7, 8, 13;
-  --ink-rgb:      237, 238, 245;
+  /* ---- Palette par défaut (base sombre) ----
+     Chaque page redéfinit ces variables via une classe body (voir thèmes plus bas).
+     Le bleu électrique est retiré : l'accent est désormais le ROUGE éditorial. */
+  --paper:        #0a0a0c; /* fond par défaut */
+  --ink:          #f2f1ee; /* texte/cadres */
+  --accent:       #E2231A; /* accent éditorial (rouge) */
+  --accent-2:     #ff4d6d; /* accent secondaire (rose) */
+  --red:          #E2231A;
+  --cream:        #14141a; /* panneau secondaire */
+  --paper-rgb:    10, 10, 12;
+  --ink-rgb:      242, 241, 238;
+  /* alias rétro-compat : les anciens --blue pointent sur l'accent */
+  --blue:         var(--accent);
+  --blue-bright:  var(--accent);
 
-  /* ---- Typographie ---- */
-  --font-display: "Syne", system-ui, sans-serif; /* display géométrique tendance */
+  /* ---- Typographie (par défaut ; surchargée par page) ---- */
+  --font-display: "Archivo", system-ui, sans-serif;
   --font-sans:    "Space Grotesk", system-ui, sans-serif;
   --font-mono:    "Space Mono", ui-monospace, monospace;
+  --font-script:  "Dancing Script", cursive;
+  --font-serif:   "EB Garamond", Georgia, serif;
 
   /* Échelle fluide (clamp) — hero énorme, body stable */
   --fs-hero:    clamp(3.5rem, 14vw, 14rem);
@@ -56,4 +61,50 @@
   --z-cursor: 10000;
   --z-overlay: 9000;
   --z-nav: 500;
+}
+
+/* ============================================================
+   THÈMES PAR PAGE — chaque page a sa propre identité
+   ============================================================ */
+/* Home — couverture magazine « MAG » : fond gris clair, accent rouge */
+body.page-home {
+  --paper: #e7e5e0;
+  --ink: #0c0c0c;
+  --paper-rgb: 231, 229, 224;
+  --ink-rgb: 12, 12, 12;
+  --accent: #e2231a;
+}
+/* About — papier blanc / scotch, accent rouge + script */
+body.page-about {
+  --paper: #f5f2ec;
+  --ink: #111111;
+  --paper-rgb: 245, 242, 236;
+  --ink-rgb: 17, 17, 17;
+  --accent: #e2231a;
+}
+/* Process — collage sombre, texte lumineux + serif italique */
+body.page-process {
+  --paper: #0b0a08;
+  --ink: #f3efe6;
+  --paper-rgb: 11, 10, 8;
+  --ink-rgb: 243, 239, 230;
+  --accent: #ffb24d;
+}
+/* Gallery — pellicule sombre, mono */
+body.page-gallery {
+  --paper: #0c0c0e;
+  --ink: #ededed;
+  --paper-rgb: 12, 12, 14;
+  --ink-rgb: 237, 237, 237;
+  --accent: #ff4d6d;
+  --font-display: "Space Mono", monospace;
+}
+/* Booking — éditorial clair, accent rouge */
+body.page-booking {
+  --paper: #ecebe6;
+  --ink: #101010;
+  --paper-rgb: 236, 235, 230;
+  --ink-rgb: 16, 16, 16;
+  --accent: #e2231a;
+  --font-display: "Syne", sans-serif;
 }

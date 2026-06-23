@@ -79,9 +79,62 @@ function initBookFab() {
   document.body.appendChild(a);
 }
 
+/* ---- Invitation à descendre : clic = scroll fluide, 1er geste = descente douce ---- */
+function initScrollCue() {
+  const cue = document.querySelector(".scroll-cue");
+  const wall = document.getElementById("wall");
+  if (!wall) return;
+
+  // scroll animé maison (le `behavior:smooth` natif n'est pas fiable partout)
+  let scrolling = false;
+  const goDown = () => {
+    const target = window.scrollY + wall.getBoundingClientRect().top;
+    if (reducedMotion()) { window.scrollTo(0, target); return; }
+    if (scrolling) return;
+    scrolling = true;
+    const start = window.scrollY;
+    const dist = target - start;
+    const dur = 380;
+    let t0;
+    const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const step = (ts) => {
+      t0 = t0 ?? ts;
+      const p = Math.min((ts - t0) / dur, 1);
+      window.scrollTo(0, start + dist * ease(p));
+      if (p < 1) requestAnimationFrame(step);
+      else scrolling = false;
+    };
+    requestAnimationFrame(step);
+  };
+
+  if (cue) {
+    cue.addEventListener("click", (e) => { e.preventDefault(); goDown(); });
+  }
+
+  // au tout premier geste de scroll depuis le haut, on accompagne la descente
+  let used = false;
+  const onFirst = (e) => {
+    if (used || window.scrollY > 10) return;
+    const down = e.type === "keydown"
+      ? ["ArrowDown", "PageDown", " "].includes(e.key)
+      : (e.deltaY ?? 0) > 0;
+    if (!down) return;
+    used = true;
+    e.preventDefault();
+    goDown();
+    window.removeEventListener("wheel", onFirst);
+    window.removeEventListener("keydown", onFirst);
+  };
+  if (!reducedMotion()) {
+    window.addEventListener("wheel", onFirst, { passive: false });
+    window.addEventListener("keydown", onFirst);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initReveal();
   initGrainDrift();
   initBookFab();
+  initScrollCue();
 });
