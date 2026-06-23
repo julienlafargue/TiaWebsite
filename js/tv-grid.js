@@ -30,14 +30,15 @@ const WALL = [
   { type: "cat", i: 5 },
 ];
 
-/* Contenu de l'écran selon le mode. */
-function screenHTML(mode, poster, tag, rec, word) {
+/* Contenu de l'écran selon le mode. `band` = nom de catégorie affiché clairement. */
+function screenHTML(mode, poster, tag, rec, word, band) {
   const img = poster ? `<img src="${poster}" alt="" loading="lazy" decoding="async">` : "";
   const fx = mode === "static" || mode === "glitch" || mode === "bars"
     ? `<div class="crt__fx"></div>` : "";
   const w = word ? `<div class="crt__word">${word}</div>` : "";
+  const b = band ? `<span class="crt__cat">${band}</span>` : "";
   const t = tag ? `<span class="crt__tag${rec ? " is-rec" : ""}">${tag}</span>` : "";
-  return `<div class="crt__screen">${img}${fx}${w}</div>${t}`;
+  return `<div class="crt__screen">${img}${fx}${w}${b}</div>${t}`;
 }
 
 const controlsHTML = `
@@ -47,38 +48,40 @@ const controlsHTML = `
     <span class="crt__knob"></span>
   </div>`;
 
-/* ---- Effet zapping : flash → static → navigation ---- */
-function zap(cat) {
+/* ---- Clic : « entrer dans la télé » (zoom de l'écran) → navigation ---- */
+function zap(cat, screenEl) {
   const dest = `reel.html?cat=${cat}`;
-  if (reducedMotion()) { location.href = dest; return; }
+  if (reducedMotion() || !screenEl) { location.href = dest; return; }
 
-  const flash = document.createElement("div");
-  flash.className = "page-fx flash";
-  flash.style.opacity = "1";
-  document.body.appendChild(flash);
+  const r = screenEl.getBoundingClientRect();
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const img = screenEl.querySelector("img");
 
-  setTimeout(() => {
-    flash.remove();
-    const canvas = document.createElement("canvas");
-    canvas.className = "zap-static on";
-    canvas.width = 320;
-    canvas.height = Math.round((window.innerHeight / window.innerWidth) * 320);
-    document.body.appendChild(canvas);
-    const ctx = canvas.getContext("2d");
-    let frames = 0;
-    const noise = () => {
-      const img = ctx.createImageData(canvas.width, canvas.height);
-      for (let i = 0; i < img.data.length; i += 4) {
-        const v = (Math.random() * 255) | 0;
-        img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
-        img.data[i + 3] = 255;
-      }
-      ctx.putImageData(img, 0, 0);
-      if (++frames < 12) requestAnimationFrame(noise);
-      else location.href = dest;
-    };
-    noise();
-  }, 80);
+  // clone plein écran que l'on part à la taille de l'écran cliqué puis on agrandit
+  const zoom = document.createElement("div");
+  zoom.className = "tv-zoom";
+  zoom.style.cssText =
+    `position:fixed;inset:0;z-index:${getComputedStyle(document.documentElement).getPropertyValue("--z-overlay")||9000};` +
+    `background:#04050a;overflow:hidden;transform-origin:top left;`;
+  if (img) zoom.innerHTML = `<img src="${img.src}" style="width:100%;height:100%;object-fit:cover">`;
+  document.body.appendChild(zoom);
+
+  const sx = r.width / vw, sy = r.height / vh;
+  const anim = zoom.animate(
+    [
+      { transform: `translate(${r.left}px,${r.top}px) scale(${sx},${sy})`, opacity: 0.6 },
+      { transform: `translate(0,0) scale(1,1)`, opacity: 1 },
+    ],
+    { duration: 520, easing: "cubic-bezier(0.7,0,0.25,1)", fill: "forwards" }
+  );
+  anim.onfinish = () => {
+    // « power-on » : flash blanc bref puis on entre
+    const flash = document.createElement("div");
+    flash.className = "page-fx flash";
+    flash.style.opacity = "1";
+    document.body.appendChild(flash);
+    setTimeout(() => { location.href = dest; }, 90);
+  };
 }
 
 /* vibration au survol */
@@ -105,12 +108,13 @@ function makeCat(spec) {
   el.setAttribute("role", "link");
   el.tabIndex = 0;
   el.dataset.cat = ch.cat;
-  el.setAttribute("aria-label", `Catégorie ${ch.label.split("· ")[1] || ch.label} — ouvrir la roue`);
+  const name = (ch.label.split("· ")[1] || ch.label).trim();
+  el.setAttribute("aria-label", `Catégorie ${name} — ouvrir la roue`);
   el.innerHTML =
-    screenHTML("photo", ch.poster, ch.tag, ch.rec) +
+    screenHTML("photo", ch.poster, ch.tag, ch.rec, null, name) +
     controlsHTML +
-    `<span class="crt__label">${ch.label}</span>`;
-  const go = () => zap(ch.cat);
+    `<span class="crt__label">${ch.label.split(" · ")[0]}</span>`;
+  const go = () => zap(ch.cat, el.querySelector(".crt__screen"));
   el.addEventListener("click", go);
   el.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }

@@ -80,33 +80,27 @@
       </article>
     </section>
 
-    <!-- Galerie d'exemples -->
-    <section class="reveal" style="margin-top:6rem" aria-labelledby="gal-title">
-      <h2 id="gal-title" style="margin-bottom:2rem">Quelques passages</h2>
-      <div class="gallery">
-        <img class="satshift" src="img/photography/pro/photo-a.png" alt="[TODO: exemple de shooting touriste 1]" loading="lazy" />
-        <img class="satshift" src="img/photography/pro/photo-j.png" alt="[TODO: exemple de shooting touriste 2]" loading="lazy" />
-        <img class="satshift" src="img/photography/pro/photo-o.png" alt="[TODO: exemple de shooting touriste 3]" loading="lazy" />
-        <img class="satshift" src="img/photography/pro/photo-q.png" alt="[TODO: exemple de shooting touriste 4]" loading="lazy" />
-        <img class="satshift" src="img/photography/pro/photo-w.png" alt="[TODO: exemple de shooting touriste 5]" loading="lazy" />
-        <img class="satshift" src="img/photography/pro/photo-ab.png" alt="[TODO: exemple de shooting touriste 6]" loading="lazy" />
-      </div>
-    </section>
-
     <!-- Formulaire (Formspree — statique, pas de backend) -->
     <section id="form" class="reveal" style="margin-top:6rem" aria-labelledby="form-title">
-      <h2 id="form-title" style="margin-bottom:2rem">Bloque ta date</h2>
+      <div class="section-head" style="margin-bottom:2rem">
+        <span class="section-num">07</span>
+        <div class="stack">
+          <span class="eyebrow">Réservation</span>
+          <h2 id="form-title">Bloque ta date</h2>
+        </div>
+      </div>
+
       <!-- TODO: remplacer YOUR_FORM_ID par l'identifiant Formspree (formspree.io) -->
       <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="stack">
+        <div class="form__field">
           <label for="name">Nom</label>
           <input id="name" name="name" type="text" autocomplete="name" required />
         </div>
-        <div class="stack">
+        <div class="form__field">
           <label for="email">Email</label>
           <input id="email" name="email" type="email" autocomplete="email" required />
         </div>
-        <div class="stack">
+        <div class="form__field form__field--full">
           <label for="formula">Formule</label>
           <select id="formula" name="formula">
             <option>1 heure — Express</option>
@@ -114,12 +108,14 @@
             <option>Demi-journée — Éditorial</option>
           </select>
         </div>
-        <div class="stack">
+        <div class="form__field form__field--full">
           <label for="msg">Ton idée, ta date</label>
-          <textarea id="msg" name="message" rows="4" placeholder="Le 12, vers le coucher du soleil, du côté de Belleville…"></textarea>
+          <textarea id="msg" name="message" rows="5" placeholder="Le 12, vers le coucher du soleil, du côté de Belleville…"></textarea>
         </div>
-        <button class="cta" type="submit">Envoyer la demande →</button>
-        <p class="meta">Ou directement : <a class="text-blue" href="mailto:hello@tia.example?subject=Booking%20Paris">hello@tia.example</a></p>
+        <div class="form__actions form__field--full">
+          <button class="cta" type="submit">Envoyer la demande →</button>
+          <p class="meta">Ou directement : <a class="text-blue" href="mailto:hello@tia.example?subject=Booking%20Paris">hello@tia.example</a></p>
+        </div>
       </form>
     </section>
   </main>
