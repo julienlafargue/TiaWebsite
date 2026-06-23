@@ -44,19 +44,20 @@ function initCursor() {
   // label par défaut selon le type d'élément
   const labelFor = (el) =>
     el.dataset.cursor ||
-    (el.closest(".tv") ? "zaper" : el.matches("a, .cta") ? "voir" : "");
+    (el.closest(".crt[role='link']") ? "entrer" :
+     el.closest(".reel__slot") ? "voir" :
+     el.matches("a, .cta, .book-fab") ? "ouvrir" : "");
 
+  const SEL = "a, button, .crt[role='link'], .reel__slot, [data-cursor]";
   document.addEventListener("mouseover", (e) => {
-    const t = e.target.closest("a, button, .tv, .camera__btn, [data-cursor]");
+    const t = e.target.closest(SEL);
     if (t) {
       cursor.classList.add("grow");
       label.textContent = labelFor(t);
     }
   });
   document.addEventListener("mouseout", (e) => {
-    if (e.target.closest("a, button, .tv, .camera__btn, [data-cursor]")) {
-      cursor.classList.remove("grow");
-    }
+    if (e.target.closest(SEL)) cursor.classList.remove("grow");
   });
 }
 

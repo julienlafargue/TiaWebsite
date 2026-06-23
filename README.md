@@ -60,20 +60,26 @@ Les 6 catégories : `photographie`, `affiches`, `identites`, `editions`,
 `portraits`, `encours`. Le centre de chaque roue (`title`, `meta`, `stars`) se
 règle au même endroit.
 
-## Remplacer les vidéos d'aperçu TV
+## Mur de télés (CRT)
 
-Les 6 chaînes sont définies dans `js/tv-grid.js` (`CHANNELS`). Chaque entrée
-utilise actuellement une image `poster`. Pour une vraie boucle vidéo :
-
-1. Exporter une boucle silencieuse courte en `.webm` (+ `.mp4` fallback).
-2. Dans `makeTV()`, remplacer le `<img>` de `.tv__screen` par :
-   ```html
-   <video autoplay loop muted playsinline poster="..."><source src="loop.webm" type="video/webm"></video>
-   ```
-3. Garder `muted` + `playsinline` (autoplay mobile + a11y).
+Les 6 catégories sont dans `CATS` (`js/tv-grid.js`) : `label`, `tag`, `poster`.
+La disposition 3×3 du mur est dans `WALL` (catégories + cellules décor
+`static`/`glitch` + panneau `index`). Pour une vraie boucle vidéo à la place d'une
+image, remplacer le `<img>` de `.crt__screen` par :
+```html
+<video autoplay loop muted playsinline poster="..."><source src="loop.webm" type="video/webm"></video>
+```
+Garder `muted` + `playsinline` (autoplay mobile + a11y).
 
 ## Choix techniques
 
+- **Thème sombre, bleu électrique dominant.** Tout passe par les tokens : inverser le thème
+  ou la teinte se fait dans `css/tokens.css` (`--paper` = fond, `--ink` = texte, `--blue` /
+  `--blue-bright`).
+- **Typo** : Syne (display) · Space Grotesk (corps) · Space Mono (méta).
+- **Mur de télés** : `js/tv-grid.js` — les 6 catégories sont dans `CATS`, la disposition du
+  mur (catégories + cellules décor static/glitch + panneau index) dans `WALL`. Chaque cellule
+  est un CRT 100 % CSS (pas d'image de cadre).
 - **Tokens CSS** (`css/tokens.css`) = source unique pour couleurs et tailles.
 - **JS modulaire** : un fichier par composant, modules ES (`type="module"`).
 - **Accessibilité** : focus visibles, nav clavier, `prefers-reduced-motion`

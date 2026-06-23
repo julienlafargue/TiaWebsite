@@ -1,6 +1,6 @@
 /* ============================================================
    typography.css — hiérarchie éditoriale
-   Fraunces (display) · Space Grotesk (sans) · Space Mono (mono)
+   Syne (display) · Space Grotesk (sans) · Space Mono (mono)
    ============================================================ */
 body {
   font-family: var(--font-sans);
@@ -9,16 +9,15 @@ body {
   font-weight: 400;
 }
 
-/* ---- Display éditorial : Fraunces, SOFT activé ---- */
+/* ---- Display : Syne, massif et géométrique ---- */
 .display,
 h1.display,
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 800;
   line-height: 0.86;
   letter-spacing: -0.02em;
-  /* axes variables Fraunces : optical size + soft */
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  text-transform: uppercase;
   text-wrap: balance;
 }
 
@@ -28,24 +27,20 @@ h1.display,
 h2 {
   font-family: var(--font-display);
   font-size: var(--fs-h2);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 72, "SOFT" 80;
 }
 
 h3 {
   font-family: var(--font-display);
   font-size: var(--fs-h3);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
 }
 
-/* Italique éditorial pour citations */
-.italic {
-  font-style: italic;
-  font-variation-settings: "opsz" 40, "SOFT" 100;
-}
+/* Italique (citations) — Syne n'a pas d'italique vrai : on garde le poids fort */
+.italic { font-style: italic; }
 
 /* ---- Corps ---- */
 .lead {
@@ -58,7 +53,6 @@ p { max-width: 62ch; }
 
 /* ---- Mono : numérotations, métadonnées ---- */
 .mono,
-.section-num,
 .meta,
 .caption {
   font-family: var(--font-mono);
@@ -67,9 +61,9 @@ p { max-width: 62ch; }
 .section-num {
   font-family: var(--font-display);
   font-size: clamp(3rem, 12vw, 11rem);
-  font-weight: 400;
+  font-weight: 800;
   line-height: 0.8;
-  color: var(--ink);
+  color: var(--blue);
 }
 
 /* Légendes : majuscules espacées */
@@ -90,11 +84,10 @@ p { max-width: 62ch; }
 
 .quote {
   font-family: var(--font-display);
-  font-style: italic;
-  color: var(--ink);
+  color: var(--blue-bright);
   font-size: var(--fs-h3);
+  font-weight: 600;
   line-height: 1.15;
-  font-variation-settings: "opsz" 48, "SOFT" 100;
 }
 
-::selection { background: var(--blue); color: var(--paper); }
+::selection { background: var(--blue); color: #fff; }

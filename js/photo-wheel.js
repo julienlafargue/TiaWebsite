@@ -88,34 +88,44 @@ const CATEGORIES = {
 const pad = (n) => String(n).padStart(2, "0");
 const param = () => new URLSearchParams(location.search).get("cat");
 
-/* ---------- VISIONNEUSE « dans l'appareil » ---------- */
+/* ---------- VISIONNEUSE en forme d'APPAREIL PHOTO ---------- */
 function buildViewer(photos, title) {
   const overlay = document.createElement("div");
   overlay.className = "viewer";
   overlay.setAttribute("role", "dialog");
   overlay.setAttribute("aria-modal", "true");
-  overlay.setAttribute("aria-label", `Visionneuse — ${title}`);
+  overlay.setAttribute("aria-label", `Appareil — ${title}`);
   overlay.hidden = true;
   overlay.innerHTML = `
-    <div class="viewer__frame">
-      <button class="viewer__close" aria-label="Fermer la visionneuse">✕ Fermer</button>
-      <div class="viewer__screen">
+    <button class="viewer__close" aria-label="Fermer">✕ Fermer</button>
+    <div class="camera">
+      <div class="camera__deck">
+        <span class="camera__finder"></span>
+        <span class="camera__brand">TIA · 35MM</span>
+        <span class="camera__release"></span>
+      </div>
+      <div class="camera__window">
         <img class="viewer__img" alt="" />
         <span class="viewer__veil" aria-hidden="true"></span>
       </div>
-      <div class="viewer__meta">
+      <div class="camera__base">
+        <span class="camera__lens"></span>
         <p class="viewer__counter" aria-live="polite"></p>
-        <p class="viewer__desc"></p>
-        <div class="viewer__nav">
-          <button class="viewer__prev" aria-label="Photo précédente">‹ Précédente</button>
-          <button class="viewer__next" aria-label="Photo suivante">Suivante ›</button>
-        </div>
+        <span class="camera__dial"></span>
+      </div>
+    </div>
+    <div class="viewer__meta">
+      <p class="viewer__desc"></p>
+      <div class="viewer__nav">
+        <button class="viewer__prev" aria-label="Photo précédente">‹ Précédente</button>
+        <button class="viewer__next" aria-label="Photo suivante">Suivante ›</button>
       </div>
     </div>`;
   document.body.appendChild(overlay);
 
   const img = overlay.querySelector(".viewer__img");
   const veil = overlay.querySelector(".viewer__veil");
+  const win = overlay.querySelector(".camera__window");
   const counter = overlay.querySelector(".viewer__counter");
   const desc = overlay.querySelector(".viewer__desc");
   const closeBtn = overlay.querySelector(".viewer__close");
@@ -147,12 +157,34 @@ function buildViewer(photos, title) {
     };
   }
 
-  function open(i) {
+  /* ouverture : la pellicule cliquée se glisse dans l'appareil */
+  function open(i, slotEl) {
     lastFocus = document.activeElement;
+    idx = (i + photos.length) % photos.length;
     overlay.hidden = false;
     document.body.style.overflow = "hidden";
-    show(i, false);
+    paint();
     closeBtn.focus();
+    if (reducedMotion() || !slotEl) return;
+
+    const slotImg = slotEl.querySelector("img") || slotEl;
+    const s = slotImg.getBoundingClientRect();
+    const w = win.getBoundingClientRect();
+    const fly = document.createElement("img");
+    fly.src = photos[idx].src;
+    fly.className = "viewer__fly";
+    fly.style.cssText =
+      `position:fixed;left:${s.left}px;top:${s.top}px;width:${s.width}px;height:${s.height}px;` +
+      `object-fit:cover;z-index:10002;border-radius:8px;box-shadow:0 20px 40px rgba(0,0,0,.6);`;
+    document.body.appendChild(fly);
+    img.style.opacity = "0";
+    fly.animate(
+      [
+        { left: `${s.left}px`, top: `${s.top}px`, width: `${s.width}px`, height: `${s.height}px` },
+        { left: `${w.left}px`, top: `${w.top}px`, width: `${w.width}px`, height: `${w.height}px` },
+      ],
+      { duration: 470, easing: "cubic-bezier(0.7,0,0.2,1)", fill: "forwards" }
+    ).onfinish = () => { fly.remove(); img.style.opacity = "1"; };
   }
   function close() {
     overlay.hidden = true;
@@ -174,29 +206,32 @@ function buildViewer(photos, title) {
   return { open };
 }
 
-/* ---------- ROUE ---------- */
+/* ---------- ROUE View-Master (disque crème) ---------- */
 function buildReel(root, cat) {
   const data = CATEGORIES[cat] || CATEGORIES.photographie;
   const photos = data.photos;
   const viewer = buildViewer(photos, data.title);
 
   root.classList.add("reel");
-  // centre
-  const stars = "★".repeat(data.stars) + "☆".repeat(5 - data.stars);
+  const n = photos.length;
+
+  // bloc crédits central (façon réf)
+  const stars = "✦".repeat(data.stars);
   const center = document.createElement("div");
   center.className = "reel__center";
   center.innerHTML = `
-    <span class="reel__arrow" aria-hidden="true">↑</span>
+    <span class="reel__arrow reel__arrow--up" aria-hidden="true">↑</span>
+    <p class="reel__kicker">TIA-LANA CHINAPYEL</p>
     <h2 class="reel__title">${data.title}</h2>
     <p class="reel__sub">${data.meta}</p>
     <p class="reel__stars" aria-label="${data.stars} sur 5">${stars}</p>
-    <p class="reel__hint">Clique une vignette →</p>`;
+    <span class="reel__proj" aria-hidden="true">▼ PROJECTOR · UP FOR ${pad(n)}</span>`;
   root.appendChild(center);
 
-  // vignettes en cercle
-  const n = photos.length;
+  // vignettes + numéros de pourtour
   photos.forEach((p, i) => {
     const angle = (i / n) * 360;
+
     const slot = document.createElement("button");
     slot.className = "reel__slot";
     slot.style.setProperty("--ang", `${angle}deg`);
@@ -204,11 +239,29 @@ function buildReel(root, cat) {
     slot.innerHTML = `
       <span class="reel__win">
         <img src="${p.src}" alt="" loading="lazy" decoding="async" />
-        <span class="reel__num">${pad(i + 1)}</span>
       </span>`;
-    slot.addEventListener("click", () => viewer.open(i));
+    slot.addEventListener("click", () => viewer.open(i, slot));
     root.appendChild(slot);
+
+    // numéro gravé sur le disque, en retrait vers le centre
+    const num = document.createElement("span");
+    num.className = "reel__rimnum";
+    num.style.setProperty("--ang", `${angle}deg`);
+    num.setAttribute("aria-hidden", "true");
+    num.textContent = i + 1;
+    root.appendChild(num);
   });
+
+  // petite animation d'insertion du disque à l'arrivée
+  if (!reducedMotion()) {
+    root.animate(
+      [
+        { transform: "translateY(24px) scale(0.94) rotate(-4deg)", opacity: 0 },
+        { transform: "none", opacity: 1 },
+      ],
+      { duration: 600, easing: "cubic-bezier(0.16,1,0.3,1)", fill: "backwards" }
+    );
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

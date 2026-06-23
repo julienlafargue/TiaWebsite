@@ -63,8 +63,21 @@ function initGrainDrift() {
   );
 }
 
+/* ---- Bouton flottant « Booker un shooting » (toutes les pages sauf booking) ---- */
+function initBookFab() {
+  const page = location.pathname.split("/").pop();
+  if (page === "booking.html") return;
+  const a = document.createElement("a");
+  a.className = "book-fab";
+  a.href = "booking.html";
+  a.setAttribute("aria-label", "Booker un shooting");
+  a.innerHTML = `<span class="book-fab__ico" aria-hidden="true">📷</span><span class="book-fab__txt">Booker un shooting</span>`;
+  document.body.appendChild(a);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initReveal();
   initGrainDrift();
+  initBookFab();
 });
