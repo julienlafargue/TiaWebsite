@@ -5,11 +5,11 @@ HTML / CSS / JS vanilla. Une seule dépendance externe : **GSAP** (CDN).
 Statique, prêt pour **GitHub Pages**. Aucun build obligatoire.
 
 ```
-index.html          Accueil + grille TV (couverture magazine)
+index.html          Accueil (couverture magazine)
 about.html          Le cerveau d'artiste (collage polaroid)
-work.html           Grille TV + liste filtrable
-projet/template.html Page projet + View-Master (à dupliquer)
-process.html        Carnet de bord (scroll narratif)
+work.html           Grille TV (6 catégories) → ouvre une roue
+reel.html           Roue View-Master par catégorie (?cat=) + visionneuse
+process.html        Carnet de bord (process général)
 booking.html        Shooting touristes Paris + formulaire
 contact.html        Colophon
 css/                reset · tokens · typography · styles
@@ -41,14 +41,24 @@ Alternatives : `npx serve` · extension « Live Server » de VS Code.
 > Les chemins sont relatifs : pas de config supplémentaire nécessaire.
 > Pour un domaine custom, ajouter un fichier `CNAME` à la racine.
 
-## Ajouter un nouveau projet
+## Parcours du site
 
-1. Dupliquer `projet/template.html` → `projet/mon-projet.html`.
-2. Remplir les `[TODO: …]` (titre, client, année, textes, making-of).
-3. Renseigner les images du View-Master via l'attribut `data-images`
-   (liste de chemins séparés par des virgules, en `../img/...`).
-4. Ajouter une entrée dans le tableau `PROJECTS` en bas de `work.html`
-   (nom, année, `cat`, `thumb`, et pointer le lien vers la nouvelle page).
+`work.html` affiche 6 télés (catégories). Cliquer une télé déclenche l'effet
+zapping puis ouvre `reel.html?cat=<catégorie>` : une **roue** de photos du même
+type. Cliquer une vignette ouvre la **visionneuse** (grande image + description).
+
+## Ajouter / modifier une photo dans une roue
+
+Tout vit dans l'objet `CATEGORIES` de `js/photo-wheel.js`. Pour ajouter une photo
+à une catégorie, ajoute une entrée à son tableau `photos` :
+
+```js
+P("photo-xx.png", "Texte alt descriptif", "Description affichée dans la visionneuse")
+```
+
+Les 6 catégories : `photographie`, `affiches`, `identites`, `editions`,
+`portraits`, `encours`. Le centre de chaque roue (`title`, `meta`, `stars`) se
+règle au même endroit.
 
 ## Remplacer les vidéos d'aperçu TV
 

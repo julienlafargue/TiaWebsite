@@ -11,12 +11,12 @@ import { reducedMotion } from "./main.js";
 /* Données des 6 télés. Remplacer `video` par de vraies boucles .webm/.mp4 ;
    `poster` sert d'image de repli (réutilise les vraies photos). */
 const CHANNELS = [
-  { cat: "photographie",  label: "PHOTOGRAPHIE",      tag: "REC",  poster: "img/photography/pro/photo-a.png" },
-  { cat: "affiches",      label: "AFFICHES CINÉMA",   tag: "PLAY", poster: "img/photography/pro/photo-h.png" },
-  { cat: "identites",     label: "IDENTITÉS DE MARQUE",tag: "01",  poster: "img/photography/pro/photo-m.png" },
-  { cat: "editions",      label: "ÉDITIONS",          tag: "RUSH", poster: "img/photography/pro/photo-r.png" },
-  { cat: "portraits",     label: "PORTRAITS",         tag: "LIVE", poster: "img/photography/pro/photo-v.png" },
-  { cat: "encours",       label: "EN COURS",          tag: "WIP",  poster: "img/photography/pro/photo-z.png" },
+  { cat: "photographie",  label: "PHOTOGRAPHIE",      tag: "REC",  poster: "img/photography/pro/photo-b.png" },
+  { cat: "affiches",      label: "AFFICHES CINÉMA",   tag: "PLAY", poster: "img/photography/pro/photo-u.png" },
+  { cat: "identites",     label: "IDENTITÉS DE MARQUE",tag: "01",  poster: "img/photography/pro/photo-ae.png" },
+  { cat: "editions",      label: "ÉDITIONS",          tag: "RUSH", poster: "img/photography/pro/photo-s.png" },
+  { cat: "portraits",     label: "PORTRAITS",         tag: "LIVE", poster: "img/photography/pro/photo-g.png" },
+  { cat: "encours",       label: "EN COURS",          tag: "WIP",  poster: "img/photography/pro/photo-f.png" },
 ];
 
 /* Cadre TV en SVG inline. id unique pour le filtre de distorsion CRT. */
@@ -113,7 +113,7 @@ function makeTV(ch, i) {
 
 /* ---- Effet zapping : flash → static → navigation ---- */
 function zap(cat) {
-  const dest = `work.html?cat=${cat}`;
+  const dest = `reel.html?cat=${cat}`;
   if (reducedMotion()) { location.href = dest; return; }
 
   // 1. flash blanc 80ms

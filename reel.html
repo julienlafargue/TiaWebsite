@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work — TIA</title>
-  <meta name="description" content="Le travail de Tia, six chaînes : photographie, affiches cinéma, identités de marque, éditions, portraits, projets en cours." />
+  <title>Roue — TIA</title>
+  <meta name="description" content="Une roue de photos par catégorie. Choisis une vignette pour la voir en grand." />
   <meta name="theme-color" content="#F2EFE7" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,21 +31,18 @@
   </header>
 
   <main id="main" class="wrap pad-block">
+    <a class="meta" href="work.html" style="display:inline-block;margin-bottom:2rem">← Work</a>
+
     <div class="section-head reveal">
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <div class="stack">
-        <span class="eyebrow">Choisis ta chaîne</span>
-        <h1 class="display">Work</h1>
+        <span class="eyebrow">Tourne la roue</span>
+        <h1 class="display" data-reel-title>Roue</h1>
       </div>
     </div>
 
-    <p class="lead reveal" style="margin-bottom:3rem;max-width:48ch">
-      Six chaînes, six séries. Choisis-en une : tu tombes sur une roue de photos
-      du même type. Clique une vignette pour la voir en grand.
-    </p>
-
-    <!-- Grille TV (peuplée par tv-grid.js) — chaque télé ouvre la roue de sa catégorie -->
-    <div data-tv-grid class="reveal" aria-label="Six chaînes par catégorie"></div>
+    <!-- La roue se peuple via js/photo-wheel.js, catégorie lue dans ?cat= -->
+    <div data-reel class="reveal" aria-label="Roue de photos — choisis une vignette pour l'agrandir"></div>
   </main>
 
   <footer class="site-footer wrap">
@@ -61,6 +58,6 @@
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/cursor.js"></script>
   <script type="module" src="js/transitions.js"></script>
-  <script type="module" src="js/tv-grid.js"></script>
+  <script type="module" src="js/photo-wheel.js"></script>
 </body>
 </html>

@@ -37,26 +37,55 @@
 
   <main id="main">
     <!-- ============ COUVERTURE MAGAZINE ============ -->
-    <section class="cover wrap" aria-labelledby="cover-title">
-      <div class="cover__stickers">
-        <span class="sticker sticker--red rot-p3">WTF</span>
-        <span class="sticker rot-n2">ISSUE 01</span>
-        <span class="sticker rot-p1">PARIS · 2026</span>
+    <section class="cover" aria-labelledby="cover-title">
+      <!-- bandeau masthead (haut de couverture) -->
+      <div class="cover__masthead">
+        <span>N°01</span>
+        <span>PHOTOGRAPHY + ART DIRECTION</span>
+        <span>PARIS · PRINTEMPS 2026</span>
+        <span>€0 — JUST LOOK</span>
       </div>
 
-      <div class="cover__hero">
+      <!-- portrait plein cadre, duotone bleu -->
+      <figure class="cover__hero">
         <img src="img/home/hero-home.png" alt="Portrait éditorial de Tia, traité en bichromie crème et bleu électrique." width="900" height="1200" />
         <span class="cover__hero-tint" aria-hidden="true"></span>
+      </figure>
+
+      <!-- titre géant qui chevauche le portrait -->
+      <h1 class="cover__title" id="cover-title">TIA</h1>
+
+      <!-- cover-lines façon magazine, dans le vide à gauche -->
+      <div class="cover__lines">
+        <p class="cl cl--big">Le portrait<br />comme un <span class="text-blue">secret</span><br />bien cadré.</p>
+        <p class="cl cl--mono">Photographie &amp; direction artistique — Paris.</p>
+        <a class="cta" href="work.html" data-cursor="entrer">Entrer dans la galerie →</a>
       </div>
 
-      <h1 class="hero-title cover__title" id="cover-title">TIA</h1>
+      <!-- stickers collés -->
+      <span class="sticker sticker--red rot-p3 cover__wtf">WTF</span>
+      <span class="sticker rot-n2 cover__tag">ISSUE 01</span>
 
-      <div class="cover__sub">
-        <span class="mono meta">PHOTOGRAPHY · ART DIRECTION · ISSUE 01 — 2026</span>
-        <a class="cta" href="work.html">Entrer dans la galerie →</a>
+      <!-- code-barres + scroll (bas de couverture) -->
+      <div class="cover__foot">
+        <svg class="barcode" viewBox="0 0 120 40" aria-hidden="true">
+          <g fill="#0A0A0A">
+            <rect x="0" y="0" width="3" height="34"/><rect x="6" y="0" width="1" height="34"/>
+            <rect x="10" y="0" width="4" height="34"/><rect x="17" y="0" width="2" height="34"/>
+            <rect x="22" y="0" width="1" height="34"/><rect x="26" y="0" width="5" height="34"/>
+            <rect x="34" y="0" width="2" height="34"/><rect x="39" y="0" width="3" height="34"/>
+            <rect x="45" y="0" width="1" height="34"/><rect x="49" y="0" width="4" height="34"/>
+            <rect x="56" y="0" width="2" height="34"/><rect x="61" y="0" width="1" height="34"/>
+            <rect x="65" y="0" width="3" height="34"/><rect x="71" y="0" width="2" height="34"/>
+            <rect x="76" y="0" width="5" height="34"/><rect x="84" y="0" width="1" height="34"/>
+            <rect x="88" y="0" width="3" height="34"/><rect x="94" y="0" width="2" height="34"/>
+            <rect x="99" y="0" width="4" height="34"/><rect x="106" y="0" width="1" height="34"/>
+            <rect x="110" y="0" width="3" height="34"/><rect x="116" y="0" width="2" height="34"/>
+          </g>
+          <text x="0" y="40" font-family="'Space Mono',monospace" font-size="6" fill="#0A0A0A">9 782026 010016</text>
+        </svg>
+        <span class="scroll-hint" aria-hidden="true">Scroll ↓ pour zaper</span>
       </div>
-
-      <span class="scroll-hint" aria-hidden="true">Scroll ↓</span>
     </section>
 
     <!-- ============ TEASER GRILLE TV ============ -->
@@ -73,7 +102,7 @@
       <div data-tv-grid class="reveal" aria-label="Grille de six télévisions, une par catégorie"></div>
 
       <p class="meta reveal" style="margin-top:2rem;color:var(--blue)">
-        Clique sur une chaîne → zapping → la liste des projets.
+        Clique sur une chaîne → zapping → la roue de la catégorie.
       </p>
     </section>
   </main>

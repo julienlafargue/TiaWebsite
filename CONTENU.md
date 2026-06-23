@@ -24,15 +24,16 @@ ville (**Paris**) sont déjà posés ; cherche `[TODO:` dans le code pour le res
 - [ ] Citation bleue
 
 ## work.html
-- [ ] Tableau `PROJECTS` (script en bas de page) : nom, année, catégorie, miniature, lien
 - [ ] Posters des 6 chaînes TV → `js/tv-grid.js` (`CHANNELS`)
+      (chaque télé ouvre `reel.html?cat=<catégorie>`)
 
-## projet/template.html (à dupliquer par projet)
-- [ ] `[TODO: TITRE DU PROJET]`, `[TODO: CATÉGORIE]`
-- [ ] `[TODO: CLIENT]`, `[TODO: 2026]`, `[TODO: PHOTO + DA]`
-- [ ] `data-images` du View-Master (liste des photos de la série)
-- [ ] Textes : Intention / Process / Résultat
-- [ ] Making of : 3 images (croquis, setup, résultat)
+## reel.html — Roue / descriptions photo
+Tout est dans l'objet `CATEGORIES` de `js/photo-wheel.js`, une roue par catégorie
+(`photographie`, `affiches`, `identites`, `editions`, `portraits`, `encours`).
+Pour chaque photo : `{ src, alt, desc }`.
+- [ ] **`desc`** de chaque photo (texte affiché dans la visionneuse) — actuellement `[TODO]`
+- [ ] **`alt`** descriptif (a11y) si tu changes les images
+- [ ] `title` / `meta` / `stars` au centre de chaque roue
 
 ## process.html
 - [ ] 4 blocs : Collecter / Cadrer / Repérer / Déclencher (textes + images)
