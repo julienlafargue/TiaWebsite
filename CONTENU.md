@@ -23,9 +23,10 @@ ville (**Paris**) sont déjà posés ; cherche `[TODO:` dans le code pour le res
 - [ ] Ligne manuscrite : `LOVES …` / centres d'intérêt
 - [ ] Citation bleue
 
-## work.html
-- [ ] Posters des 6 chaînes TV → `js/tv-grid.js` (`CHANNELS`)
-      (chaque télé ouvre `reel.html?cat=<catégorie>`)
+## work.html — mur de télés
+- [ ] Posters / labels / tags des 6 chaînes → `js/tv-grid.js` (`CATS`)
+- [ ] Disposition du mur (catégories + cellules décor + index) → `WALL`
+      (chaque chaîne ouvre `reel.html?cat=<catégorie>`)
 
 ## reel.html — Roue / descriptions photo
 Tout est dans l'objet `CATEGORIES` de `js/photo-wheel.js`, une roue par catégorie

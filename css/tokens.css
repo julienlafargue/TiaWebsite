@@ -3,17 +3,20 @@
    Toutes les couleurs et tailles passent par ici.
    ============================================================ */
 :root {
-  /* ---- Palette ---- */
-  --paper:        #F2EFE7; /* fond papier, partout */
-  --ink:          #0A0A0A; /* noir profond — texte, cadres */
-  --blue:         #1E3FFF; /* bleu électrique — accent unique */
-  --red:          #D6263A; /* rouge cinéma — logos, étiquettes */
-  --cream:        #E8E4D8; /* crème panneau — blocs secondaires */
-  --paper-rgb:    242, 239, 231;
-  --ink-rgb:      10, 10, 10;
+  /* ---- Palette (thème sombre, bleu électrique dominant) ----
+     Les noms sémantiques sont conservés : --paper = fond, --ink = texte/bordures.
+     On a juste inversé les valeurs pour passer en sombre. */
+  --paper:        #07080D; /* fond noir bleuté — partout */
+  --ink:          #EDEEF5; /* presque blanc — texte, cadres */
+  --blue:         #1E3FFF; /* bleu électrique — COULEUR PRINCIPALE (aplats, gros titres) */
+  --blue-bright:  #4E6BFF; /* bleu lisible — texte bleu courant sur fond noir */
+  --red:          #FF2E43; /* rouge cinéma vif — spot type « RUSH » */
+  --cream:        #11131C; /* panneau sombre — blocs secondaires */
+  --paper-rgb:    7, 8, 13;
+  --ink-rgb:      237, 238, 245;
 
   /* ---- Typographie ---- */
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Syne", system-ui, sans-serif; /* display géométrique tendance */
   --font-sans:    "Space Grotesk", system-ui, sans-serif;
   --font-mono:    "Space Mono", ui-monospace, monospace;
 
