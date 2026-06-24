@@ -25,7 +25,7 @@
   <div class="grain" aria-hidden="true"></div>
 
   <header class="site-nav">
-    <a class="brand" href="index.html">TIA-LANA<span class="red">.</span></a>
+    <a class="brand" href="index.html">TIA-LANA<span class="brand__heart" aria-hidden="true">♥</span></a>
     <div class="nav-right">
       <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
@@ -39,52 +39,22 @@
   </header>
 
   <main id="main">
-    <!-- ============ COVER — magazine « MAG » ============ -->
-    <section class="mag">
-      <article class="mag__page">
-        <img class="mag__photo" src="img/home/hero-home.png" alt="Editorial portrait of Tia-Lana Chinapyel." width="900" height="1200" />
-        <div class="mag__masthead">
-          <span>TIA-LANA MAGAZINE — ISSUE 001</span>
-          <span>JAN 2026</span>
-        </div>
-        <h1 class="mag__title" aria-label="Tia-Lana Chinapyel">
-          <span aria-hidden="true">TIA-</span>
-          <span aria-hidden="true">LANA</span>
-          <span aria-hidden="true">CHIN</span>
-        </h1>
-        <p class="mag__tagline">BUY IT · READ IT · FRAME IT</p>
-      </article>
-
-      <a class="scroll-cue" href="#wall" data-cursor="scroll" aria-label="Scroll to the gallery">
-        <span class="scroll-cue__txt" data-i18n="cover.scroll">Scroll</span>
-        <span class="scroll-cue__chev" aria-hidden="true"></span>
-      </a>
-    </section>
-
-    <!-- ============ TV WALL ============ -->
-    <section id="wall" class="wrap" style="padding-block:clamp(2.5rem,6vh,4.5rem)" aria-labelledby="tv-title">
-      <div class="section-head reveal" style="margin-bottom:1.25rem">
-        <h2 id="tv-title" data-i18n="home.title">Turn on a TV.</h2>
+    <!-- ============ HOME = mur de télés plein écran (le concept « décalé ») ============ -->
+    <section class="home-hero">
+      <div class="home-hero__wall" data-tv-grid aria-label="Wall of TVs, one channel per category"></div>
+      <div class="home-hero__bar">
+        <h1 class="home-hero__title">TIA-LANA<span aria-hidden="true">♥</span></h1>
+        <p class="home-hero__tag" data-i18n="home.tag">Not a portfolio — a broadcast. Pick a channel.</p>
       </div>
-
-      <!-- Populated by js/tv-grid.js -->
-      <div data-tv-grid class="reveal" aria-label="Wall of TVs, one channel per category"></div>
     </section>
   </main>
 
-  <footer class="site-footer wrap">
-    <div class="grid12">
-      <p class="footer-brand col-span-6" data-i18n="footer.brand">TIA-LANA — PARIS</p>
-      <p class="meta col-span-6" style="text-align:right" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
-    </div>
-  </footer>
-
   <!-- GSAP via CDN (only allowed dependency) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script type="module" src="js/i18n.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/cursor.js"></script>
-  <script type="module" src="js/transitions.js"></script>
-  <script type="module" src="js/tv-grid.js"></script>
+  <script type="module" src="js/i18n.js?v=7"></script>
+  <script type="module" src="js/main.js?v=7"></script>
+  <script type="module" src="js/cursor.js?v=7"></script>
+  <script type="module" src="js/transitions.js?v=7"></script>
+  <script type="module" src="js/tv-grid.js?v=7"></script>
 </body>
 </html>

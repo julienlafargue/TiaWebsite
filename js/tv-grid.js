@@ -5,8 +5,8 @@
    - Clic chaîne → effet zapping (flash → static canvas) → reel.html?cat=
    - Hover : vibration ±1px (GSAP sinon WAAPI) · reduced-motion respecté
    ============================================================ */
-import { reducedMotion } from "./main.js";
-import { t } from "./i18n.js";
+import { reducedMotion } from "./main.js?v=7";
+import { t } from "./i18n.js?v=7";
 
 /* Les 6 catégories (mode photo, poster = vraie image). Le libellé vient de l'i18n. */
 const CATS = [
@@ -22,7 +22,7 @@ const CATS = [
 const WALL = [
   { type: "cat", i: 0 },
   { type: "cat", i: 1 },
-  { type: "decor", mode: "static", tag: "NO SIGNAL", label: "CH 99" },
+  { type: "contact" },
   { type: "cat", i: 2 },
   { type: "index" },
   { type: "cat", i: 3 },
@@ -30,6 +30,13 @@ const WALL = [
   { type: "cat", i: 4 },
   { type: "cat", i: 5 },
 ];
+
+/* coordonnées de contact (à personnaliser) */
+const CONTACT = {
+  email: "hello@tia-lana.example",
+  insta: "@tia-lana",
+  city: "PARIS",
+};
 
 /* Contenu de l'écran selon le mode. `band` = nom de catégorie affiché clairement. */
 function screenHTML(mode, poster, tag, rec, word, band) {
@@ -49,38 +56,24 @@ const controlsHTML = `
     <span class="crt__knob"></span>
   </div>`;
 
-/* ---- Clic : on « entre dans toute la télé » (boîtier zoomé) → navigation ---- */
+/* ---- Clic : GLITCH plein écran (déchirure numérique) → navigation ---- */
 function zap(cat, cellEl) {
   const dest = `reel.html?cat=${cat}`;
-  if (reducedMotion() || !cellEl) { location.href = dest; return; }
+  if (reducedMotion()) { location.href = dest; return; }
 
-  const r = cellEl.getBoundingClientRect();
-  const vw = window.innerWidth, vh = window.innerHeight;
-
-  // clone de la cellule entière (boîtier + écran), agrandi jusqu'au plein écran
-  const zoom = cellEl.cloneNode(true);
-  zoom.classList.add("tv-zoom");
-  zoom.style.cssText =
-    `position:fixed;left:0;top:0;width:${vw}px;height:${vh}px;margin:0;z-index:9000;` +
-    `transform-origin:top left;will-change:transform;`;
-  document.body.appendChild(zoom);
-
-  const sx = r.width / vw, sy = r.height / vh;
-  const anim = zoom.animate(
-    [
-      { transform: `translate(${r.left}px,${r.top}px) scale(${sx},${sy})` },
-      { transform: `translate(${vw * 0.5 - r.width * 0.5}px,${vh * 0.5 - r.height * 0.5}px) scale(${sx * 1.05},${sy * 1.05})`, offset: 0.18 },
-      { transform: `translate(0,0) scale(1,1)` },
-    ],
-    { duration: 560, easing: "cubic-bezier(0.7,0,0.25,1)", fill: "forwards" }
-  );
-  anim.onfinish = () => {
-    const flash = document.createElement("div");
-    flash.className = "page-fx flash";
-    flash.style.opacity = "1";
-    document.body.appendChild(flash);
-    setTimeout(() => { location.href = dest; }, 90);
-  };
+  const img = cellEl && cellEl.querySelector(".crt__screen img");
+  const src = img ? img.src : "";
+  const fx = document.createElement("div");
+  fx.className = "glitch-fx";
+  if (src) fx.style.setProperty("--gimg", `url("${src}")`);
+  fx.innerHTML =
+    `<div class="glitch-fx__base"></div>` +
+    `<div class="glitch-fx__layer glitch-fx__layer--r"></div>` +
+    `<div class="glitch-fx__layer glitch-fx__layer--g"></div>` +
+    `<div class="glitch-fx__layer glitch-fx__layer--b"></div>` +
+    `<div class="glitch-fx__scan"></div>`;
+  document.body.appendChild(fx);
+  setTimeout(() => { location.href = dest; }, 470);
 }
 
 /* vibration au survol */
@@ -133,6 +126,22 @@ function makeDecor(spec) {
   return el;
 }
 
+function makeContact() {
+  const el = document.createElement("a");
+  el.className = "crt crt--contact";
+  el.href = `mailto:${CONTACT.email}`;
+  el.setAttribute("aria-label", `Contact — ${CONTACT.email}`);
+  const ticker = `EMAIL ${CONTACT.email} · INSTA ${CONTACT.insta} · ${CONTACT.city} · `;
+  el.innerHTML =
+    `<div class="crt__screen">
+       <div class="crt__contact-marquee" aria-hidden="true"><span>${ticker.repeat(2)}</span></div>
+       <span class="crt__cat">CONTACT</span>
+     </div>` +
+    controlsHTML +
+    `<span class="crt__tag is-rec">LIVE</span><span class="crt__label">CH 07</span>`;
+  return el;
+}
+
 function makeIndex() {
   const el = document.createElement("div");
   el.className = "crt crt--index";
@@ -151,6 +160,7 @@ function initTVGrid() {
       const node =
         spec.type === "cat" ? makeCat(spec) :
         spec.type === "index" ? makeIndex() :
+        spec.type === "contact" ? makeContact() :
         makeDecor(spec);
       grid.appendChild(node);
     });

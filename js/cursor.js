@@ -3,7 +3,7 @@
    Grossit + label mono sur les éléments cliquables.
    Désactivé < 768px et si pointeur grossier (tactile).
    ============================================================ */
-import { reducedMotion } from "./main.js";
+import { reducedMotion } from "./main.js?v=7";
 
 function initCursor() {
   const fine = window.matchMedia("(min-width: 769px) and (pointer: fine)").matches;

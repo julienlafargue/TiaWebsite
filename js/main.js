@@ -4,7 +4,7 @@
    Les composants lourds vivent dans leurs propres fichiers.
    ============================================================ */
 
-import { t } from "./i18n.js";
+import { t } from "./i18n.js?v=7";
 
 /** true si l'utilisateur préfère moins d'animations */
 export const reducedMotion = () =>
@@ -82,8 +82,10 @@ function initBookFab() {
 /* ---- Invitation à descendre : clic = scroll fluide, 1er geste = descente douce ---- */
 function initScrollCue() {
   const cue = document.querySelector(".scroll-cue");
-  const wall = document.getElementById("wall");
-  if (!wall) return;
+  const wall = cue && cue.getAttribute("href")
+    ? document.querySelector(cue.getAttribute("href"))
+    : document.getElementById("wall");
+  if (!cue || !wall) return;
 
   // scroll animé maison (le `behavior:smooth` natif n'est pas fiable partout)
   let scrolling = false;
@@ -111,24 +113,49 @@ function initScrollCue() {
     cue.addEventListener("click", (e) => { e.preventDefault(); goDown(); });
   }
 
-  // au tout premier geste de scroll depuis le haut, on accompagne la descente
-  let used = false;
-  const onFirst = (e) => {
-    if (used || window.scrollY > 10) return;
-    const down = e.type === "keydown"
-      ? ["ArrowDown", "PageDown", " "].includes(e.key)
-      : (e.deltaY ?? 0) > 0;
-    if (!down) return;
-    used = true;
-    e.preventDefault();
-    goDown();
-    window.removeEventListener("wheel", onFirst);
-    window.removeEventListener("keydown", onFirst);
-  };
-  if (!reducedMotion()) {
-    window.addEventListener("wheel", onFirst, { passive: false });
-    window.addEventListener("keydown", onFirst);
+}
+
+/* ---- Scroll fluide GLOBAL (partout, tout le temps) ---- */
+function initSmoothScroll() {
+  if (reducedMotion()) return;
+  if (!window.matchMedia("(pointer: fine)").matches) return; // souris uniquement
+
+  let target = window.scrollY;
+  let current = target;
+  let active = false;
+  const maxScroll = () =>
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  function loop() {
+    current += (target - current) * 0.14;
+    if (Math.abs(target - current) < 0.4) {
+      current = target;
+      window.scrollTo(0, current);
+      active = false;
+      return;
+    }
+    window.scrollTo(0, current);
+    requestAnimationFrame(loop);
   }
+
+  window.addEventListener(
+    "wheel",
+    (e) => {
+      // ne pas intercepter quand une modale est ouverte (body figé)
+      if (document.body.style.overflow === "hidden") return;
+      if (e.ctrlKey) return; // zoom navigateur
+      e.preventDefault();
+      const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1;
+      target = Math.max(0, Math.min(maxScroll(), target + e.deltaY * unit));
+      if (!active) { active = true; requestAnimationFrame(loop); }
+    },
+    { passive: false }
+  );
+
+  // resync si l'utilisateur scrolle autrement (barre, clavier, ancre)
+  window.addEventListener("scroll", () => {
+    if (!active) { target = window.scrollY; current = window.scrollY; }
+  }, { passive: true });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -137,4 +164,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initGrainDrift();
   initBookFab();
   initScrollCue();
+  initSmoothScroll();
 });

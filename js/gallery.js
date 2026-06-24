@@ -2,8 +2,8 @@
    gallery.js — page Gallery : toutes les photos en bandes 35mm,
    filtrables par type. Clic sur une vue → visionneuse « appareil ».
    ============================================================ */
-import { CATEGORIES, buildViewer } from "./photo-wheel.js";
-import { t } from "./i18n.js";
+import { CATEGORIES, buildViewer } from "./photo-wheel.js?v=7";
+import { t } from "./i18n.js?v=7";
 
 /* toutes les photos, avec leur catégorie + index global (pour la visionneuse) */
 const ALL = [];
