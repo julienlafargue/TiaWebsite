@@ -39,36 +39,34 @@
   </header>
 
   <main id="main">
-    <!-- ============ COVER — magazine « MAG » ============ -->
-    <section class="mag">
+    <!-- ============ HERO — mur de télés (le concept « décalé » d'emblée) ============ -->
+    <section class="home-hero">
+      <div class="home-hero__wall" data-tv-grid aria-label="Wall of TVs, one channel per category"></div>
+      <div class="home-hero__overlay">
+        <h1 class="home-hero__title">TIA-LANA</h1>
+        <p class="home-hero__tag" data-i18n="home.tag">Not a portfolio — a broadcast. Pick a channel.</p>
+      </div>
+      <a class="scroll-cue" href="#issue" data-cursor="scroll" aria-label="Scroll down">
+        <span class="scroll-cue__txt" data-i18n="cover.scroll">Scroll</span>
+        <span class="scroll-cue__chev" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ============ ISSUE — couverture magazine « MAG » ============ -->
+    <section id="issue" class="mag">
       <article class="mag__page">
         <img class="mag__photo" src="img/home/hero-home.png" alt="Editorial portrait of Tia-Lana Chinapyel." width="900" height="1200" />
         <div class="mag__masthead">
           <span>TIA-LANA MAGAZINE — ISSUE 001</span>
           <span>JAN 2026</span>
         </div>
-        <h1 class="mag__title" aria-label="Tia-Lana Chinapyel">
+        <h2 class="mag__title" aria-label="Tia-Lana Chinapyel">
           <span aria-hidden="true">TIA-</span>
           <span aria-hidden="true">LANA</span>
           <span aria-hidden="true">CHIN</span>
-        </h1>
+        </h2>
         <p class="mag__tagline">BUY IT · READ IT · FRAME IT</p>
       </article>
-
-      <a class="scroll-cue" href="#wall" data-cursor="scroll" aria-label="Scroll to the gallery">
-        <span class="scroll-cue__txt" data-i18n="cover.scroll">Scroll</span>
-        <span class="scroll-cue__chev" aria-hidden="true"></span>
-      </a>
-    </section>
-
-    <!-- ============ TV WALL ============ -->
-    <section id="wall" class="wrap" style="padding-block:clamp(2.5rem,6vh,4.5rem)" aria-labelledby="tv-title">
-      <div class="section-head reveal" style="margin-bottom:1.25rem">
-        <h2 id="tv-title" data-i18n="home.title">Turn on a TV.</h2>
-      </div>
-
-      <!-- Populated by js/tv-grid.js -->
-      <div data-tv-grid class="reveal" aria-label="Wall of TVs, one channel per category"></div>
     </section>
   </main>
 

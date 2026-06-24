@@ -1062,15 +1062,14 @@ section { position: relative; }
     0 40px 70px -30px rgba(0,0,0,0.8),
     inset 0 2px 6px rgba(255,255,255,0.8),
     inset 0 -10px 26px rgba(120,110,90,0.25);
-  /* rotation lente continue (tout le disque, comme une vraie bobine) */
-  animation: reelspin var(--reel-spin) linear infinite;
+  /* le disque (et donc les cadres) ne tourne PAS */
 }
-/* pause au survol / focus pour cliquer tranquillement */
-.reel:hover, .reel:focus-within,
-.reel:hover .reel__win, .reel:focus-within .reel__win { animation-play-state: paused; }
-@keyframes reelspin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes photospin {
+  from { transform: scale(1.7) rotate(0); }
+  to   { transform: scale(1.7) rotate(360deg); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .reel, .reel__win { animation: none !important; }
+  .reel__win img { animation: none !important; }
 }
 /* anneau gravé + encoches de bobine */
 .reel::before {
@@ -1168,17 +1167,17 @@ section { position: relative; }
     inset 0 0 0 3px rgba(20,16,8,0.55),
     inset 0 6px 14px rgba(0,0,0,0.75),
     0 1px 0 rgba(255,255,255,0.55);
-  /* contre-rotation : la fenêtre reste droite pendant que le disque tourne */
-  animation: reelspin var(--reel-spin) linear infinite reverse;
 }
 .reel__win img {
   width: 100%; height: 100%;
   object-fit: cover;
   filter: saturate(0.78) contrast(1.06);
-  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+  /* cadre fixe, la PHOTO tourne sur elle-même (cadrée pour remplir) */
+  transform: scale(1.7);
+  animation: photospin 26s linear infinite;
 }
 .reel__slot:hover .reel__win img,
-.reel__slot:focus-visible .reel__win img { filter: saturate(1); transform: scale(1.06); }
+.reel__slot:focus-visible .reel__win img { filter: saturate(1); animation-play-state: paused; }
 .reel__slot:hover { transform:
     translate(-50%, -50%) rotate(var(--ang)) translateY(calc(var(--reel-d) * -0.365))
     rotate(calc(var(--ang) * -1)) scale(1.08); }
@@ -1519,3 +1518,70 @@ section { position: relative; }
 .page-booking .form select { background: #fff; border-color: rgba(0,0,0,0.25); color: var(--ink); }
 .page-booking .form label { color: var(--ink); }
 .page-booking .site-footer { border-top-color: var(--ink); }
+
+/* ---------- HOME : mur de télés EN HERO ---------- */
+.home-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 5.5rem var(--gutter) 4rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 28%, #17171d, #000 78%);
+}
+.home-hero__wall { width: min(96vw, 1100px); }
+.home-hero__overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1rem;
+  z-index: 5;
+  pointer-events: none;
+  text-align: center;
+}
+.home-hero__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 15vw, 12rem);
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.home-hero__tag {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(0.6rem, 1.5vw, 0.85rem);
+  color: var(--accent);
+  background: rgba(0,0,0,0.55);
+  padding: 0.4rem 0.9rem;
+}
+.home-hero .scroll-cue { color: #fff; }
+/* la couverture « issue » sous le hero */
+.page-home .mag { border-top: 1px solid rgba(0,0,0,0.1); }
+
+/* ---------- ABOUT : crème chaud + collage (distinct de la home) ---------- */
+body.page-about { --paper: #efe7d6; --paper-rgb: 239, 231, 214; }
+.page-about .polaroid { transform: rotate(-3deg); }
+.page-about .polaroid::after {
+  /* scotch en haut du polaroid */
+  content: ""; position: absolute; top: -14px; left: 50%;
+  width: 90px; height: 26px; transform: translateX(-50%) rotate(-4deg);
+  background: rgba(220,210,180,0.5);
+  border-left: 1px dashed rgba(0,0,0,0.15);
+  border-right: 1px dashed rgba(0,0,0,0.15);
+}
+.page-about .display { font-size: clamp(3.2rem, 15vw, 9rem); }
+.page-about .lead { font-family: var(--font-serif); font-style: normal; font-size: 1.15rem; }
+
+/* ---------- PROCESS : néon sur noir (distinct) ---------- */
+body.page-process { --accent: #4dffd0; --paper: #060608; --paper-rgb: 6,6,8; }
+.page-process .display {
+  color: var(--accent);
+  text-shadow: 0 0 12px var(--accent), 0 0 40px rgba(77,255,208,0.5);
+}
+.page-process h2 { color: #fff; text-shadow: 0 0 18px rgba(77,255,208,0.45); }
+.page-process .annot { color: var(--accent); text-shadow: 0 0 10px rgba(77,255,208,0.6); }
+.page-process .quote { color: var(--accent); }
