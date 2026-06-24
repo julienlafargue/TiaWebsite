@@ -1520,25 +1520,46 @@ section { position: relative; }
 body.page-home { --paper: #060608; --ink: #f2f1ee; --paper-rgb: 6,6,8; --ink-rgb: 242,241,238; }
 .home-hero {
   position: relative;
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 6.5rem var(--gutter) 3.5rem;
+  height: 100svh;                 /* tout tient dans un écran, sans scroll */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.6rem, 2vh, 1.4rem);
+  padding: clamp(4rem, 8vh, 5.5rem) var(--gutter) clamp(1.5rem, 4vh, 3rem);
   overflow: hidden;
-  background: radial-gradient(circle at 50% 30%, #17171d, #000 80%);
+  /* fond : mur en béton/brique derrière les télés */
+  background:
+    radial-gradient(120% 90% at 50% 35%, rgba(40,40,48,0.55), rgba(0,0,0,0.9) 80%),
+    repeating-linear-gradient(0deg, #15151a 0 38px, #121217 38px 40px),
+    repeating-linear-gradient(90deg, #16161c 0 80px, #101015 80px 82px),
+    #0c0c10;
 }
-.home-hero__wall { width: min(96vw, 1180px); }
-/* titre en haut, en bandeau — laisse les télés cliquables au centre */
+/* léger relief sur le mur */
+.home-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(80% 60% at 50% 30%, transparent 60%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+}
+/* le mur de télés : largeur liée à la HAUTEUR pour que le 3×3 tienne toujours */
+.home-hero__wall {
+  position: relative;
+  z-index: 2;
+  width: min(94vw, calc((100svh - 12rem) * 1.34));
+}
+/* titre + tagline en flux, au-dessus du mur (même écran) */
 .home-hero__bar {
-  position: absolute;
-  top: clamp(3.6rem, 7vh, 5rem);
-  left: 0; right: 0;
+  position: relative;
   z-index: 6;
+  order: -1;
+  flex: 0 0 auto;
   pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   text-align: center;
 }
 .home-hero__title {
@@ -1551,6 +1572,15 @@ body.page-home { --paper: #060608; --ink: #f2f1ee; --paper-rgb: 6,6,8; --ink-rgb
   color: #fff;
 }
 .home-hero__title span { color: var(--accent); }
+/* les CRT posés directement sur le mur (pas de panneau) */
+.home-hero .tv-grid {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  gap: clamp(8px, 1.4vw, 18px);
+}
+.home-hero .crt { box-shadow: 0 10px 24px -10px rgba(0,0,0,0.8), inset 0 2px 1px rgba(255,255,255,0.12), inset 0 -3px 6px rgba(0,0,0,0.7); }
 .home-hero__tag {
   font-family: var(--font-mono);
   text-transform: uppercase;
