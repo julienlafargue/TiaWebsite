@@ -1060,14 +1060,7 @@ section { position: relative; }
     0 40px 70px -30px rgba(0,0,0,0.8),
     inset 0 2px 6px rgba(255,255,255,0.7),
     inset 0 -10px 26px rgba(120,100,60,0.3);
-  /* le disque tourne ; les fenêtres tournent avec lui (incrustées) */
-  animation: reelspin var(--reel-spin) linear infinite;
-}
-.reel:hover, .reel:focus-within { animation-play-state: paused; }
-.reel:hover .reel__win img, .reel:focus-within .reel__win img { animation-play-state: paused; }
-@keyframes reelspin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) {
-  .reel, .reel__win img { animation: none !important; }
+  /* disque et cadres FIXES (ne bougent plus) */
 }
 /* anneau gravé + encoches de bobine */
 .reel::before {
@@ -1173,8 +1166,6 @@ section { position: relative; }
   object-fit: cover;
   /* duotone sépia vintage */
   filter: sepia(0.55) saturate(0.75) contrast(1.08) brightness(0.95);
-  /* contre-rotation : la photo reste droite pendant que le disque tourne */
-  animation: reelspin var(--reel-spin) linear infinite reverse;
 }
 .reel__slot:hover .reel__win img,
 .reel__slot:focus-visible .reel__win img { filter: sepia(0.15) saturate(1) contrast(1.05); }
