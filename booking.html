@@ -20,7 +20,7 @@
   <div class="grain" aria-hidden="true"></div>
 
   <header class="site-nav">
-    <a class="brand" href="index.html">TIA-LANA<span class="red">.</span></a>
+    <a class="brand" href="index.html">TIA-LANA<span class="brand__heart" aria-hidden="true">♥</span></a>
     <div class="nav-right">
       <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
@@ -34,20 +34,18 @@
   </header>
 
   <main id="main" class="wrap pad-block">
-    <div class="section-head reveal">
-      <div class="stack">
-        <span class="eyebrow" data-i18n="booking.eyebrow">Tourist shooting · Paris</span>
-        <h1 class="display"><span data-i18n="booking.title_a">Shoot your</span><br /><span data-i18n="booking.title_b">stop in Paris.</span></h1>
-        <p class="lead" data-i18n="booking.lead">One hour, one light, your face in the city. You leave with images that look like no one else.</p>
-      </div>
+    <div class="postcard-head reveal">
+      <p class="postcard-from">Postcards from Paris · Tia-Lana</p>
+      <h1 class="postcard-hello" data-i18n="booking.hello">Wish you were here.</h1>
+      <p class="lead" data-i18n="booking.lead">One hour, one light, your face in the city. You leave with images that look like no one else.</p>
     </div>
 
-    <!-- 3 packages -->
-    <section class="cards reveal" aria-label="Packages">
-      <article class="card rot-n1">
-        <span class="eyebrow">Express</span>
-        <h3>1 hour</h3>
-        <span class="price">€120</span>
+    <!-- 3 cartes postales -->
+    <section class="postcards reveal" aria-label="Packages">
+      <article class="postcard rot-n1">
+        <span class="postcard__stamp">€120<small>1 HOUR</small></span>
+        <span class="postcard__post">PARIS · I</span>
+        <h3 class="postcard__dest">The Express</h3>
         <ul>
           <li>1 iconic location</li>
           <li>15 retouched photos</li>
@@ -56,11 +54,11 @@
         <a class="cta" href="#form" data-i18n="booking.book">Book →</a>
       </article>
 
-      <article class="card rot-p1">
-        <span class="sticker sticker--red rot-p3" style="align-self:flex-start" data-i18n="booking.popular">POPULAR</span>
-        <span class="eyebrow">Walk</span>
-        <h3>2 hours</h3>
-        <span class="price">€220</span>
+      <article class="postcard rot-p1">
+        <span class="postcard__pop" data-i18n="booking.popular">POPULAR</span>
+        <span class="postcard__stamp">€220<small>2 HOURS</small></span>
+        <span class="postcard__post">PARIS · II</span>
+        <h3 class="postcard__dest">The Walk</h3>
         <ul>
           <li>2 to 3 spots, a walk</li>
           <li>35 retouched photos</li>
@@ -69,10 +67,10 @@
         <a class="cta" href="#form" data-i18n="booking.book">Book →</a>
       </article>
 
-      <article class="card rot-n2">
-        <span class="eyebrow">Editorial</span>
-        <h3>Half day</h3>
-        <span class="price">€450</span>
+      <article class="postcard rot-n2">
+        <span class="postcard__stamp">€450<small>½ DAY</small></span>
+        <span class="postcard__post">PARIS · III</span>
+        <h3 class="postcard__dest">The Editorial</h3>
         <ul>
           <li>Full art direction</li>
           <li>60+ retouched photos</li>
@@ -129,9 +127,9 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script type="module" src="js/i18n.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/cursor.js"></script>
-  <script type="module" src="js/transitions.js"></script>
+  <script type="module" src="js/i18n.js?v=7"></script>
+  <script type="module" src="js/main.js?v=7"></script>
+  <script type="module" src="js/cursor.js?v=7"></script>
+  <script type="module" src="js/transitions.js?v=7"></script>
 </body>
 </html>

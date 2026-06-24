@@ -6,8 +6,8 @@
    - Shutter (clip-path) au changement d'image · clavier ←/→/Échap
    - prefers-reduced-motion : ni rotation ni shutter
    ============================================================ */
-import { reducedMotion } from "./main.js";
-import { t } from "./i18n.js";
+import { reducedMotion } from "./main.js?v=7";
+import { t } from "./i18n.js?v=7";
 
 const DIR = "img/photography/pro/";
 /* fabrique une entrée photo. desc = placeholder éditorial [TODO]. */
@@ -233,26 +233,6 @@ function buildReel(root, cat) {
     <p class="reel__stars" aria-label="${data.stars}/5">${stars}</p>
     <span class="reel__proj" aria-hidden="true">▼ PROJECTOR · UP FOR ${pad(n)}</span>`;
   root.appendChild(center);
-
-  // flèche centrale qui suit le curseur (hors disque → ne tourne pas)
-  const pointer = document.createElement("div");
-  pointer.className = "reel__pointer";
-  pointer.setAttribute("aria-hidden", "true");
-  pointer.innerHTML = `<svg viewBox="0 0 24 40"><path d="M12 2 L12 34 M5 12 L12 2 L19 12" fill="none" stroke="#15120a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  stage.appendChild(pointer);
-
-  if (window.matchMedia("(pointer: fine)").matches) {
-    let raf;
-    stage.addEventListener("mousemove", (e) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = root.getBoundingClientRect();
-        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        const deg = Math.atan2(e.clientY - cy, e.clientX - cx) * 180 / Math.PI + 90;
-        pointer.style.transform = `translate(-50%, -50%) rotate(${deg}deg)`;
-      });
-    });
-  }
 
   // vignettes + numéros de pourtour
   photos.forEach((p, i) => {

@@ -4,7 +4,7 @@
    Les composants lourds vivent dans leurs propres fichiers.
    ============================================================ */
 
-import { t } from "./i18n.js";
+import { t } from "./i18n.js?v=7";
 
 /** true si l'utilisateur préfère moins d'animations */
 export const reducedMotion = () =>

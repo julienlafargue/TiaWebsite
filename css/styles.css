@@ -60,6 +60,16 @@ body {
 }
 
 .brand .red { color: var(--red); }
+.brand__heart { color: var(--accent); display: inline-block; }
+.brand:hover .brand__heart { animation: heartbeat 0.8s var(--ease) infinite; }
+@keyframes heartbeat { 0%,100%{transform:scale(1)} 25%{transform:scale(1.35)} 40%{transform:scale(1)} }
+@media (prefers-reduced-motion: reduce) { .brand:hover .brand__heart { animation: none; } }
+/* style de logo distinct par page */
+body.page-home    .brand { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.03em; }
+body.page-about   .brand { font-family: var(--font-serif); font-weight: 500; font-style: italic; text-transform: none; letter-spacing: 0; }
+body.page-process .brand { font-family: var(--font-mono); font-weight: 400; text-shadow: 0 0 12px var(--accent); }
+body.page-gallery .brand { font-family: var(--font-mono); font-weight: 700; letter-spacing: 0.05em; }
+body.page-booking .brand { font-family: var(--font-script); font-weight: 700; text-transform: none; font-size: 1.7rem; letter-spacing: 0; }
 
 /* groupe droite de la nav : langue + menu mobile */
 .nav-right { display: flex; align-items: center; gap: 1rem; order: 3; }
@@ -1035,18 +1045,6 @@ section { position: relative; }
   width: var(--reel-d);
   margin: 1.5rem auto 0;
 }
-/* flèche centrale qui suit le curseur (hors disque) */
-.reel__pointer {
-  position: absolute;
-  top: 30%; left: 50%;
-  width: clamp(18px, 3vw, 26px);
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  pointer-events: none;
-  filter: drop-shadow(0 1px 1px rgba(255,255,255,0.6));
-}
-.reel__pointer svg { width: 100%; height: auto; display: block; }
-@media (max-width: 600px) { .reel__pointer { display: none; } }
 
 .reel {
   position: relative;
@@ -1054,22 +1052,22 @@ section { position: relative; }
   aspect-ratio: 1;
   margin: 0;
   border-radius: 50%;
-  /* disque crème, objet physique posé sur la scène sombre */
+  /* disque crème jauni vintage */
   background:
-    radial-gradient(circle at 50% 40%, #fffdf6 0 30%, #efe9da 31% 100%);
-  border: 2px solid #cbc3b0;
+    radial-gradient(circle at 50% 40%, #f6efd9 0 30%, #e7dcbf 31% 100%);
+  border: 2px solid #c2b48f;
   box-shadow:
     0 40px 70px -30px rgba(0,0,0,0.8),
-    inset 0 2px 6px rgba(255,255,255,0.8),
-    inset 0 -10px 26px rgba(120,110,90,0.25);
-  /* le disque (et donc les cadres) ne tourne PAS */
+    inset 0 2px 6px rgba(255,255,255,0.7),
+    inset 0 -10px 26px rgba(120,100,60,0.3);
+  /* le disque tourne ; les fenêtres tournent avec lui (incrustées) */
+  animation: reelspin var(--reel-spin) linear infinite;
 }
-@keyframes photospin {
-  from { transform: scale(1.7) rotate(0); }
-  to   { transform: scale(1.7) rotate(360deg); }
-}
+.reel:hover, .reel:focus-within { animation-play-state: paused; }
+.reel:hover .reel__win img, .reel:focus-within .reel__win img { animation-play-state: paused; }
+@keyframes reelspin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .reel__win img { animation: none !important; }
+  .reel, .reel__win img { animation: none !important; }
 }
 /* anneau gravé + encoches de bobine */
 .reel::before {
@@ -1118,11 +1116,13 @@ section { position: relative; }
   color: #6b6450;
 }
 .reel__title {
-  font-family: var(--font-display);
-  font-size: clamp(0.8rem, 2.3vw, 1.25rem);
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.6vw, 1.5rem);
+  font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
   line-height: 0.95;
+  letter-spacing: 0.02em;
   color: #15120a;
 }
 .reel__sub {
@@ -1145,42 +1145,39 @@ section { position: relative; }
 .reel__slot {
   position: absolute;
   top: 50%; left: 50%;
-  width: 19%; aspect-ratio: 3/4;
+  width: 14%; aspect-ratio: 3/4;       /* plus petites = incrustées */
   transform:
     translate(-50%, -50%)
     rotate(var(--ang))
-    translateY(calc(var(--reel-d) * -0.365))
+    translateY(calc(var(--reel-d) * -0.30))
     rotate(calc(var(--ang) * -1));
   padding: 0; border: none; background: none;
-  transition: transform var(--dur) var(--ease);
+  transition: filter var(--dur) var(--ease);
 }
 .reel__win {
   display: block;
   position: relative;
   width: 100%; height: 100%;
-  border-radius: 12% / 9%;
+  border-radius: 14% / 10%;
   overflow: hidden;
-  background: #05060a;
-  /* photo réellement encastrée dans le carton du disque */
-  border: 2px solid #b4ac96;
+  background: #1a140c;
+  /* fenêtre creusée dans le carton du disque (incrustation) */
   box-shadow:
-    inset 0 0 0 3px rgba(20,16,8,0.55),
-    inset 0 6px 14px rgba(0,0,0,0.75),
-    0 1px 0 rgba(255,255,255,0.55);
+    inset 0 0 0 2px rgba(10,8,4,0.7),
+    inset 0 8px 16px rgba(0,0,0,0.85),
+    inset 0 -3px 8px rgba(0,0,0,0.6),
+    0 1px 0 rgba(255,255,255,0.5);
 }
 .reel__win img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: saturate(0.78) contrast(1.06);
-  /* cadre fixe, la PHOTO tourne sur elle-même (cadrée pour remplir) */
-  transform: scale(1.7);
-  animation: photospin 26s linear infinite;
+  /* duotone sépia vintage */
+  filter: sepia(0.55) saturate(0.75) contrast(1.08) brightness(0.95);
+  /* contre-rotation : la photo reste droite pendant que le disque tourne */
+  animation: reelspin var(--reel-spin) linear infinite reverse;
 }
 .reel__slot:hover .reel__win img,
-.reel__slot:focus-visible .reel__win img { filter: saturate(1); animation-play-state: paused; }
-.reel__slot:hover { transform:
-    translate(-50%, -50%) rotate(var(--ang)) translateY(calc(var(--reel-d) * -0.365))
-    rotate(calc(var(--ang) * -1)) scale(1.08); }
+.reel__slot:focus-visible .reel__win img { filter: sepia(0.15) saturate(1) contrast(1.05); }
 
 /* numéros gravés sur le disque, en retrait vers le centre */
 .reel__rimnum {
@@ -1519,48 +1516,61 @@ section { position: relative; }
 .page-booking .form label { color: var(--ink); }
 .page-booking .site-footer { border-top-color: var(--ink); }
 
-/* ---------- HOME : mur de télés EN HERO ---------- */
+/* ---------- HOME : mur de télés PLEIN ÉCRAN (titre en bandeau, n'obstrue pas) ---------- */
+body.page-home { --paper: #060608; --ink: #f2f1ee; --paper-rgb: 6,6,8; --ink-rgb: 242,241,238; }
 .home-hero {
   position: relative;
   min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: 5.5rem var(--gutter) 4rem;
+  padding: 6.5rem var(--gutter) 3.5rem;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 28%, #17171d, #000 78%);
+  background: radial-gradient(circle at 50% 30%, #17171d, #000 80%);
 }
-.home-hero__wall { width: min(96vw, 1100px); }
-.home-hero__overlay {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 1rem;
-  z-index: 5;
+.home-hero__wall { width: min(96vw, 1180px); }
+/* titre en haut, en bandeau — laisse les télés cliquables au centre */
+.home-hero__bar {
+  position: absolute;
+  top: clamp(3.6rem, 7vh, 5rem);
+  left: 0; right: 0;
+  z-index: 6;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   text-align: center;
 }
 .home-hero__title {
   font-family: var(--font-display);
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(3rem, 15vw, 12rem);
-  letter-spacing: -0.05em;
-  line-height: 0.85;
+  font-size: clamp(1.8rem, 5.5vw, 4rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
   color: #fff;
-  mix-blend-mode: difference;
 }
+.home-hero__title span { color: var(--accent); }
 .home-hero__tag {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: clamp(0.6rem, 1.5vw, 0.85rem);
+  font-size: clamp(0.55rem, 1.4vw, 0.8rem);
   color: var(--accent);
-  background: rgba(0,0,0,0.55);
-  padding: 0.4rem 0.9rem;
 }
-.home-hero .scroll-cue { color: #fff; }
-/* la couverture « issue » sous le hero */
-.page-home .mag { border-top: 1px solid rgba(0,0,0,0.1); }
+/* affordance de clic sur les télés */
+.crt[role="link"] { transition: transform var(--dur) var(--ease), filter var(--dur) var(--ease); }
+.crt[role="link"]:hover { transform: scale(1.03); filter: brightness(1.15); z-index: 5; }
+.crt[role="link"]::after {
+  content: "▶ OPEN";
+  position: absolute; top: 8%; right: 9%; z-index: 7;
+  font-family: var(--font-mono); font-size: clamp(0.5rem,1.2vw,0.7rem);
+  letter-spacing: 0.1em; color: #fff;
+  background: var(--accent); padding: 2px 6px; border-radius: 2px;
+  opacity: 0; transition: opacity var(--dur) var(--ease);
+  pointer-events: none;
+}
+.crt[role="link"]:hover::after { opacity: 1; }
 
 /* ---------- ABOUT : crème chaud + collage (distinct de la home) ---------- */
 body.page-about { --paper: #efe7d6; --paper-rgb: 239, 231, 214; }
@@ -1585,3 +1595,183 @@ body.page-process { --accent: #4dffd0; --paper: #060608; --paper-rgb: 6,6,8; }
 .page-process h2 { color: #fff; text-shadow: 0 0 18px rgba(77,255,208,0.45); }
 .page-process .annot { color: var(--accent); text-shadow: 0 0 10px rgba(77,255,208,0.6); }
 .page-process .quote { color: var(--accent); }
+
+/* ---------- Animation GLITCH au clic d'une télé ---------- */
+.glitch-fx {
+  position: fixed; inset: 0;
+  z-index: var(--z-overlay);
+  background: #000;
+  overflow: hidden;
+}
+.glitch-fx__base,
+.glitch-fx__layer {
+  position: absolute; inset: 0;
+  background: var(--gimg, none) center/cover no-repeat;
+}
+.glitch-fx__base { animation: gjolt 0.47s steps(2) both; }
+.glitch-fx__layer { mix-blend-mode: screen; }
+.glitch-fx__layer--r { filter: sepia(1) saturate(6) hue-rotate(-50deg); animation: gslice 0.47s steps(8) both; }
+.glitch-fx__layer--g { filter: sepia(1) saturate(6) hue-rotate(70deg);  animation: gslice2 0.47s steps(7) both; }
+.glitch-fx__layer--b { filter: sepia(1) saturate(6) hue-rotate(180deg); animation: gslice3 0.47s steps(9) both; }
+.glitch-fx__scan {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.35) 0 2px, transparent 2px 4px),
+    #fff;
+  opacity: 0; animation: gflash 0.47s ease-in both;
+}
+@keyframes gjolt {
+  0% { transform: scale(1.02) translate(0,0); }
+  40% { transform: scale(1.06) translate(-6px,4px); }
+  100% { transform: scale(1.2) translate(0,0); filter: brightness(2); }
+}
+@keyframes gslice {
+  0% { clip-path: inset(0 0 80% 0); transform: translateX(-8px); }
+  25% { clip-path: inset(40% 0 30% 0); transform: translateX(12px); }
+  50% { clip-path: inset(70% 0 10% 0); transform: translateX(-14px); }
+  75% { clip-path: inset(20% 0 55% 0); transform: translateX(9px); }
+  100% { clip-path: inset(0 0 0 0); transform: translateX(0); opacity: 0; }
+}
+@keyframes gslice2 {
+  0% { clip-path: inset(60% 0 20% 0); transform: translateX(10px); }
+  50% { clip-path: inset(10% 0 60% 0); transform: translateX(-12px); }
+  100% { clip-path: inset(0 0 0 0); transform: translateX(0); opacity: 0; }
+}
+@keyframes gslice3 {
+  0% { clip-path: inset(30% 0 40% 0); transform: translateX(-11px); }
+  50% { clip-path: inset(75% 0 5% 0); transform: translateX(13px); }
+  100% { clip-path: inset(0 0 0 0); transform: translateX(0); opacity: 0; }
+}
+@keyframes gflash { 0%,70% { opacity: 0; } 88% { opacity: 0.9; } 100% { opacity: 1; } }
+
+/* ---------- Chaîne CONTACT du mur ---------- */
+.crt--contact { cursor: pointer; }
+.crt--contact .crt__screen { background: #05140a; }
+.crt__contact-marquee {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center;
+  overflow: hidden;
+  color: #49ff9b;
+  font-family: var(--font-mono);
+  font-size: clamp(0.5rem, 1.3vw, 0.72rem);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(73,255,155,0.7);
+}
+.crt__contact-marquee span { white-space: nowrap; animation: marquee 9s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.crt--contact:hover .crt__screen { box-shadow: inset 0 0 30px rgba(73,255,155,0.3); }
+@media (prefers-reduced-motion: reduce) { .crt__contact-marquee span { animation: none; } }
+
+/* ============================================================
+   ABOUT — tabloïd punk (ransom note)
+   ============================================================ */
+.page-about .grain { mix-blend-mode: multiply; opacity: 0.12; }
+.zine-masthead {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(0.65rem, 1.6vw, 0.9rem);
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 0.4rem 0;
+  margin-bottom: 1.5rem;
+}
+.ransom {
+  display: flex; flex-wrap: wrap; gap: 0.15em;
+  margin-bottom: 2.5rem;
+  line-height: 0.9;
+}
+.ransom span {
+  display: inline-block;
+  font-weight: 900;
+  font-size: clamp(3rem, 13vw, 9rem);
+  padding: 0 0.12em;
+  line-height: 0.9;
+}
+.ransom span:nth-child(1) { font-family: var(--font-display); background: var(--ink); color: var(--paper); transform: rotate(-4deg); }
+.ransom span:nth-child(2) { font-family: var(--font-serif); font-style: italic; background: var(--accent); color: #fff; transform: rotate(3deg); }
+.ransom span:nth-child(3) { font-family: var(--font-mono); transform: rotate(-2deg); border: 3px solid var(--ink); }
+.ransom span:nth-child(4) { font-family: var(--font-display); background: #fff; color: var(--ink); transform: rotate(5deg); box-shadow: 4px 4px 0 var(--ink); }
+.ransom span:nth-child(5) { font-family: var(--font-serif); transform: rotate(-3deg); text-decoration: underline wavy var(--accent); }
+.page-about .polaroid { background: #fff; }
+.page-about .polaroid img {
+  filter: grayscale(1) contrast(1.5) brightness(1.05);
+}
+.page-about .polaroid::before {
+  content: ""; position: absolute; inset: 0.8rem 0.8rem 3rem; z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.5) 30%, transparent 31%);
+  background-size: 4px 4px; mix-blend-mode: screen; opacity: 0.35; pointer-events: none;
+}
+.page-about .lead { font-family: var(--font-serif); column-gap: 2rem; }
+.page-about .quote { font-family: var(--font-display); font-weight: 900; font-style: normal; text-transform: uppercase; }
+.page-about .hr-blue { border-top: 3px solid var(--ink); }
+.page-about .cta { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.page-about .cta:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ============================================================
+   BOOKING — carte postale rêve
+   ============================================================ */
+.page-booking .grain { mix-blend-mode: multiply; opacity: 0.07; }
+.postcard-head { text-align: center; margin-bottom: 3rem; }
+.postcard-from {
+  font-family: var(--font-mono);
+  text-transform: uppercase; letter-spacing: 0.18em;
+  font-size: 0.7rem; color: rgba(var(--ink-rgb), 0.6);
+}
+.postcard-hello {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  color: var(--accent);
+  line-height: 1;
+  margin: 0.3rem 0 1rem;
+}
+.postcard-head .lead { max-width: 46ch; margin-inline: auto; }
+.postcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2.2rem); }
+@media (max-width: 800px) { .postcards { grid-template-columns: 1fr; max-width: 26rem; margin-inline: auto; } }
+.postcard {
+  position: relative;
+  background: #fbf8f0;
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow: 0 18px 40px -22px rgba(0,0,0,0.5);
+  padding: 2.4rem 1.4rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.7rem;
+  /* ligne médiane façon dos de carte postale */
+  background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+  background-size: 1px 62%;
+  background-position: 62% 18%;
+  background-repeat: no-repeat;
+}
+.postcard__stamp {
+  position: absolute; top: 0.9rem; right: 0.9rem;
+  width: 64px; min-height: 76px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px;
+  background: #fff;
+  border: 2px dashed rgba(0,0,0,0.45);
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 1.1rem; color: var(--accent);
+  transform: rotate(4deg);
+  text-align: center;
+}
+.postcard__stamp small { font-family: var(--font-mono); font-weight: 400; font-size: 0.5rem; color: var(--ink); letter-spacing: 0.05em; }
+.postcard__post {
+  position: absolute; top: 1.4rem; right: 5.4rem;
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em;
+  color: rgba(0,0,0,0.5);
+  border: 1.5px solid rgba(0,0,0,0.4); border-radius: 50%;
+  width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+  text-align: center; transform: rotate(-12deg);
+}
+.postcard__pop {
+  position: absolute; top: -10px; left: 12px;
+  background: var(--accent); color: #fff;
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  padding: 0.25rem 0.6rem; transform: rotate(-4deg);
+}
+.postcard__dest { font-family: var(--font-script); font-weight: 700; font-size: 2rem; color: var(--ink); }
+.page-booking .postcard ul { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.92rem; }
+.page-booking .postcard li::before { content: "— "; color: var(--accent); }
+.page-booking .postcard .cta { margin-top: 0.4rem; background: var(--accent); border-color: var(--accent); color: #fff; align-self: flex-start; }
+.page-booking .postcard .cta:hover { background: transparent; color: var(--accent); }
