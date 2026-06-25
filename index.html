@@ -15,10 +15,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Dancing+Script:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
   
 
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/typography.css" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/reset.css?v=12" />
+  <link rel="stylesheet" href="css/tokens.css?v=12" />
+  <link rel="stylesheet" href="css/typography.css?v=12" />
+  <link rel="stylesheet" href="css/styles.css?v=12" />
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -45,6 +45,16 @@
       <div class="home-hero__bar">
         <h1 class="home-hero__title">TIA-LANA<span aria-hidden="true">♥</span></h1>
         <p class="home-hero__tag" data-i18n="home.tag">Not a portfolio — a broadcast. Pick a channel.</p>
+
+        <!-- affiche accrochée au mur → booking -->
+        <a class="wall-poster" href="booking.html" data-cursor="book" aria-label="Book a shoot">
+          <span class="wall-poster__pin" aria-hidden="true"></span>
+          <span class="wall-poster__paper">
+            <span class="wall-poster__kicker">Paris · 35mm</span>
+            <span class="wall-poster__big" data-i18n="fab.book">Book a shoot</span>
+            <span class="wall-poster__tear" aria-hidden="true">→ tear off ✂</span>
+          </span>
+        </a>
       </div>
     </section>
   </main>
