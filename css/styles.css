@@ -1519,37 +1519,61 @@ body.page-home { --paper: #060608; --ink: #f2f1ee; --paper-rgb: 6,6,8; --ink-rgb
   gap: clamp(1.5rem, 5vw, 5rem);
   padding: clamp(4rem, 8vh, 5.5rem) var(--gutter) clamp(1.5rem, 4vh, 3rem);
   overflow: hidden;
-  /* VRAI MUR : briques sombres + mortier + relief */
-  --brick: #241c18;
-  --mortar: #0c0908;
-  background-color: var(--brick);
+  /* MUR PEINT VIEILLI — base vert-olive sombre, traces de pinceau, couches inégales */
+  background-color: #1a1e14;
   background-image:
-    /* ombrage par brique */
-    radial-gradient(120% 140% at 30% 20%, rgba(255,255,255,0.06), transparent 60%),
-    /* mortier horizontal */
-    repeating-linear-gradient(0deg, var(--mortar) 0 3px, transparent 3px 46px),
-    /* mortier vertical, rangée A */
-    repeating-linear-gradient(90deg, var(--mortar) 0 3px, transparent 3px 116px);
-  background-size: 100% 100%, 100% 46px, 116px 92px;
+    /* traces de pinceau : bandes diagonales légèrement plus claires/sombres */
+    repeating-linear-gradient(
+      168deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(255,255,230,0.018) 18px,
+      rgba(255,255,230,0.018) 22px,
+      transparent 22px,
+      transparent 54px,
+      rgba(0,0,0,0.04) 54px,
+      rgba(0,0,0,0.04) 58px
+    ),
+    repeating-linear-gradient(
+      82deg,
+      transparent 0px,
+      transparent 32px,
+      rgba(255,250,220,0.012) 32px,
+      rgba(255,250,220,0.012) 35px,
+      transparent 35px,
+      transparent 90px
+    ),
+    /* zones d'usure : patches irréguliers */
+    radial-gradient(ellipse 55% 38% at 15% 25%, rgba(210,200,150,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 50% at 82% 70%, rgba(190,180,130,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 35% at 60% 10%, rgba(220,210,160,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 30% at 5% 75%, rgba(180,170,120,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 40% at 90% 20%, rgba(200,190,140,0.04) 0%, transparent 55%),
+    /* couleur de base — vert olive sombre chaud */
+    linear-gradient(145deg, #1e2318 0%, #181c12 40%, #1c2016 70%, #161a10 100%);
 }
-/* rangée B de briques décalée (effet quinconce) + variations de teinte */
+/* fissures et écailles SVG tuilées */
 .home-hero::before {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 1;
   pointer-events: none;
-  background-image:
-    repeating-linear-gradient(90deg, var(--mortar) 0 3px, transparent 3px 116px),
-    radial-gradient(circle at 18% 30%, rgba(0,0,0,0.5), transparent 35%),
-    radial-gradient(circle at 75% 65%, rgba(0,0,0,0.55), transparent 40%);
-  background-size: 116px 92px, 100% 100%, 100% 100%;
-  background-position: 58px 46px, 0 0, 0 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='380'%3E%3C!-- fissures fines --%3E%3Cpath d='M20 80 Q45 76 65 84 Q88 93 108 89' stroke='rgba(0,0,0,0.4)' stroke-width='0.9' fill='none'/%3E%3Cpath d='M310 30 Q328 42 345 38 Q362 34 378 46' stroke='rgba(0,0,0,0.35)' stroke-width='0.7' fill='none'/%3E%3Cpath d='M160 200 Q178 194 196 201 Q218 210 236 206' stroke='rgba(0,0,0,0.3)' stroke-width='0.6' fill='none'/%3E%3Cpath d='M420 140 Q432 158 428 178 Q424 192 433 205' stroke='rgba(0,0,0,0.35)' stroke-width='0.8' fill='none'/%3E%3Cpath d='M70 300 Q88 292 104 298 Q122 305 140 301' stroke='rgba(0,0,0,0.25)' stroke-width='0.6' fill='none'/%3E%3C!-- écailles : zones légèrement plus claires (peinture levée) --%3E%3Cpath d='M135 60 Q145 51 154 58 Q148 68 138 66 Z' fill='rgba(240,235,200,0.055)'/%3E%3Cpath d='M350 170 Q360 161 370 168 Q364 178 353 176 Z' fill='rgba(235,228,195,0.06)'/%3E%3Cpath d='M75 250 Q87 241 97 248 Q90 259 79 257 Z' fill='rgba(238,232,198,0.05)'/%3E%3Cpath d='M265 90 Q275 80 286 88 Q279 99 267 97 Z' fill='rgba(242,236,202,0.05)'/%3E%3Cpath d='M450 300 Q461 290 472 298 Q465 309 453 307 Z' fill='rgba(236,230,196,0.055)'/%3E%3C/svg%3E");
+  background-size: 500px 380px;
 }
-/* vignette pour le relief */
+/* vignette sombre sur les bords */
 .home-hero::after {
   content: "";
   position: absolute; inset: 0; z-index: 1;
   pointer-events: none;
-  background: radial-gradient(95% 85% at 50% 40%, transparent 55%, rgba(0,0,0,0.75) 100%);
+  background: radial-gradient(130% 110% at 50% 45%, transparent 30%, rgba(0,0,0,0.68) 100%);
+}
+/* grain photographique léger */
+.home-hero .hero-grain {
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none;
+  background: url("../assets/grain.png") center/140px;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
 }
 /* le mur de télés : à droite, largeur liée à la hauteur pour tenir en un écran */
 .home-hero__wall {
