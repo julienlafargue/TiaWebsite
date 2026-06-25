@@ -1529,12 +1529,14 @@ body.page-home { --paper: #060608; --ink: #f2f1ee; --paper-rgb: 6,6,8; --ink-rgb
     /* fond béton */
     linear-gradient(175deg, #1f2022 0%, #18191b 45%, #1d1e20 100%);
 }
-/* film de finition mat + grain */
+/* fines stries horizontales (béton lissé à la taloche) */
 .home-hero::before {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: url("../assets/grain.png") center/160px;
-  opacity: 0.22;
-  mix-blend-mode: soft-light;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px, transparent 3px,
+    rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+  );
 }
 /* vignette douce sur les bords */
 .home-hero::after {
@@ -1599,64 +1601,75 @@ body.page-home { --paper: #060608; --ink: #f2f1ee; --paper-rgb: 6,6,8; --ink-rgb
 /* sur la home, le bouton flottant est remplacé par l'affiche accrochée */
 body.page-home .book-fab { display: none; }
 
-/* affiche « Book a shoot » accrochée au mur — positionnée en absolu bas-gauche */
+/* POST-IT « Book a shoot » collé sur le coin bas-gauche de la grille de télés */
 .wall-poster {
   position: absolute;
-  bottom: clamp(2rem, 5vh, 4rem);
-  left: clamp(2rem, 5vw, 5rem);
-  z-index: 5;
-  pointer-events: all;
-  width: clamp(130px, 13vw, 185px);
-  transform-origin: 50% -14px;     /* pivot au niveau du clou */
-  transform: rotate(-3deg);
-  transition: transform var(--dur) var(--ease);
+  bottom: -8px;
+  left: -6px;
+  z-index: 10;
+  width: clamp(100px, 12vw, 155px);
+  transform: rotate(-4deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
 }
-.wall-poster:hover { animation: swing 1.6s var(--ease) infinite; }
-@keyframes swing { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(1deg)} }
-@media (prefers-reduced-motion: reduce) { .wall-poster:hover { animation: none; } }
-/* le clou + la ficelle */
-.wall-poster__pin {
-  position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #d8d2c4, #6b6453);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.7);
-  z-index: 2;
-}
-.wall-poster__pin::before {
-  content: ""; position: absolute; top: 8px; left: 50%;
-  width: 1px; height: 14px; background: rgba(0,0,0,0.5);
-  transform: translateX(-50%);
+.wall-poster:hover {
+  transform: rotate(-1deg) scale(1.06);
 }
 .wall-poster__paper {
-  display: flex; flex-direction: column; gap: 0.3rem;
-  padding: 0.9rem 0.9rem 1rem;
-  background: #f3efe4;
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 0.65rem 0.7rem 0.8rem;
+  background: #f5e642;          /* jaune post-it */
   color: #15120a;
-  box-shadow: 0 16px 30px -14px rgba(0,0,0,0.8);
-  border: 1px solid rgba(0,0,0,0.12);
-  /* coin corné en haut */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.55), 1px 1px 0 rgba(0,0,0,0.1);
+  position: relative;
+}
+/* coin corné bas-droit (post-it qui se soulève) */
+.wall-poster__corner {
+  position: absolute; bottom: 0; right: 0;
+  width: 18px; height: 18px;
+  background: linear-gradient(225deg, rgba(0,0,0,0.18) 50%, #e8d93a 50%);
+  pointer-events: none;
 }
 .wall-poster__kicker {
-  font-family: var(--font-mono); font-size: 0.55rem;
-  text-transform: uppercase; letter-spacing: 0.14em; color: #6b6453;
+  font-family: var(--font-mono); font-size: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.12em; color: #6b5f00;
 }
 .wall-poster__big {
   font-family: var(--font-display); font-weight: 900;
-  text-transform: uppercase; font-size: clamp(1.2rem, 2.4vw, 1.7rem);
-  line-height: 0.95; color: var(--accent);
-}
-.wall-poster__tear {
-  font-family: var(--font-mono); font-size: 0.5rem;
-  letter-spacing: 0.1em; color: #6b6453;
-  border-top: 1px dashed rgba(0,0,0,0.3); padding-top: 0.4rem; margin-top: 0.2rem;
+  text-transform: uppercase; font-size: clamp(0.85rem, 1.8vw, 1.25rem);
+  line-height: 0.9; color: #15120a;
 }
 
-/* Home responsive : empilé (titre au-dessus, mur en dessous) */
+/* Home responsive mobile */
 @media (max-width: 860px) {
-  .home-hero { flex-direction: column; justify-content: center; gap: clamp(1rem, 3vh, 2rem); }
-  .home-hero__bar { order: -1; flex: 0 0 auto; align-items: center; text-align: center; }
-  .home-hero__wall { width: min(94vw, calc((100svh - 16rem) * 1.34)); }
+  .home-hero {
+    justify-content: flex-start;
+    padding-top: 4.5rem;   /* laisse passer la nav (~63px) */
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  /* ghost TIA-LANA aligné sur le début de la grille */
+  .home-hero__bar {
+    z-index: 2;   /* passe DERRIÈRE les télés */
+    justify-content: flex-start;
+    padding-top: 4.5rem;
+  }
+  .home-hero__wall {
+    width: 100%;
+    max-width: 100%;
+  }
+  /* grille toujours 3 colonnes */
+  .home-hero .tv-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    max-width: none !important;
+    width: 100% !important;
+    gap: clamp(4px, 1.5vw, 10px);
+  }
+  .home-hero .crt { min-width: 0; overflow: hidden; }
+  .home-hero .crt-label { font-size: clamp(0.5rem, 3vw, 0.75rem); }
+  .wall-poster { width: clamp(72px, 20vw, 115px); }
+  .wall-poster__big { font-size: clamp(0.65rem, 3.5vw, 1rem); }
 }
 
 /* ---------- ABOUT : crème chaud + collage (distinct de la home) ---------- */
