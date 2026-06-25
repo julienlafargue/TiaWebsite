@@ -1640,33 +1640,31 @@ body.page-home .book-fab { display: none; }
   line-height: 0.9; color: #15120a;
 }
 
-/* Home responsive mobile */
+/* Home responsive mobile : grille remplit tout l'écran */
 @media (max-width: 860px) {
   .home-hero {
     justify-content: flex-start;
-    padding-top: 4.5rem;   /* laisse passer la nav (~63px) */
-    padding-bottom: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    align-items: stretch;
+    padding: 4.5rem 0 0 0;   /* bord à bord horizontalement */
   }
-  /* ghost TIA-LANA aligné sur le début de la grille */
   .home-hero__bar {
-    z-index: 2;   /* passe DERRIÈRE les télés */
+    z-index: 2;
     justify-content: flex-start;
     padding-top: 4.5rem;
   }
+  /* le mur (= tv-grid) remplit toute la hauteur dispo */
   .home-hero__wall {
     width: 100%;
-    max-width: 100%;
-  }
-  /* grille toujours 3 colonnes */
-  .home-hero .tv-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     max-width: none !important;
-    width: 100% !important;
-    gap: clamp(4px, 1.5vw, 10px);
+    /* hauteur explicite = viewport – padding haut – padding bas */
+    height: calc(100svh - 4.5rem);
+    /* 3 colonnes × 3 lignes égales */
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(4px, 1.5vw, 10px) !important;
   }
-  .home-hero .crt { min-width: 0; overflow: hidden; }
+  /* override l'aspect-ratio 4/3 des CRT pour qu'ils remplissent les rangées */
+  .home-hero .crt { min-width: 0; overflow: hidden; aspect-ratio: unset; align-self: stretch; }
   .home-hero .crt-label { font-size: clamp(0.5rem, 3vw, 0.75rem); }
   .wall-poster { width: clamp(72px, 20vw, 115px); }
   .wall-poster__big { font-size: clamp(0.65rem, 3.5vw, 1rem); }
