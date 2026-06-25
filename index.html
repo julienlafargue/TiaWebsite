@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=12" />
   <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=12" />
+  <link rel="stylesheet" href="css/styles.css?v=29" />
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -41,18 +41,18 @@
   <main id="main">
     <!-- ============ HOME = mur de télés plein écran (le concept « décalé ») ============ -->
     <section class="home-hero">
-      <div class="home-hero__wall" data-tv-grid aria-label="Wall of TVs, one channel per category"></div>
-      <div class="home-hero__bar">
-        <h1 class="home-hero__title">TIA-LANA<span aria-hidden="true">♥</span></h1>
-        <p class="home-hero__tag" data-i18n="home.tag">Not a portfolio — a broadcast. Pick a channel.</p>
-
-        <!-- affiche accrochée au mur → booking -->
+      <!-- nom fantôme derrière les télés -->
+      <div class="home-hero__bar" aria-hidden="true">
+        <h1 class="home-hero__title">TIA-<br>LANA</h1>
+      </div>
+      <!-- mur de télés centré -->
+      <div class="home-hero__wall" data-tv-grid aria-label="Wall of TVs, one channel per category">
+        <!-- post-it « Book a shoot » collé sur une télé -->
         <a class="wall-poster" href="booking.html" data-cursor="book" aria-label="Book a shoot">
-          <span class="wall-poster__pin" aria-hidden="true"></span>
           <span class="wall-poster__paper">
             <span class="wall-poster__kicker">Paris · 35mm</span>
             <span class="wall-poster__big" data-i18n="fab.book">Book a shoot</span>
-            <span class="wall-poster__tear" aria-hidden="true">→ tear off ✂</span>
+            <span class="wall-poster__corner" aria-hidden="true"></span>
           </span>
         </a>
       </div>
