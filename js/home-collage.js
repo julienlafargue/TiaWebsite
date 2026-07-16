@@ -1,7 +1,8 @@
 /**
- * Home — cascade de polaroïds éparpillés (façon éditorial) : une même photo
- * est lue à travers plusieurs cadres carrés inclinés, disposés en diagonale
- * et en désordre. La photo change régulièrement en se ré-éclatant.
+ * Home — UNE seule photo éclatée : chaque polaroïd est une fenêtre sur une
+ * portion différente de la même image. Mis ensemble, les cadres recomposent
+ * la photo (pas de duplication). Disposition irrégulière, centrée, inclinée.
+ * La photo change régulièrement.
  */
 
 const DIR = "img/photography/pro/";
@@ -14,33 +15,34 @@ const FILES = [
   "photo-ad.png"
 ];
 
-// Étirement de l'image assemblée (permet le « panoramique » d'un cadre à l'autre)
-const AR = 1.6;
+/* Chaque cadre = une fenêtre carrée sur l'image assemblée (fraction 0..1) :
+   fx,fy = coin de la portion montrée ; fw = largeur (la hauteur = fw*AR pour
+   que la fenêtre soit carrée). ox,oy = léger décalage (désordre). rot = angle.
+   Les portions se recouvrent et couvrent toute l'image → une seule photo. */
 
-/* Cascade horizontale (écrans larges) : les cadres avancent de gauche à droite
-   (px), montent/descendent en zigzag (py), tournent dans tous les sens (rot).
-   t = position lue dans l'image (0 = gauche … 1 = droite). s = côté du carré. */
+// --- large (paysage), image assemblée AR ≈ 1.45 ---
+const AR_H = 1.45;
 const FRAMES_H = [
-  { px: 0.00, py: 0.06, s: 0.22, rot: -13, t: 0.00 },
-  { px: 0.10, py: 0.44, s: 0.19, rot:   7, t: 0.13 },
-  { px: 0.19, py: 0.16, s: 0.24, rot:  -6, t: 0.26 },
-  { px: 0.30, py: 0.50, s: 0.20, rot:  12, t: 0.38 },
-  { px: 0.40, py: 0.10, s: 0.25, rot:  -9, t: 0.50 },
-  { px: 0.51, py: 0.46, s: 0.21, rot:   8, t: 0.62 },
-  { px: 0.61, py: 0.18, s: 0.24, rot: -12, t: 0.74 },
-  { px: 0.71, py: 0.48, s: 0.20, rot:   6, t: 0.86 },
-  { px: 0.78, py: 0.08, s: 0.23, rot: -10, t: 1.00 }
+  { fx: 0.00, fy: 0.05, fw: 0.30, ox: -0.015, oy: -0.02, rot: -8 },
+  { fx: 0.02, fy: 0.52, fw: 0.26, ox: -0.02,  oy:  0.03, rot:  6 },
+  { fx: 0.26, fy: 0.26, fw: 0.30, ox:  0.00,  oy:  0.00, rot: -4 },
+  { fx: 0.27, fy: -0.02, fw: 0.22, ox:  0.01, oy: -0.02, rot:  9 },
+  { fx: 0.50, fy: 0.42, fw: 0.30, ox:  0.00,  oy:  0.03, rot: -7 },
+  { fx: 0.50, fy: 0.00, fw: 0.26, ox:  0.00,  oy: -0.01, rot:  5 },
+  { fx: 0.72, fy: 0.22, fw: 0.30, ox:  0.02,  oy:  0.00, rot: -9 },
+  { fx: 0.74, fy: 0.56, fw: 0.22, ox:  0.02,  oy:  0.03, rot:  7 },
+  { fx: 0.75, fy: -0.02, fw: 0.22, ox:  0.02, oy: -0.02, rot: -5 }
 ];
 
-/* Cascade verticale (écrans étroits) : les cadres descendent (py), zigzag en x. */
+// --- étroit (portrait), image assemblée AR ≈ 0.85 ---
+const AR_V = 0.85;
 const FRAMES_V = [
-  { px: 0.04, py: 0.00, s: 0.40, rot: -11, t: 0.00 },
-  { px: 0.44, py: 0.12, s: 0.34, rot:   8, t: 0.16 },
-  { px: 0.10, py: 0.24, s: 0.38, rot:  -6, t: 0.32 },
-  { px: 0.46, py: 0.38, s: 0.36, rot:  11, t: 0.48 },
-  { px: 0.06, py: 0.52, s: 0.40, rot:  -9, t: 0.64 },
-  { px: 0.42, py: 0.66, s: 0.34, rot:   7, t: 0.80 },
-  { px: 0.14, py: 0.80, s: 0.38, rot: -10, t: 1.00 }
+  { fx: 0.00, fy: 0.00, fw: 0.54, ox: -0.01, oy: -0.01, rot: -7 },
+  { fx: 0.46, fy: 0.14, fw: 0.52, ox:  0.01, oy: -0.01, rot:  6 },
+  { fx: 0.01, fy: 0.31, fw: 0.54, ox: -0.01, oy:  0.00, rot: -5 },
+  { fx: 0.44, fy: 0.47, fw: 0.54, ox:  0.01, oy:  0.01, rot:  8 },
+  { fx: 0.00, fy: 0.62, fw: 0.54, ox: -0.01, oy:  0.01, rot: -6 },
+  { fx: 0.42, fy: 0.78, fw: 0.56, ox:  0.01, oy:  0.01, rot:  7 }
 ];
 
 const shuffle = (arr) => {
@@ -78,33 +80,31 @@ function buildCollage(root) {
 
     const portrait = W / H < 0.9;
     const FRAMES = portrait ? FRAMES_V : FRAMES_H;
+    const AR = portrait ? AR_V : AR_H;
 
-    // zone plus petite que l'écran, dégagée du header
-    const zoneW = portrait ? W * 0.94 : Math.min(W * 0.9, 1180);
-    const zoneH = portrait
-      ? Math.min(H * 0.74, zoneW * 1.5)
-      : Math.min(H * 0.6, zoneW * 0.52);
-    const zoneX = (W - zoneW) / 2;
-    const zoneY = Math.max(92, (H - zoneH) / 2); // ≥92px → sous le header
+    // image assemblée, centrée, dégagée du header
+    const IW = portrait ? Math.min(W * 0.9, 460) : Math.min(W * 0.8, 1000);
+    const IH = IW / AR;
+    const bx = (W - IW) / 2;
+    const by = Math.max(96, (H - IH) / 2);   // ≥96px → sous le header, centré
 
     ensure(FRAMES.length);
     FRAMES.forEach((f, i) => {
       const el = pool[i];
-      const S = f.s * zoneW;                       // côté de la fenêtre photo (carré)
-      const b = Math.max(4, Math.round(S * 0.05)); // liseré
-      const bb = b + Math.round(S * 0.16);         // menton polaroïd (bien visible)
-      const left = zoneX + f.px * zoneW;
-      const top = zoneY + f.py * zoneH;
+      const S = f.fw * IW;                         // côté carré (= fw*IW = fh*IH)
+      const sx = f.fx * IW;
+      const sy = f.fy * IH;
+      const b = Math.max(4, Math.round(S * 0.05));
+      const bb = b + Math.round(S * 0.15);         // menton polaroïd
       el.style.borderWidth = `${b}px ${b}px ${bb}px ${b}px`;
-      el.style.left = (left - b) + "px";
-      el.style.top = (top - b) + "px";
+      el.style.left = (bx + sx + f.ox * IW - b) + "px";
+      el.style.top = (by + sy + f.oy * IH - b) + "px";
       el.style.width = S + "px";
       el.style.height = S + "px";
-      el.style.zIndex = i;                          // cascade : les suivants par-dessus
-      // panoramique : chaque cadre montre une bande différente de l'image étirée
-      const imgW = S * AR;
-      el.style.backgroundSize = imgW + "px " + S + "px";
-      el.style.backgroundPosition = (-(f.t * (imgW - S))) + "px 0px";
+      el.style.zIndex = i;
+      // fenêtre sur l'image assemblée complète → une seule photo
+      el.style.backgroundSize = IW + "px " + IH + "px";
+      el.style.backgroundPosition = (-sx) + "px " + (-sy) + "px";
       el.style.setProperty("--rot", f.rot + "deg");
     });
   }
@@ -142,9 +142,9 @@ function buildCollage(root) {
 
     for (let i = 0; i < visible; i++) {
       const el = pool[i];
-      const dx = (Math.random() * 2 - 1) * 44;
-      const dy = (Math.random() * 2 - 1) * 44;
-      const sc = 0.88 + Math.random() * 0.06;
+      const dx = (Math.random() * 2 - 1) * 42;
+      const dy = (Math.random() * 2 - 1) * 42;
+      const sc = 0.9 + Math.random() * 0.05;
       el.style.transitionDelay = (i * 40) + "ms";
       el.style.setProperty("--tx", dx + "px");
       el.style.setProperty("--ty", dy + "px");
