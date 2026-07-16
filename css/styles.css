@@ -1507,8 +1507,8 @@ section { position: relative; }
 .page-booking .form label { color: var(--ink); }
 .page-booking .site-footer { border-top-color: var(--ink); }
 
-/* ---------- HOME : logo tag rouge + collage éclaté qui se recompose ---------- */
-body.page-home { --paper: #08080a; --ink: #f2f1ee; --paper-rgb: 8,8,10; --ink-rgb: 242,241,238; }
+/* ---------- HOME : fond off-white + collage de polaroïds carrés ---------- */
+body.page-home { --paper: #f2ede2; --ink: #16130e; --paper-rgb: 242,237,226; --ink-rgb: 22,19,14; }
 .home-hero {
   position: relative;
   height: 100svh;
@@ -1517,43 +1517,31 @@ body.page-home { --paper: #08080a; --ink: #f2f1ee; --paper-rgb: 8,8,10; --ink-rg
   align-items: center;
   padding: clamp(4.5rem, 9vh, 6rem) clamp(1rem, 4vw, 3rem) clamp(1.5rem, 4vh, 3rem);
   overflow: hidden;
-  /* studio sombre : halo doux au centre, bords profonds */
-  background: radial-gradient(125% 95% at 50% 32%, #1b1c20 0%, #0c0c0e 58%, #060607 100%);
+  /* papier crème légèrement beige */
+  background: radial-gradient(135% 100% at 50% 18%, #f8f4ec 0%, #f1ebde 55%, #e9e1d1 100%);
 }
 .home-hero::after {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(115% 100% at 50% 46%, transparent 44%, rgba(0,0,0,0.74) 100%);
+  background: radial-gradient(120% 100% at 50% 42%, transparent 55%, rgba(120,102,72,0.10) 100%);
 }
 
-/* LOGO manuscrit rouge (comme un tag au marqueur) */
-.home-logo {
+/* la phrase d'intro (remplace le gros logo) */
+.home-intro {
   position: relative; z-index: 4;
   flex: 0 0 auto;
+  max-width: 32ch;
+  margin: 0 0 clamp(1rem, 3vh, 2.2rem);
   text-align: center;
-  margin: 0 0 clamp(0.4rem, 2vh, 1.4rem);
-  transform: rotate(-3deg);
-  pointer-events: none;
-}
-.home-logo__word {
-  font-family: "Dancing Script", cursive;
-  font-weight: 700;
-  color: var(--accent);
-  font-size: clamp(3.2rem, 11vw, 8rem);
-  line-height: 0.9;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2.3vw, 1.65rem);
+  line-height: 1.4;
   letter-spacing: 0.01em;
-  display: inline-block;
-  text-shadow: 0 2px 1px rgba(0,0,0,0.45), 0 0 30px rgba(226,35,26,0.35);
-}
-.home-logo__swoosh {
-  display: block;
-  width: clamp(170px, 32vw, 400px);
-  height: auto;
-  margin: -0.35em auto 0;
-  color: var(--accent);
-  filter: drop-shadow(0 0 16px rgba(226,35,26,0.3));
+  color: var(--ink);
 }
 
-/* COLLAGE : chaque cadre est une fenêtre sur une portion de la même photo */
+/* COLLAGE : chaque polaroïd est une fenêtre carrée sur une portion de la photo */
 .shatter {
   position: relative;
   z-index: 3;
@@ -1563,10 +1551,13 @@ body.page-home { --paper: #08080a; --ink: #f2f1ee; --paper-rgb: 8,8,10; --ink-rg
 }
 .shard {
   position: absolute;
+  box-sizing: content-box;         /* width/height = la fenêtre photo, bords en plus */
   background-repeat: no-repeat;
-  background-color: #101013;
-  border: clamp(4px, 0.55vw, 7px) solid #f6f3ec;
-  box-shadow: 0 22px 46px -18px rgba(0,0,0,0.9), 0 3px 9px rgba(0,0,0,0.55);
+  background-color: #efe9dd;
+  background-clip: padding-box;
+  border-style: solid;
+  border-color: #fdfcf8;           /* cadre polaroïd blanc cassé (bas plus épais, réglé en JS) */
+  box-shadow: 0 16px 32px -14px rgba(60,45,25,0.5), 0 3px 8px rgba(60,45,25,0.28);
   opacity: 1;
   transform: rotate(var(--rot, 0deg)) translate(var(--tx, 0), var(--ty, 0)) scale(var(--sc, 1));
   transition: opacity 0.55s ease, transform 0.62s cubic-bezier(.2,.7,.2,1), filter 0.2s ease;
@@ -1574,7 +1565,7 @@ body.page-home { --paper: #08080a; --ink: #f2f1ee; --paper-rgb: 8,8,10; --ink-rg
   cursor: pointer;
   text-decoration: none;
 }
-.shard:hover { filter: brightness(1.08); z-index: 9 !important; }
+.shard:hover { filter: brightness(1.03) saturate(1.04); z-index: 9 !important; }
 @media (prefers-reduced-motion: reduce) {
   .shard { transition: opacity 0.4s ease; }
 }

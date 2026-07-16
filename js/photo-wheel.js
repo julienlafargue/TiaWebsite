@@ -6,8 +6,8 @@
    - Shutter (clip-path) au changement d'image · clavier ←/→/Échap
    - prefers-reduced-motion : ni rotation ni shutter
    ============================================================ */
-import { reducedMotion } from "./main.js?v=7";
-import { t } from "./i18n.js?v=7";
+import { reducedMotion } from "./main.js?v=8";
+import { t } from "./i18n.js?v=8";
 
 const DIR = "img/photography/pro/";
 /* fabrique une entrée photo. desc = placeholder éditorial [TODO]. */
