@@ -1,7 +1,7 @@
 /**
- * Home — mosaïque de polaroïds : une seule photo est découpée en une grille
- * de cadres carrés (façon polaroïds serrés) qui recomposent l'image et
- * remplissent l'écran. La photo change régulièrement en se ré-éclatant.
+ * Home — cascade de polaroïds éparpillés (façon éditorial) : une même photo
+ * est lue à travers plusieurs cadres carrés inclinés, disposés en diagonale
+ * et en désordre. La photo change régulièrement en se ré-éclatant.
  */
 
 const DIR = "img/photography/pro/";
@@ -14,6 +14,35 @@ const FILES = [
   "photo-ad.png"
 ];
 
+// Étirement de l'image assemblée (permet le « panoramique » d'un cadre à l'autre)
+const AR = 1.6;
+
+/* Cascade horizontale (écrans larges) : les cadres avancent de gauche à droite
+   (px), montent/descendent en zigzag (py), tournent dans tous les sens (rot).
+   t = position lue dans l'image (0 = gauche … 1 = droite). s = côté du carré. */
+const FRAMES_H = [
+  { px: 0.00, py: 0.06, s: 0.22, rot: -13, t: 0.00 },
+  { px: 0.10, py: 0.44, s: 0.19, rot:   7, t: 0.13 },
+  { px: 0.19, py: 0.16, s: 0.24, rot:  -6, t: 0.26 },
+  { px: 0.30, py: 0.50, s: 0.20, rot:  12, t: 0.38 },
+  { px: 0.40, py: 0.10, s: 0.25, rot:  -9, t: 0.50 },
+  { px: 0.51, py: 0.46, s: 0.21, rot:   8, t: 0.62 },
+  { px: 0.61, py: 0.18, s: 0.24, rot: -12, t: 0.74 },
+  { px: 0.71, py: 0.48, s: 0.20, rot:   6, t: 0.86 },
+  { px: 0.78, py: 0.08, s: 0.23, rot: -10, t: 1.00 }
+];
+
+/* Cascade verticale (écrans étroits) : les cadres descendent (py), zigzag en x. */
+const FRAMES_V = [
+  { px: 0.04, py: 0.00, s: 0.40, rot: -11, t: 0.00 },
+  { px: 0.44, py: 0.12, s: 0.34, rot:   8, t: 0.16 },
+  { px: 0.10, py: 0.24, s: 0.38, rot:  -6, t: 0.32 },
+  { px: 0.46, py: 0.38, s: 0.36, rot:  11, t: 0.48 },
+  { px: 0.06, py: 0.52, s: 0.40, rot:  -9, t: 0.64 },
+  { px: 0.42, py: 0.66, s: 0.34, rot:   7, t: 0.80 },
+  { px: 0.14, py: 0.80, s: 0.38, rot: -10, t: 1.00 }
+];
+
 const shuffle = (arr) => {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -23,16 +52,10 @@ const shuffle = (arr) => {
   return a;
 };
 
-// rotation stable par cellule (petit désordre, mais reproductible au resize)
-function rotFor(i) {
-  const r = Math.sin(i * 12.9898) * 43758.5453;
-  return ((r - Math.floor(r)) * 5 - 2.5).toFixed(2); // ~ -2.5° … +2.5°
-}
-
 function buildCollage(root) {
   const queue = shuffle(FILES);
   let idx = 0;
-  const pool = [];        // réservoir de cadres réutilisés
+  const pool = [];
   let visible = 0;
 
   function ensure(n) {
@@ -41,7 +64,6 @@ function buildCollage(root) {
       el.className = "shard";
       el.href = "work.html";
       el.setAttribute("aria-label", "See the portfolio");
-      el.style.setProperty("--rot", rotFor(pool.length) + "deg");
       root.appendChild(el);
       pool.push(el);
     }
@@ -49,42 +71,42 @@ function buildCollage(root) {
     visible = n;
   }
 
-  let gridW = 0, gridH = 0, cols = 0, rows = 0, cell = 0, bx = 0, by = 0;
-
   function layout() {
     const W = root.clientWidth;
     const H = root.clientHeight;
     if (!W || !H) return;
 
-    cols = Math.max(3, Math.min(5, Math.round(W / 300)));
-    const areaW = W * 0.99;
-    const areaH = H * 0.99;
-    cell = areaW / cols;
-    rows = Math.max(2, Math.round(areaH / cell));
-    cell = Math.min(areaW / cols, areaH / rows); // carré, tient dans la zone
-    gridW = cols * cell;
-    gridH = rows * cell;
-    bx = (W - gridW) / 2;
-    by = (H - gridH) / 2;
+    const portrait = W / H < 0.9;
+    const FRAMES = portrait ? FRAMES_V : FRAMES_H;
 
-    const b = Math.max(3, Math.round(cell * 0.028));   // liseré fin
-    const bb = b + Math.round(cell * 0.05);            // menton polaroïd léger
+    // zone plus petite que l'écran, dégagée du header
+    const zoneW = portrait ? W * 0.94 : Math.min(W * 0.9, 1180);
+    const zoneH = portrait
+      ? Math.min(H * 0.74, zoneW * 1.5)
+      : Math.min(H * 0.6, zoneW * 0.52);
+    const zoneX = (W - zoneW) / 2;
+    const zoneY = Math.max(92, (H - zoneH) / 2); // ≥92px → sous le header
 
-    ensure(cols * rows);
-    for (let i = 0; i < visible; i++) {
+    ensure(FRAMES.length);
+    FRAMES.forEach((f, i) => {
       const el = pool[i];
-      const c = i % cols;
-      const r = Math.floor(i / cols);
-      const sx = c * cell;
-      const sy = r * cell;
+      const S = f.s * zoneW;                       // côté de la fenêtre photo (carré)
+      const b = Math.max(4, Math.round(S * 0.05)); // liseré
+      const bb = b + Math.round(S * 0.16);         // menton polaroïd (bien visible)
+      const left = zoneX + f.px * zoneW;
+      const top = zoneY + f.py * zoneH;
       el.style.borderWidth = `${b}px ${b}px ${bb}px ${b}px`;
-      el.style.left = (bx + sx - b) + "px";
-      el.style.top = (by + sy - b) + "px";
-      el.style.width = cell + "px";
-      el.style.height = cell + "px";
-      el.style.backgroundSize = gridW + "px " + gridH + "px";
-      el.style.backgroundPosition = (-sx) + "px " + (-sy) + "px";
-    }
+      el.style.left = (left - b) + "px";
+      el.style.top = (top - b) + "px";
+      el.style.width = S + "px";
+      el.style.height = S + "px";
+      el.style.zIndex = i;                          // cascade : les suivants par-dessus
+      // panoramique : chaque cadre montre une bande différente de l'image étirée
+      const imgW = S * AR;
+      el.style.backgroundSize = imgW + "px " + S + "px";
+      el.style.backgroundPosition = (-(f.t * (imgW - S))) + "px 0px";
+      el.style.setProperty("--rot", f.rot + "deg");
+    });
   }
 
   function setImage(src) {
@@ -118,20 +140,18 @@ function buildCollage(root) {
       return;
     }
 
-    // éclatement : chaque polaroïd s'écarte et s'efface
     for (let i = 0; i < visible; i++) {
       const el = pool[i];
-      const dx = (Math.random() * 2 - 1) * 26;
-      const dy = (Math.random() * 2 - 1) * 26;
-      const sc = 0.92 + Math.random() * 0.05;
-      el.style.transitionDelay = (i * 16) + "ms";
+      const dx = (Math.random() * 2 - 1) * 44;
+      const dy = (Math.random() * 2 - 1) * 44;
+      const sc = 0.88 + Math.random() * 0.06;
+      el.style.transitionDelay = (i * 40) + "ms";
       el.style.setProperty("--tx", dx + "px");
       el.style.setProperty("--ty", dy + "px");
       el.style.setProperty("--sc", sc);
       el.style.opacity = "0";
     }
 
-    // recomposition avec la nouvelle photo
     setTimeout(() => {
       setImage(next);
       for (let i = 0; i < visible; i++) {
@@ -143,7 +163,7 @@ function buildCollage(root) {
         el.style.transitionDelay = "0ms";
       }
       const p = new Image(); p.src = after;
-    }, 560);
+    }, 600);
   }, 4200);
 }
 
