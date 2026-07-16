@@ -4,7 +4,7 @@
    Les composants lourds vivent dans leurs propres fichiers.
    ============================================================ */
 
-import { t } from "./i18n.js?v=8";
+import { t } from "./i18n.js?v=9";
 
 /** true si l'utilisateur préfère moins d'animations */
 export const reducedMotion = () =>
@@ -69,10 +69,10 @@ function initGrainDrift() {
 /* ---- Bouton flottant « Booker un shooting » (toutes les pages sauf booking) ---- */
 function initBookFab() {
   const page = location.pathname.split("/").pop();
-  if (page === "booking.html") return;
+  if (page === "services.html") return;
   const a = document.createElement("a");
   a.className = "book-fab";
-  a.href = "booking.html";
+  a.href = "services.html";
   a.setAttribute("aria-label", t("fab.book"));
   a.setAttribute("data-i18n-attr", "aria-label:fab.book");
   a.innerHTML = `<span class="book-fab__ico" aria-hidden="true">📷</span><span class="book-fab__txt" data-i18n="fab.book">${t("fab.book")}</span>`;

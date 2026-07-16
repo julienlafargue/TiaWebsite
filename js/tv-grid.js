@@ -5,8 +5,8 @@
    - Clic chaîne → effet zapping (flash → static canvas) → reel.html?cat=
    - Hover : vibration ±1px (GSAP sinon WAAPI) · reduced-motion respecté
    ============================================================ */
-import { reducedMotion } from "./main.js?v=8";
-import { t } from "./i18n.js?v=8";
+import { reducedMotion } from "./main.js?v=9";
+import { t } from "./i18n.js?v=9";
 
 /* Les 6 catégories (mode photo, poster = vraie image). Le libellé vient de l'i18n. */
 const CATS = [

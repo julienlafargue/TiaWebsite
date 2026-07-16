@@ -69,7 +69,7 @@ body.page-home    .brand { font-family: var(--font-display); font-weight: 900; l
 body.page-about   .brand { font-family: var(--font-serif); font-weight: 500; font-style: italic; text-transform: none; letter-spacing: 0; }
 body.page-process .brand { font-family: var(--font-mono); font-weight: 400; text-shadow: 0 0 12px var(--accent); }
 body.page-gallery .brand { font-family: var(--font-mono); font-weight: 700; letter-spacing: 0.05em; }
-body.page-booking .brand { font-family: var(--font-script); font-weight: 700; text-transform: none; font-size: 1.7rem; letter-spacing: 0; }
+body.page-services .brand { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.03em; }
 
 /* groupe droite de la nav : langue + menu mobile */
 .nav-right { display: flex; align-items: center; gap: 1rem; order: 3; }
@@ -1494,60 +1494,60 @@ section { position: relative; }
 .page-process .site-footer { border-top-color: rgba(255,255,255,0.2); }
 
 /* ---------- BOOKING : éditorial clair ---------- */
-.page-booking .grain { mix-blend-mode: multiply; opacity: 0.06; }
-.page-booking .display { font-family: var(--font-display); font-weight: 800; }
-.page-booking .card { background: #fff; border: 2px solid var(--ink); }
-.page-booking .card .price { color: var(--accent); }
-.page-booking .card li::before { color: var(--accent); }
-.page-booking .cta { background: var(--accent); border-color: var(--accent); color: #fff; }
-.page-booking .cta:hover { background: transparent; color: var(--accent); }
-.page-booking .form input,
-.page-booking .form textarea,
-.page-booking .form select { background: #fff; border-color: rgba(0,0,0,0.25); color: var(--ink); }
-.page-booking .form label { color: var(--ink); }
-.page-booking .site-footer { border-top-color: var(--ink); }
+.page-services .grain { mix-blend-mode: multiply; opacity: 0.06; }
+.page-services .display { font-family: var(--font-display); font-weight: 800; }
+.page-services .card { background: #fff; border: 2px solid var(--ink); }
+.page-services .card .price { color: var(--accent); }
+.page-services .card li::before { color: var(--accent); }
+.page-services .cta { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page-services .cta:hover { background: transparent; color: var(--accent); }
+.page-services .form input,
+.page-services .form textarea,
+.page-services .form select { background: #fff; border-color: rgba(0,0,0,0.25); color: var(--ink); }
+.page-services .form label { color: var(--ink); }
+.page-services .site-footer { border-top-color: var(--ink); }
 
 /* ---------- HOME : fond off-white + collage de polaroïds carrés ---------- */
 body.page-home { --paper: #f2ede2; --ink: #16130e; --paper-rgb: 242,237,226; --ink-rgb: 22,19,14; }
 .home-hero {
   position: relative;
   height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: clamp(4.5rem, 9vh, 6rem) clamp(1rem, 4vw, 3rem) clamp(1.5rem, 4vh, 3rem);
   overflow: hidden;
   /* papier crème légèrement beige */
   background: radial-gradient(135% 100% at 50% 18%, #f8f4ec 0%, #f1ebde 55%, #e9e1d1 100%);
 }
 .home-hero::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: radial-gradient(120% 100% at 50% 42%, transparent 55%, rgba(120,102,72,0.10) 100%);
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 42%, transparent 58%, rgba(120,102,72,0.12) 100%);
 }
 
-/* la phrase d'intro (remplace le gros logo) */
-.home-intro {
-  position: relative; z-index: 4;
-  flex: 0 0 auto;
-  max-width: 32ch;
-  margin: 0 0 clamp(1rem, 3vh, 2.2rem);
+/* accessible mais invisible */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* phrase intégrée, discrète, dans la bande beige du bas */
+.home-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: clamp(0.7rem, 2vh, 1.3rem);
+  z-index: 4;
   text-align: center;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.05rem, 2.3vw, 1.65rem);
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: var(--ink);
+  pointer-events: none;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: clamp(0.6rem, 1.1vw, 0.76rem);
+  color: rgba(var(--ink-rgb), 0.6);
 }
 
-/* COLLAGE : chaque polaroïd est une fenêtre carrée sur une portion de la photo */
+/* COLLAGE : la mosaïque remplit le hero (bande beige réservée en bas) */
 .shatter {
-  position: relative;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  bottom: clamp(2.2rem, 5.5vh, 3.4rem);
   z-index: 3;
-  width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
 }
 .shard {
   position: absolute;
@@ -1713,7 +1713,11 @@ body.page-process { --accent: #4dffd0; --paper: #060608; --paper-rgb: 6,6,8; }
 /* ============================================================
    BOOKING — carte postale rêve
    ============================================================ */
-.page-booking .grain { mix-blend-mode: multiply; opacity: 0.07; }
+.page-services .grain { mix-blend-mode: multiply; opacity: 0.07; }
+/* fond beige identique à la home */
+body.page-services {
+  background: radial-gradient(135% 90% at 50% 8%, #f8f4ec 0%, #f1ebde 55%, #e9e1d1 100%) fixed;
+}
 .postcard-head { text-align: center; margin-bottom: 3rem; }
 .postcard-from {
   font-family: var(--font-mono);
@@ -1721,11 +1725,13 @@ body.page-process { --accent: #4dffd0; --paper: #060608; --paper-rgb: 6,6,8; }
   font-size: 0.7rem; color: rgba(var(--ink-rgb), 0.6);
 }
 .postcard-hello {
-  font-family: var(--font-script);
-  font-weight: 700;
-  font-size: clamp(2.6rem, 9vw, 6rem);
-  color: var(--accent);
-  line-height: 1;
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  color: var(--ink);
+  line-height: 0.95;
   margin: 0.3rem 0 1rem;
 }
 .postcard-head .lead { max-width: 46ch; margin-inline: auto; }
@@ -1771,8 +1777,8 @@ body.page-process { --accent: #4dffd0; --paper: #060608; --paper-rgb: 6,6,8; }
   font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em;
   padding: 0.25rem 0.6rem; transform: rotate(-4deg);
 }
-.postcard__dest { font-family: var(--font-script); font-weight: 700; font-size: 2rem; color: var(--ink); }
-.page-booking .postcard ul { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.92rem; }
-.page-booking .postcard li::before { content: "— "; color: var(--accent); }
-.page-booking .postcard .cta { margin-top: 0.4rem; background: var(--accent); border-color: var(--accent); color: #fff; align-self: flex-start; }
-.page-booking .postcard .cta:hover { background: transparent; color: var(--accent); }
+.postcard__dest { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: 1.7rem; color: var(--ink); }
+.page-services .postcard ul { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.92rem; }
+.page-services .postcard li::before { content: "— "; color: var(--accent); }
+.page-services .postcard .cta { margin-top: 0.4rem; background: var(--accent); border-color: var(--accent); color: #fff; align-self: flex-start; }
+.page-services .postcard .cta:hover { background: transparent; color: var(--accent); }

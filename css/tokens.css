@@ -108,3 +108,11 @@ body.page-booking {
   --accent: #e2231a;
   --font-display: "Syne", sans-serif;
 }
+/* Services — même identité que la home (beige + polices par défaut) */
+body.page-services {
+  --paper: #f2ede2;
+  --ink: #16130e;
+  --paper-rgb: 242, 237, 226;
+  --ink-rgb: 22, 19, 14;
+  --accent: #e2231a;
+}

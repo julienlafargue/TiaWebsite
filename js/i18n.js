@@ -10,10 +10,9 @@
 export const DICT = {
   en: {
     "skip": "Skip to content",
-    "nav.work": "Gallery",
+    "nav.work": "Portfolio",
     "nav.about": "About",
-    "nav.process": "Process",
-    "nav.booking": "Booking",
+    "nav.booking": "Services",
     "nav.contact": "Contact",
     "nav.menu": "Menu",
     "nav.close": "Close",
@@ -77,10 +76,9 @@ export const DICT = {
   },
   fr: {
     "skip": "Aller au contenu",
-    "nav.work": "Galerie",
+    "nav.work": "Portfolio",
     "nav.about": "À propos",
-    "nav.process": "Process",
-    "nav.booking": "Réserver",
+    "nav.booking": "Services",
     "nav.contact": "Contact",
     "nav.menu": "Menu",
     "nav.close": "Fermer",

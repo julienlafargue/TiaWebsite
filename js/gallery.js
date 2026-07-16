@@ -3,7 +3,7 @@
    filtrables par type. Clic sur une vue → visionneuse « appareil ».
    ============================================================ */
 import { CATEGORIES, buildViewer } from "./photo-wheel.js?v=8";
-import { t } from "./i18n.js?v=8";
+import { t } from "./i18n.js?v=9";
 
 /* toutes les photos, avec leur catégorie + index global (pour la visionneuse) */
 const ALL = [];
