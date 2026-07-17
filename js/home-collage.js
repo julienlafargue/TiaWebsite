@@ -37,16 +37,17 @@ function grid(cols, rows, AR, skip) {
   return a;
 }
 
-/* Beaucoup de petits polaroïds, bien serrés.  Desktop 8×4 · mobile 4×5.
+/* Beaucoup de petits polaroïds, bien serrés.  Desktop 9×4 · mobile 4×6.
    spread ≈ 1 → les cadres restent collés les uns aux autres.
-   skip : coins cassés + quelques respirations → composition non rectangulaire. */
+   skip : UNIQUEMENT des cases de bord/coin → silhouette irrégulière sans
+   trou au milieu (un trou intérieur ressemble à un bug, pas à un parti pris). */
 const LAYOUT_H = {
-  cols: 8, rows: 4, AR: 1.7, spreadX: 1.03, spreadY: 0.92,
-  skip: [0, 1, 7, 8, 18, 23, 24, 30, 31]
+  cols: 9, rows: 4, AR: 1.7, spreadX: 1.03, spreadY: 0.92,
+  skip: [0, 1, 8, 9, 26, 27, 34, 35]
 };
 const LAYOUT_V = {
-  cols: 4, rows: 5, AR: 0.62, spreadX: 1.02, spreadY: 0.95,
-  skip: [0, 3, 4, 9, 11, 16, 19]
+  cols: 4, rows: 6, AR: 0.62, spreadX: 1.02, spreadY: 0.95,
+  skip: [0, 3, 4, 19, 20, 23]
 };
 
 const shuffle = (arr) => {
