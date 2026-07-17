@@ -37,10 +37,17 @@ function grid(cols, rows, AR, skip) {
   return a;
 }
 
-/* Petits polaroïds, nombreux et dispersés.  Desktop 6×3 · mobile 3×4.
-   skip : coins et une case intérieure retirés → composition non rectangulaire. */
-const LAYOUT_H = { cols: 6, rows: 3, AR: 1.7, spreadX: 1.12, spreadY: 0.95, skip: [0, 5, 10, 12, 17] };
-const LAYOUT_V = { cols: 3, rows: 4, AR: 0.62, spreadX: 1.08, spreadY: 1.0, skip: [0, 5, 6, 11] };
+/* Beaucoup de petits polaroïds, bien serrés.  Desktop 8×4 · mobile 4×5.
+   spread ≈ 1 → les cadres restent collés les uns aux autres.
+   skip : coins cassés + quelques respirations → composition non rectangulaire. */
+const LAYOUT_H = {
+  cols: 8, rows: 4, AR: 1.7, spreadX: 1.03, spreadY: 0.92,
+  skip: [0, 1, 7, 8, 18, 23, 24, 30, 31]
+};
+const LAYOUT_V = {
+  cols: 4, rows: 5, AR: 0.62, spreadX: 1.02, spreadY: 0.95,
+  skip: [0, 3, 4, 9, 11, 16, 19]
+};
 
 const shuffle = (arr) => {
   const a = arr.slice();
@@ -97,15 +104,15 @@ function buildCollage(root) {
       const el = pool[i];
       const k = f.k;                                // clé stable de la case
       const regionS = f.fw * IW;                    // taille de la région (carrée)
-      const S = regionS * (0.82 + hash(k + 13) * 0.16);  // tailles variées
+      const S = regionS * (0.9 + hash(k + 13) * 0.1);    // tailles variées, cadres serrés
       const off = (regionS - S) / 2;                // on montre le centre de la région
       const sx = f.fx * IW + off;
       const sy = f.fy * IH + off;
       // centre de la région, écarté depuis le centre (spread) + décalage (désordre)
       const rcx = (f.fx + f.fw / 2 - 0.5) * IW;
       const rcy = (f.fy + f.fh / 2 - 0.5) * IH;
-      const jx = (hash(k) - 0.5) * 0.05 * IW;
-      const jy = (hash(k + 7) - 0.5) * 0.05 * IH;
+      const jx = (hash(k) - 0.5) * 0.025 * IW;
+      const jy = (hash(k + 7) - 0.5) * 0.025 * IH;
       const dcx = cx + rcx * L.spreadX + jx;
       const dcy = cy + rcy * L.spreadY + jy;
 
