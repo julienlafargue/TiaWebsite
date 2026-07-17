@@ -3,7 +3,7 @@
    Utilise View Transitions API si dispo, sinon fallback manuel
    (fade noir 200ms + flash blanc 60ms en sortie).
    ============================================================ */
-import { reducedMotion } from "./main.js?v=7";
+import { reducedMotion } from "./main.js?v=10";
 
 function isInternal(a) {
   return (
