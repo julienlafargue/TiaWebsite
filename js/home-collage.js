@@ -1,8 +1,8 @@
 /**
  * Home — UNE seule photo éclatée : chaque polaroïd est une fenêtre sur une
- * portion différente de la même image. Mis ensemble, les cadres recomposent
- * la photo (pas de duplication). Disposition irrégulière, centrée, inclinée.
- * La photo change régulièrement.
+ * portion différente de la même image. Les cadres sont ESPACÉS (peu de
+ * superposition) et écartés depuis le centre → l'image reste lisible, la
+ * composition est large et irrégulière. La photo change régulièrement.
  */
 
 const DIR = "img/photography/pro/";
@@ -15,35 +15,32 @@ const FILES = [
   "photo-ad.png"
 ];
 
-/* Chaque cadre = une fenêtre carrée sur l'image assemblée (fraction 0..1) :
-   fx,fy = coin de la portion montrée ; fw = largeur (la hauteur = fw*AR pour
-   que la fenêtre soit carrée). ox,oy = léger décalage (désordre). rot = angle.
-   Les portions se recouvrent et couvrent toute l'image → une seule photo. */
+// angles variés + décalages stables (désordre reproductible au resize)
+const ROT = [-11, 6, -4, 9, -8, 3, -6, 12, -3, 7, -9, 5, -12, 4, -5, 10, -7, 8];
+const hash = (i) => { const r = Math.sin(i * 12.9898 + 4.1) * 43758.5453; return r - Math.floor(r); };
 
-// --- large (paysage), image assemblée AR ≈ 1.45 ---
-const AR_H = 1.45;
-const FRAMES_H = [
-  { fx: 0.00, fy: 0.05, fw: 0.30, ox: -0.015, oy: -0.02, rot: -8 },
-  { fx: 0.02, fy: 0.52, fw: 0.26, ox: -0.02,  oy:  0.03, rot:  6 },
-  { fx: 0.26, fy: 0.26, fw: 0.30, ox:  0.00,  oy:  0.00, rot: -4 },
-  { fx: 0.27, fy: -0.02, fw: 0.22, ox:  0.01, oy: -0.02, rot:  9 },
-  { fx: 0.50, fy: 0.42, fw: 0.30, ox:  0.00,  oy:  0.03, rot: -7 },
-  { fx: 0.50, fy: 0.00, fw: 0.26, ox:  0.00,  oy: -0.01, rot:  5 },
-  { fx: 0.72, fy: 0.22, fw: 0.30, ox:  0.02,  oy:  0.00, rot: -9 },
-  { fx: 0.74, fy: 0.56, fw: 0.22, ox:  0.02,  oy:  0.03, rot:  7 },
-  { fx: 0.75, fy: -0.02, fw: 0.22, ox:  0.02, oy: -0.02, rot: -5 }
-];
+/* Grille de régions qui pavent l'image (fenêtres carrées).
+   `skip` = cases volontairement absentes → silhouette irrégulière, pas un bloc.
+   AR = étirement de l'image assemblée (pour que les cellules soient carrées). */
+function grid(cols, rows, AR, skip) {
+  const fw = 1 / cols;
+  const fh = fw * AR;                    // hauteur de région (fenêtre carrée)
+  const gapY = (1 - fh * rows) / (rows + 1);
+  const a = [];
+  let i = 0;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++, i++) {
+      if (skip.includes(i)) continue;    // trou volontaire (coins cassés, respiration)
+      a.push({ fx: c * fw, fy: gapY * (r + 1) + fh * r, fw, fh, k: i });
+    }
+  }
+  return a;
+}
 
-// --- étroit (portrait), image assemblée AR ≈ 0.85 ---
-const AR_V = 0.85;
-const FRAMES_V = [
-  { fx: 0.00, fy: 0.00, fw: 0.54, ox: -0.01, oy: -0.01, rot: -7 },
-  { fx: 0.46, fy: 0.14, fw: 0.52, ox:  0.01, oy: -0.01, rot:  6 },
-  { fx: 0.01, fy: 0.31, fw: 0.54, ox: -0.01, oy:  0.00, rot: -5 },
-  { fx: 0.44, fy: 0.47, fw: 0.54, ox:  0.01, oy:  0.01, rot:  8 },
-  { fx: 0.00, fy: 0.62, fw: 0.54, ox: -0.01, oy:  0.01, rot: -6 },
-  { fx: 0.42, fy: 0.78, fw: 0.56, ox:  0.01, oy:  0.01, rot:  7 }
-];
+/* Petits polaroïds, nombreux et dispersés.  Desktop 6×3 · mobile 3×4.
+   skip : coins et une case intérieure retirés → composition non rectangulaire. */
+const LAYOUT_H = { cols: 6, rows: 3, AR: 1.7, spreadX: 1.12, spreadY: 0.95, skip: [0, 5, 10, 12, 17] };
+const LAYOUT_V = { cols: 3, rows: 4, AR: 0.62, spreadX: 1.08, spreadY: 1.0, skip: [0, 5, 6, 11] };
 
 const shuffle = (arr) => {
   const a = arr.slice();
@@ -79,33 +76,50 @@ function buildCollage(root) {
     if (!W || !H) return;
 
     const portrait = W / H < 0.9;
-    const FRAMES = portrait ? FRAMES_V : FRAMES_H;
-    const AR = portrait ? AR_V : AR_H;
+    const L = portrait ? LAYOUT_V : LAYOUT_H;
+    const frames = grid(L.cols, L.rows, L.AR, L.skip);
 
-    // image assemblée, centrée, dégagée du header
-    const IW = portrait ? Math.min(W * 0.9, 460) : Math.min(W * 0.8, 1000);
-    const IH = IW / AR;
-    const bx = (W - IW) / 2;
-    const by = Math.max(96, (H - IH) / 2);   // ≥96px → sous le header, centré
+    // image assemblée large, centrée, dégagée du header
+    const cx = W / 2;                              // centre horizontal du viewport
+    const availTop = 100;
+    const availBot = H - 74;                       // bande phrase réservée
+    const cy = (availTop + availBot) / 2;          // centre vertical utile
+    const availH = availBot - availTop;
 
-    ensure(FRAMES.length);
-    FRAMES.forEach((f, i) => {
+    let IW = portrait ? Math.min(W * 0.92, 460) : Math.min(W * 0.85, 1250);
+    let IH = IW / L.AR;
+    // garde-fou : si la composition dépasse la hauteur utile, on réduit
+    const footprint = 0.72 * IH * L.spreadY + (IW / L.cols) * 1.2;
+    if (footprint > availH) { const k = availH / footprint; IW *= k; IH *= k; }
+
+    ensure(frames.length);
+    frames.forEach((f, i) => {
       const el = pool[i];
-      const S = f.fw * IW;                         // côté carré (= fw*IW = fh*IH)
-      const sx = f.fx * IW;
-      const sy = f.fy * IH;
-      const b = Math.max(4, Math.round(S * 0.05));
-      const bb = b + Math.round(S * 0.15);         // menton polaroïd
+      const k = f.k;                                // clé stable de la case
+      const regionS = f.fw * IW;                    // taille de la région (carrée)
+      const S = regionS * (0.82 + hash(k + 13) * 0.16);  // tailles variées
+      const off = (regionS - S) / 2;                // on montre le centre de la région
+      const sx = f.fx * IW + off;
+      const sy = f.fy * IH + off;
+      // centre de la région, écarté depuis le centre (spread) + décalage (désordre)
+      const rcx = (f.fx + f.fw / 2 - 0.5) * IW;
+      const rcy = (f.fy + f.fh / 2 - 0.5) * IH;
+      const jx = (hash(k) - 0.5) * 0.05 * IW;
+      const jy = (hash(k + 7) - 0.5) * 0.05 * IH;
+      const dcx = cx + rcx * L.spreadX + jx;
+      const dcy = cy + rcy * L.spreadY + jy;
+
+      const b = Math.max(3, Math.round(S * 0.05));
+      const bb = b + Math.round(S * 0.13);          // menton polaroïd
       el.style.borderWidth = `${b}px ${b}px ${bb}px ${b}px`;
-      el.style.left = (bx + sx + f.ox * IW - b) + "px";
-      el.style.top = (by + sy + f.oy * IH - b) + "px";
+      el.style.left = (dcx - S / 2 - b) + "px";
+      el.style.top = (dcy - S / 2 - b) + "px";
       el.style.width = S + "px";
       el.style.height = S + "px";
       el.style.zIndex = i;
-      // fenêtre sur l'image assemblée complète → une seule photo
       el.style.backgroundSize = IW + "px " + IH + "px";
       el.style.backgroundPosition = (-sx) + "px " + (-sy) + "px";
-      el.style.setProperty("--rot", f.rot + "deg");
+      el.style.setProperty("--rot", ROT[k % ROT.length] + "deg");
     });
   }
 
