@@ -47,8 +47,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-sm) var(--gutter);
-  mix-blend-mode: difference; /* lisible sur tout fond */
-  color: #fff;
+  color: var(--ink);           /* fond beige uniforme : texte sombre lisible */
 }
 
 .site-nav a { color: inherit; }
@@ -1014,9 +1013,10 @@ body.page-home .book-fab { display: none; }
   align-items: center;
   text-decoration: none;
   color: var(--ink);
-  transform-origin: 50% 0;          /* pivot au niveau de la pince */
+  transform-origin: 50% -6px;       /* pivot AU niveau de la mâchoire de la pince */
   transform: rotate(var(--rest, 0deg));
-  transition: transform 320ms var(--ease);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 /* repos : légèrement de travers, différent par cadre */
 .hang:nth-child(1) { --rest: -2.2deg; }
@@ -1060,15 +1060,20 @@ body.page-home .book-fab { display: none; }
   color: rgba(var(--ink-rgb), 0.55);
 }
 
-/* survol : ça balance */
+/* survol : on « pousse » le cadre, il oscille et se stabilise (pendule amorti) */
 .hang:hover, .hang:focus-visible {
-  animation: sway 1.6s ease-in-out infinite;
+  animation: swing-in 2.6s cubic-bezier(0.28, 0.9, 0.3, 1) both;
   z-index: 3;
 }
 .hang:hover .hang__photo { filter: saturate(1.08) brightness(1.04); }
-@keyframes sway {
-  0%, 100% { transform: rotate(calc(var(--rest) - 3deg)); }
-  50%      { transform: rotate(calc(var(--rest) + 3deg)); }
+@keyframes swing-in {
+  0%   { transform: rotate(var(--rest)); }
+  12%  { transform: rotate(calc(var(--rest) + 6deg)); }
+  30%  { transform: rotate(calc(var(--rest) - 4.2deg)); }
+  48%  { transform: rotate(calc(var(--rest) + 2.6deg)); }
+  66%  { transform: rotate(calc(var(--rest) - 1.5deg)); }
+  82%  { transform: rotate(calc(var(--rest) + 0.7deg)); }
+  100% { transform: rotate(var(--rest)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hang:hover, .hang:focus-visible { animation: none; transform: rotate(var(--rest)) translateY(-4px); }
@@ -1119,20 +1124,18 @@ body.page-home .book-fab { display: none; }
   perspective-origin: 50% 50%;
   touch-action: pan-y;
   cursor: grab;
-  transition: transform 520ms var(--ease), width 520ms var(--ease);
+  /* transform piloté en continu par js/series.js (boucle rAF) : pas de transition */
 }
 .series__stage:active { cursor: grabbing; }
-/* ouvert : la scène se décale à gauche pour laisser la place au texte */
-.series.is-open .series__stage { transform: translate(-50%, -50%) translateX(-22%) scale(0.92); }
 
 .slide {
   position: absolute;
   top: 50%; left: 50%;
-  width: clamp(180px, 26vw, 320px);
+  width: clamp(190px, 27vw, 340px);
   padding: 0; border: 0; background: none;
   transform-style: preserve-3d;
-  transition: transform 520ms var(--ease), opacity 420ms var(--ease);
   cursor: pointer;
+  /* pas de transition : le rAF anime chaque frame */
 }
 .slide img {
   width: 100%;
@@ -1142,10 +1145,10 @@ body.page-home .book-fab { display: none; }
   background: #efe9dd;
   box-shadow: 0 26px 50px -22px rgba(60,45,25,0.7), 0 4px 12px rgba(60,45,25,0.28);
   border: clamp(5px, 0.7vw, 9px) solid #fdfcf8;
+  transition: box-shadow 320ms var(--ease);
+  -webkit-user-drag: none;
 }
 .slide.is-current img { box-shadow: 0 34px 64px -22px rgba(60,45,25,0.8), 0 6px 16px rgba(60,45,25,0.35); }
-/* ouvert : la photo courante grossit */
-.series.is-open .slide.is-current { width: clamp(240px, 34vw, 430px); }
 
 /* panneau description (droite) */
 .series__detail {
@@ -1155,9 +1158,8 @@ body.page-home .book-fab { display: none; }
   width: min(34vw, 380px);
   z-index: 6;
   opacity: 0; pointer-events: none;
-  transition: opacity 380ms var(--ease);
+  /* opacité pilotée par js/series.js (rAF) */
 }
-.series.is-open .series__detail { opacity: 1; pointer-events: auto; }
 .series__meta {
   font-family: var(--font-mono);
   text-transform: uppercase; letter-spacing: 0.18em;
@@ -1187,13 +1189,11 @@ body.page-home .book-fab { display: none; }
   font-family: var(--font-mono);
   text-transform: uppercase; letter-spacing: 0.22em;
   font-size: 0.58rem; color: rgba(var(--ink-rgb), 0.45);
-  transition: opacity 320ms var(--ease);
+  /* opacité pilotée par js/series.js (rAF) */
 }
-.series.is-open .series__hint { opacity: 0; }
 
 @media (max-width: 860px) {
   .series__stage { width: 94vw; height: 52vh; }
-  .series.is-open .series__stage { transform: translate(-50%, -50%) translateY(-16%) scale(0.8); }
   .series__detail {
     top: auto; bottom: clamp(1rem, 4vh, 2rem); right: 0; left: 0;
     transform: none; width: auto; padding: 0 var(--gutter);
