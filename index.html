@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=14" />
   <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=38" />
+  <link rel="stylesheet" href="css/styles.css?v=39" />
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -38,24 +38,32 @@
   </header>
 
   <main id="main">
-    <!-- ============ HOME = logo tag + collage éclaté qui se recompose ============ -->
-    <section class="home-hero">
+    <!-- ============ HOME = tableau de musée (cadre ancien + photo dedans) ============ -->
+    <section class="museum">
       <h1 class="sr-only">Tia-Lana Chinapyel — Photographer &amp; art director, Paris</h1>
 
-      <!-- mosaïque de polaroïds : peuplée par js/home-collage.js (photo qui change) -->
-      <div class="shatter" data-collage aria-label="Selected work — changing"></div>
+      <span class="museum__light" aria-hidden="true"></span>
 
-      <!-- phrase intégrée, discrète, en bas -->
-      <p class="home-caption" data-i18n="home.tag">Photographer &amp; art director, based in Paris.</p>
+      <figure class="painting" data-painting aria-label="Selected work — changing">
+        <span class="painting__mat">
+          <span class="painting__canvas">
+            <img class="painting__img" data-img-a alt="Selected work by Tia-Lana" />
+            <img class="painting__img" data-img-b alt="" aria-hidden="true" />
+          </span>
+        </span>
+      </figure>
+
+      <figcaption class="plaque">
+        <span class="plaque__name">TIA-LANA CHINAPYEL</span>
+        <span class="plaque__desc" data-i18n="home.tag">Photographer &amp; art director, based in Paris.</span>
+      </figcaption>
     </section>
   </main>
 
-  <!-- GSAP via CDN (only allowed dependency) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script type="module" src="js/i18n.js?v=10"></script>
   <script type="module" src="js/main.js?v=10"></script>
   <script type="module" src="js/cursor.js?v=10"></script>
   <script type="module" src="js/transitions.js?v=10"></script>
-  <script type="module" src="js/home-collage.js?v=10"></script>
+  <script type="module" src="js/home-museum.js?v=1"></script>
 </body>
 </html>
