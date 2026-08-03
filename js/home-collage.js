@@ -80,7 +80,7 @@ function buildCollage(root) {
 
   /* mode CADRE : polaroïds en vrac qui couvrent toute la vue (empilés, de travers) */
   function layoutFill(W, H) {
-    const cols = W < 340 ? 3 : 4;
+    const cols = Math.max(5, Math.min(9, Math.round(W / 46)));  // polaroïds plus petits
     const cell = W / cols;
     const rows = Math.ceil(H / cell) + 1;    // +1 rangée : couvre malgré le désordre
     const IW = cols * cell;
