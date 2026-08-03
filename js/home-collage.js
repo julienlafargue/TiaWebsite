@@ -78,18 +78,50 @@ function buildCollage(root) {
     visible = n;
   }
 
+  /* mode CADRE : grille dense de polaroïds qui couvre toute la vue (aucun vide) */
+  function layoutFill(W, H) {
+    const cols = W < 340 ? 3 : 4;
+    const cell = W / cols;
+    const rows = Math.ceil(H / cell);
+    const IW = cols * cell;
+    const IH = rows * cell;
+    const by = (H - IH) / 2;                 // centré (léger débord haut/bas, masqué)
+    const n = cols * rows;
+    ensure(n);
+    for (let i = 0; i < n; i++) {
+      const el = pool[i];
+      const c = i % cols, r = Math.floor(i / cols);
+      const sx = c * cell, sy = r * cell;
+      const S = cell * 1.1;                   // léger chevauchement → pas de trou
+      const off = (S - cell) / 2;
+      const b = Math.max(2, Math.round(cell * 0.03));
+      const bb = b + Math.round(cell * 0.05);
+      el.style.borderWidth = `${b}px ${b}px ${bb}px ${b}px`;
+      el.style.left = (sx - off - b) + "px";
+      el.style.top = (by + sy - off - b) + "px";
+      el.style.width = S + "px";
+      el.style.height = S + "px";
+      el.style.zIndex = i;
+      el.style.backgroundSize = IW + "px " + IH + "px";
+      el.style.backgroundPosition = (off - sx) + "px " + (off - sy) + "px";
+      el.style.setProperty("--rot", (ROT[i % ROT.length] * 0.4).toFixed(2) + "deg");
+    }
+  }
+
   function layout() {
     const W = root.clientWidth;
     const H = root.clientHeight;
     if (!W || !H) return;
 
+    // plein écran (variante polaroïd) → mosaïque éparpillée ;
+    // intégré dans le cadre → on REMPLIT toute la vue de polaroïds.
+    const full = H > window.innerHeight * 0.8;
+    if (!full) { layoutFill(W, H); return; }
+
     const portrait = W / H < 0.9;
     const L = portrait ? LAYOUT_V : LAYOUT_H;
     const frames = grid(L.cols, L.rows, L.AR, L.skip);
 
-    // plein écran (variante polaroïd) → on dégage header + légende ;
-    // intégré dans le cadre → on remplit toute la vue.
-    const full = H > window.innerHeight * 0.8;
     const cx = W / 2;                              // centre horizontal
     const availTop = full ? 100 : H * 0.03;
     const availBot = full ? H - 74 : H * 0.97;
