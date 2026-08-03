@@ -78,19 +78,57 @@ function buildCollage(root) {
     visible = n;
   }
 
+  /* mode CADRE : polaroïds en vrac qui couvrent toute la vue (empilés, de travers) */
+  function layoutFill(W, H) {
+    const cols = Math.max(5, Math.min(9, Math.round(W / 46)));  // polaroïds plus petits
+    const cell = W / cols;
+    const rows = Math.ceil(H / cell) + 1;    // +1 rangée : couvre malgré le désordre
+    const IW = cols * cell;
+    const IH = (rows - 1) * cell;
+    const by = (H - IH) / 2;
+    const n = cols * rows;
+    ensure(n);
+    for (let i = 0; i < n; i++) {
+      const el = pool[i];
+      const c = i % cols, r = Math.floor(i / cols);
+      const sx = c * cell, sy = r * cell;
+      // désordre stable (reproductible au resize)
+      const S = cell * (1.2 + hash(i * 2 + 1) * 0.22);       // fort chevauchement + tailles variées
+      const off = (S - cell) / 2;
+      const jx = (hash(i * 3 + 2) - 0.5) * cell * 0.24;      // décalage aléatoire
+      const jy = (hash(i * 3 + 5) - 0.5) * cell * 0.24;
+      const rot = (hash(i * 5 + 3) - 0.5) * 16;              // ~ -8° … +8°
+      const b = Math.max(2, Math.round(cell * 0.035));
+      const bb = b + Math.round(cell * 0.07);
+      el.style.borderWidth = `${b}px ${b}px ${bb}px ${b}px`;
+      el.style.left = (sx - off - b + jx) + "px";
+      el.style.top = (by + sy - off - b + jy) + "px";
+      el.style.width = S + "px";
+      el.style.height = S + "px";
+      el.style.zIndex = Math.round(hash(i * 7 + 4) * 100);   // empilement désordonné
+      el.style.backgroundSize = IW + "px " + IH + "px";
+      el.style.backgroundPosition = (off - sx) + "px " + (off - sy) + "px";
+      el.style.setProperty("--rot", rot.toFixed(2) + "deg");
+    }
+  }
+
   function layout() {
     const W = root.clientWidth;
     const H = root.clientHeight;
     if (!W || !H) return;
 
+    // plein écran (variante polaroïd) → mosaïque éparpillée ;
+    // intégré dans le cadre → on REMPLIT toute la vue de polaroïds.
+    const full = H > window.innerHeight * 0.8;
+    if (!full) { layoutFill(W, H); return; }
+
     const portrait = W / H < 0.9;
     const L = portrait ? LAYOUT_V : LAYOUT_H;
     const frames = grid(L.cols, L.rows, L.AR, L.skip);
 
-    // image assemblée large, centrée, dégagée du header
-    const cx = W / 2;                              // centre horizontal du viewport
-    const availTop = 100;
-    const availBot = H - 74;                       // bande phrase réservée
+    const cx = W / 2;                              // centre horizontal
+    const availTop = full ? 100 : H * 0.03;
+    const availBot = full ? H - 74 : H * 0.97;
     const cy = (availTop + availBot) / 2;          // centre vertical utile
     const availH = availBot - availTop;
 
