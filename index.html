@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=14" />
   <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=39" />
+  <link rel="stylesheet" href="css/styles.css?v=40" />
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -44,12 +44,10 @@
 
       <span class="museum__light" aria-hidden="true"></span>
 
-      <figure class="painting" data-painting aria-label="Selected work — changing">
+      <figure class="painting">
         <span class="painting__mat">
-          <span class="painting__canvas">
-            <img class="painting__img" data-img-a alt="Selected work by Tia-Lana" />
-            <img class="painting__img" data-img-b alt="" aria-hidden="true" />
-          </span>
+          <!-- mosaïque de polaroïds DANS le cadre (js/home-collage.js) -->
+          <span class="painting__canvas" data-collage aria-label="Selected work — changing"></span>
         </span>
       </figure>
 
@@ -64,6 +62,6 @@
   <script type="module" src="js/main.js?v=10"></script>
   <script type="module" src="js/cursor.js?v=10"></script>
   <script type="module" src="js/transitions.js?v=10"></script>
-  <script type="module" src="js/home-museum.js?v=1"></script>
+  <script type="module" src="js/home-collage.js?v=11"></script>
 </body>
 </html>

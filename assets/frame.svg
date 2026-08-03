@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fbeeb8"/>
+      <stop offset="0.18" stop-color="#e8c86e"/>
+      <stop offset="0.42" stop-color="#b98f3e"/>
+      <stop offset="0.6" stop-color="#8a642a"/>
+      <stop offset="0.78" stop-color="#c99f4e"/>
+      <stop offset="1" stop-color="#efd589"/>
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c5a24"/>
+      <stop offset="0.5" stop-color="#a87e37"/>
+      <stop offset="1" stop-color="#5f451b"/>
+    </linearGradient>
+
+    <!-- une volute d'angle (rococo) dessinée dans 0..84 x 0..84 -->
+    <g id="corner">
+      <!-- cartouche coquille -->
+      <path fill="url(#gold)" stroke="#6f4f1c" stroke-width="1.2"
+            d="M14 14 C 40 6, 62 10, 74 26 C 60 22, 44 22, 34 32 C 26 40, 24 54, 30 72
+               C 16 64, 8 46, 8 30 C 8 22, 10 17, 14 14 Z"/>
+      <!-- acanthe qui remonte -->
+      <path fill="url(#gold)" stroke="#6f4f1c" stroke-width="1"
+            d="M30 72 C 26 52, 34 40, 50 36 C 44 46, 46 56, 56 60 C 44 64, 36 68, 30 78 Z"/>
+      <!-- petite volute enroulée -->
+      <path fill="none" stroke="#7c5a24" stroke-width="3" stroke-linecap="round"
+            d="M20 30 C 20 22, 28 20, 30 26 C 32 31, 26 33, 24 29"/>
+      <!-- perle d'angle -->
+      <circle cx="46" cy="46" r="4.5" fill="url(#gold)" stroke="#6f4f1c" stroke-width="1"/>
+      <!-- reflets -->
+      <path fill="none" stroke="rgba(255,246,214,0.7)" stroke-width="1.4"
+            d="M16 16 C 38 9, 58 13, 70 26"/>
+    </g>
+
+    <!-- motif de rail (haut) répétable : palmette centrale + molure, 84..236 x 0..84 -->
+    <g id="edge">
+      <!-- bande de molure de fond -->
+      <rect x="84" y="20" width="152" height="44" fill="url(#gold)"/>
+      <!-- filets clair/sombre -->
+      <line x1="84" y1="22" x2="236" y2="22" stroke="rgba(255,246,214,0.65)" stroke-width="1.6"/>
+      <line x1="84" y1="61" x2="236" y2="61" stroke="rgba(70,48,16,0.6)" stroke-width="2"/>
+      <!-- palmette centrale -->
+      <g stroke="#6f4f1c" stroke-width="1" fill="url(#gold)">
+        <path d="M160 12 C 150 24, 150 40, 160 52 C 170 40, 170 24, 160 12 Z"/>
+        <path d="M160 20 C 146 26, 140 38, 142 52 C 154 46, 158 34, 160 24 Z"/>
+        <path d="M160 20 C 174 26, 180 38, 178 52 C 166 46, 162 34, 160 24 Z"/>
+        <path d="M160 22 C 132 26, 120 40, 122 56 C 138 50, 150 40, 160 30 Z"/>
+        <path d="M160 22 C 188 26, 200 40, 198 56 C 182 50, 170 40, 160 30 Z"/>
+      </g>
+      <!-- rinceaux latéraux -->
+      <path fill="none" stroke="#7c5a24" stroke-width="2.4" stroke-linecap="round"
+            d="M96 44 C 112 36, 126 40, 132 50 M224 44 C 208 36, 194 40, 188 50"/>
+    </g>
+  </defs>
+
+  <!-- ===== corps du cadre (anneau) ===== -->
+  <path fill="url(#gold)" fill-rule="evenodd"
+        d="M0 0 H320 V320 H0 Z M84 84 H236 V236 H84 Z"/>
+
+  <!-- biseau extérieur : lumière en haut-gauche, ombre en bas-droite -->
+  <path fill="none" stroke="rgba(255,246,214,0.6)" stroke-width="3" d="M5 315 V5 H315"/>
+  <path fill="none" stroke="rgba(60,40,12,0.55)" stroke-width="3" d="M315 5 V315 H5"/>
+
+  <!-- gorge intérieure sombre (creux avant la vue) -->
+  <rect x="72" y="72" width="176" height="176" fill="none" stroke="url(#goldDark)" stroke-width="12"/>
+  <rect x="83" y="83" width="154" height="154" fill="none" stroke="rgba(40,26,8,0.8)" stroke-width="2"/>
+  <!-- perles autour de la vue (bead-and-reel) -->
+  <rect x="78" y="78" width="164" height="164" fill="none"
+        stroke="url(#gold)" stroke-width="5" stroke-linecap="round" stroke-dasharray="0.1 11"/>
+
+  <!-- ===== ornements : 4 rails ===== -->
+  <use href="#edge"/>
+  <use href="#edge" transform="translate(0,320) scale(1,-1)"/>
+  <use href="#edge" transform="translate(0,320) rotate(-90)"/>
+  <use href="#edge" transform="translate(320,0) rotate(90)"/>
+
+  <!-- ===== ornements : 4 coins ===== -->
+  <use href="#corner"/>
+  <use href="#corner" transform="translate(320,0) scale(-1,1)"/>
+  <use href="#corner" transform="translate(0,320) scale(1,-1)"/>
+  <use href="#corner" transform="translate(320,320) scale(-1,-1)"/>
+</svg>

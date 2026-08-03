@@ -87,10 +87,12 @@ function buildCollage(root) {
     const L = portrait ? LAYOUT_V : LAYOUT_H;
     const frames = grid(L.cols, L.rows, L.AR, L.skip);
 
-    // image assemblée large, centrée, dégagée du header
-    const cx = W / 2;                              // centre horizontal du viewport
-    const availTop = 100;
-    const availBot = H - 74;                       // bande phrase réservée
+    // plein écran (variante polaroïd) → on dégage header + légende ;
+    // intégré dans le cadre → on remplit toute la vue.
+    const full = H > window.innerHeight * 0.8;
+    const cx = W / 2;                              // centre horizontal
+    const availTop = full ? 100 : H * 0.03;
+    const availBot = full ? H - 74 : H * 0.97;
     const cy = (availTop + availBot) / 2;          // centre vertical utile
     const availH = availBot - availTop;
 
