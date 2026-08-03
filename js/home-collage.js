@@ -78,33 +78,37 @@ function buildCollage(root) {
     visible = n;
   }
 
-  /* mode CADRE : grille dense de polaroïds qui couvre toute la vue (aucun vide) */
+  /* mode CADRE : polaroïds en vrac qui couvrent toute la vue (empilés, de travers) */
   function layoutFill(W, H) {
     const cols = W < 340 ? 3 : 4;
     const cell = W / cols;
-    const rows = Math.ceil(H / cell);
+    const rows = Math.ceil(H / cell) + 1;    // +1 rangée : couvre malgré le désordre
     const IW = cols * cell;
-    const IH = rows * cell;
-    const by = (H - IH) / 2;                 // centré (léger débord haut/bas, masqué)
+    const IH = (rows - 1) * cell;
+    const by = (H - IH) / 2;
     const n = cols * rows;
     ensure(n);
     for (let i = 0; i < n; i++) {
       const el = pool[i];
       const c = i % cols, r = Math.floor(i / cols);
       const sx = c * cell, sy = r * cell;
-      const S = cell * 1.1;                   // léger chevauchement → pas de trou
+      // désordre stable (reproductible au resize)
+      const S = cell * (1.2 + hash(i * 2 + 1) * 0.22);       // fort chevauchement + tailles variées
       const off = (S - cell) / 2;
-      const b = Math.max(2, Math.round(cell * 0.03));
-      const bb = b + Math.round(cell * 0.05);
+      const jx = (hash(i * 3 + 2) - 0.5) * cell * 0.24;      // décalage aléatoire
+      const jy = (hash(i * 3 + 5) - 0.5) * cell * 0.24;
+      const rot = (hash(i * 5 + 3) - 0.5) * 16;              // ~ -8° … +8°
+      const b = Math.max(2, Math.round(cell * 0.035));
+      const bb = b + Math.round(cell * 0.07);
       el.style.borderWidth = `${b}px ${b}px ${bb}px ${b}px`;
-      el.style.left = (sx - off - b) + "px";
-      el.style.top = (by + sy - off - b) + "px";
+      el.style.left = (sx - off - b + jx) + "px";
+      el.style.top = (by + sy - off - b + jy) + "px";
       el.style.width = S + "px";
       el.style.height = S + "px";
-      el.style.zIndex = i;
+      el.style.zIndex = Math.round(hash(i * 7 + 4) * 100);   // empilement désordonné
       el.style.backgroundSize = IW + "px " + IH + "px";
       el.style.backgroundPosition = (off - sx) + "px " + (off - sy) + "px";
-      el.style.setProperty("--rot", (ROT[i % ROT.length] * 0.4).toFixed(2) + "deg");
+      el.style.setProperty("--rot", rot.toFixed(2) + "deg");
     }
   }
 
