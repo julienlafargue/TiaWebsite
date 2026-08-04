@@ -1396,7 +1396,7 @@ body.page-home .book-fab { display: none; }
   position: relative; z-index: 2;
   margin: 0;
   /* large (paysage) ; la hauteur (cadre + cartel) doit tenir dans l'écran */
-  width: min(90vw, 940px, calc((100svh - 15rem) * 1.32));
+  width: min(92vw, 1000px, calc((100svh - 14rem) * 1.62));
   /* cadre baroque doré dessiné en SVG (assets/frame.svg) */
   border-style: solid;
   border-width: clamp(30px, 6vw, 84px);
@@ -1417,7 +1417,7 @@ body.page-home .book-fab { display: none; }
 .painting__canvas {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 8 / 5;
   overflow: hidden;
   background: #e9e2d2;
 }
