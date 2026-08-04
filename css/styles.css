@@ -971,9 +971,9 @@ body.page-home .book-fab { display: none; }
    ============================================================ */
 .rack-main {
   min-height: 100svh;
-  padding: clamp(5.5rem, 12vh, 8rem) var(--gutter) clamp(2rem, 6vh, 4rem);
+  padding: clamp(5rem, 10vh, 7rem) var(--gutter) clamp(3rem, 8vh, 6rem);
   display: flex;
-  align-items: flex-start;
+  align-items: center;              /* le groupe barre+cadres centré : moins de vide */
   justify-content: center;
 }
 .rack { position: relative; width: 100%; max-width: 1180px; }
@@ -1007,21 +1007,29 @@ body.page-home .book-fab { display: none; }
 .hang {
   position: relative;
   margin-top: -14px;               /* la pince mord la barre */
-  width: clamp(170px, 24vw, 290px);
+  width: clamp(180px, 25vw, 310px);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   color: var(--ink);
   transform-origin: 50% -6px;       /* pivot AU niveau de la mâchoire de la pince */
-  transform: rotate(var(--rest, 0deg));
-  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* balancement continu, doux et permanent → jamais de retour brusque */
+  animation: hang-sway var(--sway, 5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
   will-change: transform;
 }
-/* repos : légèrement de travers, différent par cadre */
-.hang:nth-child(1) { --rest: -2.2deg; }
-.hang:nth-child(2) { --rest:  1.4deg; }
-.hang:nth-child(3) { --rest: -1.2deg; }
+/* amplitude/rythme/repos différents par cadre (aspect naturel) */
+.hang:nth-child(1) { --rest: -2deg; --amp: 1.6deg; --sway: 5.2s; --delay: -0.6s; }
+.hang:nth-child(2) { --rest:  1.4deg; --amp: 1.2deg; --sway: 4.6s; --delay: -2.1s; }
+.hang:nth-child(3) { --rest: -1.2deg; --amp: 1.8deg; --sway: 5.6s; --delay: -3.4s; }
+@keyframes hang-sway {
+  0%, 100% { transform: rotate(calc(var(--rest) - var(--amp))); }
+  50%      { transform: rotate(calc(var(--rest) + var(--amp))); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hang { animation: none; transform: rotate(var(--rest)); }
+}
 
 .hang .clip { width: clamp(38px, 4.5vw, 54px); height: auto; display: block; filter: drop-shadow(0 4px 6px rgba(40,30,15,0.4)); }
 .hang__cord { display: none; }
@@ -1032,6 +1040,8 @@ body.page-home .book-fab { display: none; }
   background: #fdfcf8;
   padding: clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px) clamp(10px, 1.4vw, 16px);
   box-shadow: 0 18px 34px -16px rgba(60,45,25,0.55), 0 3px 8px rgba(60,45,25,0.22);
+  /* le survol agit ICI (pas de conflit avec le balancement du parent) */
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 420ms var(--ease);
 }
 .hang__photo {
   display: block;
@@ -1060,24 +1070,16 @@ body.page-home .book-fab { display: none; }
   color: rgba(var(--ink-rgb), 0.55);
 }
 
-/* survol : on « pousse » le cadre, il oscille et se stabilise (pendule amorti) */
-.hang:hover, .hang:focus-visible {
-  animation: swing-in 2.6s cubic-bezier(0.28, 0.9, 0.3, 1) both;
-  z-index: 3;
+/* survol : le cadre se soulève et grossit légèrement (sur l'élément interne) */
+.hang:hover, .hang:focus-visible { z-index: 3; }
+.hang:hover .hang__frame,
+.hang:focus-visible .hang__frame {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 30px 48px -18px rgba(60,45,25,0.6), 0 6px 14px rgba(60,45,25,0.3);
 }
-.hang:hover .hang__photo { filter: saturate(1.08) brightness(1.04); }
-@keyframes swing-in {
-  0%   { transform: rotate(var(--rest)); }
-  12%  { transform: rotate(calc(var(--rest) + 6deg)); }
-  30%  { transform: rotate(calc(var(--rest) - 4.2deg)); }
-  48%  { transform: rotate(calc(var(--rest) + 2.6deg)); }
-  66%  { transform: rotate(calc(var(--rest) - 1.5deg)); }
-  82%  { transform: rotate(calc(var(--rest) + 0.7deg)); }
-  100% { transform: rotate(var(--rest)); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hang:hover, .hang:focus-visible { animation: none; transform: rotate(var(--rest)) translateY(-4px); }
-}
+.hang:hover .hang__photo { filter: saturate(1.08) brightness(1.05); }
+/* léger ralenti du balancement au survol pour viser plus facilement */
+.hang:hover, .hang:focus-visible { animation-duration: 7s; }
 
 @media (max-width: 760px) {
   .rack__items { flex-direction: column; align-items: center; gap: 2.5rem; }
@@ -1192,8 +1194,33 @@ body.page-home .book-fab { display: none; }
   /* opacité pilotée par js/series.js (rAF) */
 }
 
+/* flèches gauche / droite */
+.series__nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 7;
+  width: clamp(44px, 4vw, 58px); height: clamp(44px, 4vw, 58px);
+  display: grid; place-items: center;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid rgba(var(--ink-rgb), 0.28);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 8px 18px -8px rgba(40,25,8,0.4);
+  transition: background 200ms var(--ease), color 200ms var(--ease),
+              border-color 200ms var(--ease), transform 200ms var(--ease);
+}
+.series__nav svg { width: 46%; height: 46%; }
+.series__nav:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.series__nav--prev { left: clamp(0.6rem, 4vw, 3rem); }
+.series__nav--next { right: clamp(0.6rem, 4vw, 3rem); }
+.series__nav:disabled { opacity: 0.25; pointer-events: none; }
+/* masquées quand une photo est ouverte */
+.series.is-open .series__nav { opacity: 0; pointer-events: none; }
+
 @media (max-width: 860px) {
   .series__stage { width: 94vw; height: 52vh; }
+  .series__nav--prev { left: 0.5rem; }
+  .series__nav--next { right: 0.5rem; }
   .series__detail {
     top: auto; bottom: clamp(1rem, 4vh, 2rem); right: 0; left: 0;
     transform: none; width: auto; padding: 0 var(--gutter);
@@ -1218,10 +1245,10 @@ body.page-home .book-fab { display: none; }
   grid-template-columns: 1fr 1fr;
   width: min(96vw, 1120px);
   aspect-ratio: 16 / 11.4;
-  background: #faf7ef;
+  background: #f4efe3;                 /* même famille beige que le reste du site */
   box-shadow:
-    0 40px 80px -30px rgba(50,38,20,0.55),
-    0 10px 24px -12px rgba(50,38,20,0.4);
+    0 40px 80px -30px rgba(50,38,20,0.4),
+    0 10px 24px -12px rgba(50,38,20,0.28);
   border-radius: 3px;
 }
 /* légère ouverture en pupitre */
@@ -1368,14 +1395,15 @@ body.page-home .book-fab { display: none; }
 .painting {
   position: relative; z-index: 2;
   margin: 0;
-  width: min(62vw, calc((100svh - 14rem) * 0.86));
-  max-width: 500px;
+  /* plus large sur desktop : on remplit davantage l'écran */
+  width: min(76vw, calc((100svh - 11rem) * 0.9));
+  max-width: 720px;
   /* cadre baroque doré dessiné en SVG (assets/frame.svg) */
   border-style: solid;
-  border-width: clamp(30px, 7vw, 74px);
+  border-width: clamp(34px, 8vw, 104px);
   border-image: url("../assets/frame.svg") 84 round;
   /* ombre portée du tableau sur le mur */
-  filter: drop-shadow(0 30px 42px rgba(40,25,8,0.5));
+  filter: drop-shadow(0 34px 50px rgba(40,25,8,0.5));
   background: #f3eee1;
 }
 /* passe-partout crème entre le cadre et la mosaïque */

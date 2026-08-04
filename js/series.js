@@ -36,11 +36,12 @@ function build() {
     b.innerHTML = `<img src="${p.src}" alt="${p.title}" loading="lazy" draggable="false" />`;
     b.addEventListener("click", () => {
       if (i === Math.round(pos)) toggleOpen(!open);
-      else { target = i; if (open) { current = i; renderDetail(); } }
+      else { target = i; if (open) { current = i; renderDetail(); } updateNav(); }
     });
     stage.appendChild(b);
     slides.push(b);
   });
+  updateNav();
   requestAnimationFrame(frame);
 }
 
@@ -106,7 +107,18 @@ function toggleOpen(v) {
 function move(d) {
   target = Math.max(0, Math.min(slides.length - 1, Math.round(target) + d));
   if (open) { current = target; renderDetail(); }
+  updateNav();
 }
+
+/* ---- navigation : flèches gauche / droite ---- */
+const prevBtn = document.querySelector("[data-prev]");
+const nextBtn = document.querySelector("[data-next]");
+function updateNav() {
+  if (prevBtn) prevBtn.disabled = target <= 0;
+  if (nextBtn) nextBtn.disabled = target >= slides.length - 1;
+}
+if (prevBtn) prevBtn.addEventListener("click", () => move(-1));
+if (nextBtn) nextBtn.addEventListener("click", () => move(1));
 
 /* ---- navigation ---- */
 let acc = 0, wheelLock = false;
