@@ -16,6 +16,8 @@ const stage = document.querySelector("[data-stage]");
 const detail = document.querySelector("[data-detail]");
 const root = document.querySelector("[data-series]");
 const titleEl = document.querySelector("[data-series-title]");
+const hintEl = document.querySelector(".series__hint");
+const backEl = document.querySelector(".series__back");
 
 const slides = [];
 let pos = 0;        // position continue (fractionnaire)
@@ -74,8 +76,11 @@ function render() {
   // panneau description piloté aussi par le rAF (évite une transition CSS figée)
   detail.style.opacity = String(openAmt);
   detail.style.pointerEvents = openAmt > 0.6 ? "auto" : "none";
-  // la légende du bas et le titre s'estompent à l'ouverture
-  document.querySelector(".series__hint").style.opacity = String(1 - openAmt);
+  // titre, lien retour et légende s'effacent à l'ouverture (l'image ne passe plus « sous » le titre)
+  const fade = String(1 - openAmt);
+  if (hintEl) hintEl.style.opacity = fade;
+  if (titleEl) titleEl.style.opacity = fade;
+  if (backEl) { backEl.style.opacity = fade; backEl.style.pointerEvents = openAmt > 0.4 ? "none" : "auto"; }
 }
 
 function frame() {

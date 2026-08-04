@@ -1112,7 +1112,7 @@ body.page-home .book-fab { display: none; }
   letter-spacing: -0.03em;
   font-size: clamp(2rem, 6vw, 4rem);
   line-height: 1; margin: 0.4rem 0 0;
-  transition: opacity 320ms var(--ease);
+  /* opacité pilotée par js/series.js (rAF) */
 }
 
 /* la scène 3D */
@@ -1375,8 +1375,8 @@ body.page-home .book-fab { display: none; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.9rem, 2.5vh, 1.8rem);
-  padding: clamp(5.5rem, 11vh, 7.5rem) var(--gutter) clamp(2rem, 5vh, 3.5rem);
+  gap: clamp(0.7rem, 2vh, 1.4rem);
+  padding: clamp(4.5rem, 9vh, 6rem) var(--gutter) clamp(1.5rem, 4vh, 3rem);
   overflow: hidden;
   /* mur de galerie : beige un peu plus dense + halo de projecteur en haut */
   background:
@@ -1391,16 +1391,15 @@ body.page-home .book-fab { display: none; }
   filter: blur(6px);
 }
 
-/* le cadre doré */
+/* le cadre doré — format PAYSAGE (large), pas haut */
 .painting {
   position: relative; z-index: 2;
   margin: 0;
-  /* plus large sur desktop : on remplit davantage l'écran */
-  width: min(76vw, calc((100svh - 11rem) * 0.9));
-  max-width: 720px;
+  /* large (paysage) ; la hauteur (cadre + cartel) doit tenir dans l'écran */
+  width: min(90vw, 940px, calc((100svh - 15rem) * 1.32));
   /* cadre baroque doré dessiné en SVG (assets/frame.svg) */
   border-style: solid;
-  border-width: clamp(34px, 8vw, 104px);
+  border-width: clamp(30px, 6vw, 84px);
   border-image: url("../assets/frame.svg") 84 round;
   /* ombre portée du tableau sur le mur */
   filter: drop-shadow(0 34px 50px rgba(40,25,8,0.5));
@@ -1414,13 +1413,17 @@ body.page-home .book-fab { display: none; }
   background: #f3eee1;
   box-shadow: 0 2px 7px rgba(0,0,0,0.28) inset;
 }
-/* la « toile » = fenêtre qui contient la mosaïque de polaroïds */
+/* la « toile » = fenêtre qui contient la mosaïque de polaroïds (paysage) */
 .painting__canvas {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #e9e2d2;
+}
+@media (max-width: 620px) {
+  /* portrait sur mobile pour rester grand */
+  .painting__canvas { aspect-ratio: 3 / 4; }
 }
 
 /* cartel en laiton */
