@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initReveal();
   initGrainDrift();
-  initBookFab();
+  /* FAB « Book a shoot » retiré (voir Services dans la nav) */
   initScrollCue();
   initSmoothScroll();
 });
