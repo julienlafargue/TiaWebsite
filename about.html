@@ -8,12 +8,12 @@
   <meta name="theme-color" content="#07080D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Dancing+Script:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
   
   <link rel="stylesheet" href="css/reset.css?v=12" />
-  <link rel="stylesheet" href="css/tokens.css?v=12" />
+  <link rel="stylesheet" href="css/tokens.css?v=14" />
   <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=12" />
+  <link rel="stylesheet" href="css/styles.css?v=44" />
 </head>
 <body class="page-about">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -26,107 +26,64 @@
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
     </div>
     <nav class="nav-links" id="nav-links" aria-label="Main navigation">
-      <a href="work.html" data-i18n="nav.work">Gallery</a>
+      <a href="work.html" data-i18n="nav.work">Portfolio</a>
       <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
-      <a href="process.html" data-i18n="nav.process">Process</a>
-      <a href="booking.html" data-i18n="nav.booking">Booking</a>
+      <a href="services.html" data-i18n="nav.booking">Services</a>
     </nav>
   </header>
 
-  <main id="main" class="wrap pad-block">
-    <p class="zine-masthead reveal">THE TIA-LANA TIMES — N°1 · PARIS · ALL THE NEWS THAT FITS</p>
-    <h1 class="ransom reveal" aria-label="About">
-      <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
-    </h1>
+  <main id="main" class="mag-main">
+    <h1 class="sr-only">About — Tia-Lana Chinapyel</h1>
 
-    <div class="grid12 stack-lg">
-      <figure class="polaroid rot-n2 reveal col-span-5">
-        <svg class="paperclip" viewBox="0 0 34 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M22 14v36a9 9 0 0 1-18 0V12a6 6 0 0 1 12 0v34a3 3 0 0 1-6 0V16"
-                stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <img src="img/photography/pro/photo-b.png" alt="Polaroid: portrait of Tia-Lana on set." width="600" height="750" />
-        <figcaption>Tia-Lana · on the fly · 35mm</figcaption>
-      </figure>
+    <!-- MAGAZINE OUVERT : double page, reliure centrale -->
+    <article class="zine" aria-label="Magazine — About Tia-Lana">
+      <!-- PAGE GAUCHE : grande photo + folio -->
+      <section class="zine__page zine__page--left">
+        <span class="zine__folio">TIA-LANA — ISSUE 01</span>
+        <figure class="zine__cover">
+          <img src="img/photography/pro/photo-b.png" alt="Portrait of Tia-Lana on set, 35mm." />
+        </figure>
+        <p class="zine__caption">Tia-Lana Chinapyel · Paris · 35mm</p>
+      </section>
 
-      <div class="col-span-7 reveal">
-        <p class="lead two-col">
-          <strong>Tia-Lana Chinapyel.</strong>
-          I make images. Sometimes I capture them, sometimes I invent them.
-          Photographer in the morning, art director in the afternoon — and the other way around the next day.
-          <br /><br />
-          I work between portrait, editorial and film posters. I like brands that have
-          something to say and faces that don't lie. It all starts with a notebook, a location
-          scout, an idea jotted down too fast.
-        </p>
+      <!-- reliure -->
+      <span class="zine__spine" aria-hidden="true"></span>
 
-        <hr class="hr-blue" />
+      <!-- PAGE DROITE : le texte / l'interview -->
+      <section class="zine__page zine__page--right">
+        <p class="zine__kicker">About · Interview</p>
+        <h2 class="zine__headline">Photographer<br />&amp; art director</h2>
+        <p class="zine__byline">Paris — since 2017</p>
 
-        <p class="meta">
-          BASED IN PARIS · LOVES GRAIN, NEON, 35MM · CURIOUS MIND · ALWAYS BUILDING…
-        </p>
-
-        <blockquote class="quote rot-p1" style="margin-top:2rem">
-          “A good image is a well-framed secret.”
-        </blockquote>
-      </div>
-    </div>
-
-    <!-- ============ CONTACT + COLOPHON (fusionné) ============ -->
-    <section id="contact" class="reveal" style="margin-top:7rem" aria-labelledby="contact-title">
-      <div class="section-head" style="margin-bottom:2.5rem">
-        <div class="stack">
-          <span class="eyebrow" data-i18n="contact.eyebrow">Colophon</span>
-          <h2 id="contact-title" data-i18n="contact.title">Let's talk?</h2>
-        </div>
-      </div>
-
-      <div class="grid12 stack-lg">
-        <div class="col-span-6 stack-lg">
-          <div class="stack">
-            <span class="eyebrow">Email</span>
-            <a class="quote" href="mailto:hello@tia-lana.example">hello@tia-lana.example</a>
-          </div>
-          <div class="stack">
-            <span class="eyebrow">Instagram</span>
-            <a class="lead" href="https://instagram.com/" target="_blank" rel="noopener" data-no-transition>@tia-lana.[TODO]</a>
-          </div>
-          <div class="stack">
-            <span class="eyebrow">Elsewhere</span>
-            <p class="meta">[TODO: BEHANCE] · [TODO: VIMEO] · [TODO: LINKEDIN]</p>
-          </div>
-          <a class="cta" href="booking.html" data-i18n="contact.cta">Book a shoot →</a>
+        <div class="zine__columns">
+          <p><span class="zine__drop">I</span> make images. Sometimes I capture them, sometimes I invent them.
+          Photographer in the morning, art director in the afternoon — and the other way
+          around the next day.</p>
+          <p>I work between portrait, headshot and design. I like brands that have something
+          to say and faces that don't lie. It all starts with a notebook, a location scout,
+          an idea jotted down too fast.</p>
+          <p>Based in Paris. In love with grain, neon and 35mm. A curious mind, always building.</p>
         </div>
 
-        <aside class="col-span-6" style="border-left:2px solid var(--blue);padding-left:2rem">
-          <h3 style="margin-bottom:1.5rem">Colophon</h3>
-          <p class="meta stack" style="line-height:2">
-            TIA-LANA CHINAPYEL<br />
-            PARIS · 2026<br />
-            SET IN SYNE &amp; SPACE GROTESK<br />
-            DETAILS IN SPACE MONO<br />
-            PALETTE — INK, PAPER, ELECTRIC BLUE<br />
-            GRAIN — HOUSE-MADE · 100% HANDMADE<br />
-            BUILT WITH HTML · CSS · A LITTLE JS<br />
-            NO TRACKERS · NO COOKIES · JUST IMAGES
-          </p>
-          <blockquote class="quote rot-p1" style="margin-top:2rem">“Thanks for looking.”</blockquote>
-        </aside>
-      </div>
-    </section>
+        <blockquote class="zine__pull">“A good image is a well-framed secret.”</blockquote>
+
+        <dl class="zine__facts">
+          <div><dt>Based</dt><dd>Paris, FR</dd></div>
+          <div><dt>Work</dt><dd>Portrait · Headshot · Design</dd></div>
+          <div><dt>Since</dt><dd>2017</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:hello@tia-lana.example">hello@tia-lana.example</a></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://instagram.com/" target="_blank" rel="noopener" data-no-transition>@tia-lana</a></dd></div>
+        </dl>
+
+        <a class="cta zine__cta" href="services.html" data-i18n="contact.cta">Book a shoot →</a>
+        <span class="zine__pageno">1</span>
+      </section>
+    </article>
   </main>
 
-  <footer class="site-footer wrap">
-    <div class="grid12">
-      <p class="footer-brand col-span-6" data-i18n="footer.brand">TIA-LANA — PARIS</p>
-      <p class="meta col-span-6" style="text-align:right" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script type="module" src="js/i18n.js?v=7"></script>
-  <script type="module" src="js/main.js?v=7"></script>
-  <script type="module" src="js/cursor.js?v=7"></script>
-  <script type="module" src="js/transitions.js?v=7"></script>
+  <script type="module" src="js/i18n.js?v=10"></script>
+  <script type="module" src="js/main.js?v=11"></script>
+  <script type="module" src="js/cursor.js?v=11"></script>
+  <script type="module" src="js/transitions.js?v=11"></script>
 </body>
 </html>
