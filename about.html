@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=14" />
   <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=44" />
+  <link rel="stylesheet" href="css/styles.css?v=47" />
 </head>
 <body class="page-about">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -32,58 +32,158 @@
     </nav>
   </header>
 
-  <main id="main" class="mag-main">
-    <h1 class="sr-only">About — Tia-Lana Chinapyel</h1>
+  <main id="main" class="book-main">
+    <h1 class="sr-only">About — Tia-Lana Chinapyel — a magazine you can flip through</h1>
 
-    <!-- MAGAZINE OUVERT : double page, reliure centrale -->
-    <article class="zine" aria-label="Magazine — About Tia-Lana">
-      <!-- PAGE GAUCHE : grande photo + folio -->
-      <section class="zine__page zine__page--left">
-        <span class="zine__folio">TIA-LANA — ISSUE 01</span>
-        <figure class="zine__cover">
-          <img src="img/photography/pro/photo-b.png" alt="Portrait of Tia-Lana on set, 35mm." />
-        </figure>
-        <p class="zine__caption">Tia-Lana Chinapyel · Paris · 35mm</p>
-      </section>
+    <!-- MAGAZINE FEUILLETABLE (js/book.js) -->
+    <div class="book" data-book aria-label="About — flip through the pages">
 
-      <!-- reliure -->
-      <span class="zine__spine" aria-hidden="true"></span>
-
-      <!-- PAGE DROITE : le texte / l'interview -->
-      <section class="zine__page zine__page--right">
-        <p class="zine__kicker">About · Interview</p>
-        <h2 class="zine__headline">Photographer<br />&amp; art director</h2>
-        <p class="zine__byline">Paris — since 2017</p>
-
-        <div class="zine__columns">
-          <p><span class="zine__drop">I</span> make images. Sometimes I capture them, sometimes I invent them.
-          Photographer in the morning, art director in the afternoon — and the other way
-          around the next day.</p>
-          <p>I work between portrait, headshot and design. I like brands that have something
-          to say and faces that don't lie. It all starts with a notebook, a location scout,
-          an idea jotted down too fast.</p>
-          <p>Based in Paris. In love with grain, neon and 35mm. A curious mind, always building.</p>
+      <!-- page fixe DE GAUCHE (visible au début) -->
+      <div class="page page-base page-base--left">
+        <div class="page__inner page--titlepage">
+          <span class="page__folio">TIA-LANA · ISSUE 01</span>
+          <p class="page__stamp">The<br>Portfolio<br>Issue</p>
+          <span class="page__foot">Paris · 2026</span>
         </div>
+      </div>
 
-        <blockquote class="zine__pull">“A good image is a well-framed secret.”</blockquote>
+      <!-- page fixe DE DROITE (visible à la fin) -->
+      <div class="page page-base page-base--right">
+        <div class="page__inner page--end">
+          <p class="page__kicker">Colophon</p>
+          <p class="page__end-note">Set in Archivo &amp; Space Grotesk.<br>Details in Space Mono.<br>Grain, house-made.</p>
+          <blockquote class="page__quote">“Thanks for looking.”</blockquote>
+          <span class="page__foot">— T.L.</span>
+        </div>
+      </div>
 
-        <dl class="zine__facts">
-          <div><dt>Based</dt><dd>Paris, FR</dd></div>
-          <div><dt>Work</dt><dd>Portrait · Headshot · Design</dd></div>
-          <div><dt>Since</dt><dd>2017</dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:hello@tia-lana.example">hello@tia-lana.example</a></dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://instagram.com/" target="_blank" rel="noopener" data-no-transition>@tia-lana</a></dd></div>
-        </dl>
+      <!-- FEUILLES qui se tournent (recto + verso) -->
+      <!-- Feuille 1 : COUVERTURE magazine (recto) / BIO (verso) -->
+      <div class="leaf" data-leaf>
+        <div class="leaf__face leaf__face--front mag-cover">
+          <img class="mag-cover__bg" src="img/photography/pro/photo-b.png" alt="Portrait of Tia-Lana, 35mm." />
+          <div class="mag-cover__grid">
+            <div class="mag-cover__top">
+              <span class="mag-cover__issue">Issue 01 · Paris · 2026</span>
+              <h2 class="mag-cover__logo">TIA-<br>LANA</h2>
+            </div>
+            <ul class="mag-cover__lines">
+              <li><b>The portrait</b> that breaks the rules</li>
+              <li>Inside the studio — p.03</li>
+              <li>Headshots that <b>don't lie</b></li>
+              <li>+ posters, brand &amp; grain</li>
+            </ul>
+            <span class="mag-cover__foot">Photographer &amp; art director · turn the page →</span>
+          </div>
+        </div>
+        <div class="leaf__face leaf__face--back">
+          <div class="page__inner">
+            <div class="mag-head"><span>Tia-Lana Magazine</span><span>About · 02</span></div>
+            <span class="page__kicker">The interview</span>
+            <h3 class="mag-headline">Making images,<br>morning &amp; night.</h3>
+            <p class="mag-byline">Words — Tia-Lana · Photographs — the studio</p>
+            <div class="mag-columns">
+              <p><span class="mag-drop">I</span> make images. Sometimes I capture them, sometimes I invent
+              them. Photographer in the morning, art director in the afternoon — and the other way
+              around the next day.</p>
+              <p>I work between portrait, headshot and design. I like brands that have something to
+              say and faces that don't lie. It starts with a notebook, a location scout, an idea
+              jotted down too fast.</p>
+              <p>Based in Paris, in love with grain, neon and 35mm. A curious mind, always building.</p>
+            </div>
+            <blockquote class="page__quote">“A good image is a well-framed secret.”</blockquote>
+            <span class="page__pageno">2</span>
+          </div>
+        </div>
+      </div>
 
-        <a class="cta zine__cta" href="services.html" data-i18n="contact.cta">Book a shoot →</a>
-        <span class="zine__pageno">1</span>
-      </section>
-    </article>
+      <!-- Feuille 2 : CARRIÈRE (recto) / SAVOIR-FAIRE (verso) -->
+      <div class="leaf" data-leaf>
+        <div class="leaf__face leaf__face--front">
+          <div class="page__inner">
+            <div class="mag-head"><span>Career</span><span>03</span></div>
+            <span class="page__kicker">The résumé</span>
+            <h3 class="mag-headline">The career<br>so far.</h3>
+            <figure class="mag-figure">
+              <img src="img/photography/pro/photo-t.png" alt="On location at dawn." />
+              <figcaption>On location, 7am — half the job is being there.</figcaption>
+            </figure>
+            <ul class="page__timeline">
+              <li><span class="page__year">2017</span><span>Founded the studio — Paris.</span></li>
+              <li><span class="page__year">2019</span><span>First film-poster commissions.</span></li>
+              <li><span class="page__year">2021</span><span>Editorial &amp; brand direction.</span></li>
+              <li><span class="page__year">2023</span><span>Portrait series &amp; exhibitions.</span></li>
+              <li><span class="page__year">2026</span><span>Studio, full art direction.</span></li>
+            </ul>
+            <span class="page__pageno">3</span>
+          </div>
+        </div>
+        <div class="leaf__face leaf__face--back">
+          <div class="page__inner">
+            <div class="mag-head"><span>Craft</span><span>04</span></div>
+            <span class="page__kicker">What she actually does</span>
+            <h3 class="mag-headline">Three ways<br>to look.</h3>
+            <dl class="page__skills">
+              <div><dt>Portrait</dt><dd>Editorial &amp; personal, shot on 35mm.</dd></div>
+              <div><dt>Headshot</dt><dd>Studio — clean, honest, timeless.</dd></div>
+              <div><dt>Design</dt><dd>Posters, brand systems, editions.</dd></div>
+              <div><dt>Tools</dt><dd>35mm · medium format · print.</dd></div>
+            </dl>
+            <blockquote class="page__quote">“Direct, wait, miss, start again, catch the instant.”</blockquote>
+            <span class="page__pageno">4</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feuille 3 : SÉLECTION planche-contact (recto) / CONTACT (verso) -->
+      <div class="leaf" data-leaf>
+        <div class="leaf__face leaf__face--front">
+          <div class="page__inner">
+            <div class="mag-head"><span>Selected</span><span>05</span></div>
+            <span class="page__kicker">The contact sheet</span>
+            <h3 class="mag-headline">On the wall.</h3>
+            <div class="mag-sheet">
+              <figure><img src="img/photography/pro/photo-c.png" alt=""><figcaption>Rooftop · Paris</figcaption></figure>
+              <figure><img src="img/photography/pro/photo-g.png" alt=""><figcaption>Headshot · studio</figcaption></figure>
+              <figure><img src="img/photography/pro/photo-u.png" alt=""><figcaption>Poster · Henry</figcaption></figure>
+              <figure><img src="img/photography/pro/photo-q.png" alt=""><figcaption>Editorial · red</figcaption></figure>
+            </div>
+            <span class="page__pageno">5</span>
+          </div>
+        </div>
+        <div class="leaf__face leaf__face--back">
+          <div class="page__inner page--contact">
+            <div class="mag-head"><span>Contact</span><span>06</span></div>
+            <span class="page__kicker">Last page</span>
+            <h3 class="mag-headline mag-headline--xl">Get in<br>touch.</h3>
+            <dl class="page__skills">
+              <div><dt>Email</dt><dd><a href="mailto:hello@tia-lana.example">hello@tia-lana.example</a></dd></div>
+              <div><dt>Instagram</dt><dd><a href="https://instagram.com/" target="_blank" rel="noopener" data-no-transition>@tia-lana</a></dd></div>
+              <div><dt>Based</dt><dd>Paris, FR</dd></div>
+            </dl>
+            <a class="cta" href="services.html" data-i18n="contact.cta">Book a shoot →</a>
+            <span class="page__pageno">6</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="book__spine" aria-hidden="true"></span>
+    </div>
+
+    <!-- flèches feuilleter -->
+    <button class="book__nav book__nav--prev" data-book-prev type="button" aria-label="Previous page">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="book__nav book__nav--next" data-book-next type="button" aria-label="Next page">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="book__hint">Flip through · use the arrows</p>
   </main>
 
-  <script type="module" src="js/i18n.js?v=10"></script>
+  <script type="module" src="js/i18n.js?v=11"></script>
   <script type="module" src="js/main.js?v=11"></script>
   <script type="module" src="js/cursor.js?v=11"></script>
   <script type="module" src="js/transitions.js?v=11"></script>
+  <script type="module" src="js/book.js?v=1"></script>
 </body>
 </html>
