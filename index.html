@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=14" />
   <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=45" />
+  <link rel="stylesheet" href="css/styles.css?v=47" />
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -45,10 +45,10 @@
       <span class="museum__light" aria-hidden="true"></span>
 
       <figure class="painting">
-        <span class="painting__mat">
-          <!-- mosaïque de polaroïds DANS le cadre (js/home-collage.js) -->
-          <span class="painting__canvas" data-collage aria-label="Selected work — changing"></span>
-        </span>
+        <!-- mosaïque de polaroïds dans l'ouverture du cadre (js/home-collage.js) -->
+        <span class="painting__canvas" data-collage aria-label="Selected work — changing"></span>
+        <!-- vrai cadre doré (image détourée) posé par-dessus -->
+        <img class="painting__frame" src="img/home/cadre.png" alt="" aria-hidden="true" />
       </figure>
 
       <figcaption class="plaque">
@@ -62,17 +62,6 @@
   <script type="module" src="js/main.js?v=11"></script>
   <script type="module" src="js/cursor.js?v=11"></script>
   <script type="module" src="js/transitions.js?v=11"></script>
-  <script type="module" src="js/home-collage.js?v=15"></script>
-  <!-- utilise assets/cadre.png comme cadre s'il est présent, sinon garde le cadre SVG -->
-  <script>
-    (function () {
-      var img = new Image();
-      img.onload = function () {
-        var p = document.querySelector(".painting");
-        if (p) p.classList.add("has-cadre");
-      };
-      img.src = "assets/cadre.png";
-    })();
-  </script>
+  <script type="module" src="js/home-collage.js?v=16"></script>
 </body>
 </html>
