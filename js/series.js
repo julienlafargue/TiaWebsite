@@ -1,7 +1,6 @@
 /* ============================================================
-   series.js — carrousel 3D fluide (boucle rAF, position continue).
-   - Photos en perspective ; molette / drag / flèches
-   - Clic sur la photo centrale : elle s'agrandit + description à droite
+   series.js — page série : grille éditoriale asymétrique
+   + lightbox maison (← → Échap, swipe, compteur).
    ============================================================ */
 import { SERIES, SERIES_ORDER } from "./photos.js?v=1";
 
@@ -10,153 +9,79 @@ const key = (() => {
   return SERIES_ORDER.includes(c) ? c : SERIES_ORDER[0];
 })();
 const data = SERIES[key];
-const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const photos = data.photos;
 
-const stage = document.querySelector("[data-stage]");
-const detail = document.querySelector("[data-detail]");
-const root = document.querySelector("[data-series]");
+/* rythme asymétrique : classes de taille + décalage vertical */
+const PATTERN = ["--wide", "--narrow", "", "--push", "--narrow", "--wide --push"];
+
+const gallery = document.querySelector("[data-gallery]");
 const titleEl = document.querySelector("[data-series-title]");
-const hintEl = document.querySelector(".series__hint");
-const backEl = document.querySelector(".series__back");
-
-const slides = [];
-let pos = 0;        // position continue (fractionnaire)
-let target = 0;     // index visé (entier)
-let openAmt = 0;    // 0 = fermé, 1 = ouvert (continu)
-let open = false;
-let current = 0;
+const metaEl = document.querySelector("[data-series-meta]");
 
 function build() {
   titleEl.textContent = data.label;
+  metaEl.textContent = data.meta;
   document.title = `${data.label} — TIA-LANA`;
 
-  data.photos.forEach((p, i) => {
-    const b = document.createElement("button");
-    b.className = "slide";
-    b.type = "button";
-    b.setAttribute("aria-label", p.title);
-    b.innerHTML = `<img src="${p.src}" alt="${p.title}" loading="lazy" draggable="false" />`;
-    b.addEventListener("click", () => {
-      if (i === Math.round(pos)) toggleOpen(!open);
-      else { target = i; if (open) { current = i; renderDetail(); } updateNav(); }
-    });
-    stage.appendChild(b);
-    slides.push(b);
+  photos.forEach((p, i) => {
+    const fig = document.createElement("figure");
+    const mods = PATTERN[i % PATTERN.length].trim().split(/\s+/).filter(Boolean);
+    fig.className = ["gallery__fig", ...mods.map((m) => "gallery__fig" + m)].join(" ");
+    fig.innerHTML =
+      `<img src="${p.src}" alt="${p.title}" loading="lazy" decoding="async" />` +
+      `<figcaption class="gallery__cap">${String(i + 1).padStart(2, "0")} · ${p.title}</figcaption>`;
+    fig.addEventListener("click", () => open(i));
+    gallery.appendChild(fig);
   });
-  updateNav();
-  requestAnimationFrame(frame);
 }
 
-/* rendu d'une frame : chaque photo placée selon son écart (fractionnaire) au centre */
+/* ---- lightbox ---- */
+const lb = document.querySelector("[data-lightbox]");
+const lbImg = lb.querySelector("[data-lb-img]");
+const lbTitle = lb.querySelector("[data-lb-title]");
+const lbDesc = lb.querySelector("[data-lb-desc]");
+const lbCount = lb.querySelector("[data-lb-count]");
+let idx = 0;
+
 function render() {
-  const n = slides.length;
-  const spacing = 30 + openAmt * 16;      // écartement horizontal (%)
-  for (let i = 0; i < n; i++) {
-    const el = slides[i];
-    const off = i - pos;                  // écart continu
-    const a = Math.abs(off);
-    const x = off * spacing;
-    const rot = Math.max(-44, Math.min(44, -off * 24)) * (1 - openAmt * 0.6);
-    const z = -a * (140 + openAmt * 120);
-    const isCenter = a < 0.5;
-    const grow = isCenter ? openAmt * 0.42 : 0;   // la centrale grossit à l'ouverture
-    const sc = (off === 0 ? 1 : Math.max(0.55, 0.86 - a * 0.04)) * (1 - (isCenter ? 0 : openAmt * 0.35)) + grow;
-    el.style.transform =
-      `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${rot}deg) scale(${sc})`;
-    el.style.opacity = a > 3.2 ? "0" : String(Math.max(0, 1 - a * 0.16 - (isCenter ? 0 : openAmt * 0.6)));
-    el.style.zIndex = String(60 - Math.round(a * 10));
-    el.style.pointerEvents = a > 3.2 ? "none" : "auto";
-    el.classList.toggle("is-current", isCenter);
-  }
-  const narrow = window.innerWidth < 860;
-  const shift = narrow ? `translateY(${-openAmt * 20}%) scale(${1 - openAmt * 0.18})`
-                       : `translateX(${-openAmt * 22}%)`;
-  stage.style.transform = `translate(-50%, -50%) ${shift}`;
-  root.classList.toggle("is-open", openAmt > 0.5);
-  // panneau description piloté aussi par le rAF (évite une transition CSS figée)
-  detail.style.opacity = String(openAmt);
-  detail.style.pointerEvents = openAmt > 0.6 ? "auto" : "none";
-  // titre, lien retour et légende s'effacent à l'ouverture (l'image ne passe plus « sous » le titre)
-  const fade = String(1 - openAmt);
-  if (hintEl) hintEl.style.opacity = fade;
-  if (titleEl) titleEl.style.opacity = fade;
-  if (backEl) { backEl.style.opacity = fade; backEl.style.pointerEvents = openAmt > 0.4 ? "none" : "auto"; }
+  const p = photos[idx];
+  lbImg.src = p.src;
+  lbImg.alt = p.title;
+  lbTitle.textContent = p.title;
+  lbDesc.textContent = p.desc;
+  lbCount.textContent = `${String(idx + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`;
 }
-
-function frame() {
-  const k = reduce ? 1 : 0.16;
-  pos += (target - pos) * k;
-  openAmt += ((open ? 1 : 0) - openAmt) * (reduce ? 1 : 0.18);
-  if (Math.abs(target - pos) < 0.001) pos = target;
-  if (Math.abs((open ? 1 : 0) - openAmt) < 0.001) openAmt = open ? 1 : 0;
-  render();
-  requestAnimationFrame(frame);
+function open(i) {
+  idx = i; render();
+  lb.classList.add("open");
+  document.body.style.overflow = "hidden";
 }
-
-function renderDetail() {
-  const p = data.photos[current];
-  detail.innerHTML = `
-    <p class="series__meta">${data.meta} · ${String(current + 1).padStart(2, "0")}/${String(data.photos.length).padStart(2, "0")}</p>
-    <h2 class="series__ph-title">${p.title}</h2>
-    <p class="series__desc">${p.desc}</p>
-    <button class="series__close" type="button" data-close>✕ <span data-i18n="series.close">Close</span></button>`;
-  detail.querySelector("[data-close]").addEventListener("click", () => toggleOpen(false));
+function close() {
+  lb.classList.remove("open");
+  document.body.style.overflow = "";
 }
+function go(d) { idx = (idx + d + photos.length) % photos.length; render(); }
 
-function toggleOpen(v) {
-  open = v;
-  if (open) { current = Math.round(pos); target = current; renderDetail(); }
-  else detail.innerHTML = "";
-}
-
-function move(d) {
-  target = Math.max(0, Math.min(slides.length - 1, Math.round(target) + d));
-  if (open) { current = target; renderDetail(); }
-  updateNav();
-}
-
-/* ---- navigation : flèches gauche / droite ---- */
-const prevBtn = document.querySelector("[data-prev]");
-const nextBtn = document.querySelector("[data-next]");
-function updateNav() {
-  if (prevBtn) prevBtn.disabled = target <= 0;
-  if (nextBtn) nextBtn.disabled = target >= slides.length - 1;
-}
-if (prevBtn) prevBtn.addEventListener("click", () => move(-1));
-if (nextBtn) nextBtn.addEventListener("click", () => move(1));
-
-/* ---- navigation ---- */
-let acc = 0, wheelLock = false;
-stage.addEventListener("wheel", (e) => {
-  e.preventDefault();
-  acc += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-  if (!wheelLock && Math.abs(acc) > 40) {
-    move(acc > 0 ? 1 : -1);
-    acc = 0; wheelLock = true;
-    setTimeout(() => { wheelLock = false; }, 130);
-  }
-}, { passive: false });
-
-let dragX = null, dragged = false;
-stage.addEventListener("pointerdown", (e) => { dragX = e.clientX; dragged = false; });
-stage.addEventListener("pointermove", (e) => {
-  if (dragX === null) return;
-  const dx = e.clientX - dragX;
-  if (Math.abs(dx) > 8) dragged = true;
-});
-window.addEventListener("pointerup", (e) => {
-  if (dragX === null) return;
-  const dx = e.clientX - dragX;
-  if (Math.abs(dx) > 55) move(dx < 0 ? 1 : -1);
-  dragX = null;
-});
-/* un drag ne doit pas déclencher le clic d'ouverture */
-stage.addEventListener("click", (e) => { if (dragged) { e.preventDefault(); e.stopPropagation(); } }, true);
+lb.querySelector("[data-lb-close]").addEventListener("click", close);
+lb.querySelector("[data-lb-prev]").addEventListener("click", () => go(-1));
+lb.querySelector("[data-lb-next]").addEventListener("click", () => go(1));
+lb.addEventListener("click", (e) => { if (e.target === lb || e.target.classList.contains("lightbox__stage")) close(); });
 
 window.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight") move(1);
-  else if (e.key === "ArrowLeft") move(-1);
-  else if (e.key === "Escape" && open) toggleOpen(false);
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") close();
+  else if (e.key === "ArrowRight") go(1);
+  else if (e.key === "ArrowLeft") go(-1);
 });
 
-if (stage && detail) build();
+/* swipe tactile */
+let sx = null;
+lb.addEventListener("pointerdown", (e) => { sx = e.clientX; });
+lb.addEventListener("pointerup", (e) => {
+  if (sx === null) return;
+  const dx = e.clientX - sx;
+  if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+  sx = null;
+});
+
+if (gallery) build();
