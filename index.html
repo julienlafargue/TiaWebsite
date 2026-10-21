@@ -3,65 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIA-LANA — Photography · Art Direction</title>
-  <meta name="description" content="Tia-Lana Chinapyel — photography & art direction. A digital editorial gallery. Paris, 2026." />
-  <meta name="theme-color" content="#07080D" />
-  <meta property="og:title" content="TIA-LANA — Photography · Art Direction" />
-  <meta property="og:description" content="A digital editorial gallery." />
+  <title>TIA-LANA - Photography · Art Direction</title>
+  <meta name="description" content="Tia-Lana Chinapyel - UK-born photographer & creative based in Paris. Portrait, product & fashion, landscape, creative series and posters." />
+  <meta name="theme-color" content="#0e0e0e" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=1" />
+  <meta property="og:title" content="TIA-LANA - Photography · Art Direction" />
+  <meta property="og:description" content="Photographer & creative, Paris. Portrait · Product & Fashion · Landscape · Creative · Posters." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/home/hero-home.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/reset.css?v=12" />
-  <link rel="stylesheet" href="css/tokens.css?v=14" />
-  <link rel="stylesheet" href="css/typography.css?v=12" />
-  <link rel="stylesheet" href="css/styles.css?v=47" />
+  <link rel="stylesheet" href="css/tokens.css?v=15" />
+  <link rel="stylesheet" href="css/typography.css?v=13" />
+  <link rel="stylesheet" href="css/styles.css?v=51" />
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
 
-  <header class="site-nav">
-    <a class="brand" href="index.html">TIA-LANA<span class="brand__heart" aria-hidden="true">♥</span></a>
-    <div class="nav-right">
-      <button class="lang-toggle" data-lang-toggle aria-label="Switch language">FR</button>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" data-i18n="nav.menu">Menu</button>
+  <header class="nav">
+    <nav class="nav__links nav__links--left" aria-label="Primary">
+      <a href="work.html" data-i18n="nav.work">Portfolio</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+    </nav>
+    <div class="nav__logo-wrap">
+      <a class="nav__logo" href="index.html">Tia-Lana</a>
+      <button id="loveHeart" class="nav__heart" type="button" aria-label="A little something">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
     </div>
-    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+    <nav class="nav__links nav__links--right">
+      <a href="services.html" data-i18n="nav.booking">Services</a>
+      <button class="nav__lang" data-lang-toggle aria-label="Switch language">FR</button>
+    </nav>
+    <button class="nav__burger" aria-expanded="false" aria-controls="nav-menu" data-i18n="nav.menu">Menu</button>
+    <div class="nav__menu" id="nav-menu">
       <a href="work.html" data-i18n="nav.work">Portfolio</a>
       <a href="about.html" data-i18n="nav.about">About</a>
       <a href="services.html" data-i18n="nav.booking">Services</a>
-    </nav>
+      <button class="nav__lang" data-lang-toggle aria-label="Switch language">FR</button>
+    </div>
   </header>
 
   <main id="main">
-    <!-- ============ HOME = tableau de musée (cadre ancien + photo dedans) ============ -->
-    <section class="museum">
-      <h1 class="sr-only">Tia-Lana Chinapyel — Photographer &amp; art director, Paris</h1>
+    <!-- 1. HERO -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <img src="img/home/hero-home.png" alt="" width="1600" height="1000" fetchpriority="high" />
+      </div>
+      <div class="hero__inner">
+        <h1 class="hero__title"><span class="outline">Tia-Lana</span></h1>
+        <p class="hero__sub" data-i18n="home.tag">Photographer &amp; art director, based in Paris.</p>
+        <a class="btn" href="services.html" data-i18n="fab.book">Book a shoot</a>
+      </div>
+      <a class="hero__cue" href="#bio" aria-label="Scroll down">Scroll</a>
+    </section>
 
-      <span class="museum__light" aria-hidden="true"></span>
+    <!-- 2. MARQUEE -->
+    <div class="marquee section--dark" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Portrait</span><span>Fashion</span><span>Landscape</span><span>Creative</span><span>Posters</span><span>Paris</span>
+        <span>Portrait</span><span>Fashion</span><span>Landscape</span><span>Creative</span><span>Posters</span><span>Paris</span>
+      </div>
+    </div>
 
-      <figure class="painting">
-        <!-- mosaïque de polaroïds dans l'ouverture du cadre (js/home-collage.js) -->
-        <span class="painting__canvas" data-collage aria-label="Selected work — changing"></span>
-        <!-- vrai cadre doré (image détourée) posé par-dessus -->
-        <img class="painting__frame" src="img/home/cadre.png" alt="" aria-hidden="true" />
-      </figure>
+    <!-- 3. BIO -->
+    <section id="bio" class="section section--light">
+      <div class="wrap bio__grid">
+        <div class="bio__photos reveal" aria-hidden="true">
+          <img src="img/portfolio/portrait-02.jpg" alt="" loading="lazy" decoding="async" width="600" height="800" />
+          <img src="img/portfolio/tia-lana.jpg" alt="" loading="lazy" decoding="async" width="600" height="600" />
+          <img src="img/portfolio/landscape-01.jpg" alt="" loading="lazy" decoding="async" width="600" height="450" />
+        </div>
+        <div class="bio__text reveal d1">
+          <p class="eyebrow" data-i18n="rd.hi">Hi, I'm Tia-Lana</p>
+          <p class="italic" data-i18n="rd.bio1">I make images - sometimes I capture them, sometimes I invent them.</p>
+          <p class="lead" data-i18n="rd.bio2">Photographer in the morning, art director in the afternoon. Between portrait, headshot and design, I like faces that don't lie.</p>
+          <p style="margin-top:2rem"><a class="link-arrow" href="about.html"><span data-i18n="rd.read_more">Read the full story</span> →</a></p>
+        </div>
+      </div>
+    </section>
 
-      <figcaption class="plaque">
-        <span class="plaque__name">TIA-LANA CHINAPYEL</span>
-        <span class="plaque__desc" data-i18n="home.tag">Photographer &amp; art director, based in Paris.</span>
-      </figcaption>
+    <!-- 4. SERIES PREVIEW -->
+    <section class="section section--light" style="padding-top:0">
+      <div class="wrap">
+        <div class="preview__head reveal">
+          <div class="stack">
+            <span class="eyebrow" data-i18n="rd.selected">Selected series</span>
+            <h2 data-i18n="work.title">Portfolio</h2>
+          </div>
+          <a class="link-arrow" href="work.html"><span data-i18n="rd.view_all">See all work</span> →</a>
+        </div>
+        <div class="preview__grid">
+          <a class="print reveal" href="series.html?cat=portrait">
+            <img src="img/portfolio/portrait-01.jpg" alt="Portrait series by Tia-Lana" loading="lazy" decoding="async" width="600" height="800" />
+            <span class="print__cap"><span class="print__name" data-i18n="series.portrait">Portrait</span><span class="print__meta num">01</span></span>
+          </a>
+          <a class="print reveal d1" href="series.html?cat=product-fashion">
+            <img src="img/portfolio/fashion-01.jpg" alt="Product and fashion series by Tia-Lana" loading="lazy" decoding="async" width="600" height="800" />
+            <span class="print__cap"><span class="print__name" data-i18n="series.productfashion">Product &amp; Fashion</span><span class="print__meta num">02</span></span>
+          </a>
+          <a class="print reveal d2" href="series.html?cat=creative">
+            <img src="img/portfolio/editing-01.jpg" alt="Creative series by Tia-Lana" loading="lazy" decoding="async" width="600" height="800" />
+            <span class="print__cap"><span class="print__name" data-i18n="series.creative">Creative Series</span><span class="print__meta num">03</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FEATURE QUOTE -->
+    <section class="feature">
+      <div class="feature__bg" aria-hidden="true">
+        <img src="img/portfolio/portrait-01.jpg" alt="" loading="lazy" decoding="async" width="1600" height="1000" />
+      </div>
+      <blockquote class="pull" data-i18n="rd.quote1">A good image is a well-framed secret.</blockquote>
+    </section>
+
+    <!-- 6. CTA BAND -->
+    <section class="section section--light cta-band">
+      <div class="wrap reveal">
+        <p class="cta-band__title" data-i18n="rd.cta_title">Let's make something that looks like no one else.</p>
+        <a class="btn" href="services.html"><span data-i18n="fab.book">Book a shoot</span> <span class="btn__arrow">→</span></a>
+      </div>
     </section>
   </main>
 
-  <script type="module" src="js/i18n.js?v=11"></script>
-  <script type="module" src="js/main.js?v=11"></script>
-  <script type="module" src="js/cursor.js?v=11"></script>
-  <script type="module" src="js/transitions.js?v=11"></script>
-  <script type="module" src="js/home-collage.js?v=16"></script>
+  <footer class="footer">
+    <div class="wrap footer__row">
+      <p class="footer__brand" data-i18n="footer.brand">TIA-LANA - PARIS</p>
+      <p class="footer__meta label" data-i18n="footer.role">PHOTOGRAPHY · ART DIRECTION</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/i18n.js?v=14"></script>
+  <script type="module" src="js/main.js?v=12"></script>
+  <script type="module" src="js/cursor.js?v=12"></script>
+  <script type="module" src="js/transitions.js?v=12"></script>
+  <script type="module" src="js/love.js?v=1"></script>
 </body>
 </html>

@@ -1,69 +1,57 @@
 /* ============================================================
-   tokens.css — variables CSS (fondation visuelle)
-   Toutes les couleurs et tailles passent par ici.
+   tokens.css - fondation visuelle (refonte « éditorial de mode »).
+   Palette, typographie, échelle, espacements, mouvement.
    ============================================================ */
 :root {
-  /* ---- Palette UNIQUE du site (celle de la home) ----
-     Une seule identité partout : papier beige, encre sombre, accent rouge. */
-  --paper:        #f2ede2; /* fond beige (identique home) */
-  --ink:          #16130e; /* texte/cadres */
-  --accent:       #E2231A; /* accent éditorial (rouge) */
-  --accent-2:     #E2231A; /* plus de rose : un seul accent */
-  --red:          #E2231A;
-  --cream:        #fdfcf8; /* panneau secondaire clair */
-  --paper-rgb:    242, 237, 226;
-  --ink-rgb:      22, 19, 14;
-  /* alias rétro-compat : les anciens --blue pointent sur l'accent */
-  --blue:         var(--accent);
-  --blue-bright:  var(--accent);
+  /* ---- Palette : noir & blanc cassé, accent taupe rare ---- */
+  --ink:       #0e0e0e;   /* noir profond */
+  --charcoal:  #1a1a1a;   /* sections sombres secondaires */
+  --bone:      #f2efe9;   /* blanc cassé / os */
+  --ash:       #8a8a8a;   /* gris de texte secondaire */
+  --accent:    #9c8a6e;   /* taupe / sable - survols, détails, badge POPULAR */
 
-  /* ---- Typographie (par défaut ; surchargée par page) ---- */
-  --font-display: "Archivo", system-ui, sans-serif;
-  --font-sans:    "Space Grotesk", system-ui, sans-serif;
-  --font-mono:    "Space Mono", ui-monospace, monospace;
-  --font-script:  "Dancing Script", cursive;
-  --font-serif:   "EB Garamond", Georgia, serif;
+  --ink-rgb:    14, 14, 14;
+  --bone-rgb:   242, 239, 233;
+  --accent-rgb: 156, 138, 110;
 
-  /* Échelle fluide (clamp) — hero énorme, body stable */
-  --fs-hero:    clamp(3.5rem, 14vw, 14rem);
-  --fs-display: clamp(2.6rem, 9vw, 8rem);
-  --fs-h2:      clamp(2rem, 5vw, 3.4rem);
-  --fs-h3:      clamp(1.4rem, 3vw, 2.2rem);
-  --fs-lead:    clamp(1.1rem, 2vw, 1.5rem);
-  --fs-body:    1rem;
-  --fs-cap:     0.8rem;  /* légendes */
-  --fs-mono:    0.7rem;  /* numérotations, métadonnées */
+  /* rôles (réassignés par section claire/sombre) */
+  --bg:   var(--bone);
+  --fg:   var(--ink);
+  --muted: var(--ash);
+  --rule: rgba(var(--ink-rgb), 0.18);  /* filets fins */
+
+  /* ---- Typographie ---- */
+  --font-display: "Bodoni Moda", "Times New Roman", Georgia, serif;
+  --font-text:    "Jost", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  /* Échelle fluide */
+  --fs-giant: clamp(3rem, 12vw, 11rem);   /* titres hero outline */
+  --fs-hero:  clamp(2.4rem, 8vw, 7rem);
+  --fs-h2:    clamp(1.9rem, 5vw, 3.6rem);
+  --fs-h3:    clamp(1.3rem, 3vw, 2.1rem);
+  --fs-lead:  clamp(1.1rem, 1.7vw, 1.4rem);
+  --fs-body:  clamp(0.95rem, 1.1vw, 1rem);  /* 15–16px */
+  --fs-label: 0.6875rem;                    /* 11px micro-labels */
 
   /* ---- Espacements ---- */
-  --space-xs:  0.5rem;
-  --space-sm:  1rem;
-  --space-md:  2rem;
-  --space-lg:  4rem;
-  --space-xl:  8rem;
-  --gutter:    clamp(1.25rem, 4vw, 4rem);
-
-  /* ---- Grille 12 colonnes ---- */
-  --cols: 12;
-  --max-w: 1680px;
+  --gutter:   clamp(1.25rem, 5vw, 5rem);
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: clamp(3rem, 8vw, 7rem);
+  --space-xl: clamp(5rem, 14vw, 12rem);
+  --max-w:    1600px;
+  --measure:  66ch;
 
   /* ---- Mouvement ---- */
-  --ease:      cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast:  200ms;
-  --dur:       400ms;
-  --dur-slow:  700ms;
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io:   cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:  220ms;
+  --dur:       480ms;
+  --dur-slow:  900ms;
 
-  /* ---- Divers ---- */
-  --radius: 2px;
-  --line:   2px solid var(--ink);
-  --z-grain: 9999;
-  --z-cursor: 10000;
+  /* ---- z-index ---- */
+  --z-grain:   9999;
+  --z-cursor:  10000;
   --z-overlay: 9000;
-  --z-nav: 500;
+  --z-nav:     500;
 }
-
-/* ============================================================
-   IDENTITÉ UNIQUE — plus de thème par page.
-   Toutes les pages héritent de :root (beige + Archivo/Space Grotesk).
-   Le fond beige est appliqué sur `body` dans styles.css.
-   ============================================================ */
