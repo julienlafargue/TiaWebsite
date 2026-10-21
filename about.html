@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=15" />
   <link rel="stylesheet" href="css/typography.css?v=13" />
-  <link rel="stylesheet" href="css/styles.css?v=49" />
+  <link rel="stylesheet" href="css/styles.css?v=50" />
 </head>
 <body class="page-about">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -28,7 +28,12 @@
       <a href="work.html" data-i18n="nav.work">Portfolio</a>
       <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
     </nav>
-    <a class="nav__logo" href="index.html">Tia-Lana</a>
+    <div class="nav__logo-wrap">
+      <a class="nav__logo" href="index.html">Tia-Lana</a>
+      <button id="loveHeart" class="nav__heart" type="button" aria-label="A little something">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+    </div>
     <nav class="nav__links nav__links--right">
       <a href="services.html" data-i18n="nav.booking">Services</a>
       <button class="nav__lang" data-lang-toggle aria-label="Switch language">FR</button>
@@ -153,5 +158,6 @@
   <script type="module" src="js/main.js?v=12"></script>
   <script type="module" src="js/cursor.js?v=12"></script>
   <script type="module" src="js/transitions.js?v=12"></script>
+  <script type="module" src="js/love.js?v=1"></script>
 </body>
 </html>

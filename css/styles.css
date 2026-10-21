@@ -60,13 +60,31 @@ img { max-width: 100%; height: auto; }
 /* sur page claire au repos, le header lit en sombre */
 .nav--on-light:not(.nav--solid) { color: var(--ink); }
 
+.nav__logo-wrap { grid-column: 2; justify-self: center; display: inline-flex; align-items: center; gap: 7px; }
 .nav__logo {
-  grid-column: 2;
   font-family: var(--font-display); font-weight: 600;
   font-size: clamp(1.1rem, 1.8vw, 1.5rem);
   letter-spacing: 0.02em; text-transform: uppercase;
   white-space: nowrap;
 }
+/* easter egg : petit cœur battant à côté du nom */
+.nav__heart {
+  background: none; border: none; padding: 0; cursor: pointer;
+  display: inline-flex; align-items: center; color: #c9736a;
+  position: relative; top: 1px;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  animation: heartbeat 3.5s ease-in-out infinite;
+}
+.nav__heart svg { width: 13px; height: 13px; display: block; }
+.nav__heart:hover { transform: scale(1.25); opacity: 0.8; }
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.22); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.14); }
+  56% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .nav__heart { animation: none; } }
 .nav__links { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.4rem); }
 .nav__links--left { grid-column: 1; justify-self: start; }
 .nav__links--right { grid-column: 3; justify-self: end; }
@@ -88,7 +106,7 @@ img { max-width: 100%; height: auto; }
 
 @media (max-width: 820px) {
   .nav { grid-template-columns: auto 1fr auto; }
-  .nav__logo { grid-column: 1; justify-self: start; }
+  .nav__logo-wrap { grid-column: 1; justify-self: start; }
   .nav__links { display: none; }
   .nav__burger {
     display: block; grid-column: 3; justify-self: end;
