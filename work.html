@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/reset.css?v=12" />
   <link rel="stylesheet" href="css/tokens.css?v=15" />
   <link rel="stylesheet" href="css/typography.css?v=13" />
-  <link rel="stylesheet" href="css/styles.css?v=48" />
+  <link rel="stylesheet" href="css/styles.css?v=49" />
 </head>
 <body class="page-work">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -44,29 +44,56 @@
   <main id="main" class="section section--light">
     <div class="wrap">
       <header class="work-head stack reveal">
-        <span class="eyebrow" data-i18n="rd.selected">Selected series</span>
+        <span class="eyebrow" data-i18n="rd.selected">Selected work</span>
         <h1 class="hero-title">Portfolio</h1>
-        <p class="subtitle" data-i18n="rd.pick">Pick a series</p>
+        <p class="subtitle" data-i18n="rd.pick">Five bodies of work — pick one to open the series.</p>
       </header>
 
       <div class="worklist" data-worklist style="margin-top:var(--space-lg)">
-        <a class="worklist__item" href="series.html?cat=portrait" data-img="img/photography/pro/photo-c.png">
+        <a class="worklist__item reveal" href="series.html?cat=portrait">
           <span class="worklist__num num">01</span>
-          <span class="worklist__title" data-i18n="series.portrait">Portrait</span>
-          <span class="worklist__meta">Editorial · 35mm</span>
-          <span class="worklist__thumb"><img src="img/photography/pro/photo-c.png" alt="Portrait series" loading="lazy" decoding="async" width="800" height="450" /></span>
+          <span class="worklist__thumb"><img src="img/portfolio/portrait-01.jpg" alt="Portrait series" loading="lazy" decoding="async" width="200" height="250" /></span>
+          <span class="worklist__body">
+            <span class="worklist__title" data-i18n="series.portrait">Portrait</span>
+            <span class="worklist__meta" data-i18n="work.m_portrait">People · Light</span>
+            <span class="worklist__desc" data-i18n="work.d_portrait">More than a face — the essence of the person, caught in natural light.</span>
+          </span>
         </a>
-        <a class="worklist__item" href="series.html?cat=headshot" data-img="img/photography/pro/photo-g.png">
+        <a class="worklist__item reveal" href="series.html?cat=product-fashion">
           <span class="worklist__num num">02</span>
-          <span class="worklist__title" data-i18n="series.headshot">Headshot</span>
-          <span class="worklist__meta">Faces · Studio</span>
-          <span class="worklist__thumb"><img src="img/photography/pro/photo-g.png" alt="Headshot series" loading="lazy" decoding="async" width="800" height="450" /></span>
+          <span class="worklist__thumb"><img src="img/portfolio/fashion-01.jpg" alt="Product and fashion series" loading="lazy" decoding="async" width="200" height="250" /></span>
+          <span class="worklist__body">
+            <span class="worklist__title" data-i18n="series.productfashion">Product &amp; Fashion</span>
+            <span class="worklist__meta" data-i18n="work.m_productfashion">Studio · Styling</span>
+            <span class="worklist__desc" data-i18n="work.d_productfashion">Products styled with intent; fashion shot for mood and movement.</span>
+          </span>
         </a>
-        <a class="worklist__item" href="series.html?cat=design" data-img="img/photography/pro/photo-u.png">
+        <a class="worklist__item reveal" href="series.html?cat=landscape">
           <span class="worklist__num num">03</span>
-          <span class="worklist__title" data-i18n="series.design">Design</span>
-          <span class="worklist__meta">Posters · Brand</span>
-          <span class="worklist__thumb"><img src="img/photography/pro/photo-u.png" alt="Design series" loading="lazy" decoding="async" width="800" height="450" /></span>
+          <span class="worklist__thumb"><img src="img/portfolio/landscape-01.jpg" alt="Landscape series" loading="lazy" decoding="async" width="200" height="250" /></span>
+          <span class="worklist__body">
+            <span class="worklist__title" data-i18n="series.landscape">Landscape</span>
+            <span class="worklist__meta" data-i18n="work.m_landscape">Nature · Travel</span>
+            <span class="worklist__desc" data-i18n="work.d_landscape">Places and atmospheres — from wide vistas to quiet details.</span>
+          </span>
+        </a>
+        <a class="worklist__item reveal" href="series.html?cat=creative">
+          <span class="worklist__num num">04</span>
+          <span class="worklist__thumb"><img src="img/portfolio/clown-01.jpg" alt="Creative narrative series" loading="lazy" decoding="async" width="200" height="250" /></span>
+          <span class="worklist__body">
+            <span class="worklist__title" data-i18n="series.creative">Creative Series</span>
+            <span class="worklist__meta" data-i18n="work.m_creative">Narrative · Concept</span>
+            <span class="worklist__desc" data-i18n="work.d_creative">Narrative triptychs: performance, innocence, and bold experimentation.</span>
+          </span>
+        </a>
+        <a class="worklist__item reveal" href="series.html?cat=posters">
+          <span class="worklist__num num">05</span>
+          <span class="worklist__thumb"><img src="img/portfolio/poster-henry.jpg" alt="Posters and design" loading="lazy" decoding="async" width="200" height="250" /></span>
+          <span class="worklist__body">
+            <span class="worklist__title" data-i18n="series.posters">Posters &amp; Design</span>
+            <span class="worklist__meta" data-i18n="work.m_posters">Procreate · Photoshop</span>
+            <span class="worklist__desc" data-i18n="work.d_posters">Drawn and designed work — posters, type and symbol.</span>
+          </span>
         </a>
       </div>
     </div>
@@ -79,10 +106,9 @@
     </div>
   </footer>
 
-  <script type="module" src="js/i18n.js?v=12"></script>
+  <script type="module" src="js/i18n.js?v=13"></script>
   <script type="module" src="js/main.js?v=12"></script>
   <script type="module" src="js/cursor.js?v=12"></script>
   <script type="module" src="js/transitions.js?v=12"></script>
-  <script type="module" src="js/work.js?v=1"></script>
 </body>
 </html>

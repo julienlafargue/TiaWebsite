@@ -2,7 +2,7 @@
    series.js — page série : grille éditoriale asymétrique
    + lightbox maison (← → Échap, swipe, compteur).
    ============================================================ */
-import { SERIES, SERIES_ORDER } from "./photos.js?v=1";
+import { SERIES, SERIES_ORDER } from "./photos.js?v=2";
 
 const key = (() => {
   const c = new URLSearchParams(location.search).get("cat");
@@ -17,10 +17,12 @@ const PATTERN = ["--wide", "--narrow", "", "--push", "--narrow", "--wide --push"
 const gallery = document.querySelector("[data-gallery]");
 const titleEl = document.querySelector("[data-series-title]");
 const metaEl = document.querySelector("[data-series-meta]");
+const introEl = document.querySelector("[data-series-intro]");
 
 function build() {
   titleEl.textContent = data.label;
   metaEl.textContent = data.meta;
+  if (introEl) introEl.textContent = data.intro || "";
   document.title = `${data.label} — TIA-LANA`;
 
   photos.forEach((p, i) => {
