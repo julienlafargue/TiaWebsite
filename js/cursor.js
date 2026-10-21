@@ -3,7 +3,7 @@
    Grossit + label mono sur les éléments cliquables.
    Désactivé < 768px et si pointeur grossier (tactile).
    ============================================================ */
-import { reducedMotion } from "./main.js?v=11";
+import { reducedMotion } from "./main.js?v=12";
 
 function initCursor() {
   const fine = window.matchMedia("(min-width: 769px) and (pointer: fine)").matches;
@@ -44,11 +44,11 @@ function initCursor() {
   // label par défaut selon le type d'élément
   const labelFor = (el) =>
     el.dataset.cursor ||
-    (el.closest(".crt[role='link']") ? "entrer" :
-     el.closest(".reel__slot") ? "voir" :
-     el.matches("a, .cta, .book-fab") ? "ouvrir" : "");
+    (el.closest(".gallery__fig") ? "view" :
+     el.closest(".print, .worklist__item") ? "open" :
+     el.matches("a, button, .btn") ? "→" : "");
 
-  const SEL = "a, button, .crt[role='link'], .reel__slot, [data-cursor]";
+  const SEL = "a, button, .btn, .gallery__fig, .worklist__item, [data-cursor]";
   document.addEventListener("mouseover", (e) => {
     const t = e.target.closest(SEL);
     if (t) {

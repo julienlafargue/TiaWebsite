@@ -1,93 +1,91 @@
 /* ============================================================
-   typography.css — hiérarchie éditoriale
-   Syne (display) · Space Grotesk (sans) · Space Mono (mono)
+   typography.css — Bodoni Moda (display + italique) · Jost (texte)
    ============================================================ */
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-size: var(--fs-body);
-  color: var(--ink);
   font-weight: 400;
+  line-height: 1.7;
+  color: var(--fg);
+  background: var(--bg);
 }
 
-/* ---- Display : Syne, massif et géométrique ---- */
+/* ---- Display : Bodoni Moda, grandes capitales fines ---- */
 .display,
-h1.display,
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 800;
-  line-height: 0.86;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: var(--fs-giant);
+  line-height: 0.88;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
   text-wrap: balance;
 }
 
-.hero-title { font-size: var(--fs-hero); }
-.display     { font-size: var(--fs-display); }
+.display { font-size: var(--fs-hero); text-transform: uppercase; letter-spacing: 0.01em; }
+h2 { font-size: var(--fs-h2); text-transform: uppercase; letter-spacing: 0.005em; }
+h3 { font-size: var(--fs-h3); }
 
-h2 {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.015em;
+/* Titre « outline » (contour, intérieur transparent) qui chevauche la photo */
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1px currentColor;
+  text-stroke: 1px currentColor;
 }
 
-h3 {
+/* Sous-titres & citations : Bodoni italique */
+.italic,
+.subtitle,
+blockquote {
   font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  font-weight: 600;
-  line-height: 1;
+  font-style: italic;
+  font-weight: 400;
 }
-
-/* Italique (citations) — Syne n'a pas d'italique vrai : on garde le poids fort */
-.italic { font-style: italic; }
+.subtitle { font-size: var(--fs-lead); line-height: 1.4; color: var(--muted); }
 
 /* ---- Corps ---- */
-.lead {
-  font-size: var(--fs-lead);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+.lead { font-size: var(--fs-lead); line-height: 1.5; font-weight: 300; }
+p { max-width: var(--measure); }
+
+/* ---- Micro-labels : Jost capitales espacées 11px ---- */
+.label,
+.eyebrow,
+.caption,
+.num {
+  font-family: var(--font-text);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  line-height: 1.4;
 }
+.num { font-variant-numeric: tabular-nums; }
 
-p { max-width: 62ch; }
-
-/* ---- Mono : numérotations, métadonnées ---- */
-.mono,
-.meta,
-.caption {
-  font-family: var(--font-mono);
-}
-
+/* Grand numéro de section (01 / 02 / 03) en serif */
 .section-num {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 12vw, 11rem);
-  font-weight: 800;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 9vw, 7rem);
   line-height: 0.8;
-  color: var(--blue);
+  color: var(--accent);
 }
 
-/* Légendes : majuscules espacées */
-.caption,
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--fs-cap);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.meta {
-  font-size: var(--fs-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  line-height: 1.6;
-}
-
-.quote {
+/* Citation pleine largeur */
+.pull {
   font-family: var(--font-display);
-  color: var(--blue-bright);
-  font-size: var(--fs-h3);
-  font-weight: 600;
-  line-height: 1.15;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4.5vw, 3.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
-::selection { background: var(--blue); color: #fff; }
+::selection { background: var(--accent); color: var(--ink); }
