@@ -1,5 +1,5 @@
 /* ============================================================
-   cursor.js — curseur custom crème inversé.
+   cursor.js - curseur custom crème inversé.
    Grossit + label mono sur les éléments cliquables.
    Désactivé < 768px et si pointeur grossier (tactile).
    ============================================================ */

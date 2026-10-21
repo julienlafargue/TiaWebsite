@@ -1,5 +1,5 @@
 /* ============================================================
-   love.js — easter egg : le petit cœur à côté du logo.
+   love.js - easter egg : le petit cœur à côté du logo.
    Au clic : le cœur dérive vers le centre en battant, puis un
    grand cœur rose s'ouvre en plein écran et mène à love.html.
    ============================================================ */
@@ -52,12 +52,12 @@ if (heart) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) { location.href = "love.html"; return; }
 
-    /* Phase 1 — le cœur dérive vers le centre en battant */
+    /* Phase 1 - le cœur dérive vers le centre en battant */
     el.style.transition = "transform .7s cubic-bezier(.4,0,.2,1)";
     el.style.transform = `translate(${vcx - ex}px,${vcy - ey}px) scale(2)`;
     el.style.animation = "heartbeat .22s ease-in-out infinite";
 
-    /* Phase 2 — le grand cœur s'ouvre depuis le centre */
+    /* Phase 2 - le grand cœur s'ouvre depuis le centre */
     setTimeout(() => {
       el.style.opacity = "0";
       const svg = makeLoveHeart(vcx, vcy);

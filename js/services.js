@@ -1,5 +1,5 @@
 /* ============================================================
-   services.js — pré-remplit la formule dans le formulaire
+   services.js - pré-remplit la formule dans le formulaire
    quand on clique « Book → » sur une offre, puis scrolle au form.
    ============================================================ */
 const select = document.getElementById("formula");

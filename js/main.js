@@ -1,5 +1,5 @@
 /* ============================================================
-   main.js — orchestration globale (nav, scroll-reveal, grain).
+   main.js - orchestration globale (nav, scroll-reveal, grain).
    Composants lourds : fichiers dédiés (series.js, work.js).
    ============================================================ */
 import { t } from "./i18n.js?v=12";

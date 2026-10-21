@@ -1,8 +1,8 @@
 /* ============================================================
-   series.js — page série : grille éditoriale asymétrique
+   series.js - page série : grille éditoriale asymétrique
    + lightbox maison (← → Échap, swipe, compteur).
    ============================================================ */
-import { SERIES, SERIES_ORDER } from "./photos.js?v=2";
+import { SERIES, SERIES_ORDER } from "./photos.js?v=3";
 
 const key = (() => {
   const c = new URLSearchParams(location.search).get("cat");
@@ -23,7 +23,7 @@ function build() {
   titleEl.textContent = data.label;
   metaEl.textContent = data.meta;
   if (introEl) introEl.textContent = data.intro || "";
-  document.title = `${data.label} — TIA-LANA`;
+  document.title = `${data.label} - TIA-LANA`;
 
   photos.forEach((p, i) => {
     const fig = document.createElement("figure");

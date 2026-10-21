@@ -1,5 +1,5 @@
 /* ============================================================
-   transitions.js — coupes cinéma entre pages.
+   transitions.js - coupes cinéma entre pages.
    Utilise View Transitions API si dispo, sinon fallback manuel
    (fade noir 200ms + flash blanc 60ms en sortie).
    ============================================================ */

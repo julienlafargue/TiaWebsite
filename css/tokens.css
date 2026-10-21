@@ -1,5 +1,5 @@
 /* ============================================================
-   tokens.css — fondation visuelle (refonte « éditorial de mode »).
+   tokens.css - fondation visuelle (refonte « éditorial de mode »).
    Palette, typographie, échelle, espacements, mouvement.
    ============================================================ */
 :root {
@@ -8,7 +8,7 @@
   --charcoal:  #1a1a1a;   /* sections sombres secondaires */
   --bone:      #f2efe9;   /* blanc cassé / os */
   --ash:       #8a8a8a;   /* gris de texte secondaire */
-  --accent:    #9c8a6e;   /* taupe / sable — survols, détails, badge POPULAR */
+  --accent:    #9c8a6e;   /* taupe / sable - survols, détails, badge POPULAR */
 
   --ink-rgb:    14, 14, 14;
   --bone-rgb:   242, 239, 233;
